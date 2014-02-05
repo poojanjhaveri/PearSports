@@ -44,12 +44,12 @@
         NSString *emailpass = [NSString stringWithFormat:@"%@",self.emailAddress.text];
     
         NSDictionary *parameters = @{@"email": emailpass};
-        [manager POST:@"http://cs477-backend.herokuapp.com/sign-up" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager POST:@"https://cs477-backend.herokuapp.com/sign-up" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         
         NSLog(@"JSON: %@", responseObject);
         [self textFieldShouldReturn:self.emailAddress];
-        if([[responseObject objectForKey:@"object"] isEqualToString:@"error"])
+        if([responseObject objectForKey:@"error"])
         {
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign-Up request failed" message:@"Please check your your email address. This email address is already signed up." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];

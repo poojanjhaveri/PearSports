@@ -89,7 +89,7 @@
 {
     if(buttonIndex==1)
     {
-        NSString *getstring = [NSString stringWithFormat:@"http://cs477-backend.herokuapp.com/password/reset/%@",[alertView textFieldAtIndex:0].text];
+        NSString *getstring = [NSString stringWithFormat:@"https://cs477-backend.herokuapp.com/password/reset/%@",[alertView textFieldAtIndex:0].text];
         
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -98,7 +98,7 @@
   //       manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         [manager GET:getstring parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"JSON: %@", responseObject);
-            if([[responseObject objectForKey:@"object"] isEqualToString:@"error"])
+            if(!([[responseObject objectForKey:@"type"] isEqualToString:@"message"]))
             {
                 UIAlertView *resetpassword =[[UIAlertView alloc] initWithTitle:@"Reset password" message:@"Please verify the email address you entered. " delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
                 [resetpassword show];
