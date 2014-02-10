@@ -37,6 +37,9 @@
 		0EE2E367189EF80E00CF5F16 /* PJ_SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2E366189EF80E00CF5F16 /* PJ_SettingsViewController.m */; };
 		0EEAC8001899CC8A00711C39 /* Pear-Sports-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EEAC7FF1899CC8A00711C39 /* Pear-Sports-Logo.png */; };
 		65B7771738254FF3AFA26964 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFCF36E3D2542AA8D79EB64 /* libPods.a */; };
+		FF5FB2C418A8462100C19893 /* PJ_NotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5FB2C318A8462100C19893 /* PJ_NotificationView.m */; };
+		FF5FB2C818A84CE200C19893 /* PJ_Client.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5FB2C718A84CE200C19893 /* PJ_Client.m */; };
+		FF5FB2CB18A84D5C00C19893 /* PJ_ClientStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5FB2CA18A84D5C00C19893 /* PJ_ClientStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +92,12 @@
 		0EEAC7FF1899CC8A00711C39 /* Pear-Sports-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pear-Sports-Logo.png"; sourceTree = "<group>"; };
 		1EFCF36E3D2542AA8D79EB64 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		670102BCE36E482A9A05BE4C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		FF5FB2C218A8462100C19893 /* PJ_NotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_NotificationView.h; sourceTree = "<group>"; };
+		FF5FB2C318A8462100C19893 /* PJ_NotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_NotificationView.m; sourceTree = "<group>"; };
+		FF5FB2C618A84CE200C19893 /* PJ_Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_Client.h; sourceTree = "<group>"; };
+		FF5FB2C718A84CE200C19893 /* PJ_Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_Client.m; sourceTree = "<group>"; };
+		FF5FB2C918A84D5C00C19893 /* PJ_ClientStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_ClientStore.h; sourceTree = "<group>"; };
+		FF5FB2CA18A84D5C00C19893 /* PJ_ClientStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_ClientStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +131,8 @@
 			children = (
 				0E01738018A1E34600FC1B46 /* PJ_ClientListViewController.h */,
 				0E01738118A1E34600FC1B46 /* PJ_ClientListViewController.m */,
+				FF5FB2C218A8462100C19893 /* PJ_NotificationView.h */,
+				FF5FB2C318A8462100C19893 /* PJ_NotificationView.m */,
 			);
 			name = ClientList;
 			sourceTree = "<group>";
@@ -172,6 +183,7 @@
 		0E54EE0B187ACF9B00DC976C /* PearSportsTrainerApp */ = {
 			isa = PBXGroup;
 			children = (
+				FF5FB2C518A84CC300C19893 /* Models */,
 				0E01737F18A1E32C00FC1B46 /* ClientList */,
 				0EE2E364189EF7E700CF5F16 /* Settings */,
 				0EA93A7618962DE900463BBC /* ImageResources */,
@@ -256,6 +268,17 @@
 				0EE2E366189EF80E00CF5F16 /* PJ_SettingsViewController.m */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		FF5FB2C518A84CC300C19893 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FF5FB2C618A84CE200C19893 /* PJ_Client.h */,
+				FF5FB2C718A84CE200C19893 /* PJ_Client.m */,
+				FF5FB2C918A84D5C00C19893 /* PJ_ClientStore.h */,
+				FF5FB2CA18A84D5C00C19893 /* PJ_ClientStore.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,7 +421,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF5FB2CB18A84D5C00C19893 /* PJ_ClientStore.m in Sources */,
 				0E7FD5EF1898D70500D601B3 /* PJ_SignUpViewController.m in Sources */,
+				FF5FB2C418A8462100C19893 /* PJ_NotificationView.m in Sources */,
+				FF5FB2C818A84CE200C19893 /* PJ_Client.m in Sources */,
 				0EAE019F1888C515008E6795 /* PJ_LoginViewController.m in Sources */,
 				0E54EE16187ACF9B00DC976C /* PJ_AppDelegate.m in Sources */,
 				0E01738218A1E34600FC1B46 /* PJ_ClientListViewController.m in Sources */,

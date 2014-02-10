@@ -7,6 +7,9 @@
 //
 
 #import "PJ_ClientListViewController.h"
+#import "PJ_NotificationView.h"
+#import "PJ_Client.h"
+#import "PJ_ClientStore.h"
 
 @interface PJ_ClientListViewController ()
 
@@ -23,10 +26,23 @@
     return self;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    
+    if ([[[PJ_ClientStore sharedClientStore] clients] count] == 0) {
+        NSLog(@"About to add some random clients");
+        [[PJ_ClientStore sharedClientStore] addRandomClients];
+        
+    }
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -44,7 +60,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
@@ -53,7 +68,9 @@
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 5;
+    
+    NSLog(@"Number of rows to show... %d", [[[PJ_ClientStore sharedClientStore] clients] count]);
+    return [[[PJ_ClientStore sharedClientStore] clients] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,7 +78,38 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    
+    int myIndex = [indexPath row];
+    
+    PJ_Client * myClient = [[[PJ_ClientStore sharedClientStore] clients] objectAtIndex:myIndex];
+    
+    /* Name Label */
+    
+    UILabel *label;
+    
+    label = (UILabel *)[cell viewWithTag:212];
+    
+    // Load dynamic content
+    label.text = myClient.name;
+    
+    /* Notification Label */
+
+    CGRect positionFrame = CGRectMake(247,20,20,20);
+    PJ_NotificationView * noteView = [[PJ_NotificationView alloc] initWithFrame:positionFrame];
+    [cell.contentView addSubview:noteView];
+    //[cell.contentView sendSubviewToBack:noteView];
+    
+    UILabel *noteLabel;
+    
+    noteLabel = (UILabel *)[cell viewWithTag:213];
+    noteLabel.textColor = [UIColor whiteColor];
+    
+    // Load dynamic content
+    noteLabel.text = [NSString stringWithFormat:@"%d", myClient.numNotifications];
+    [cell.contentView bringSubviewToFront:noteLabel];
+
+    
+    
     
     return cell;
 }
