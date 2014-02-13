@@ -15,11 +15,17 @@
                     <view key="view" contentMode="scaleToFill" id="Dyp-hM-2k6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PEAR_reagular_C-BLKlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="REw-vH-atc">
+                                <rect key="frame" x="0.0" y="25" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <segue destination="iLP-AT-6Jm" kind="modal" identifier="AlreadyLoggedIn" animates="NO" id="ZW1-7y-jOc"/>
-                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="NeedToLogin" animates="NO" id="bje-gt-e3Q"/>
+                        <segue destination="C8K-uD-drT" kind="modal" identifier="NeedToLogin" animates="NO" id="MgH-JB-G0f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJg-Dv-amY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -27,92 +33,79 @@
             <point key="canvasLocation" x="-295" y="8"/>
         </scene>
         <!--Login View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <scene sceneID="PxF-Y6-oOj">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="PJ_LoginViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0po-gg-rlJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="1qf-Le-kUg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                <tableViewController id="C8K-uD-drT" customClass="PJ_LoginViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="oRj-f9-FRr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Tx-me-ubV">
-                                <rect key="frame" x="20" y="190" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="GvG-1h-TwK"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iPa-Xd-DK5">
-                                <rect key="frame" x="20" y="228" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="LpH-PC-tr5"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yj1-qj-vzH">
-                                <rect key="frame" x="20" y="322" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Log In">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2MQ-l3-65H"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2J-hS-aty">
-                                <rect key="frame" x="86" y="518" width="148" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="New User ? Sign Up">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="X3b-fp-Ou4" kind="modal" id="FjT-eW-bBx"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PEAR_reagular_C-BLKlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Qx-kJ-0wK">
-                                <rect key="frame" x="20" y="25" width="280" height="144"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85f-kI-4Qs">
-                                <rect key="frame" x="170" y="261" width="130" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Forgot Password ?">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="forgotPasswordTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="OOX-Rf-v5a"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.67450980392156867" blue="0.92549019607843142" alpha="1" colorSpace="deviceRGB"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.67450980390000004" blue="0.92549019610000005" alpha="1" colorSpace="deviceRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="dNn-rx-hiz">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="184"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PEAR_reagular_C-BLKlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-EL-RQA">
+                                    <rect key="frame" x="20" y="20" width="280" height="144"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.0" green="0.67450980392156867" blue="0.92549019607843142" alpha="1" colorSpace="deviceRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Ya5-EL-RQA" secondAttribute="trailing" constant="20" symbolic="YES" id="5ey-P9-YhD"/>
+                                <constraint firstAttribute="bottom" secondItem="Ya5-EL-RQA" secondAttribute="bottom" constant="20" symbolic="YES" id="Idm-AK-zWr"/>
+                                <constraint firstItem="Ya5-EL-RQA" firstAttribute="leading" secondItem="dNn-rx-hiz" secondAttribute="leading" constant="20" symbolic="YES" id="cIo-mq-eHt"/>
+                                <constraint firstItem="Ya5-EL-RQA" firstAttribute="top" secondItem="dNn-rx-hiz" secondAttribute="top" constant="20" symbolic="YES" id="r1w-uU-IN7"/>
+                            </constraints>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="dYb-AK-rTg">
+                            <rect key="frame" x="0.0" y="184" width="320" height="214"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVo-Ye-fDm">
+                                    <rect key="frame" x="91" y="92" width="139" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <state key="normal" title="Forgot Password ?">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="forgotPasswordTouched:" destination="C8K-uD-drT" eventType="touchUpInside" id="E4l-Dr-Mda"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpb-0R-ZLR">
+                                    <rect key="frame" x="90" y="133" width="140" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <state key="normal" title="New User ? Sign Up">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <segue destination="X3b-fp-Ou4" kind="modal" id="tLz-cI-BiA"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.0" green="0.67450980390000004" blue="0.92549019610000005" alpha="1" colorSpace="deviceRGB"/>
+                            <constraints>
+                                <constraint firstItem="fVo-Ye-fDm" firstAttribute="top" secondItem="dYb-AK-rTg" secondAttribute="top" constant="92" id="6BI-0J-SAd"/>
+                                <constraint firstItem="qpb-0R-ZLR" firstAttribute="top" secondItem="dYb-AK-rTg" secondAttribute="top" constant="133" id="KvW-6O-ddu"/>
+                            </constraints>
+                        </view>
+                        <connections>
+                            <outlet property="dataSource" destination="C8K-uD-drT" id="KhC-yK-RfX"/>
+                            <outlet property="delegate" destination="C8K-uD-drT" id="eEj-75-wDy"/>
+                        </connections>
+                    </tableView>
                     <connections>
-                        <outlet property="emailAddress" destination="9Tx-me-ubV" id="nWg-1t-ccT"/>
-                        <outlet property="password" destination="iPa-Xd-DK5" id="HYV-c9-T5O"/>
-                        <segue destination="iLP-AT-6Jm" kind="modal" identifier="LoggedIn" id="dl9-rb-PaQ"/>
+                        <segue destination="iLP-AT-6Jm" kind="modal" identifier="LoggedIn" id="iLb-P5-tO4"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oK5-6e-LEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="350" y="636"/>
+            <point key="canvasLocation" x="226" y="561"/>
         </scene>
         <!--Sign Up View Controller - Sign Up-->
         <scene sceneID="gXd-sv-zv0">
@@ -638,6 +631,6 @@ These Terms and any other electronic documents, policies and guidelines incorpor
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dl9-rb-PaQ"/>
+        <segue reference="ZW1-7y-jOc"/>
     </inferredMetricsTieBreakers>
 </document>

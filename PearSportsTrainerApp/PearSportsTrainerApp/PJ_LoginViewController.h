@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <BZGFormViewController.h>
 
-@interface PJ_LoginViewController : UIViewController<UITextFieldDelegate,UIAlertViewDelegate>
+@class BZGMailgunEmailValidator;
+
+@interface PJ_LoginViewController : BZGFormViewController<UITextFieldDelegate,UIAlertViewDelegate>
+
+@property (nonatomic, strong) BZGFormFieldCell *emailFieldCell;
+@property (nonatomic, strong) BZGFormFieldCell *passwordFieldCell;
+
+
 
 @end
