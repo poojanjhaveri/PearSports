@@ -9,6 +9,7 @@
 #import "PJ_LoginViewController.h"
 #import "API.h"
 #import "BZGFormFieldCell.h"
+#import <MBProgressHUD.h>
 
 
 #import "ReactiveCocoa.h"
@@ -69,9 +70,49 @@
 
 -(void)processlogin :(NSString *)emailaddress password:(NSString *)pwtext
 {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        //     manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        NSLog(@"%@ %@",emailaddress,pwtext);
+        //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:emailaddress password:pwtext];
+        
+        [manager POST:@"https://cs477-backend.herokuapp.com/sign-in" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
+         {
+             
+             NSLog(@"JSON: %@", responseObject);
+             [[API sharedInstance] saveCurrentUser:[responseObject objectForKey:@"trainer_info"]];
+             self.emailFieldCell.textField.text=@"";
+             self.passwordFieldCell.textField.text=@"";
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+             });
+             
+             [self performSegueWithIdentifier:@"LoggedIn" sender:self];
+             
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+         
+         {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+             });
+             
+             NSLog(@"Error: %@", error);
+             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error" message:@"Please check your username and password." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+             [alert show];
+             
+         }];
+
+        
+    });
     
-    
-    
+  /*
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     //     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -97,7 +138,7 @@
          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error" message:@"Please check your username and password." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
          [alert show];
          
-     }];
+     }];*/
 
     
     
