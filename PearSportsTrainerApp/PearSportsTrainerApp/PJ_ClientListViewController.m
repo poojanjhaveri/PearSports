@@ -83,7 +83,7 @@
     
     PJ_Client * myClient = [[[PJ_ClientStore sharedClientStore] clients] objectAtIndex:myIndex];
     
-    /* Name Label */
+    /* Name Label  = Tag 212 */
     
     UILabel *label;
     
@@ -92,7 +92,7 @@
     // Load dynamic content
     label.text = myClient.name;
     
-    /* Notification Label */
+    /* Notification Label  = Tag 213 */
 
     CGRect positionFrame = CGRectMake(247,20,20,20);
     PJ_NotificationView * noteView = [[PJ_NotificationView alloc] initWithFrame:positionFrame];
@@ -109,6 +109,12 @@
     [cell.contentView bringSubviewToFront:noteLabel];
 
     
+    /* Client Details View Controller = Tag 214 */
+    
+    
+    UIView * clientDetailsView = (UIView *)[cell viewWithTag:214];
+    
+    [clientDetailsView setBackgroundColor:[UIColor redColor]];
     
     
     return cell;

@@ -10,6 +10,4 @@
 
 @interface PJ_ClientListViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *clientNameLabel;
-
 @end
