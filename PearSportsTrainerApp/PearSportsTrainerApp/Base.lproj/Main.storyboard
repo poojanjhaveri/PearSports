@@ -437,7 +437,7 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="129" id="M0t-Dc-Zpm">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClientCell" rowHeight="129" id="M0t-Dc-Zpm" customClass="PJ_ClientCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="129"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M0t-Dc-Zpm" id="9Nw-YH-O7k">
@@ -456,11 +456,6 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view tag="214" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p1D-75-RLc">
-                                            <rect key="frame" x="20" y="49" width="256" height="64"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="epF-Ja-Ecl" firstAttribute="leading" secondItem="9Nw-YH-O7k" secondAttribute="leading" constant="20" id="K9R-5Q-4ow"/>
@@ -468,6 +463,8 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="nameLabel" destination="epF-Ja-Ecl" id="sjh-98-k6C"/>
+                                    <outlet property="numNotificationsLabel" destination="hpf-K8-Uwa" id="sEz-aF-IoV"/>
                                     <segue destination="taa-IW-mPI" kind="push" id="ucH-Or-j74"/>
                                 </connections>
                             </tableViewCell>

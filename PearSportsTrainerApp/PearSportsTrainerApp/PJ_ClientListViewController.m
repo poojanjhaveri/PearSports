@@ -10,6 +10,7 @@
 #import "PJ_NotificationView.h"
 #import "PJ_Client.h"
 #import "PJ_ClientStore.h"
+#import "PJ_ClientCell.h"
 
 @interface PJ_ClientListViewController ()
 
@@ -21,6 +22,8 @@
 {
     self = [super initWithStyle:style];
     if (self) {
+        
+        
         // Custom initialization
     }
     return self;
@@ -28,6 +31,8 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    
+    [[PJ_ClientStore sharedClientStore] updateData];
     
     if ([[[PJ_ClientStore sharedClientStore] clients] count] == 0) {
         NSLog(@"About to add some random clients");
@@ -75,46 +80,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"ClientCell";
+    PJ_ClientCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     
     int myIndex = [indexPath row];
     
     PJ_Client * myClient = [[[PJ_ClientStore sharedClientStore] clients] objectAtIndex:myIndex];
     
-    /* Name Label  = Tag 212 */
-    
-    UILabel *label;
-    
-    label = (UILabel *)[cell viewWithTag:212];
-    
-    // Load dynamic content
-    label.text = myClient.name;
-    
-    /* Notification Label  = Tag 213 */
-
-    CGRect positionFrame = CGRectMake(247,20,20,20);
-    PJ_NotificationView * noteView = [[PJ_NotificationView alloc] initWithFrame:positionFrame];
-    [cell.contentView addSubview:noteView];
-    //[cell.contentView sendSubviewToBack:noteView];
-    
-    UILabel *noteLabel;
-    
-    noteLabel = (UILabel *)[cell viewWithTag:213];
-    noteLabel.textColor = [UIColor whiteColor];
-    
-    // Load dynamic content
-    noteLabel.text = [NSString stringWithFormat:@"%d", myClient.numNotifications];
-    [cell.contentView bringSubviewToFront:noteLabel];
-
-    
-    /* Client Details View Controller = Tag 214 */
+    [cell setClient:myClient];
+    [cell loadClientData];
     
     
-    UIView * clientDetailsView = (UIView *)[cell viewWithTag:214];
-    
-    [clientDetailsView setBackgroundColor:[UIColor redColor]];
     
     
     return cell;

@@ -40,6 +40,8 @@
 		FF5FB2C418A8462100C19893 /* PJ_NotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5FB2C318A8462100C19893 /* PJ_NotificationView.m */; };
 		FF5FB2C818A84CE200C19893 /* PJ_Client.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5FB2C718A84CE200C19893 /* PJ_Client.m */; };
 		FF5FB2CB18A84D5C00C19893 /* PJ_ClientStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5FB2CA18A84D5C00C19893 /* PJ_ClientStore.m */; };
+		FFAEF6EB18B3347D006E7C3D /* PJ_ClientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEF6EA18B3347D006E7C3D /* PJ_ClientCell.m */; };
+		FFAEF6F518B4557A006E7C3D /* PJ_InfoSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEF6F418B4557A006E7C3D /* PJ_InfoSubView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,10 @@
 		FF5FB2C718A84CE200C19893 /* PJ_Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_Client.m; sourceTree = "<group>"; };
 		FF5FB2C918A84D5C00C19893 /* PJ_ClientStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_ClientStore.h; sourceTree = "<group>"; };
 		FF5FB2CA18A84D5C00C19893 /* PJ_ClientStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_ClientStore.m; sourceTree = "<group>"; };
+		FFAEF6E918B3347D006E7C3D /* PJ_ClientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_ClientCell.h; sourceTree = "<group>"; };
+		FFAEF6EA18B3347D006E7C3D /* PJ_ClientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_ClientCell.m; sourceTree = "<group>"; };
+		FFAEF6F318B4557A006E7C3D /* PJ_InfoSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_InfoSubView.h; sourceTree = "<group>"; };
+		FFAEF6F418B4557A006E7C3D /* PJ_InfoSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_InfoSubView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,10 +135,13 @@
 		0E01737F18A1E32C00FC1B46 /* ClientList */ = {
 			isa = PBXGroup;
 			children = (
+				FFAEF6EC18B33869006E7C3D /* InfoSubView */,
 				0E01738018A1E34600FC1B46 /* PJ_ClientListViewController.h */,
 				0E01738118A1E34600FC1B46 /* PJ_ClientListViewController.m */,
 				FF5FB2C218A8462100C19893 /* PJ_NotificationView.h */,
 				FF5FB2C318A8462100C19893 /* PJ_NotificationView.m */,
+				FFAEF6E918B3347D006E7C3D /* PJ_ClientCell.h */,
+				FFAEF6EA18B3347D006E7C3D /* PJ_ClientCell.m */,
 			);
 			name = ClientList;
 			sourceTree = "<group>";
@@ -281,6 +290,15 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		FFAEF6EC18B33869006E7C3D /* InfoSubView */ = {
+			isa = PBXGroup;
+			children = (
+				FFAEF6F318B4557A006E7C3D /* PJ_InfoSubView.h */,
+				FFAEF6F418B4557A006E7C3D /* PJ_InfoSubView.m */,
+			);
+			name = InfoSubView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -423,7 +441,9 @@
 			files = (
 				FF5FB2CB18A84D5C00C19893 /* PJ_ClientStore.m in Sources */,
 				0E7FD5EF1898D70500D601B3 /* PJ_SignUpViewController.m in Sources */,
+				FFAEF6EB18B3347D006E7C3D /* PJ_ClientCell.m in Sources */,
 				FF5FB2C418A8462100C19893 /* PJ_NotificationView.m in Sources */,
+				FFAEF6F518B4557A006E7C3D /* PJ_InfoSubView.m in Sources */,
 				FF5FB2C818A84CE200C19893 /* PJ_Client.m in Sources */,
 				0EAE019F1888C515008E6795 /* PJ_LoginViewController.m in Sources */,
 				0E54EE16187ACF9B00DC976C /* PJ_AppDelegate.m in Sources */,

@@ -17,6 +17,8 @@
 + (id) sharedClientStore;
 
 
+- (void) updateData;
+
 // Only for testing
 - (void) addRandomClients;
 
