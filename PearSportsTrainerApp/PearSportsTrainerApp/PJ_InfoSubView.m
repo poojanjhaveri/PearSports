@@ -10,22 +10,18 @@
 
 @implementation PJ_InfoSubView
 
-@synthesize cell, headerLabel, leftSectionSubdataLabel, rightSectionSubdataLabel, leftSectionDataLabel, rightSectionDataLabel, subViewStatus;
+@synthesize headerLabel, leftSectionSubdataLabel, rightSectionSubdataLabel, leftSectionDataLabel, rightSectionDataLabel, subViewType;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        NSLog(@"Got to A");
         // My bounding box :
         // Width : 270px
         // Height : 70px
         [self configureAndAddLabels];
-        [self setSubViewStatus:SubViewMilesRan];
-        [self updateLabels];
-        NSTimer * timer = [NSTimer timerWithTimeInterval:5 target:self selector:@selector(updateLabels) userInfo:Nil repeats:YES];
-        [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        
         
     }
     return self;
@@ -33,10 +29,8 @@
 
 - (void) updateLabels
 {
-    // TODO make dynamic
     
-    if (self.subViewStatus == SubViewMilesRan) {
-        [self setSubViewStatus:SubViewWorkoutTimes];
+    if (self.subViewType == SubViewWorkoutTimes) {
         [self headerLabel].text = @"Workout Time";
         [[self headerLabel] setTextColor:[UIColor blueColor]];
         [self leftSectionDataLabel].text = @"10:39";
@@ -45,7 +39,6 @@
         [self leftSectionSubdataLabel].text = @"this week";
         [self rightSectionSubdataLabel].text = @"last week";
     } else {
-        [self setSubViewStatus:SubViewMilesRan];
         [self headerLabel].text = @"Miles Ran";
         [[self headerLabel] setTextColor:[UIColor blueColor]];
         [self leftSectionDataLabel].text = @"4.39";
@@ -58,6 +51,7 @@
     
     
 }
+
 
 - (void) configureAndAddLabels
 {

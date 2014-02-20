@@ -549,33 +549,6 @@ These Terms and any other electronic documents, policies and guidelines incorpor
             </objects>
             <point key="canvasLocation" x="1980" y="8"/>
         </scene>
-        <!--Single Page View-->
-        <scene sceneID="mlV-df-e9g">
-            <objects>
-                <viewController storyboardIdentifier="SinglePage" id="xWY-mK-j3b" customClass="DM_SinglePageView" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jf0-xg-ikS"/>
-                        <viewControllerLayoutGuide type="bottom" id="s6X-Ia-hmR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qJ8-w1-3SS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hey" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zp6-VV-ABM">
-                                <rect key="frame" x="145" y="29" width="31" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.94901960780000005" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4f0-8m-vFr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2332" y="813"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="1tc-Gr-eEy">
             <objects>

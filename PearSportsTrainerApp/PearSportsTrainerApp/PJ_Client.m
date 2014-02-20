@@ -10,7 +10,7 @@
 
 @implementation PJ_Client
 
-@synthesize name, numNotifications;
+@synthesize name, numNotifications, trainee_id;
 
 
 

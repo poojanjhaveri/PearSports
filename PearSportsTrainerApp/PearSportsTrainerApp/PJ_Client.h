@@ -12,6 +12,7 @@
 
 
 @property (copy) NSString * name;
+@property (copy) NSString * trainee_id;
 @property int numNotifications;
 
 

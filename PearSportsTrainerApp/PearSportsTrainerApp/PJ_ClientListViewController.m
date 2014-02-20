@@ -32,13 +32,15 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     
-    [[PJ_ClientStore sharedClientStore] updateData];
+    [[PJ_ClientStore sharedClientStore] updateDataAndPerformSelector:@selector(refreshView) withTarget:self];
     
-    if ([[[PJ_ClientStore sharedClientStore] clients] count] == 0) {
-        NSLog(@"About to add some random clients");
-        [[PJ_ClientStore sharedClientStore] addRandomClients];
-        
-    }
+}
+
+- (void) refreshView
+{
+
+    [self.tableView reloadData];
+    [self.tableView setNeedsDisplay];
     
 }
 

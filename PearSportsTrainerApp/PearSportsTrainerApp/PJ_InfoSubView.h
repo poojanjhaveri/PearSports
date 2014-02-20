@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 @class PJ_ClientCell;
 
-enum InfoSubViewStatus{
+enum InfoSubViewType{
     SubViewWorkoutTimes = 0,
     SubViewMilesRan = 1
     
@@ -19,8 +19,6 @@ enum InfoSubViewStatus{
 
 
 @interface PJ_InfoSubView : UIView
-
-@property (weak, nonatomic) PJ_ClientCell * cell;
 
 @property (strong, nonatomic) UILabel * headerLabel;
 
@@ -30,7 +28,8 @@ enum InfoSubViewStatus{
 @property (strong, nonatomic) UILabel * leftSectionSubdataLabel;
 @property (strong, nonatomic) UILabel * rightSectionSubdataLabel;
 
-@property (nonatomic) enum InfoSubViewStatus subViewStatus;
+@property (nonatomic) enum InfoSubViewType subViewType;
 
+- (void) updateLabels;
 
 @end

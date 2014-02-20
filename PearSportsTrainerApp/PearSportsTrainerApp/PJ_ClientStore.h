@@ -18,6 +18,7 @@
 
 
 - (void) updateData;
+- (void) updateDataAndPerformSelector:(SEL)aSelector withTarget:(id)aTarget;
 
 // Only for testing
 - (void) addRandomClients;

@@ -10,4 +10,6 @@
 
 @interface PJ_ClientListViewController : UITableViewController
 
+- (void) refreshView;
+
 @end

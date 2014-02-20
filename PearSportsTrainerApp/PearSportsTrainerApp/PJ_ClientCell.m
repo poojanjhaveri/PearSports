@@ -13,7 +13,7 @@
 #import "DM_SinglePageView.h"
 
 @implementation PJ_ClientCell
-@synthesize client;
+@synthesize client, viewControllers;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -29,58 +29,52 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         
-        NSLog(@"Got to this point");
-                
-        PJ_InfoSubView * isv = [[PJ_InfoSubView alloc] initWithFrame:CGRectMake(20.0f, 50.0f, 270.0f, 70.0f)];
-     //   [self addSubview:isv];
-        [self setInfoSubView:isv];
-        [isv setCell:self];
-        //[self.infoSubView setBackgroundColor:[UIColor redColor]];
-       
-        
-        self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-         self.pageViewController.dataSource = self;
-         [[self.pageViewController view] setFrame:CGRectMake(20, 41, 256, 108)];
-        
-        [self.pageViewController setDelegate:self];
-        
-          UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-       DM_SinglePageView *first = [storyboard instantiateViewControllerWithIdentifier:@"SinglePage"];
-        first.index=0;
-        
-        NSArray *viewControllers = [NSArray arrayWithObject:first];
-        
-        [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        
-      //  [self.pageViewController.view setFrame:self.contentView.bounds];
-        [self.contentView addSubview:self.pageViewController.view];
-        
+        [self setViewControllers:[[NSMutableArray alloc] init]];
+        [self initiatePageViewController];
+
         
     }
     return self;
 
 }
 
+- (void) initiatePageViewController
+{
+    
+    self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    self.pageViewController.dataSource = self;
+    [[self.pageViewController view] setFrame:CGRectMake(20, 50, 270, 100)];
+    
+    [self.pageViewController setDelegate:self];
+
+    [self.contentView addSubview:self.pageViewController.view];
+
+    
+}
+
 - (void) loadClientData
 {
+    [self initializeInfoSubviews];
+    
     
     if ([self client] == nil) {
         
         return;
     }
-    /* Name Label  = Tag 212 */
+
+    // NAME LABEL
     
-    UILabel *label;
+    //[self nameLabel].text = [self client].name;
     
+    // For testing
+    [self nameLabel].text = [[self.client trainee_id] substringToIndex:15];
     
-    // Load dynamic content
-    [self nameLabel].text = [self client].name;
+    // NOTIFICATION LABEL
     
     if ([self client].numNotifications > 0) {
     
-        /* Notification Label  = Tag 213 */
     
-        CGRect positionFrame = CGRectMake(247,20,20,20);
+        CGRect positionFrame = CGRectMake(247, 10,20,20);
         PJ_NotificationView * noteView = [[PJ_NotificationView alloc] initWithFrame:positionFrame];
         [self.contentView addSubview:noteView];
         //[cell.contentView sendSubviewToBack:noteView];
@@ -105,6 +99,25 @@
     
 }
 
+- (void) initializeInfoSubviews
+{
+    
+    DM_SinglePageView *first = [[DM_SinglePageView alloc] initWithInfoSubviewType:SubViewMilesRan client:[self client]];
+    DM_SinglePageView *second = [[DM_SinglePageView alloc] initWithInfoSubviewType:SubViewWorkoutTimes client:[self client] ];
+    
+    first.index=0;
+    second.index=1;
+    
+    [self.viewControllers addObject:first];
+    [self.viewControllers addObject:second];
+    
+    
+    NSArray *viewControllerForDisplay = [NSArray arrayWithObject:first];
+    
+    [self.pageViewController setViewControllers:viewControllerForDisplay direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+
+    
+}
 
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
@@ -114,33 +127,32 @@
         return nil;
     }
     
-    index--;
-    
-    return [self viewControllerAtIndex:index];
+    return [self viewControllerAtIndex:(index-1)];
 }
 
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     
     NSUInteger index = [(DM_SinglePageView *)viewController index];
-    index++;
     
-    
-    if (index == 3) {
+    if (index == 1) {
         return nil;
     }
-    return [self viewControllerAtIndex:index];
+    return [self viewControllerAtIndex:(index+1)];
 }
 
 
 - (UIViewController *)viewControllerAtIndex:(NSUInteger)index {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-
-   
-         DM_SinglePageView *page = [storyboard instantiateViewControllerWithIdentifier:@"SinglePage"];
-       page.index = index;
+    
+    DM_SinglePageView *page;
+    page = [[self viewControllers] objectAtIndex:index];
     return page;
     
+}
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
+    // The number of items reflected in the page indicator.
+    return [self.viewControllers count];
 }
 
 
@@ -152,10 +164,7 @@
     // Configure the view for the selected state
 }
 
-- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
-    // The number of items reflected in the page indicator.
-    return 3;
-}
+
 
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {

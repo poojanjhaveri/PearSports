@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numNotificationsLabel;
 @property(strong,nonatomic) UIPageViewController *pageViewController;
+@property (strong, nonatomic) NSMutableArray * viewControllers;
+
 - (void) loadClientData;
 
 @end

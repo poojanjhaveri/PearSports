@@ -67,12 +67,9 @@
 {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    //     manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    
-    // Definitely needs to be done differently
     
     NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
     
@@ -82,9 +79,22 @@
      {
          
          
+         //NSLog(@"%@", responseObject);
+         
          NSMutableArray * traineeList = [NSMutableArray arrayWithArray:responseObject[@"trainee_list"]];
          
          NSLog(@"Trainee List : %@", traineeList);
+         
+         for (NSString * trainee_id in traineeList) {
+             PJ_Client * theTrainee = [[PJ_Client alloc] init];
+             [theTrainee setName:@""];
+             [theTrainee setTrainee_id:trainee_id];
+             [self.clients addObject:theTrainee];
+         }
+         
+         /*for (NSString * trainee_id in traineeList) {
+             [self updateClientDataForTraineeWithId:trainee_id];
+         }*/
          
          
          
@@ -103,6 +113,101 @@
 
     
 }
+
+- (void) updateDataAndPerformSelector:(SEL)aSelector withTarget:(id)aTarget
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    
+    NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
+    
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
+    
+    [manager GET:@"https://cs477-backend.herokuapp.com/trainee_list" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         
+         
+         //NSLog(@"%@", responseObject);
+         
+         NSMutableArray * traineeList = [NSMutableArray arrayWithArray:responseObject[@"trainee_list"]];
+         
+         NSLog(@"Trainee List : %@", traineeList);
+         
+         for (NSString * trainee_id in traineeList) {
+             PJ_Client * theTrainee = [[PJ_Client alloc] init];
+             [theTrainee setName:@""];
+             [theTrainee setTrainee_id:trainee_id];
+             [self.clients addObject:theTrainee];
+         }
+         
+         /*for (NSString * trainee_id in traineeList) {
+          [self updateClientDataForTraineeWithId:trainee_id];
+          }*/
+         
+         [aTarget performSelector:aSelector];
+
+         
+         
+         
+         
+         
+         
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     
+     {
+         
+         
+         NSLog(@"Error: %@", error);
+         
+         
+     }];
+    
+}
+
+
+/*- (void) updateClientDataForTraineeWithId:(NSString *)someId
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    
+    NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
+    
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
+    
+    NSMutableDictionary * params = [[NSMutableDictionary alloc] init];
+    
+    
+    [params setObject:someId forKey:@"trainee_id"];
+    [params setObject:@"False" forKey:@"all"];
+    
+    [manager GET:@"https://cs477-backend.herokuapp.com/trainee/stats" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         
+         
+         NSLog(@"%@", responseObject);
+         
+         
+         
+         
+         
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     
+     {
+         
+         
+         NSLog(@"Error: %@", error);
+         
+         
+     }];
+    
+}*/
+
 
 
 @end

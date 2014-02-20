@@ -7,6 +7,8 @@
 //
 
 #import "DM_SinglePageView.h"
+#import "PJ_InfoSubView.h"
+#import "PJ_Client.h"
 
 @interface DM_SinglePageView ()
 
@@ -18,9 +20,36 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        PJ_InfoSubView * isv = [[PJ_InfoSubView alloc] initWithFrame:CGRectMake(20.0f, 50.0f, 270.0f, 70.0f)];
+        [self setView:isv];
     }
     return self;
+}
+
+- (id)initWithInfoSubviewType:(enum InfoSubViewType) aType client:(PJ_Client *)aClient
+{
+    self = [super initWithNibName:nil bundle:nil];
+    if (self)
+    {
+        PJ_InfoSubView * isv = [[PJ_InfoSubView alloc] initWithFrame:CGRectMake(20.0f, 50.0f, 270.0f, 70.0f)];
+        [self setView:isv];
+        [isv setSubViewType:aType];
+        [isv updateLabels];
+        
+    }
+    return self;
+}
+
+- (id) initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        
+        PJ_InfoSubView * isv = [[PJ_InfoSubView alloc] initWithFrame:CGRectMake(20.0f, 50.0f, 270.0f, 70.0f)];
+        [self setView:isv];
+    }
+    return self;
+    
 }
 
 - (void)viewDidLoad
