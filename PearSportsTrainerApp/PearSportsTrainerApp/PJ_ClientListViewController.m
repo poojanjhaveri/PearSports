@@ -29,10 +29,27 @@
     return self;
 }
 
+- (id) initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        
+        [[PJ_ClientStore sharedClientStore] updateDataAndPerformSelector:@selector(refreshView) withTarget:self];
+    }
+    return self;
+    
+}
+
 - (void) viewWillAppear:(BOOL)animated
 {
     
-    [[PJ_ClientStore sharedClientStore] updateDataAndPerformSelector:@selector(refreshView) withTarget:self];
+    // Have some flag regarding a need for refresh
+    if (false) {
+        
+        [[PJ_ClientStore sharedClientStore] updateDataAndPerformSelector:@selector(refreshView) withTarget:self];
+        
+    }
+    
     
 }
 
@@ -97,6 +114,12 @@
     
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
 /*

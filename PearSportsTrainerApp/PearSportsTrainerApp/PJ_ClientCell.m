@@ -102,19 +102,22 @@
 - (void) initializeInfoSubviews
 {
     
-    DM_SinglePageView *first = [[DM_SinglePageView alloc] initWithInfoSubviewType:SubViewMilesRan client:[self client]];
-    DM_SinglePageView *second = [[DM_SinglePageView alloc] initWithInfoSubviewType:SubViewWorkoutTimes client:[self client] ];
+    if ([self viewControllers].count == 0) {
     
-    first.index=0;
-    second.index=1;
+        DM_SinglePageView *first = [[DM_SinglePageView alloc] initWithInfoSubviewType:SubViewMilesRan client:[self client]];
+        DM_SinglePageView *second = [[DM_SinglePageView alloc] initWithInfoSubviewType:SubViewWorkoutTimes client:[self client] ];
     
-    [self.viewControllers addObject:first];
-    [self.viewControllers addObject:second];
+        first.index=0;
+        second.index=1;
+    
+        [self.viewControllers addObject:first];
+        [self.viewControllers addObject:second];
     
     
-    NSArray *viewControllerForDisplay = [NSArray arrayWithObject:first];
+        NSArray *viewControllerForDisplay = [NSArray arrayWithObject:first];
     
-    [self.pageViewController setViewControllers:viewControllerForDisplay direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        [self.pageViewController setViewControllers:viewControllerForDisplay direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    }
 
     
 }

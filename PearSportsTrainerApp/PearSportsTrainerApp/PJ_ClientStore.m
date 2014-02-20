@@ -78,7 +78,7 @@
     [manager GET:@"https://cs477-backend.herokuapp.com/trainee_list" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
          
-         
+         [self.clients removeAllObjects];
          //NSLog(@"%@", responseObject);
          
          NSMutableArray * traineeList = [NSMutableArray arrayWithArray:responseObject[@"trainee_list"]];
@@ -129,8 +129,7 @@
     [manager GET:@"https://cs477-backend.herokuapp.com/trainee_list" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
          
-         
-         //NSLog(@"%@", responseObject);
+         [self.clients removeAllObjects];
          
          NSMutableArray * traineeList = [NSMutableArray arrayWithArray:responseObject[@"trainee_list"]];
          
