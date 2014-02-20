@@ -385,7 +385,7 @@
     }
     [self updateInfoCellBelowFormFieldCell:cell];
     
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+  //  NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     //   [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 

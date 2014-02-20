@@ -29,6 +29,8 @@
 		0E54EE3B187AD74B00DC976C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E54EE3A187AD74B00DC976C /* Security.framework */; };
 		0E7FD5EF1898D70500D601B3 /* PJ_SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7FD5EE1898D70500D601B3 /* PJ_SignUpViewController.m */; };
 		0E7FD5F01898D70500D601B3 /* PJ_SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7FD5EE1898D70500D601B3 /* PJ_SignUpViewController.m */; };
+		0E8139F618B5F47200BDA365 /* poojan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0E8139F518B5F47200BDA365 /* poojan.jpg */; };
+		0E8139F918B5F55000BDA365 /* DM_SinglePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8139F818B5F55000BDA365 /* DM_SinglePageView.m */; };
 		0EA93A7818962E4D00463BBC /* pearsports.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0EA93A7718962E4D00463BBC /* pearsports.jpg */; };
 		0EAE019F1888C515008E6795 /* PJ_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE019E1888C515008E6795 /* PJ_LoginViewController.m */; };
 		0EAE01A01888C515008E6795 /* PJ_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE019E1888C515008E6795 /* PJ_LoginViewController.m */; };
@@ -83,6 +85,9 @@
 		0E54EE3A187AD74B00DC976C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0E7FD5ED1898D70500D601B3 /* PJ_SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_SignUpViewController.h; sourceTree = "<group>"; };
 		0E7FD5EE1898D70500D601B3 /* PJ_SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_SignUpViewController.m; sourceTree = "<group>"; };
+		0E8139F518B5F47200BDA365 /* poojan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poojan.jpg; sourceTree = "<group>"; };
+		0E8139F718B5F55000BDA365 /* DM_SinglePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DM_SinglePageView.h; sourceTree = "<group>"; };
+		0E8139F818B5F55000BDA365 /* DM_SinglePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DM_SinglePageView.m; sourceTree = "<group>"; };
 		0EA93A7718962E4D00463BBC /* pearsports.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pearsports.jpg; sourceTree = "<group>"; };
 		0EAE019D1888C515008E6795 /* PJ_LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_LoginViewController.h; sourceTree = "<group>"; };
 		0EAE019E1888C515008E6795 /* PJ_LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_LoginViewController.m; sourceTree = "<group>"; };
@@ -238,9 +243,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0E8139F418B5F44700BDA365 /* ClientPhotos */ = {
+			isa = PBXGroup;
+			children = (
+				0E8139F518B5F47200BDA365 /* poojan.jpg */,
+			);
+			name = ClientPhotos;
+			sourceTree = "<group>";
+		};
 		0EA93A7618962DE900463BBC /* ImageResources */ = {
 			isa = PBXGroup;
 			children = (
+				0E8139F418B5F44700BDA365 /* ClientPhotos */,
 				0E01738318A1E6E500FC1B46 /* Tabbar */,
 				0E01737D18A1DC3800FC1B46 /* PEAR_reagular_C-BLKlogo.png */,
 				0EE2E35E189EDCDA00CF5F16 /* cog_icon&24.png */,
@@ -295,6 +309,8 @@
 			children = (
 				FFAEF6F318B4557A006E7C3D /* PJ_InfoSubView.h */,
 				FFAEF6F418B4557A006E7C3D /* PJ_InfoSubView.m */,
+				0E8139F718B5F55000BDA365 /* DM_SinglePageView.h */,
+				0E8139F818B5F55000BDA365 /* DM_SinglePageView.m */,
 			);
 			name = InfoSubView;
 			sourceTree = "<group>";
@@ -387,6 +403,7 @@
 				0E54EE10187ACF9B00DC976C /* InfoPlist.strings in Resources */,
 				0E01737E18A1DC3900FC1B46 /* PEAR_reagular_C-BLKlogo.png in Resources */,
 				0E54EE19187ACF9B00DC976C /* Main.storyboard in Resources */,
+				0E8139F618B5F47200BDA365 /* poojan.jpg in Resources */,
 				0EE2E362189EDCDA00CF5F16 /* cog_icon&24.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF5FB2CB18A84D5C00C19893 /* PJ_ClientStore.m in Sources */,
+				0E8139F918B5F55000BDA365 /* DM_SinglePageView.m in Sources */,
 				0E7FD5EF1898D70500D601B3 /* PJ_SignUpViewController.m in Sources */,
 				FFAEF6EB18B3347D006E7C3D /* PJ_ClientCell.m in Sources */,
 				FF5FB2C418A8462100C19893 /* PJ_NotificationView.m in Sources */,

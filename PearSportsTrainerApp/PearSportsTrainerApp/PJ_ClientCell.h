@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 @class PJ_InfoSubView, PJ_Client;
 
-@interface PJ_ClientCell : UITableViewCell
+@interface PJ_ClientCell : UITableViewCell<UIPageViewControllerDataSource,UIPageViewControllerDelegate>
 
 @property (nonatomic, strong) PJ_InfoSubView * infoSubView;
 @property (nonatomic, weak) PJ_Client * client;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numNotificationsLabel;
-
+@property(strong,nonatomic) UIPageViewController *pageViewController;
 - (void) loadClientData;
 
 @end

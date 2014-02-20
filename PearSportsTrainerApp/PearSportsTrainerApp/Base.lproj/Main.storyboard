@@ -432,35 +432,35 @@ These Terms and any other electronic documents, policies and guidelines incorpor
         <scene sceneID="tWP-M3-cNU">
             <objects>
                 <tableViewController id="eZ9-Jv-bXl" customClass="PJ_ClientListViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="129" sectionHeaderHeight="22" sectionFooterHeight="22" id="pGN-NA-Gxz">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="140" sectionHeaderHeight="22" sectionFooterHeight="22" id="pGN-NA-Gxz">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClientCell" rowHeight="129" id="M0t-Dc-Zpm" customClass="PJ_ClientCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="129"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClientCell" rowHeight="140" id="M0t-Dc-Zpm" customClass="PJ_ClientCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M0t-Dc-Zpm" id="9Nw-YH-O7k">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="139"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="212" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epF-Ja-Ecl">
-                                            <rect key="frame" x="20" y="20" width="223" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="212" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epF-Ja-Ecl">
+                                            <rect key="frame" x="64" y="11" width="181" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="213" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpf-K8-Uwa">
-                                            <rect key="frame" x="253" y="20" width="23" height="21"/>
+                                            <rect key="frame" x="253" y="9" width="23" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="poojan.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="doU-z0-2xg" customClass="NZCircularImageView">
+                                            <rect key="frame" x="20" y="7" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="epF-Ja-Ecl" firstAttribute="leading" secondItem="9Nw-YH-O7k" secondAttribute="leading" constant="20" id="K9R-5Q-4ow"/>
-                                        <constraint firstItem="epF-Ja-Ecl" firstAttribute="top" secondItem="9Nw-YH-O7k" secondAttribute="top" constant="20" id="OI1-Vd-HJm"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="epF-Ja-Ecl" id="sjh-98-k6C"/>
@@ -549,6 +549,33 @@ These Terms and any other electronic documents, policies and guidelines incorpor
             </objects>
             <point key="canvasLocation" x="1980" y="8"/>
         </scene>
+        <!--Single Page View-->
+        <scene sceneID="mlV-df-e9g">
+            <objects>
+                <viewController storyboardIdentifier="SinglePage" id="xWY-mK-j3b" customClass="DM_SinglePageView" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jf0-xg-ikS"/>
+                        <viewControllerLayoutGuide type="bottom" id="s6X-Ia-hmR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qJ8-w1-3SS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hey" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zp6-VV-ABM">
+                                <rect key="frame" x="145" y="29" width="31" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4f0-8m-vFr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2332" y="813"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="1tc-Gr-eEy">
             <objects>
@@ -624,6 +651,7 @@ These Terms and any other electronic documents, policies and guidelines incorpor
         <image name="PEAR_reagular_C-BLKlogo.png" width="1189" height="493"/>
         <image name="calendar_2_icon&amp;24.png" width="24" height="24"/>
         <image name="cog_icon&amp;24.png" width="24" height="24"/>
+        <image name="poojan.jpg" width="847" height="880"/>
         <image name="spechbubble_2_icon&amp;24.png" width="24" height="24"/>
         <image name="user_icon&amp;24.png" width="24" height="24"/>
     </resources>

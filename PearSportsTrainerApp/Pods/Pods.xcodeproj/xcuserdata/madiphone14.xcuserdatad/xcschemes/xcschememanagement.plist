@@ -19,7 +19,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-NZCircularImageView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ReactiveCocoa.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-UIActivityIndicator-for-SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,32 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1D1900BAA2CE49ABB3906060</key>
+		<key>1610458A2FD64B8685534D07</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2C6124A46FA148F68153F632</key>
+		<key>9143762532DE42AEB46EBE5C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>40A8D397FA2449159A5CAEBC</key>
+		<key>945C003A64FA46028F13F7D9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>73549990BA6A4265825919BE</key>
+		<key>997D98D70EE24C86B783D992</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A0723BC35CF546518A00067C</key>
+		<key>B2617CB1E12F4F65B6576A89</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A08537FB38E84704A45B0430</key>
+		<key>B934C5B9EA544AEDB9585FDC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B9FB3ED388E94CA2968523EE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CB98D7C586D7487D8A98B4BC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F6BD0207B9694CE8B2C0E5E7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
