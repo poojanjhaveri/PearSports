@@ -67,7 +67,7 @@
     //[self nameLabel].text = [self client].name;
     
     // For testing
-    [self nameLabel].text = [[self.client trainee_id] substringToIndex:15];
+    [self nameLabel].text = self.client.name;
     
     // NOTIFICATION LABEL
     

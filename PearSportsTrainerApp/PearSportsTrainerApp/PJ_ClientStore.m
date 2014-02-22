@@ -128,10 +128,35 @@
     
     [manager GET:@"https://cs477-backend.herokuapp.com/trainee_list" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
+        [self.clients removeAllObjects];
          
-         [self.clients removeAllObjects];
          
-         NSMutableArray * traineeList = [NSMutableArray arrayWithArray:responseObject[@"trainee_list"]];
+         [[responseObject objectForKey:@"trainee_list"] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+             
+             PJ_Client * theTrainee = [[PJ_Client alloc] init];
+             [theTrainee setName:[obj objectForKey:@"screen_name"]];
+             [theTrainee setTrainee_id:key];
+             [self.clients addObject:theTrainee];
+             
+             NSLog(@"%@ %@",obj,key);
+         }];
+         
+         
+
+         
+      /*
+         [products enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
+             NSLog(@"%@",obj);
+             
+             PJ_Client * theTrainee = [[PJ_Client alloc] init];
+             [theTrainee setName:@""];
+             [theTrainee setTrainee_id:obj];
+             [self.clients addObject:theTrainee];
+         }];
+         */
+         
+         /*
+         NSMutableArray * traineeList = responseObject[@"trainee_list"];
          
          NSLog(@"Trainee List : %@", traineeList);
          
@@ -141,7 +166,7 @@
              [theTrainee setTrainee_id:trainee_id];
              [self.clients addObject:theTrainee];
          }
-         
+         */
          /*for (NSString * trainee_id in traineeList) {
           [self updateClientDataForTraineeWithId:trainee_id];
           }*/
