@@ -9,9 +9,17 @@
 #import "API.h"
 #import "AFNetworking.h"
 
+
 //the web location of the service
 #define kAPIHost @"http://localhost"
 #define kAPIPath @"PearSports/"
+
+
+@interface API ()
+//the authorized user
+@property (strong, nonatomic) NSDictionary* user;
+@property (strong, nonatomic) PJ_Client* currenttrainee;
+@end
 
 @implementation API
 @synthesize user;
@@ -87,6 +95,17 @@
 {
     self.user=currentuser;
     [[NSUserDefaults standardUserDefaults] setObject:self.user forKey:@"CurrentUser" ];
+}
+
+-(void)saveTrainee:(PJ_Client*)trainee
+{
+    self.currenttrainee=trainee;
+}
+
+
+-(PJ_Client *)getTraineeInfo
+{
+    return self.currenttrainee;
 }
 
 -(void)logout

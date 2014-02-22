@@ -59,7 +59,7 @@
     [[[PJ_ClientStore sharedClientStore] clients] addObject:client2];
     [[[PJ_ClientStore sharedClientStore] clients] addObject:client3];
     
-    NSLog(@"Number of clients = %d", [[PJ_ClientStore sharedClientStore] clients].count);
+    NSLog(@"Number of clients = %ld", [[PJ_ClientStore sharedClientStore] clients].count);
     
 }
 

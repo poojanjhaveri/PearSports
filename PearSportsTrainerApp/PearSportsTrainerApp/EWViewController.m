@@ -18,6 +18,7 @@
 #import "UIBubbleTableView.h"
 #import "UIBubbleTableViewDataSource.h"
 #import "NSBubbleData.h"
+#import "API.h"
 
 //TODO AUTOSCROLL
 
@@ -44,6 +45,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"TRainee name : %@",[[API sharedInstance] getTraineeInfo].name);
     
     // Do any additional setup after loading the view, typically from a nib.
     _audioSession = [AVAudioSession sharedInstance];

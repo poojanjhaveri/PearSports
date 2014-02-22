@@ -8,18 +8,24 @@
 
 
 #import "AFNetworking.h"
+#import "PJ_Client.h"
 
 
 typedef void (^JSONResponseBlock)(NSDictionary* json);
 @interface API : AFHTTPRequestOperationManager
 
-//the authorized user
-@property (strong, nonatomic) NSDictionary* user;
+
 +(API *)sharedInstance;
 
 //check whether there's an authorized user
 -(BOOL)isAuthorized;
 //-(void)commandWithParams:(NSMutableDictionary*)params filepath:(NSString *)filepath filename:(NSString *)filename apiurl:(NSString *)apiurl onCompletion:(JSONResponseBlock)completionBlock;
 -(void)saveCurrentUser:(NSDictionary*)user;
+
+
+// TO save current trainee
+-(void)saveTrainee:(PJ_Client *)trainee;
+-(PJ_Client *)getTraineeInfo;
+
 -(void)logout;
 @end

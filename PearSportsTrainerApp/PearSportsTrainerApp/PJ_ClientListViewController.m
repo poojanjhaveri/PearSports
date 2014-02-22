@@ -11,6 +11,7 @@
 #import "PJ_Client.h"
 #import "PJ_ClientStore.h"
 #import "PJ_ClientCell.h"
+#import "API.h"
 
 @interface PJ_ClientListViewController ()
 
@@ -90,10 +91,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     
-    NSLog(@"Number of rows to show... %d", [[[PJ_ClientStore sharedClientStore] clients] count]);
+    NSLog(@"Number of rows to show... %ld", [[[PJ_ClientStore sharedClientStore] clients] count]);
     return [[[PJ_ClientStore sharedClientStore] clients] count];
 }
 
@@ -103,9 +103,7 @@
     PJ_ClientCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     
-    int myIndex = [indexPath row];
-    
-    PJ_Client * myClient = [[[PJ_ClientStore sharedClientStore] clients] objectAtIndex:myIndex];
+    PJ_Client * myClient = [[[PJ_ClientStore sharedClientStore] clients] objectAtIndex:indexPath.row];
     
     [cell setClient:myClient];
     [cell loadClientData];
@@ -117,7 +115,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
+    [[API sharedInstance] saveTrainee:[[[PJ_ClientStore sharedClientStore] clients] objectAtIndex:indexPath.row]];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
