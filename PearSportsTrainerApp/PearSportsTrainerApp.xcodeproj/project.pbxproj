@@ -71,6 +71,8 @@
 		FF5FB2CB18A84D5C00C19893 /* PJ_ClientStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5FB2CA18A84D5C00C19893 /* PJ_ClientStore.m */; };
 		FFAEF6EB18B3347D006E7C3D /* PJ_ClientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEF6EA18B3347D006E7C3D /* PJ_ClientCell.m */; };
 		FFAEF6F518B4557A006E7C3D /* PJ_InfoSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEF6F418B4557A006E7C3D /* PJ_InfoSubView.m */; };
+		FFC7EF3618BAFDB800AB1BAB /* right1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC7EF3518BAFDB800AB1BAB /* right1.png */; };
+		FFC7EF3818BAFF8000AB1BAB /* left1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC7EF3718BAFF8000AB1BAB /* left1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +174,8 @@
 		FFAEF6EA18B3347D006E7C3D /* PJ_ClientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_ClientCell.m; sourceTree = "<group>"; };
 		FFAEF6F318B4557A006E7C3D /* PJ_InfoSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_InfoSubView.h; sourceTree = "<group>"; };
 		FFAEF6F418B4557A006E7C3D /* PJ_InfoSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_InfoSubView.m; sourceTree = "<group>"; };
+		FFC7EF3518BAFDB800AB1BAB /* right1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right1.png; sourceTree = "<group>"; };
+		FFC7EF3718BAFF8000AB1BAB /* left1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,6 +397,8 @@
 		FF00F08B18B829D200E6C321 /* MessagingImages */ = {
 			isa = PBXGroup;
 			children = (
+				FFC7EF3718BAFF8000AB1BAB /* left1.png */,
+				FFC7EF3518BAFDB800AB1BAB /* right1.png */,
 				FF00F08C18B829E600E6C321 /* audio_basic.png */,
 				FF00F08D18B829E600E6C321 /* stop.png */,
 				FF00F08E18B829E600E6C321 /* microphonehot.png */,
@@ -525,6 +531,7 @@
 				FF00F0A518B829E600E6C321 /* typingSomeone@2x.png in Resources */,
 				0E0173A318A1EBF700FC1B46 /* user_icon&24.png in Resources */,
 				0E54EE10187ACF9B00DC976C /* InfoPlist.strings in Resources */,
+				FFC7EF3818BAFF8000AB1BAB /* left1.png in Resources */,
 				FF00F0A318B829E600E6C321 /* typingMine@2x.png in Resources */,
 				FF00F0A418B829E600E6C321 /* typingSomeone.png in Resources */,
 				0E01737E18A1DC3900FC1B46 /* PEAR_reagular_C-BLKlogo.png in Resources */,
@@ -537,6 +544,7 @@
 				0E8139F618B5F47200BDA365 /* poojan.jpg in Resources */,
 				FF00F0A118B829E600E6C321 /* missingAvatar@2x.png in Resources */,
 				FF00F0AD18B829FA00E6C321 /* icon_114.png in Resources */,
+				FFC7EF3618BAFDB800AB1BAB /* right1.png in Resources */,
 				0EE2E362189EDCDA00CF5F16 /* cog_icon&24.png in Resources */,
 				FF00F0A218B829E600E6C321 /* typingMine.png in Resources */,
 			);

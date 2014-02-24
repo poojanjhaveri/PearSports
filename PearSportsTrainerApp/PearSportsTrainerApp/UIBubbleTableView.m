@@ -29,6 +29,7 @@
 
 #pragma mark - Initializators
 
+
 - (void)initializator
 {
     // UITableView properties
