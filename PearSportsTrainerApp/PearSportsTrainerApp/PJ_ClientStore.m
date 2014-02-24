@@ -89,6 +89,7 @@
              PJ_Client * theTrainee = [[PJ_Client alloc] init];
              [theTrainee setName:@""];
              [theTrainee setTrainee_id:trainee_id];
+             
              [self.clients addObject:theTrainee];
          }
          
@@ -136,6 +137,13 @@
              PJ_Client * theTrainee = [[PJ_Client alloc] init];
              [theTrainee setName:[obj objectForKey:@"screen_name"]];
              [theTrainee setTrainee_id:key];
+             [theTrainee setAge:[obj objectForKey:@"age"]];
+             [theTrainee setDob:[obj objectForKey:@"dob"]];
+             [theTrainee setEmail:[obj objectForKey:@"email"]];
+             [theTrainee setGender:[obj objectForKey:@"gender"]];
+             [theTrainee setHeight:[obj objectForKey:@"height"]];
+             [theTrainee setWeight:[obj objectForKey:@"weight"]];
+
              [self.clients addObject:theTrainee];
              
              NSLog(@"%@ %@",obj,key);

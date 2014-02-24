@@ -14,7 +14,12 @@
 @property (copy) NSString * name;
 @property (copy) NSString * trainee_id;
 @property int numNotifications;
-
+@property  (strong,nonatomic) NSString *  age;
+@property (copy) NSString * dob;
+@property (copy) NSString * email;
+@property (copy) NSString * gender;
+@property  NSString *  height;
+@property  NSString * weight;
 
 
 
