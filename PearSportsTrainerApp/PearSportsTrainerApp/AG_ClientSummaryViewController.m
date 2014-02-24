@@ -7,6 +7,7 @@
 //
 
 #import "AG_ClientSummaryViewController.h"
+#import "API.h"
 
 @interface AG_ClientSummaryViewController () <UITextViewDelegate>
 
@@ -34,7 +35,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    self.tabBarController.navigationItem.title =@"Client Summary";
+    self.tabBarController.navigationItem.title =@"Trainee Summary";
 }
 
 
@@ -46,7 +47,8 @@
   [self.notesTextView setText:@"User Notes will Go Here"];
   [self.goalLabel setText:@"Weight Loss"];
   [self.ageLabel setText:@"23"];
-  [self.weightLabel setText:@"240lbs"];
+  //  [self.weightLabel setText:[[API sharedInstance] getTraineeInfo].dob];
+  [self.weightLabel setText:@"123lb"];
   [self.lastWorkoutLabel setText:@"Today at 6:00pm"];
   [self.lastContactLabel setText:@"Yesterday"];
   
