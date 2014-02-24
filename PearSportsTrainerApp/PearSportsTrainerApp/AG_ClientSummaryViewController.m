@@ -31,6 +31,13 @@
   return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    self.tabBarController.navigationItem.title =@"Client Summary";
+}
+
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];

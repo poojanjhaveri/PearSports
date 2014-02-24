@@ -42,6 +42,11 @@
 
 @implementation EWViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    self.tabBarController.navigationItem.title =@"Messages";
+}
 
 - (void)viewDidLoad
 {
@@ -287,7 +292,6 @@
                        atScrollPosition:UITableViewScrollPositionBottom
                                animated:YES];
      */
-    
     bubbleTable.typingBubble = NSBubbleTypingTypeNobody;
     
     if((textField.text && textField.text.length > 0)){

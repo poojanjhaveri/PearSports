@@ -12,6 +12,7 @@
 		0E01739F18A1EBF700FC1B46 /* calendar_2_icon&24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E01739918A1EBF700FC1B46 /* calendar_2_icon&24.png */; };
 		0E0173A018A1EBF700FC1B46 /* spechbubble_2_icon&24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E01739A18A1EBF700FC1B46 /* spechbubble_2_icon&24.png */; };
 		0E0173A318A1EBF700FC1B46 /* user_icon&24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E01739D18A1EBF700FC1B46 /* user_icon&24.png */; };
+		0E0BC70718BB2D3C00E8580E /* GA_WorkoutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0BC70618BB2D3C00E8580E /* GA_WorkoutsViewController.m */; };
 		0E54EE06187ACF9B00DC976C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E54EE05187ACF9B00DC976C /* Foundation.framework */; };
 		0E54EE08187ACF9B00DC976C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E54EE07187ACF9B00DC976C /* CoreGraphics.framework */; };
 		0E54EE0A187ACF9B00DC976C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E54EE09187ACF9B00DC976C /* UIKit.framework */; };
@@ -93,6 +94,8 @@
 		0E01739918A1EBF700FC1B46 /* calendar_2_icon&24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar_2_icon&24.png"; sourceTree = "<group>"; };
 		0E01739A18A1EBF700FC1B46 /* spechbubble_2_icon&24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spechbubble_2_icon&24.png"; sourceTree = "<group>"; };
 		0E01739D18A1EBF700FC1B46 /* user_icon&24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_icon&24.png"; sourceTree = "<group>"; };
+		0E0BC70518BB2D3C00E8580E /* GA_WorkoutsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_WorkoutsViewController.h; sourceTree = "<group>"; };
+		0E0BC70618BB2D3C00E8580E /* GA_WorkoutsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_WorkoutsViewController.m; sourceTree = "<group>"; };
 		0E54EE02187ACF9B00DC976C /* PearSportsTrainerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PearSportsTrainerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E54EE05187ACF9B00DC976C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0E54EE07187ACF9B00DC976C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -233,6 +236,15 @@
 			name = Tabbar;
 			sourceTree = "<group>";
 		};
+		0E0BC70418BB2D1B00E8580E /* Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				0E0BC70518BB2D3C00E8580E /* GA_WorkoutsViewController.h */,
+				0E0BC70618BB2D3C00E8580E /* GA_WorkoutsViewController.m */,
+			);
+			name = Workouts;
+			sourceTree = "<group>";
+		};
 		0E54EDF9187ACF9B00DC976C = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +283,7 @@
 		0E54EE0B187ACF9B00DC976C /* PearSportsTrainerApp */ = {
 			isa = PBXGroup;
 			children = (
+				0E0BC70418BB2D1B00E8580E /* Workouts */,
 				73B7D44218BAFEDB001846C3 /* ClientSummary */,
 				FF00F07118B829BC00E6C321 /* Messaging */,
 				FF5FB2C518A84CC300C19893 /* Models */,
@@ -613,6 +626,7 @@
 			files = (
 				FF5FB2CB18A84D5C00C19893 /* PJ_ClientStore.m in Sources */,
 				0E8139F918B5F55000BDA365 /* DM_SinglePageView.m in Sources */,
+				0E0BC70718BB2D3C00E8580E /* GA_WorkoutsViewController.m in Sources */,
 				0E7FD5EF1898D70500D601B3 /* PJ_SignUpViewController.m in Sources */,
 				FFAEF6EB18B3347D006E7C3D /* PJ_ClientCell.m in Sources */,
 				FF5FB2C418A8462100C19893 /* PJ_NotificationView.m in Sources */,
