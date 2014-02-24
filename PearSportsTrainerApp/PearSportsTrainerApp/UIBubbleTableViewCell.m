@@ -109,11 +109,11 @@
 
     if (type == BubbleTypeSomeoneElse)
     {
-        self.bubbleImage.image = [[UIImage imageNamed:@"bubbleSomeone.png"] stretchableImageWithLeftCapWidth:21 topCapHeight:14];
+        self.bubbleImage.image = [[UIImage imageNamed:@"left1.png"] stretchableImageWithLeftCapWidth:21 topCapHeight:14];
 
     }
     else {
-        self.bubbleImage.image = [[UIImage imageNamed:@"bubbleMine.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:14];
+        self.bubbleImage.image = [[UIImage imageNamed:@"right1.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:14];
     }
 
     self.bubbleImage.frame = CGRectMake(x, y, width + self.data.insets.left + self.data.insets.right, height + self.data.insets.top + self.data.insets.bottom);

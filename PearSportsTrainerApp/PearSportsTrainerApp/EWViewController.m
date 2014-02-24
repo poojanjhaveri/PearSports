@@ -42,6 +42,7 @@
 
 @implementation EWViewController
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -289,9 +290,11 @@
     
     bubbleTable.typingBubble = NSBubbleTypingTypeNobody;
     
-    NSBubbleData *sayBubble = [NSBubbleData dataWithText:textField.text date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
-    [bubbleData addObject:sayBubble];
-    [bubbleTable reloadData];
+    if((textField.text && textField.text.length > 0)){
+        NSBubbleData *sayBubble = [NSBubbleData dataWithText:textField.text date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
+        [bubbleData addObject:sayBubble];
+        [bubbleTable reloadData];
+    }
     
     
     textField.text = @"";
