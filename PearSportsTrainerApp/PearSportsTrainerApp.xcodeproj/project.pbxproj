@@ -39,7 +39,7 @@
 		0EE2E367189EF80E00CF5F16 /* PJ_SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2E366189EF80E00CF5F16 /* PJ_SettingsViewController.m */; };
 		0EEAC8001899CC8A00711C39 /* Pear-Sports-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EEAC7FF1899CC8A00711C39 /* Pear-Sports-Logo.png */; };
 		65B7771738254FF3AFA26964 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFCF36E3D2542AA8D79EB64 /* libPods.a */; };
-		73B7D44518BAFEF3001846C3 /* PJ_ClientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B7D44418BAFEF3001846C3 /* PJ_ClientSummaryViewController.m */; };
+		73B7D44518BAFEF3001846C3 /* AG_ClientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */; };
 		FF00F08318B829C500E6C321 /* EWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07318B829C500E6C321 /* EWAppDelegate.m */; };
 		FF00F08418B829C500E6C321 /* EWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07518B829C500E6C321 /* EWViewController.m */; };
 		FF00F08518B829C500E6C321 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07718B829C500E6C321 /* NSBubbleData.m */; };
@@ -129,8 +129,8 @@
 		0EEAC7FF1899CC8A00711C39 /* Pear-Sports-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pear-Sports-Logo.png"; sourceTree = "<group>"; };
 		1EFCF36E3D2542AA8D79EB64 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		670102BCE36E482A9A05BE4C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		73B7D44318BAFEF3001846C3 /* PJ_ClientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_ClientSummaryViewController.h; sourceTree = "<group>"; };
-		73B7D44418BAFEF3001846C3 /* PJ_ClientSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_ClientSummaryViewController.m; sourceTree = "<group>"; };
+		73B7D44318BAFEF3001846C3 /* AG_ClientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AG_ClientSummaryViewController.h; sourceTree = "<group>"; };
+		73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_ClientSummaryViewController.m; sourceTree = "<group>"; };
 		FF00F07218B829C500E6C321 /* EWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWAppDelegate.h; sourceTree = "<group>"; };
 		FF00F07318B829C500E6C321 /* EWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWAppDelegate.m; sourceTree = "<group>"; };
 		FF00F07418B829C500E6C321 /* EWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWViewController.h; sourceTree = "<group>"; };
@@ -377,8 +377,8 @@
 		73B7D44218BAFEDB001846C3 /* ClientSummary */ = {
 			isa = PBXGroup;
 			children = (
-				73B7D44318BAFEF3001846C3 /* PJ_ClientSummaryViewController.h */,
-				73B7D44418BAFEF3001846C3 /* PJ_ClientSummaryViewController.m */,
+				73B7D44318BAFEF3001846C3 /* AG_ClientSummaryViewController.h */,
+				73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */,
 			);
 			name = ClientSummary;
 			sourceTree = "<group>";
@@ -627,7 +627,7 @@
 				0E54EE16187ACF9B00DC976C /* PJ_AppDelegate.m in Sources */,
 				0E01738218A1E34600FC1B46 /* PJ_ClientListViewController.m in Sources */,
 				0E54EE12187ACF9B00DC976C /* main.m in Sources */,
-				73B7D44518BAFEF3001846C3 /* PJ_ClientSummaryViewController.m in Sources */,
+				73B7D44518BAFEF3001846C3 /* AG_ClientSummaryViewController.m in Sources */,
 				FF00F08818B829C500E6C321 /* UIBubbleTableViewCell.m in Sources */,
 				FF00F08A18B829C500E6C321 /* MyButton.m in Sources */,
 				0EE2E367189EF80E00CF5F16 /* PJ_SettingsViewController.m in Sources */,

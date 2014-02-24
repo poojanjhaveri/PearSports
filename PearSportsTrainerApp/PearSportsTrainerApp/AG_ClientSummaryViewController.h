@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PJ_ClientSummaryViewController : UIViewController <UITextViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface AG_ClientSummaryViewController : UIViewController <UITextViewDelegate>
 
 @end

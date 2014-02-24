@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Poojan Jhaveri. All rights reserved.
 //
 
-#import "PJ_ClientSummaryViewController.h"
+#import "AG_ClientSummaryViewController.h"
 
-@interface PJ_ClientSummaryViewController () <UITextViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface AG_ClientSummaryViewController () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *chartsTableView;
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lastContactLabel;
 @end
 
-@implementation PJ_ClientSummaryViewController
+@implementation AG_ClientSummaryViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,9 +43,6 @@
   [self.lastWorkoutLabel setText:@"Today at 6:00pm"];
   [self.lastContactLabel setText:@"Yesterday"];
   
-  
-  [self.chartsTableView setDelegate:self];
-  self.chartsTableView.dataSource = self;
   // Main Setup
   [self.notesTextView setDelegate:self];
   [self.notesTextView setReturnKeyType:UIReturnKeyDone];
