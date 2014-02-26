@@ -20,7 +20,7 @@
 @property (copy) NSString * gender;
 @property  NSString *  height;
 @property  NSString * weight;
-
+@property  NSString * imageName;
 
 
 @end

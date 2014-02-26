@@ -468,11 +468,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PearSportsTrainerApp/PJ_ClientStore.m"
-            timestampString = "414915042.111807"
+            timestampString = "415089134.284951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "-updateDataAndPerformSelector:withTarget:"
             landmarkType = "5">
          </BreakpointContent>
@@ -484,11 +484,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PearSportsTrainerApp/PJ_ClientStore.m"
-            timestampString = "414915042.111807"
+            timestampString = "415089134.284951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "-updateDataAndPerformSelector:withTarget:"
             landmarkType = "5">
             <Locations>
@@ -530,13 +530,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PearSportsTrainerApp/PJ_ClientStore.m"
-            timestampString = "414915042.111807"
+            timestampString = "415089134.284951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "-updateDataAndPerformSelector:withTarget:"
-            landmarkType = "5">
+            startingLineNumber = "189"
+            endingLineNumber = "189">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -546,11 +544,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PearSportsTrainerApp/PJ_ClientStore.m"
-            timestampString = "414915042.111807"
+            timestampString = "415089134.284951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "-updateDataAndPerformSelector:withTarget:"
             landmarkType = "5">
             <Locations>
@@ -592,13 +590,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PearSportsTrainerApp/PJ_ClientStore.m"
-            timestampString = "414915042.111807"
+            timestampString = "415089134.284951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "-updateDataAndPerformSelector:withTarget:"
-            landmarkType = "5">
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "@implementation PJ_ClientStore"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -608,11 +606,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PearSportsTrainerApp/PJ_ClientStore.m"
-            timestampString = "414915042.111807"
+            timestampString = "415089134.284951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "-updateDataAndPerformSelector:withTarget:"
             landmarkType = "5">
             <Locations>
@@ -766,11 +764,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PearSportsTrainerApp/UIBubbleTableViewCell.m"
-            timestampString = "414917639.786626"
+            timestampString = "415090591.134438"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "-setupInternalData"
             landmarkType = "5">
          </BreakpointContent>
@@ -868,6 +866,38 @@
             startingLineNumber = "191"
             endingLineNumber = "191"
             landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PearSportsTrainerApp/PJ_ClientStore.m"
+            timestampString = "415089186.70627"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-updateDataAndPerformSelector:withTarget:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PearSportsTrainerApp/PJ_ClientStore.m"
+            timestampString = "415089187.882195"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "-updateDataAndPerformSelector:withTarget:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

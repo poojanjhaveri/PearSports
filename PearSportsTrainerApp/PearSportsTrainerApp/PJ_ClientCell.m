@@ -68,7 +68,8 @@
     
     // For testing
     [self nameLabel].text = self.client.name;
-    
+    self.clientImage.image=[UIImage imageNamed:self.client.imageName];
+       
     // NOTIFICATION LABEL
     
     if ([self client].numNotifications > 0) {

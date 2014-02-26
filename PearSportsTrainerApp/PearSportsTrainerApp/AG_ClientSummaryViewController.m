@@ -35,7 +35,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    self.tabBarController.navigationItem.title =@"Trainee Summary";
+    self.tabBarController.navigationItem.title =[[API sharedInstance] getTraineeInfo].name;
 }
 
 
@@ -46,11 +46,12 @@
   // @TODO update with actual inforamtion
   [self.notesTextView setText:@"User Notes will Go Here"];
   [self.goalLabel setText:@"Weight Loss"];
-  [self.ageLabel setText:@"23"];
+  [self.ageLabel setText:@"47"];
   //  [self.weightLabel setText:[[API sharedInstance] getTraineeInfo].dob];
   [self.weightLabel setText:@"123lb"];
   [self.lastWorkoutLabel setText:@"Today at 6:00pm"];
   [self.lastContactLabel setText:@"Yesterday"];
+    self.clientImageView.image=[UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
   
   // Main Setup
   [self.notesTextView setDelegate:self];

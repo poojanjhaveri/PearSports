@@ -650,6 +650,7 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="clientImage" destination="doU-z0-2xg" id="WtZ-Id-QNa"/>
                                     <outlet property="nameLabel" destination="epF-Ja-Ecl" id="sjh-98-k6C"/>
                                     <outlet property="numNotificationsLabel" destination="hpf-K8-Uwa" id="sEz-aF-IoV"/>
                                     <segue destination="taa-IW-mPI" kind="push" id="ucH-Or-j74"/>

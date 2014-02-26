@@ -11,6 +11,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIBubbleTableViewCell.h"
 #import "NSBubbleData.h"
+#import "PJ_Client.h"
+#import "API.h"
 
 @interface UIBubbleTableViewCell ()
 
@@ -75,14 +77,18 @@
     CGFloat x = (type == BubbleTypeSomeoneElse) ? 0 : self.frame.size.width - width - self.data.insets.left - self.data.insets.right;
     CGFloat y = 0;
     
+    
+    
+    
+    
     // Adjusting the x coordinate for avatar
     if (self.showAvatar)
     {
         [self.avatarImage removeFromSuperview];
 #if !__has_feature(objc_arc)
-        self.avatarImage = [[[UIImageView alloc] initWithImage:(self.data.avatar ? self.data.avatar : [UIImage imageNamed:@"missingAvatar.png"])] autorelease];
+        self.avatarImage = [[[UIImageView alloc] initWithImage:(self.data.avatar ? self.data.avatar : [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName])] autorelease];
 #else
-        self.avatarImage = [[UIImageView alloc] initWithImage:(self.data.avatar ? self.data.avatar : [UIImage imageNamed:@"missingAvatar.png"])];
+        self.avatarImage = [[UIImageView alloc] initWithImage:(self.data.avatar ? self.data.avatar : [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName])];
 #endif
         self.avatarImage.layer.cornerRadius = 9.0;
         self.avatarImage.layer.masksToBounds = YES;

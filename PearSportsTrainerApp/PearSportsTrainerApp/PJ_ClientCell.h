@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <NZCircularImageView.h>
+
 @class PJ_InfoSubView, PJ_Client;
 
 @interface PJ_ClientCell : UITableViewCell<UIPageViewControllerDataSource,UIPageViewControllerDelegate>
@@ -17,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *numNotificationsLabel;
 @property(strong,nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSMutableArray * viewControllers;
+@property (weak, nonatomic) IBOutlet NZCircularImageView *clientImage;
 
 - (void) loadClientData;
 

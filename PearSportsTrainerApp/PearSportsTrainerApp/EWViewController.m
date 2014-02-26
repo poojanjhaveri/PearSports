@@ -92,7 +92,7 @@
     
     //BUBBLE
     
-    NSBubbleData *heyBubble = [NSBubbleData dataWithText:@"Test 1 2 3" date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse];
+    NSBubbleData *heyBubble = [NSBubbleData dataWithText:@"Hi" date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse];
     heyBubble.avatar = [UIImage imageNamed:@"avatar1.png"];
     
     NSBubbleData *photoBubble = [NSBubbleData dataWithImage:[UIImage imageNamed:@"halloween.jpg"] date:[NSDate dateWithTimeIntervalSinceNow:-290] type:BubbleTypeSomeoneElse];
@@ -105,7 +105,7 @@
     NSBubbleData *replyBubble = [NSBubbleData dataWithText:@"Wow.." date:[NSDate dateWithTimeIntervalSinceNow:-5] type:BubbleTypeMine];
     replyBubble.avatar = nil;
     
-    bubbleData = [[NSMutableArray alloc] initWithObjects:heyBubble, testBubble, nil];
+    bubbleData = [[NSMutableArray alloc] initWithObjects:heyBubble, nil];
     //bubbleData = [ [NSMutableArray alloc] init];
     bubbleTable.bubbleDataSource = self;
     

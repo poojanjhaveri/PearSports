@@ -143,6 +143,15 @@
              [theTrainee setGender:[obj objectForKey:@"gender"]];
              [theTrainee setHeight:[obj objectForKey:@"height"]];
              [theTrainee setWeight:[obj objectForKey:@"weight"]];
+             if([[obj objectForKey:@"screen_name"] isEqualToString:@"Joe R"])
+             {
+                 [theTrainee setImageName:@"Joe.png"];
+             }
+             else
+             {
+                 [theTrainee setImageName:@"poojan.jpg"];
+             }
+
 
              [self.clients addObject:theTrainee];
              
