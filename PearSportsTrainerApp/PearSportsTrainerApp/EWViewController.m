@@ -42,11 +42,17 @@
 
 @implementation EWViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    self.tabBarController.navigationItem.title =@"Messages";
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    NSLog(@"TRainee name : %@",[[API sharedInstance] getTraineeInfo].name);
+    NSLog(@"TRainee name : %@ %@ %@ %@ %@ %@",[[API sharedInstance] getTraineeInfo].name,[[API sharedInstance] getTraineeInfo].age,[[API sharedInstance] getTraineeInfo].weight,[[API sharedInstance] getTraineeInfo].height,[[API sharedInstance] getTraineeInfo].gender,[[API sharedInstance] getTraineeInfo].trainee_id);
     
     // Do any additional setup after loading the view, typically from a nib.
     _audioSession = [AVAudioSession sharedInstance];
@@ -286,12 +292,13 @@
                        atScrollPosition:UITableViewScrollPositionBottom
                                animated:YES];
      */
-    
     bubbleTable.typingBubble = NSBubbleTypingTypeNobody;
     
-    NSBubbleData *sayBubble = [NSBubbleData dataWithText:textField.text date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
-    [bubbleData addObject:sayBubble];
-    [bubbleTable reloadData];
+    if((textField.text && textField.text.length > 0)){
+        NSBubbleData *sayBubble = [NSBubbleData dataWithText:textField.text date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
+        [bubbleData addObject:sayBubble];
+        [bubbleTable reloadData];
+    }
     
     
     textField.text = @"";

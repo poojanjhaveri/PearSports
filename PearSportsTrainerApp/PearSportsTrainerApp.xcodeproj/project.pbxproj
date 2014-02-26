@@ -12,6 +12,7 @@
 		0E01739F18A1EBF700FC1B46 /* calendar_2_icon&24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E01739918A1EBF700FC1B46 /* calendar_2_icon&24.png */; };
 		0E0173A018A1EBF700FC1B46 /* spechbubble_2_icon&24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E01739A18A1EBF700FC1B46 /* spechbubble_2_icon&24.png */; };
 		0E0173A318A1EBF700FC1B46 /* user_icon&24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E01739D18A1EBF700FC1B46 /* user_icon&24.png */; };
+		0E0BC70718BB2D3C00E8580E /* GA_WorkoutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0BC70618BB2D3C00E8580E /* GA_WorkoutsViewController.m */; };
 		0E54EE06187ACF9B00DC976C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E54EE05187ACF9B00DC976C /* Foundation.framework */; };
 		0E54EE08187ACF9B00DC976C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E54EE07187ACF9B00DC976C /* CoreGraphics.framework */; };
 		0E54EE0A187ACF9B00DC976C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E54EE09187ACF9B00DC976C /* UIKit.framework */; };
@@ -39,6 +40,7 @@
 		0EE2E367189EF80E00CF5F16 /* PJ_SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2E366189EF80E00CF5F16 /* PJ_SettingsViewController.m */; };
 		0EEAC8001899CC8A00711C39 /* Pear-Sports-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EEAC7FF1899CC8A00711C39 /* Pear-Sports-Logo.png */; };
 		65B7771738254FF3AFA26964 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFCF36E3D2542AA8D79EB64 /* libPods.a */; };
+		73B7D44518BAFEF3001846C3 /* AG_ClientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */; };
 		FF00F08318B829C500E6C321 /* EWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07318B829C500E6C321 /* EWAppDelegate.m */; };
 		FF00F08418B829C500E6C321 /* EWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07518B829C500E6C321 /* EWViewController.m */; };
 		FF00F08518B829C500E6C321 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07718B829C500E6C321 /* NSBubbleData.m */; };
@@ -71,6 +73,8 @@
 		FF5FB2CB18A84D5C00C19893 /* PJ_ClientStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5FB2CA18A84D5C00C19893 /* PJ_ClientStore.m */; };
 		FFAEF6EB18B3347D006E7C3D /* PJ_ClientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEF6EA18B3347D006E7C3D /* PJ_ClientCell.m */; };
 		FFAEF6F518B4557A006E7C3D /* PJ_InfoSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEF6F418B4557A006E7C3D /* PJ_InfoSubView.m */; };
+		FFC7EF3618BAFDB800AB1BAB /* right1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC7EF3518BAFDB800AB1BAB /* right1.png */; };
+		FFC7EF3818BAFF8000AB1BAB /* left1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC7EF3718BAFF8000AB1BAB /* left1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +94,8 @@
 		0E01739918A1EBF700FC1B46 /* calendar_2_icon&24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar_2_icon&24.png"; sourceTree = "<group>"; };
 		0E01739A18A1EBF700FC1B46 /* spechbubble_2_icon&24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spechbubble_2_icon&24.png"; sourceTree = "<group>"; };
 		0E01739D18A1EBF700FC1B46 /* user_icon&24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_icon&24.png"; sourceTree = "<group>"; };
+		0E0BC70518BB2D3C00E8580E /* GA_WorkoutsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_WorkoutsViewController.h; sourceTree = "<group>"; };
+		0E0BC70618BB2D3C00E8580E /* GA_WorkoutsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_WorkoutsViewController.m; sourceTree = "<group>"; };
 		0E54EE02187ACF9B00DC976C /* PearSportsTrainerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PearSportsTrainerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E54EE05187ACF9B00DC976C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0E54EE07187ACF9B00DC976C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -126,6 +132,8 @@
 		0EEAC7FF1899CC8A00711C39 /* Pear-Sports-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pear-Sports-Logo.png"; sourceTree = "<group>"; };
 		1EFCF36E3D2542AA8D79EB64 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		670102BCE36E482A9A05BE4C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		73B7D44318BAFEF3001846C3 /* AG_ClientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AG_ClientSummaryViewController.h; sourceTree = "<group>"; };
+		73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_ClientSummaryViewController.m; sourceTree = "<group>"; };
 		FF00F07218B829C500E6C321 /* EWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWAppDelegate.h; sourceTree = "<group>"; };
 		FF00F07318B829C500E6C321 /* EWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWAppDelegate.m; sourceTree = "<group>"; };
 		FF00F07418B829C500E6C321 /* EWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWViewController.h; sourceTree = "<group>"; };
@@ -172,6 +180,8 @@
 		FFAEF6EA18B3347D006E7C3D /* PJ_ClientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_ClientCell.m; sourceTree = "<group>"; };
 		FFAEF6F318B4557A006E7C3D /* PJ_InfoSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_InfoSubView.h; sourceTree = "<group>"; };
 		FFAEF6F418B4557A006E7C3D /* PJ_InfoSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_InfoSubView.m; sourceTree = "<group>"; };
+		FFC7EF3518BAFDB800AB1BAB /* right1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right1.png; sourceTree = "<group>"; };
+		FFC7EF3718BAFF8000AB1BAB /* left1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +236,15 @@
 			name = Tabbar;
 			sourceTree = "<group>";
 		};
+		0E0BC70418BB2D1B00E8580E /* Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				0E0BC70518BB2D3C00E8580E /* GA_WorkoutsViewController.h */,
+				0E0BC70618BB2D3C00E8580E /* GA_WorkoutsViewController.m */,
+			);
+			name = Workouts;
+			sourceTree = "<group>";
+		};
 		0E54EDF9187ACF9B00DC976C = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +283,8 @@
 		0E54EE0B187ACF9B00DC976C /* PearSportsTrainerApp */ = {
 			isa = PBXGroup;
 			children = (
+				0E0BC70418BB2D1B00E8580E /* Workouts */,
+				73B7D44218BAFEDB001846C3 /* ClientSummary */,
 				FF00F07118B829BC00E6C321 /* Messaging */,
 				FF5FB2C518A84CC300C19893 /* Models */,
 				0E01737F18A1E32C00FC1B46 /* ClientList */,
@@ -366,6 +387,15 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		73B7D44218BAFEDB001846C3 /* ClientSummary */ = {
+			isa = PBXGroup;
+			children = (
+				73B7D44318BAFEF3001846C3 /* AG_ClientSummaryViewController.h */,
+				73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */,
+			);
+			name = ClientSummary;
+			sourceTree = "<group>";
+		};
 		FF00F07118B829BC00E6C321 /* Messaging */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +423,8 @@
 		FF00F08B18B829D200E6C321 /* MessagingImages */ = {
 			isa = PBXGroup;
 			children = (
+				FFC7EF3718BAFF8000AB1BAB /* left1.png */,
+				FFC7EF3518BAFDB800AB1BAB /* right1.png */,
 				FF00F08C18B829E600E6C321 /* audio_basic.png */,
 				FF00F08D18B829E600E6C321 /* stop.png */,
 				FF00F08E18B829E600E6C321 /* microphonehot.png */,
@@ -525,6 +557,7 @@
 				FF00F0A518B829E600E6C321 /* typingSomeone@2x.png in Resources */,
 				0E0173A318A1EBF700FC1B46 /* user_icon&24.png in Resources */,
 				0E54EE10187ACF9B00DC976C /* InfoPlist.strings in Resources */,
+				FFC7EF3818BAFF8000AB1BAB /* left1.png in Resources */,
 				FF00F0A318B829E600E6C321 /* typingMine@2x.png in Resources */,
 				FF00F0A418B829E600E6C321 /* typingSomeone.png in Resources */,
 				0E01737E18A1DC3900FC1B46 /* PEAR_reagular_C-BLKlogo.png in Resources */,
@@ -537,6 +570,7 @@
 				0E8139F618B5F47200BDA365 /* poojan.jpg in Resources */,
 				FF00F0A118B829E600E6C321 /* missingAvatar@2x.png in Resources */,
 				FF00F0AD18B829FA00E6C321 /* icon_114.png in Resources */,
+				FFC7EF3618BAFDB800AB1BAB /* right1.png in Resources */,
 				0EE2E362189EDCDA00CF5F16 /* cog_icon&24.png in Resources */,
 				FF00F0A218B829E600E6C321 /* typingMine.png in Resources */,
 			);
@@ -592,6 +626,7 @@
 			files = (
 				FF5FB2CB18A84D5C00C19893 /* PJ_ClientStore.m in Sources */,
 				0E8139F918B5F55000BDA365 /* DM_SinglePageView.m in Sources */,
+				0E0BC70718BB2D3C00E8580E /* GA_WorkoutsViewController.m in Sources */,
 				0E7FD5EF1898D70500D601B3 /* PJ_SignUpViewController.m in Sources */,
 				FFAEF6EB18B3347D006E7C3D /* PJ_ClientCell.m in Sources */,
 				FF5FB2C418A8462100C19893 /* PJ_NotificationView.m in Sources */,
@@ -606,6 +641,7 @@
 				0E54EE16187ACF9B00DC976C /* PJ_AppDelegate.m in Sources */,
 				0E01738218A1E34600FC1B46 /* PJ_ClientListViewController.m in Sources */,
 				0E54EE12187ACF9B00DC976C /* main.m in Sources */,
+				73B7D44518BAFEF3001846C3 /* AG_ClientSummaryViewController.m in Sources */,
 				FF00F08818B829C500E6C321 /* UIBubbleTableViewCell.m in Sources */,
 				FF00F08A18B829C500E6C321 /* MyButton.m in Sources */,
 				0EE2E367189EF80E00CF5F16 /* PJ_SettingsViewController.m in Sources */,
