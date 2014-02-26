@@ -34,7 +34,7 @@
         PJ_InfoSubView * isv = [[PJ_InfoSubView alloc] initWithFrame:CGRectMake(20.0f, 50.0f, 270.0f, 70.0f)];
         [self setView:isv];
         [isv setSubViewType:aType];
-        [isv updateLabels];
+        [isv updateHeaderLabelText];
         
     }
     return self;

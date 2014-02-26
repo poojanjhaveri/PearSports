@@ -104,14 +104,19 @@
     
     if ([self viewControllers].count == 0) {
     
-        DM_SinglePageView *first = [[DM_SinglePageView alloc] initWithInfoSubviewType:SubViewMilesRan client:[self client]];
-        DM_SinglePageView *second = [[DM_SinglePageView alloc] initWithInfoSubviewType:SubViewWorkoutTimes client:[self client] ];
+        DM_SinglePageView *first = [[DM_SinglePageView alloc] initWithInfoSubviewType:SubViewThisWeek client:[self client]];
+        DM_SinglePageView *second = [[DM_SinglePageView alloc] initWithInfoSubviewType:SubViewLastWeek client:[self client]];
+        DM_SinglePageView *third = [[DM_SinglePageView alloc]
+                                    initWithInfoSubviewType:SubViewThirdWeek client:[self client] ];
+        
     
         first.index=0;
         second.index=1;
+        third.index=2;
     
         [self.viewControllers addObject:first];
         [self.viewControllers addObject:second];
+        [self.viewControllers addObject:third];
     
     
         NSArray *viewControllerForDisplay = [NSArray arrayWithObject:first];
@@ -138,7 +143,7 @@
     
     NSUInteger index = [(DM_SinglePageView *)viewController index];
     
-    if (index == 1) {
+    if (index == [self viewControllers].count - 1) {
         return nil;
     }
     return [self viewControllerAtIndex:(index+1)];

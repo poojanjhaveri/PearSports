@@ -12,9 +12,9 @@
 @class PJ_ClientCell;
 
 enum InfoSubViewType{
-    SubViewWorkoutTimes = 0,
-    SubViewMilesRan = 1
-    
+    SubViewThisWeek,
+    SubViewLastWeek,
+    SubViewThirdWeek
 };
 
 
@@ -22,14 +22,10 @@ enum InfoSubViewType{
 
 @property (strong, nonatomic) UILabel * headerLabel;
 
-@property (strong, nonatomic) UILabel * leftSectionDataLabel;
-@property (strong, nonatomic) UILabel * rightSectionDataLabel;
-
-@property (strong, nonatomic) UILabel * leftSectionSubdataLabel;
-@property (strong, nonatomic) UILabel * rightSectionSubdataLabel;
-
 @property (nonatomic) enum InfoSubViewType subViewType;
 
-- (void) updateLabels;
+@property (nonatomic, strong) NSArray * workoutArray;
+
+- (void) updateHeaderLabelText;
 
 @end

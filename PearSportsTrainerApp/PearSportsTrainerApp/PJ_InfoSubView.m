@@ -8,9 +8,14 @@
 
 #import "PJ_InfoSubView.h"
 
+static float sq_start = 5;
+static float sq_width = 20;
+static float sq_height = 20;
+static float sq_buffer = 20;
+
 @implementation PJ_InfoSubView
 
-@synthesize headerLabel, leftSectionSubdataLabel, rightSectionSubdataLabel, leftSectionDataLabel, rightSectionDataLabel, subViewType;
+@synthesize headerLabel, subViewType, workoutArray;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -21,83 +26,147 @@
         // Width : 270px
         // Height : 70px
         [self configureAndAddLabels];
+        //[self configureAndAddRects];
         
         
     }
     return self;
 }
 
-- (void) updateLabels
+- (void) updateHeaderLabelText
 {
-    
-    if (self.subViewType == SubViewWorkoutTimes) {
-        [self headerLabel].text = @"Workout Time";
-        [[self headerLabel] setTextColor:[UIColor blueColor]];
-        [self leftSectionDataLabel].text = @"10:39";
-        [[self leftSectionDataLabel] setTextColor:[UIColor greenColor]];
-        [self rightSectionDataLabel].text = @"08:29";
-        [self leftSectionSubdataLabel].text = @"this week";
-        [self rightSectionSubdataLabel].text = @"last week";
+    if ([self subViewType] == SubViewThisWeek) {
+        
+        [self.headerLabel setText:@"This Week"];
+        [self setWorkoutArray:[[NSArray alloc] initWithObjects:@"complete", @"missed", @"complete", @"unscheduled", @"unscheduled", @"scheduled", @"unscheduled", nil]];
+        
+    } else if ([self subViewType] == SubViewLastWeek) {
+        
+        [self.headerLabel setText:@"Last Week"];
+        [self setWorkoutArray:[[NSArray alloc] initWithObjects:@"complete", @"complete", @"complete", @"unscheduled", @"unscheduled", @"missed", @"unscheduled", nil]];
+        
+        
     } else {
-        [self headerLabel].text = @"Miles Ran";
-        [[self headerLabel] setTextColor:[UIColor blueColor]];
-        [self leftSectionDataLabel].text = @"4.39";
-        [[self leftSectionDataLabel] setTextColor:[UIColor redColor]];
-        [self rightSectionDataLabel].text = @"6.45";
-        [self leftSectionSubdataLabel].text = @"this week";
-        [self rightSectionSubdataLabel].text = @"last week";
-    }
-    
-    
-    
-}
+        
+        [self.headerLabel setText:@"Two Weeks Ago"];
+        [self setWorkoutArray:[[NSArray alloc] initWithObjects:@"missed", @"complete", @"complete", @"unscheduled", @"unscheduled", @"complete", @"unscheduled", nil]];
 
+        
+    }
+
+}
 
 - (void) configureAndAddLabels
 {
-    UILabel *hLabel = [[UILabel alloc] initWithFrame:CGRectMake(2, 2, 266, 12)];
+    UILabel *hLabel = [[UILabel alloc] initWithFrame:CGRectMake(2, 2, 266, 14)];
     [hLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:12]];
     [hLabel setTextAlignment:NSTextAlignmentCenter];
     
-    UILabel *lsdLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 17, 115, 21)];
-    [lsdLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:21]];
-    [lsdLabel setTextAlignment:NSTextAlignmentCenter];
     
-    UILabel *rsdLabel = [[UILabel alloc] initWithFrame:CGRectMake(145, 17, 115, 21)];
-    [rsdLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:21]];
-    [rsdLabel setTextAlignment:NSTextAlignmentCenter];
+    for (int i = 0; i < 7; i++) {
+        
+        float left = sq_start + (i * (sq_width + sq_buffer));
+        
+        UILabel *aLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, 20, sq_width, sq_height)];
+        [aLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:9]];
+        [aLabel setTextAlignment:NSTextAlignmentCenter];
+        if (i == 0) {
+            
+            aLabel.text = @"Sat";
+            
+        } else if (i == 6) {
+            
+            aLabel.text = @"Sun";
+            
+        } else if (i == 2) {
+            
+            aLabel.text = @"Tue";
+            
+        } else if (i == 4) {
+            
+            aLabel.text = @"Thu";
+            
+        } else if (i == 1) {
+            
+            aLabel.text = @"Mon";
+            
+        } else if (i == 3) {
+            
+            aLabel.text = @"Wed";
+            
+        } else {
+            
+            aLabel.text = @"Fri";
+            
+        }
+        [self addSubview:aLabel];
+
+        
+    }
     
-    UILabel *lssLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 41, 115, 12)];
-    [lssLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:12]];
-    [lssLabel setTextAlignment:NSTextAlignmentCenter];
-    [lssLabel setTextColor:[UIColor lightGrayColor]];
-    
-    UILabel *rssLabel = [[UILabel alloc] initWithFrame:CGRectMake(145, 41, 115, 12)];
-    [rssLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:12]];
-    [rssLabel setTextAlignment:NSTextAlignmentCenter];
-    [rssLabel setTextColor:[UIColor lightGrayColor]];
     
     [self setHeaderLabel:hLabel];
-    [self setLeftSectionDataLabel:lsdLabel];
-    [self setRightSectionDataLabel:rsdLabel];
-    [self setLeftSectionSubdataLabel:lssLabel];
-    [self setRightSectionSubdataLabel:rssLabel];
     
     [self addSubview:hLabel];
-    [self addSubview:lsdLabel];
-    [self addSubview:rsdLabel];
-    [self addSubview:lssLabel];
-    [self addSubview:rssLabel];
+
+     
+    
     
 }
 
-/*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    
+    
     // Drawing code
+    [super drawRect:rect];
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 1.0);
+    CGContextFillRect(context, rect);
+    
+    for (int i = 0; i < 7; i++) {
+        
+        float left = sq_start + (i * (sq_width + sq_buffer));
+        
+        CGRect rectangle = CGRectMake(left, 40, sq_width, sq_height);
+        if ([self workoutArray] != nil){
+            if ([[self.workoutArray objectAtIndex:i]  isEqual: @"scheduled"] ) {
+                
+                CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.0);
+                
+                CGPathRef path = CGPathCreateWithRect(rectangle, NULL);
+
+                CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 0.5);
+                
+                CGContextAddPath(context, path);
+                CGContextDrawPath(context, kCGPathFillStroke);
+
+                
+            } else if ( [[self.workoutArray objectAtIndex:i]  isEqual: @"missed"] ) {
+                
+                CGContextSetRGBFillColor(context, 1.0, 0.0, 0.0, 1.0);
+            } else if ( [[self.workoutArray objectAtIndex:i]  isEqual: @"complete"] ) {
+                
+                CGContextSetRGBFillColor(context, 0.0, 1.0, 0.0, 1.0);
+                
+            } else {
+                
+                CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.0);
+            }
+        } else {
+            CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.0);
+
+        }
+
+        CGContextFillRect(context, rectangle);
+        
+    }
+    
 }
-*/
+
 
 @end
