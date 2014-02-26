@@ -175,19 +175,23 @@
 {
     if(buttonIndex==1)
     {
-        NSString *getstring = [NSString stringWithFormat:@"https://cs477-backend.herokuapp.com/password/reset/%@",[alertView textFieldAtIndex:0].text];
+        NSString *trimmed = [[alertView textFieldAtIndex:0].text stringByReplacingOccurrencesOfString:@" "  withString:@""];
+        
+        
+        NSString *getstring = [NSString stringWithFormat:@"https://cs477-backend.herokuapp.com/password/reset/%@",trimmed];
+        
+        NSLog(@"getstring %@",getstring);
         
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         
   //       manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         [manager GET:getstring parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"JSON: %@", responseObject);
-            if(!([[responseObject objectForKey:@"type"] isEqualToString:@"message"]))
+            if(!([[responseObject objectForKey:@"object"] isEqualToString:@"message"]))
             {
-                UIAlertView *resetpassword =[[UIAlertView alloc] initWithTitle:@"Reset password" message:@"Please verify the email address you entered. " delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
-                [resetpassword show];
+               
             }
             else
             {
@@ -197,9 +201,18 @@
             }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
+            
+            if([operation.response statusCode]==400)
+            {
+                UIAlertView *resetpassword =[[UIAlertView alloc] initWithTitle:@"Reset password" message:@"Please verify the email address you entered. " delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+                [resetpassword show];
+            }
+            else
+            {
+            
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Internet Connectivity Error" message:@"Please check your internet connectivity and try again later." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
             [alert show];
+            }
         }];
        
 
