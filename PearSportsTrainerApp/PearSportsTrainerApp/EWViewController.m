@@ -93,7 +93,7 @@
     //BUBBLE
     
     NSBubbleData *heyBubble = [NSBubbleData dataWithText:@"Hi" date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse];
-    heyBubble.avatar = [UIImage imageNamed:@"avatar1.png"];
+    heyBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
     
     NSBubbleData *photoBubble = [NSBubbleData dataWithImage:[UIImage imageNamed:@"halloween.jpg"] date:[NSDate dateWithTimeIntervalSinceNow:-290] type:BubbleTypeSomeoneElse];
     photoBubble.avatar = [UIImage imageNamed:@"avatar1.png"];
