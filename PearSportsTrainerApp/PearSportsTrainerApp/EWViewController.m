@@ -19,6 +19,7 @@
 #import "UIBubbleTableViewDataSource.h"
 #import "NSBubbleData.h"
 #import "API.h"
+#import <AFNetworking.h>
 
 //TODO AUTOSCROLL
 
@@ -299,16 +300,22 @@
         [bubbleData addObject:sayBubble];
         [bubbleTable reloadData];
         
-        
+  
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:@"poojan@somefakeemail.com" password:@"password2"];
-        //NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
-        //[manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
+       
         
-         NSDictionary *parameters = @{@"trainee_id":@"55a1f8e4-fa09-4561-b085-c691055e52e1", @"content":@"tesstttttt", @"outgoing":@true};
+
+        manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:@"daniel@somefakeemail.com" password:@"password1"];
+        manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+        
+         NSDictionary *parameters = @{@"trainee_id":[NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id], @"content":[NSString stringWithFormat:@"hi"], @"outgoing":[NSString stringWithFormat:@"true"]};
+       
         [manager POST:@"http://cs477-backend.herokuapp.com/message/text" parameters:parameters
               success:^(AFHTTPRequestOperation *operation, id responseObject){
+                  
+                  NSLog(@"%@",responseObject);
                   
                     if([responseObject objectForKey:@"error"]){
                         
@@ -328,9 +335,9 @@
                     [alert show];
               }
          ];
-
+ 
     }
-    
+   
     
     textField.text = @"";
     [textField resignFirstResponder];
