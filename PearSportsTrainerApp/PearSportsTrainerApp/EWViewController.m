@@ -302,13 +302,15 @@
         
   
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-       
         
-
-        manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+        [manager.requestSerializer clearAuthorizationHeader];
         [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:@"daniel@somefakeemail.com" password:@"password1"];
+        
         manager.responseSerializer = [AFJSONResponseSerializer serializer];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+        
+    
         
          NSDictionary *parameters = @{@"trainee_id":[NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id], @"content":[NSString stringWithFormat:@"hi"], @"outgoing":[NSString stringWithFormat:@"true"]};
        
