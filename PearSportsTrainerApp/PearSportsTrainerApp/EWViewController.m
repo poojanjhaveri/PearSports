@@ -298,6 +298,37 @@
         NSBubbleData *sayBubble = [NSBubbleData dataWithText:textField.text date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
         [bubbleData addObject:sayBubble];
         [bubbleTable reloadData];
+        
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:@"poojan@somefakeemail.com" password:@"password2"];
+        //NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
+        //[manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
+        
+         NSDictionary *parameters = @{@"trainee_id":@"55a1f8e4-fa09-4561-b085-c691055e52e1", @"content":@"tesstttttt", @"outgoing":@true};
+        [manager POST:@"http://cs477-backend.herokuapp.com/message/text" parameters:parameters
+              success:^(AFHTTPRequestOperation *operation, id responseObject){
+                  
+                    if([responseObject objectForKey:@"error"]){
+                        
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Text request failed" message:@"Please check." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+                        [alert show];
+                    }
+                    else{
+                        
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Text request sent" message:@"Good" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+                        [alert show];
+                    }
+      
+              } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             
+                    NSLog(@"Error: %@", error);
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sending Error" message:@"Please check Internet and everything" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+                    [alert show];
+              }
+         ];
+
     }
     
     
