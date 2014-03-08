@@ -10,8 +10,4 @@
 
 @interface GA_WorkoutsViewController : UITableViewController
 
-@property (strong, nonatomic) IBOutlet UIButton *addWorkoutBtn;
-
--(IBAction)addWorkout:(UIButton *)sender;
-
 @end

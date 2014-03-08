@@ -42,10 +42,6 @@
 		0EEAC8001899CC8A00711C39 /* Pear-Sports-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EEAC7FF1899CC8A00711C39 /* Pear-Sports-Logo.png */; };
 		65B7771738254FF3AFA26964 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFCF36E3D2542AA8D79EB64 /* libPods.a */; };
 		73B7D44518BAFEF3001846C3 /* AG_ClientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */; };
-		B6016CF218C00EE9003F8499 /* GA_Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = B6016CF118C00EE9003F8499 /* GA_Workout.m */; };
-		B602B23618BE2A140087A4F0 /* GA_WorkoutListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B602B23518BE2A140087A4F0 /* GA_WorkoutListTableViewController.m */; };
-		B61C9A7218C7A9C200C9FB0F /* GA_PersonalizeWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B61C9A7118C7A9C100C9FB0F /* GA_PersonalizeWorkoutViewController.m */; };
-		B6AA034A18BE3E9B00E2FBCE /* GA_WorkoutNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AA034918BE3E9B00E2FBCE /* GA_WorkoutNameCell.m */; };
 		FF00F08318B829C500E6C321 /* EWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07318B829C500E6C321 /* EWAppDelegate.m */; };
 		FF00F08418B829C500E6C321 /* EWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07518B829C500E6C321 /* EWViewController.m */; };
 		FF00F08518B829C500E6C321 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07718B829C500E6C321 /* NSBubbleData.m */; };
@@ -140,14 +136,6 @@
 		670102BCE36E482A9A05BE4C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		73B7D44318BAFEF3001846C3 /* AG_ClientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AG_ClientSummaryViewController.h; sourceTree = "<group>"; };
 		73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_ClientSummaryViewController.m; sourceTree = "<group>"; };
-		B6016CF018C00EE9003F8499 /* GA_Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_Workout.h; sourceTree = "<group>"; };
-		B6016CF118C00EE9003F8499 /* GA_Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_Workout.m; sourceTree = "<group>"; };
-		B602B23418BE2A140087A4F0 /* GA_WorkoutListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_WorkoutListTableViewController.h; sourceTree = "<group>"; };
-		B602B23518BE2A140087A4F0 /* GA_WorkoutListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_WorkoutListTableViewController.m; sourceTree = "<group>"; };
-		B61C9A7018C7A9C100C9FB0F /* GA_PersonalizeWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_PersonalizeWorkoutViewController.h; sourceTree = "<group>"; };
-		B61C9A7118C7A9C100C9FB0F /* GA_PersonalizeWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_PersonalizeWorkoutViewController.m; sourceTree = "<group>"; };
-		B6AA034818BE3E9B00E2FBCE /* GA_WorkoutNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_WorkoutNameCell.h; sourceTree = "<group>"; };
-		B6AA034918BE3E9B00E2FBCE /* GA_WorkoutNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_WorkoutNameCell.m; sourceTree = "<group>"; };
 		FF00F07218B829C500E6C321 /* EWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWAppDelegate.h; sourceTree = "<group>"; };
 		FF00F07318B829C500E6C321 /* EWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWAppDelegate.m; sourceTree = "<group>"; };
 		FF00F07418B829C500E6C321 /* EWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWViewController.h; sourceTree = "<group>"; };
@@ -255,14 +243,6 @@
 			children = (
 				0E0BC70518BB2D3C00E8580E /* GA_WorkoutsViewController.h */,
 				0E0BC70618BB2D3C00E8580E /* GA_WorkoutsViewController.m */,
-				B602B23418BE2A140087A4F0 /* GA_WorkoutListTableViewController.h */,
-				B602B23518BE2A140087A4F0 /* GA_WorkoutListTableViewController.m */,
-				B6AA034818BE3E9B00E2FBCE /* GA_WorkoutNameCell.h */,
-				B6AA034918BE3E9B00E2FBCE /* GA_WorkoutNameCell.m */,
-				B6016CF018C00EE9003F8499 /* GA_Workout.h */,
-				B6016CF118C00EE9003F8499 /* GA_Workout.m */,
-				B61C9A7018C7A9C100C9FB0F /* GA_PersonalizeWorkoutViewController.h */,
-				B61C9A7118C7A9C100C9FB0F /* GA_PersonalizeWorkoutViewController.m */,
 			);
 			name = Workouts;
 			sourceTree = "<group>";
@@ -652,24 +632,20 @@
 				0E8139F918B5F55000BDA365 /* DM_SinglePageView.m in Sources */,
 				0E0BC70718BB2D3C00E8580E /* GA_WorkoutsViewController.m in Sources */,
 				0E7FD5EF1898D70500D601B3 /* PJ_SignUpViewController.m in Sources */,
-				B6AA034A18BE3E9B00E2FBCE /* GA_WorkoutNameCell.m in Sources */,
 				FFAEF6EB18B3347D006E7C3D /* PJ_ClientCell.m in Sources */,
 				FF5FB2C418A8462100C19893 /* PJ_NotificationView.m in Sources */,
 				FFAEF6F518B4557A006E7C3D /* PJ_InfoSubView.m in Sources */,
 				FF00F08718B829C500E6C321 /* UIBubbleTableView.m in Sources */,
 				FF00F08918B829C500E6C321 /* UIBubbleTypingTableViewCell.m in Sources */,
-				B602B23618BE2A140087A4F0 /* GA_WorkoutListTableViewController.m in Sources */,
 				FF00F08618B829C500E6C321 /* UIBubbleHeaderTableViewCell.m in Sources */,
 				FF5FB2C818A84CE200C19893 /* PJ_Client.m in Sources */,
 				FF00F08318B829C500E6C321 /* EWAppDelegate.m in Sources */,
 				FF00F08418B829C500E6C321 /* EWViewController.m in Sources */,
 				0EAE019F1888C515008E6795 /* PJ_LoginViewController.m in Sources */,
 				0E54EE16187ACF9B00DC976C /* PJ_AppDelegate.m in Sources */,
-				B61C9A7218C7A9C200C9FB0F /* GA_PersonalizeWorkoutViewController.m in Sources */,
 				0E01738218A1E34600FC1B46 /* PJ_ClientListViewController.m in Sources */,
 				0E54EE12187ACF9B00DC976C /* main.m in Sources */,
 				73B7D44518BAFEF3001846C3 /* AG_ClientSummaryViewController.m in Sources */,
-				B6016CF218C00EE9003F8499 /* GA_Workout.m in Sources */,
 				FF00F08818B829C500E6C321 /* UIBubbleTableViewCell.m in Sources */,
 				FF00F08A18B829C500E6C321 /* MyButton.m in Sources */,
 				0EE2E367189EF80E00CF5F16 /* PJ_SettingsViewController.m in Sources */,
