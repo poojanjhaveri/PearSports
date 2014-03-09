@@ -300,18 +300,56 @@
         [bubbleData addObject:sayBubble];
         [bubbleTable reloadData];
         
-  
+       
+        NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
+        
+        NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
+        NSString *message = [NSString stringWithFormat:@"hi"];
+        
+        NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id,message, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id",@"content", nil]];
+        
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSURLCredential *credential = [NSURLCredential credentialWithUser:token password:@"" persistence:NSURLCredentialPersistenceNone];
+        
+        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:@"daniel@somefakeemail.com" password:@"password1"];
+        
+        NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"POST" URLString:@"http://cs477-backend.herokuapp.com/message/text" parameters:parameters error:nil];
+
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:reqst];
+        [operation setCredential:credential];
+        [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"Success: %@", responseObject);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Failure: %@", error);
+        }];
+        
+        NSLog(@"OPERATION IS %@",operation);
+        
+        [manager.operationQueue addOperation:operation];
+        
+        
+        
+/*
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        
         NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
 
-       [manager.requestSerializer setAuthorizationHeaderFieldWithToken:token];
+        [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+        
+     //   [manager.requestSerializer setAuthorizationHeaderFieldWithToken:token];
+       [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:@"daniel@somefakeemail.com" password:@"password1"];
         
         
         NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
     
         NSString *message = [NSString stringWithFormat:@"hi"];
         
-         NSDictionary *parameters = @{@"trainee_id":tra_id,@"content" :message};
+        NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id,message, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id",@"content", nil]];
+        
+        NSLog(@"%@",parameters);
        
         [manager POST:@"http://cs477-backend.herokuapp.com/message/text" parameters:parameters
               success:^(AFHTTPRequestOperation *operation, id responseObject){
@@ -336,7 +374,7 @@
                     [alert show];
               }
          ];
- 
+ */
     }
    
     
