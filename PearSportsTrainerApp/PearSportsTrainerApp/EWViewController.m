@@ -313,7 +313,7 @@
         
         [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:@"daniel@somefakeemail.com" password:@"password1"];
         
-        NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"POST" URLString:@"http://cs477-backend.herokuapp.com/message/text" parameters:parameters error:nil];
+        NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"POST" URLString:@"https://cs477-backend.herokuapp.com/message/text" parameters:parameters error:nil];
 
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:reqst];
         [operation setCredential:credential];
