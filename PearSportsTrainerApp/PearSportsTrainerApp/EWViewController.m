@@ -215,7 +215,7 @@
     // return a formatted string for a file name
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"ddMMMYY_hhmmssa";
-    return [[formatter stringFromDate:[NSDate date]] stringByAppendingString:@".caf"];
+    return [[formatter stringFromDate:[NSDate date]] stringByAppendingString:@".flac"];
 }
 
 
@@ -272,14 +272,38 @@
         
         [bubbleTable scrollBubbleViewToBottomAnimated:YES];
         
-        /*
-        NSBubbleData *audioBubble = [NSBubbleData dataWithImage:[UIImage imageNamed:@"audio_basic.png"] date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
-        audioBubble.avatar = nil;
-        [bubbleData addObject:audioBubble];
-        [bubbleTable reloadData];
-        textField.text = @"";
-        [textField resignFirstResponder];
-         */
+        
+        
+        NSString *token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
+        NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
+        NSData *theData = [NSData dataWithContentsOfURL:soundFileURL];
+        
+        //NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id, theData, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id",@"content", nil]];
+         NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id", nil]];
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSURLCredential *credential = [NSURLCredential credentialWithUser:token password:@"" persistence:NSURLCredentialPersistenceNone];
+        
+        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
+        
+        NSMutableURLRequest *reqst = [manager.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:@"https://cs477-backend.herokuapp.com/message/audio" parameters:parameters constructingBodyWithBlock: ^(id <AFMultipartFormData>formData){
+            [formData appendPartWithFileData:theData name:@"content" fileName:[self dateString] mimeType:@"audio/flac"];
+        }];
+        
+        //NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"POST" URLString:@"https://cs477-backend.herokuapp.com/message/audio" parameters:parameters error:nil];
+        
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:reqst];
+        [operation setCredential:credential];
+        [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"Success: %@", responseObject);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Failure: %@", error);
+        }];
+        
+        NSLog(@"OPERATION IS %@",operation);
+        
+        [manager.operationQueue addOperation:operation];
     }
    
 }
@@ -301,17 +325,17 @@
         [bubbleTable reloadData];
         
        
-        NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
-        
+        NSString *token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
         NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
-        NSString *message = [NSString stringWithFormat:@"hi"];
+        NSString *message = textField.text;
         
         NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id,message, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id",@"content", nil]];
         
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         NSURLCredential *credential = [NSURLCredential credentialWithUser:token password:@"" persistence:NSURLCredentialPersistenceNone];
         
-        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:@"daniel@somefakeemail.com" password:@"password1"];
+        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
+        //[manager.requestSerializer setAuthorizationHeaderFieldWithUsername:@"daniel@somefakeemail.com" password:@"password1"];
         
         NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"POST" URLString:@"https://cs477-backend.herokuapp.com/message/text" parameters:parameters error:nil];
 
@@ -328,53 +352,6 @@
         
         [manager.operationQueue addOperation:operation];
         
-        
-        
-/*
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        
-        
-        NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
-
-        [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
-        
-     //   [manager.requestSerializer setAuthorizationHeaderFieldWithToken:token];
-       [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:@"daniel@somefakeemail.com" password:@"password1"];
-        
-        
-        NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
-    
-        NSString *message = [NSString stringWithFormat:@"hi"];
-        
-        NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id,message, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id",@"content", nil]];
-        
-        NSLog(@"%@",parameters);
-       
-        [manager POST:@"http://cs477-backend.herokuapp.com/message/text" parameters:parameters
-              success:^(AFHTTPRequestOperation *operation, id responseObject){
-                  
-                  NSLog(@"%@",responseObject);
-                  
-                    if([responseObject objectForKey:@"error"]){
-                        
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Text request failed" message:@"Please check." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
-                        [alert show];
-                    }
-                    else{
-                        
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Text request sent" message:@"Good" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
-                        [alert show];
-                    }
-      
-              } failure:^(AFHTTPRequestOperation *operation, NSError *error){
-             
-                    NSLog(@"Error: %@", error);
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sending Error" message:@"Please check Internet and everything" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
-                    [alert show];
-              }
-         ];
- */
     }
    
     
