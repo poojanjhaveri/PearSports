@@ -14,4 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UIRefreshControl *refreshController;
 
+@property (strong) UIActivityIndicatorView * activityIndicator;
+
 @end

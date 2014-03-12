@@ -67,6 +67,12 @@
 
     [self.tableView reloadData];
     [self.tableView setNeedsDisplay];
+    if(self.activityIndicator != nil) {
+        
+        [self.activityIndicator stopAnimating];
+        [self setActivityIndicator:nil];
+        
+    }
     
 }
 
@@ -77,10 +83,29 @@
     
 }
 
+- (void) setupActivityIndicator
+{
+    
+    UIActivityIndicatorView *ac = [[UIActivityIndicatorView alloc]
+                                   initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(150, 65, 320, 50)];
+    [view addSubview:ac]; // <-- Your UIActivityIndicatorView
+    [self.tableView addSubview:view];
+    
+    [ac startAnimating];
+    
+    [self setActivityIndicator:ac];
+    
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    [self setupActivityIndicator];
+    
     [self.refreshController addTarget:self action:@selector(refreshRequested:) forControlEvents:UIControlEventValueChanged];
 
     
