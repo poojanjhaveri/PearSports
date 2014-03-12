@@ -12,4 +12,6 @@
 
 - (void) refreshView;
 
+@property (weak, nonatomic) IBOutlet UIRefreshControl *refreshController;
+
 @end

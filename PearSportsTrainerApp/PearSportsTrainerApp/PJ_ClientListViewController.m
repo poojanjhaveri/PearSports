@@ -36,6 +36,7 @@
     if (self) {
         
         [[PJ_ClientStore sharedClientStore] updateDataAndPerformSelector:@selector(refreshView) withTarget:self];
+        
     }
     return self;
     
@@ -54,6 +55,13 @@
     
 }
 
+- (void) refreshRequested:(UIRefreshControl *)sender
+{
+    
+    [[PJ_ClientStore sharedClientStore] updateDataAndPerformSelector:@selector(refreshViewAndRemoveRefreshIcon) withTarget:self];
+    
+}
+
 - (void) refreshView
 {
 
@@ -62,11 +70,19 @@
     
 }
 
+- (void) refreshViewAndRemoveRefreshIcon
+{
+    [self refreshView];
+    [self.refreshController endRefreshing];
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    
+    [self.refreshController addTarget:self action:@selector(refreshRequested:) forControlEvents:UIControlEventValueChanged];
+
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -93,7 +109,6 @@
 {
     // Return the number of rows in the section.
     
-    NSLog(@"Number of rows to show... %ld", [[[PJ_ClientStore sharedClientStore] clients] count]);
     return [[[PJ_ClientStore sharedClientStore] clients] count];
 }
 
