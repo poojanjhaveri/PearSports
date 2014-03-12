@@ -10,4 +10,6 @@
 
 @implementation GA_Workout
 
+@synthesize workoutName;
+
 @end

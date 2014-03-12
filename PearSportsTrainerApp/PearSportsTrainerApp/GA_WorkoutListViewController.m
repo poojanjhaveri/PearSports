@@ -1,19 +1,18 @@
 //
-//  GA_WorkoutsViewController.m
+//  GA_WorkoutListViewController.m
 //  PearSportsTrainerApp
 //
-//  Created by Poojan Jhaveri on 2/23/14.
+//  Created by Garima Aggarwal on 3/11/14.
 //  Copyright (c) 2014 Poojan Jhaveri. All rights reserved.
 //
 
-#import "GA_WorkoutsViewController.h"
-#import "API.h"
+#import "GA_WorkoutListViewController.h"
 
-@interface GA_WorkoutsViewController ()
+@interface GA_WorkoutListViewController ()
 
 @end
 
-@implementation GA_WorkoutsViewController
+@implementation GA_WorkoutListViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -24,23 +23,33 @@
     return self;
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:YES];
-    [[self.tabBarController.tabBar.items objectAtIndex:2] setTitle:[[API sharedInstance] getTraineeInfo].name];
-    self.tabBarController.navigationItem.title =@"Workoutsx";
-    self.tabBarController.navigationItem.backBarButtonItem.title=@"Back";
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
- //    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.workoutList = [[NSMutableArray alloc] init];
+    
+    [self addWorkout:@"Run"];
+    [self addWorkout:@"Power Walk"];
+    [self addWorkout:@"Bike"];
+    [self addWorkout:@"Treadmill"];
+    [self addWorkout:@"Stretch/Yoga"];
+    [self addWorkout:@"Water Fitness"];
+    [self addWorkout:@"Core and Strength"];
+
+}
+
+-(void) addWorkout: (NSString*) name
+{
+    GA_Workout *wname = [[GA_Workout alloc] init];
+    wname.workoutName = name;
+    [self.workoutList addObject:wname];
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,24 +62,27 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
     // Return the number of sections.
-    return 10;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
     // Return the number of rows in the section.
-    return 10;
+    NSLog(@"Number of Workoutrows to show... %d", [self.workoutList count]);
+    
+    return [self.workoutList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"WorkoutCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
+    GA_Workout *wname = [GA_Workout alloc];
+    wname = [(self.workoutList)objectAtIndex:indexPath.row];
+    cell.textLabel.text = [wname workoutName];
     
     return cell;
 }
