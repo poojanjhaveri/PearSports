@@ -43,10 +43,34 @@
 
 @implementation EWViewController
 
+//Making a request to pull data from backend
+//Data will be pulled everytime the messaging UI is displayed
+//By:Edward Tam
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
     self.tabBarController.navigationItem.title =@"Messages";
+    
+    NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
+    NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
+    NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id", nil]];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSURLCredential *credential = [NSURLCredential credentialWithUser:token password:@"" persistence:NSURLCredentialPersistenceNone];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
+    NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"GET" URLString:@"https://cs477-backend.herokuapp.com/trainer/messages" parameters:parameters error:nil];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:reqst];
+    [operation setCredential:credential];
+    [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Success: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failure: %@", error);
+    }];
+    
+    NSLog(@"OPERATION IS %@",operation);
+    
+    [manager.operationQueue addOperation:operation];
+    
 }
 
 - (void)viewDidLoad
