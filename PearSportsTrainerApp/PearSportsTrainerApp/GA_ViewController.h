@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GA_WorkoutsViewController : UITableViewController
+@interface GA_ViewController : UITableViewController
 
 @end

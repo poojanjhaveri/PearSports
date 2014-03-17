@@ -6,14 +6,15 @@
 //  Copyright (c) 2014 Poojan Jhaveri. All rights reserved.
 //
 
-#import "GA_WorkoutsViewController.h"
+#import "GA_ViewController.h"
 #import "API.h"
 
-@interface GA_WorkoutsViewController ()
+
+@interface GA_ViewController ()
 
 @end
 
-@implementation GA_WorkoutsViewController
+@implementation GA_ViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,7 +29,7 @@
 {
     [super viewWillAppear:YES];
     [[self.tabBarController.tabBar.items objectAtIndex:2] setTitle:[[API sharedInstance] getTraineeInfo].name];
-    self.tabBarController.navigationItem.title =@"Workoutsx";
+    self.tabBarController.navigationItem.title =@"Workouts";
     self.tabBarController.navigationItem.backBarButtonItem.title=@"Back";
 }
 
@@ -41,6 +42,16 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
  //    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  
+    
+//    calendar =  [[TKCalendarDateView alloc] init];
+//    calendar.delegate = self;
+//    calendar.dataSource = self;
+//    calendar.frame = CGRectMake(0, 0, calendar.frame.size.width, calendar.frame.size.height);
+//    
+//    // Ensure this is the last "addSubview" because the calendar must be the top most view layer
+//    [self.view addSubview:calendar];
+//    [calendar reload];
 }
 
 - (void)didReceiveMemoryWarning

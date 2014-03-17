@@ -7,6 +7,8 @@
 //
 
 #import "GA_WorkoutListViewController.h"
+#import "GA_PersonalizeViewController.h"
+#import "GA_Workout.h"
 
 @interface GA_WorkoutListViewController ()
 
@@ -126,7 +128,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -134,8 +136,16 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"showWorkoutDetail"]){
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        GA_PersonalizeViewController *destViewController = segue.destinationViewController;
+        
+        GA_Workout *w = [self.workoutList objectAtIndex:indexPath.row];
+        destViewController.wName = w.workoutName;
+        
+    }
 }
 
- */
+
 
 @end

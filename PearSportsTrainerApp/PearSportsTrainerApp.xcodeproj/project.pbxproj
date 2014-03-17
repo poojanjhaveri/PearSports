@@ -12,7 +12,7 @@
 		0E01739F18A1EBF700FC1B46 /* calendar_2_icon&24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E01739918A1EBF700FC1B46 /* calendar_2_icon&24.png */; };
 		0E0173A018A1EBF700FC1B46 /* spechbubble_2_icon&24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E01739A18A1EBF700FC1B46 /* spechbubble_2_icon&24.png */; };
 		0E0173A318A1EBF700FC1B46 /* user_icon&24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E01739D18A1EBF700FC1B46 /* user_icon&24.png */; };
-		0E0BC70718BB2D3C00E8580E /* GA_WorkoutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0BC70618BB2D3C00E8580E /* GA_WorkoutsViewController.m */; };
+		0E0BC70718BB2D3C00E8580E /* GA_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0BC70618BB2D3C00E8580E /* GA_ViewController.m */; };
 		0E44DA0C18BDBEFD004EFB9D /* Joe.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E44DA0B18BDBEFD004EFB9D /* Joe.png */; };
 		0E54EE06187ACF9B00DC976C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E54EE05187ACF9B00DC976C /* Foundation.framework */; };
 		0E54EE08187ACF9B00DC976C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E54EE07187ACF9B00DC976C /* CoreGraphics.framework */; };
@@ -42,6 +42,7 @@
 		0EEAC8001899CC8A00711C39 /* Pear-Sports-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EEAC7FF1899CC8A00711C39 /* Pear-Sports-Logo.png */; };
 		0EFDB3D018CB072500CFF197 /* GA_WorkoutListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFDB3CF18CB072500CFF197 /* GA_WorkoutListCell.m */; };
 		0EFDB3D418CB0F5800CFF197 /* GA_Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFDB3D318CB0F5800CFF197 /* GA_Workout.m */; };
+		3F22815318D787BA00AF1AFD /* GA_PersonalizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22815218D787BA00AF1AFD /* GA_PersonalizeViewController.m */; };
 		65B7771738254FF3AFA26964 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFCF36E3D2542AA8D79EB64 /* libPods.a */; };
 		73B7D44518BAFEF3001846C3 /* AG_ClientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */; };
 		B606C17D18CFFE2900125523 /* GA_WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B606C17C18CFFE2900125523 /* GA_WorkoutListViewController.m */; };
@@ -99,8 +100,8 @@
 		0E01739918A1EBF700FC1B46 /* calendar_2_icon&24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar_2_icon&24.png"; sourceTree = "<group>"; };
 		0E01739A18A1EBF700FC1B46 /* spechbubble_2_icon&24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spechbubble_2_icon&24.png"; sourceTree = "<group>"; };
 		0E01739D18A1EBF700FC1B46 /* user_icon&24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_icon&24.png"; sourceTree = "<group>"; };
-		0E0BC70518BB2D3C00E8580E /* GA_WorkoutsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_WorkoutsViewController.h; sourceTree = "<group>"; };
-		0E0BC70618BB2D3C00E8580E /* GA_WorkoutsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_WorkoutsViewController.m; sourceTree = "<group>"; };
+		0E0BC70518BB2D3C00E8580E /* GA_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_ViewController.h; sourceTree = "<group>"; };
+		0E0BC70618BB2D3C00E8580E /* GA_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_ViewController.m; sourceTree = "<group>"; };
 		0E44DA0B18BDBEFD004EFB9D /* Joe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Joe.png; sourceTree = "<group>"; };
 		0E54EE02187ACF9B00DC976C /* PearSportsTrainerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PearSportsTrainerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E54EE05187ACF9B00DC976C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -141,6 +142,8 @@
 		0EFDB3D218CB0F5800CFF197 /* GA_Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_Workout.h; sourceTree = "<group>"; };
 		0EFDB3D318CB0F5800CFF197 /* GA_Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_Workout.m; sourceTree = "<group>"; };
 		1EFCF36E3D2542AA8D79EB64 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F22815118D787BA00AF1AFD /* GA_PersonalizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_PersonalizeViewController.h; sourceTree = "<group>"; };
+		3F22815218D787BA00AF1AFD /* GA_PersonalizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_PersonalizeViewController.m; sourceTree = "<group>"; };
 		670102BCE36E482A9A05BE4C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		73B7D44318BAFEF3001846C3 /* AG_ClientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AG_ClientSummaryViewController.h; sourceTree = "<group>"; };
 		73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_ClientSummaryViewController.m; sourceTree = "<group>"; };
@@ -255,11 +258,13 @@
 			children = (
 				0EFDB3D118CB0F3700CFF197 /* WorkoutModel */,
 				0EFDB3CD18CB06F400CFF197 /* WorkoutListCell */,
-				0E0BC70518BB2D3C00E8580E /* GA_WorkoutsViewController.h */,
-				0E0BC70618BB2D3C00E8580E /* GA_WorkoutsViewController.m */,
+				0E0BC70518BB2D3C00E8580E /* GA_ViewController.h */,
+				0E0BC70618BB2D3C00E8580E /* GA_ViewController.m */,
 				B606C17E18D005FA00125523 /* WorkoutNameListCells */,
 				B606C17B18CFFE2900125523 /* GA_WorkoutListViewController.h */,
 				B606C17C18CFFE2900125523 /* GA_WorkoutListViewController.m */,
+				3F22815118D787BA00AF1AFD /* GA_PersonalizeViewController.h */,
+				3F22815218D787BA00AF1AFD /* GA_PersonalizeViewController.m */,
 			);
 			name = Workouts;
 			sourceTree = "<group>";
@@ -675,7 +680,7 @@
 				FF5FB2CB18A84D5C00C19893 /* PJ_ClientStore.m in Sources */,
 				0EFDB3D018CB072500CFF197 /* GA_WorkoutListCell.m in Sources */,
 				0E8139F918B5F55000BDA365 /* DM_SinglePageView.m in Sources */,
-				0E0BC70718BB2D3C00E8580E /* GA_WorkoutsViewController.m in Sources */,
+				0E0BC70718BB2D3C00E8580E /* GA_ViewController.m in Sources */,
 				0E7FD5EF1898D70500D601B3 /* PJ_SignUpViewController.m in Sources */,
 				FFAEF6EB18B3347D006E7C3D /* PJ_ClientCell.m in Sources */,
 				FF5FB2C418A8462100C19893 /* PJ_NotificationView.m in Sources */,
@@ -684,6 +689,7 @@
 				FF00F08918B829C500E6C321 /* UIBubbleTypingTableViewCell.m in Sources */,
 				FF00F08618B829C500E6C321 /* UIBubbleHeaderTableViewCell.m in Sources */,
 				B606C18118D006CD00125523 /* GA_WorkoutNameListTableCell.m in Sources */,
+				3F22815318D787BA00AF1AFD /* GA_PersonalizeViewController.m in Sources */,
 				FF5FB2C818A84CE200C19893 /* PJ_Client.m in Sources */,
 				FF00F08318B829C500E6C321 /* EWAppDelegate.m in Sources */,
 				B606C17D18CFFE2900125523 /* GA_WorkoutListViewController.m in Sources */,
