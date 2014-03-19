@@ -33,6 +33,7 @@
 		0E7FD5F01898D70500D601B3 /* PJ_SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7FD5EE1898D70500D601B3 /* PJ_SignUpViewController.m */; };
 		0E8139F618B5F47200BDA365 /* poojan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0E8139F518B5F47200BDA365 /* poojan.jpg */; };
 		0E8139F918B5F55000BDA365 /* DM_SinglePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8139F818B5F55000BDA365 /* DM_SinglePageView.m */; };
+		0EA1250718D91585000589CA /* SampleJSONCalls in Resources */ = {isa = PBXBuildFile; fileRef = 0EA1250618D91585000589CA /* SampleJSONCalls */; };
 		0EA93A7818962E4D00463BBC /* pearsports.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0EA93A7718962E4D00463BBC /* pearsports.jpg */; };
 		0EAE019F1888C515008E6795 /* PJ_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE019E1888C515008E6795 /* PJ_LoginViewController.m */; };
 		0EAE01A01888C515008E6795 /* PJ_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE019E1888C515008E6795 /* PJ_LoginViewController.m */; };
@@ -128,6 +129,7 @@
 		0E8139F518B5F47200BDA365 /* poojan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poojan.jpg; sourceTree = "<group>"; };
 		0E8139F718B5F55000BDA365 /* DM_SinglePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DM_SinglePageView.h; sourceTree = "<group>"; };
 		0E8139F818B5F55000BDA365 /* DM_SinglePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DM_SinglePageView.m; sourceTree = "<group>"; };
+		0EA1250618D91585000589CA /* SampleJSONCalls */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SampleJSONCalls; sourceTree = "<group>"; };
 		0EA93A7718962E4D00463BBC /* pearsports.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pearsports.jpg; sourceTree = "<group>"; };
 		0EAE019D1888C515008E6795 /* PJ_LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_LoginViewController.h; sourceTree = "<group>"; };
 		0EAE019E1888C515008E6795 /* PJ_LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_LoginViewController.m; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				0E54EE1B187ACF9B00DC976C /* PJ_ViewController.m */,
 				0E54EE1D187ACF9B00DC976C /* Images.xcassets */,
 				0E54EE0C187ACF9B00DC976C /* Supporting Files */,
+				0EA1250618D91585000589CA /* SampleJSONCalls */,
 			);
 			path = PearSportsTrainerApp;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				FF00F09B18B829E600E6C321 /* microphonehot.png in Resources */,
 				FF00F0AC18B829FA00E6C321 /* icon_57.png in Resources */,
 				0E8139F618B5F47200BDA365 /* poojan.jpg in Resources */,
+				0EA1250718D91585000589CA /* SampleJSONCalls in Resources */,
 				FF00F0A118B829E600E6C321 /* missingAvatar@2x.png in Resources */,
 				FF00F0AD18B829FA00E6C321 /* icon_114.png in Resources */,
 				FFC7EF3618BAFDB800AB1BAB /* right1.png in Resources */,

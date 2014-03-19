@@ -1,0 +1,2798 @@
+/*
+
+Example JSON:
+
+Trainer
+
+    email = "daniel@somefakeemail.com";
+    "first_name" = Daniel;
+    "last_name" = Paje;
+    token = d29d6002dd9f49baac64a1ce262f031c;
+    
+    
+Trainee-List
+    
+    
+    {
+    age = 42;
+    dob = "1971-08-11";
+    email = "eric@pearsports.com";
+    gender = male;
+    height = 1;
+    "screen_name" = eric;
+    weight = 73000;
+} b1da395a-726e-4670-84f4-6d8ba1079613
+2014-03-18 16:58:38.819 PearSportsTrainerApp[12922:60b] 42
+2014-03-18 16:58:38.820 PearSportsTrainerApp[12922:60b] {
+    age = 42;
+    dob = "1971-07-20";
+    email = "kristian@pearsports.com";
+    gender = male;
+    height = 1;
+    "screen_name" = KR;
+    weight = 79830;
+} 55a1f8e4-fa09-4561-b085-c691055e52e1
+2014-03-18 16:58:38.821 PearSportsTrainerApp[12922:60b] 47
+2014-03-18 16:58:38.821 PearSportsTrainerApp[12922:60b] {
+    age = 47;
+    dob = "1966-03-19";
+    email = "joe@pearsports.com";
+    gender = male;
+    height = 1;
+    "screen_name" = "Joe R";
+    weight = 63730;
+} 9e22c7e3-1ccd-4fbe-a862-37e605338046
+
+
+
+WORKOUT_SCHEDULE
+
+{
+    object = "workout_data";
+    "workout_data" =     {
+        object = ScheduleList;
+        results =         {
+            count = 16;
+            data =             (
+                                {
+                    "avg_hr" = 118;
+                    calories = 293;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-02-28T21:25:01Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/96c25b82-a40f-486e-a904-c9f25f879a5b/7355da88-1ea5-4b4a-89f3-a512ad5a4a2f_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=EwuaDo%2BK7aYAInnRkeYGa12gCXc%3D&Expires=1395189709";
+                    distance = 8046;
+                    duration = 1800;
+                    grade = 78;
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/96c25b82-a40f-486e-a904-c9f25f879a5b/7355da88-1ea5-4b4a-89f3-a512ad5a4a2f_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=ozrVWY9FUiDqSqhfTFOohAsFm8s%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                108
+                            );
+                            "top_right" =                             (
+                                300,
+                                115
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                300,
+                                152
+                            );
+                            "top_right" =                             (
+                                360,
+                                230
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                360,
+                                108
+                            );
+                            "top_right" =                             (
+                                540,
+                                115
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                540,
+                                147
+                            );
+                            "top_right" =                             (
+                                660,
+                                151
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                660,
+                                108
+                            );
+                            "top_right" =                             (
+                                840,
+                                115
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                840,
+                                138
+                            );
+                            "top_right" =                             (
+                                1080,
+                                144
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1080,
+                                108
+                            );
+                            "top_right" =                             (
+                                1260,
+                                115
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1260,
+                                147
+                            );
+                            "top_right" =                             (
+                                1380,
+                                151
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1380,
+                                108
+                            );
+                            "top_right" =                             (
+                                1560,
+                                115
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1560,
+                                152
+                            );
+                            "top_right" =                             (
+                                1620,
+                                230
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1620,
+                                108
+                            );
+                            "top_right" =                             (
+                                1800,
+                                115
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 115;
+                            low = 108;
+                            zone = 1;
+                        },
+                                                {
+                            high = 128;
+                            low = 116;
+                            zone = 2;
+                        },
+                                                {
+                            high = 144;
+                            low = 138;
+                            zone = 3;
+                        },
+                                                {
+                            high = 151;
+                            low = 147;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 152;
+                            zone = 5;
+                        }
+                    );
+                    id = "7355da88-1ea5-4b4a-89f3-a512ad5a4a2f";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/96c25b82-a40f-486e-a904-c9f25f879a5b/7355da88-1ea5-4b4a-89f3-a512ad5a4a2f.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=JoV3OgLcPMehGLG2V9ROcewuD2w%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T05:56:23Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-02-28T21:25:01Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/a0426f34d29d4ddb8d91bf8a463f5d0d.mp3";
+                        author = "fitwriter@hotmail.com";
+                        "completed_at" = "2014-02-28T21:25:01Z";
+                        "description_html" = "You can't get a better, more balanced cycling workout in 30 minutes than you get from this workout. Do this workout on a stationary spin bike or your bike trainer.<br><br>Workout includes intensity intervals of various durations in zones 3, 4, and 5  to develop every aspect of cycling fitness<br><br>Total duration: 30 minutes";
+                        "description_short" = "30 min balanced indoor cycling workout";
+                        distance = "<null>";
+                        duration = 1800;
+                        "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/521e7b1352fe2a6226c4e09ef03bdcc1/521e7b1352fe2a6226c4e09ef03bdcc1.png";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/730af08df6b14ad6a95bc6490d03cb5b.png";
+                        id = "96c25b82-a40f-486e-a904-c9f25f879a5b";
+                        "last_modified" = "2014-03-02T23:23:13Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/a0426f34d29d4ddb8d91bf8a463f5d0d.mp3";
+                            author = "Matt Fitzgerald";
+                            "description_html" = "You can't get a better, more balanced cycling workout in 30 minutes than you get from this workout. Do this workout on a stationary spin bike or your bike trainer.<br><br>Workout includes intensity intervals of various durations in zones 3, 4, and 5  to develop every aspect of cycling fitness<br><br>Total duration: 30 minutes";
+                            "description_short" = "30 min balanced indoor cycling workout";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/521e7b1352fe2a6226c4e09ef03bdcc1/521e7b1352fe2a6226c4e09ef03bdcc1.png";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/730af08df6b14ad6a95bc6490d03cb5b.png";
+                            "last_modified" = "2013-09-22T22:02:10Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 1;
+                            revision = 1;
+                            sku = "CFN01001D-00M";
+                            tags =                             (
+                            );
+                            title = "Pyramid Indoor Cycle";
+                            "total_weeks" = 1;
+                            type = ALACARTE;
+                            version = 1;
+                            "video_url" = "<null>";
+                            "workout_distance" = "<null>";
+                            "workout_duration" = 1800;
+                        };
+                        "plan_workout_id" = "88626643-93a8-482e-aa63-2168f9ff2918";
+                        rating = "<null>";
+                        "scheduled_at" = "<null>";
+                        status = completed;
+                        title = "Pyramid Indoor Cycle";
+                        version = 1;
+                        "video_url" = "<null>";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "521e7b13-52fe-2a62-26c4-e09ef03bdcc1";
+                    };
+                },
+                                {
+                    "avg_hr" = 131;
+                    calories = 587;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-02-24T16:46:17Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/d5b191e8-da1b-45bc-8644-708ef88a7e4b/90f8d308-3eac-4fbe-9c76-c53b969c9898_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=dW%2BD9zJ6eug92j7wwQKlBObrh14%3D&Expires=1395189709";
+                    distance = 7987;
+                    duration = 3060;
+                    grade = 74;
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/d5b191e8-da1b-45bc-8644-708ef88a7e4b/90f8d308-3eac-4fbe-9c76-c53b969c9898_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=fUvoEI3jN60ptod7%2FDrwoM%2FbbiQ%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                123
+                            );
+                            "top_right" =                             (
+                                180,
+                                131
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                180,
+                                132
+                            );
+                            "top_right" =                             (
+                                2880,
+                                146
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                2880,
+                                123
+                            );
+                            "top_right" =                             (
+                                3060,
+                                131
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 131;
+                            low = 123;
+                            zone = 1;
+                        },
+                                                {
+                            high = 146;
+                            low = 132;
+                            zone = 2;
+                        },
+                                                {
+                            high = 164;
+                            low = 157;
+                            zone = 3;
+                        },
+                                                {
+                            high = 172;
+                            low = 167;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 173;
+                            zone = 5;
+                        }
+                    );
+                    id = "90f8d308-3eac-4fbe-9c76-c53b969c9898";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/d5b191e8-da1b-45bc-8644-708ef88a7e4b/90f8d308-3eac-4fbe-9c76-c53b969c9898.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=bqy61wwu7WmgbXebBPMQEPheHag%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T05:56:34Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-02-24T16:46:17Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/5bd0e9a12f5a4718bc27db1ff31de830.mp3";
+                        author = "coach@jennyhadfield.com";
+                        "completed_at" = "2014-02-24T16:46:17Z";
+                        "description_html" = "This is a easy effort run.<br><br>Warm up: This one starts with a 3-minute walk. <br><br>Main set: The main body of the run includes 45 min in zone 2.<br><br>Cool down: The session finishes with a 3-min walking.  <br><br>Tip: It can be done on any type of route.  <br><br>Total duration: 51 minutes";
+                        "description_short" = "51 min easy effort run";
+                        distance = "<null>";
+                        duration = 3060;
+                        "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/4985266fb7c3b6526ff9647cc1f371b0/4985266fb7c3b6526ff9647cc1f371b0.png";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                        id = "d5b191e8-da1b-45bc-8644-708ef88a7e4b";
+                        "last_modified" = "2014-02-24T16:46:38Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/02d204a4e09246509d828ba60f4a1243.mp3";
+                            author = "Jenny Hadfield";
+                            "description_html" = "A half marathon is a major commitment - but that doesn't mean it has to consume your life.  If you struggle to find time for training or love to mix it up with cross-training, the Busy Person's Half Marathon Plan is for you!  
+\n
+\nThe 14-week schedule trims the fat to include only high quality workouts and what is necessary to perform at your best.  
+\n
+\n
+\nPerfect for the time-crunched runner, the training plan includes three focused high quality running workouts per week.  If you find you have more time on your hands, you can add two cross-training workouts to the mix. 
+\n
+\nThe plan builds slowly to allow your body to adapt to the demands of the training so you can run stronger for longer and includes long endurance runs, interval and tempo workouts, and recovery runs. 
+\n
+\nThis is an intermediate level training plan and is geared to those who have been running three times per week for 40-60 minutes for at least six months.";
+                            "description_short" = "14 weeks, 41 workouts";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                            "last_modified" = "2013-09-22T23:30:30Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 3;
+                            revision = 1;
+                            sku = "CFN020021-00M";
+                            tags =                             (
+                            );
+                            title = "Busy Person's 13.1";
+                            "total_weeks" = 13;
+                            type = DEFAULT;
+                            version = 1;
+                            "video_url" = "<null>";
+                        };
+                        "plan_workout_id" = "5de9810a-bee2-49e3-aa89-e6bf9ad2ddc0";
+                        rating = "<null>";
+                        "scheduled_at" = "2014-02-24T09:00:00Z";
+                        status = completed;
+                        title = "Busy Person's - 6.1";
+                        version = 1;
+                        "video_url" = "<null>";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "4985266f-b7c3-b652-6ff9-647cc1f371b0";
+                    };
+                },
+                                {
+                    "avg_hr" = 138;
+                    calories = 645;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-03-05T16:31:24Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/5d6cc6e9-2db9-41eb-a1c4-1b556ca95672/e9ef8e32-f460-4f7a-92ea-4d9715b7cf28_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=IWErCz%2BKTSu8oWK%2FwMW6znakm1o%3D&Expires=1395189709";
+                    distance = 8250;
+                    duration = 3060;
+                    grade = 60;
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/5d6cc6e9-2db9-41eb-a1c4-1b556ca95672/e9ef8e32-f460-4f7a-92ea-4d9715b7cf28_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=V667tEXU6LZUY%2BmzDqmN%2FM%2BIBCM%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                119
+                            );
+                            "top_right" =                             (
+                                180,
+                                126
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                180,
+                                127
+                            );
+                            "top_right" =                             (
+                                2880,
+                                141
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                2880,
+                                119
+                            );
+                            "top_right" =                             (
+                                3060,
+                                126
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 126;
+                            low = 119;
+                            zone = 1;
+                        },
+                                                {
+                            high = 141;
+                            low = 127;
+                            zone = 2;
+                        },
+                                                {
+                            high = 158;
+                            low = 152;
+                            zone = 3;
+                        },
+                                                {
+                            high = 166;
+                            low = 161;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 167;
+                            zone = 5;
+                        }
+                    );
+                    id = "e9ef8e32-f460-4f7a-92ea-4d9715b7cf28";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/5d6cc6e9-2db9-41eb-a1c4-1b556ca95672/e9ef8e32-f460-4f7a-92ea-4d9715b7cf28.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=W49FQszhNkrhkOnFrROIk5Nehfk%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T05:56:35Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-03-05T16:31:24Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/5bd0e9a12f5a4718bc27db1ff31de830.mp3";
+                        author = "coach@jennyhadfield.com";
+                        "completed_at" = "2014-03-05T16:31:24Z";
+                        "description_html" = "This is a easy effort run.<br><br>Warm up: This one starts with a 3-minute walk. <br><br>Main set: The main body of the run includes 45 min in zone 2.<br><br>Cool down: The session finishes with a 3-min walking.  <br><br>Tip: It can be done on any type of route.  <br><br>Total duration: 51 minutes";
+                        "description_short" = "51 min easy effort run";
+                        distance = "<null>";
+                        duration = 3060;
+                        "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/86ec7e4722aaf42d33d49d5a28ce160f/86ec7e4722aaf42d33d49d5a28ce160f.png";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                        id = "5d6cc6e9-2db9-41eb-a1c4-1b556ca95672";
+                        "last_modified" = "2014-03-05T16:32:25Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/02d204a4e09246509d828ba60f4a1243.mp3";
+                            author = "Jenny Hadfield";
+                            "description_html" = "A half marathon is a major commitment - but that doesn't mean it has to consume your life.  If you struggle to find time for training or love to mix it up with cross-training, the Busy Person's Half Marathon Plan is for you!  
+\n
+\nThe 14-week schedule trims the fat to include only high quality workouts and what is necessary to perform at your best.  
+\n
+\n
+\nPerfect for the time-crunched runner, the training plan includes three focused high quality running workouts per week.  If you find you have more time on your hands, you can add two cross-training workouts to the mix. 
+\n
+\nThe plan builds slowly to allow your body to adapt to the demands of the training so you can run stronger for longer and includes long endurance runs, interval and tempo workouts, and recovery runs. 
+\n
+\nThis is an intermediate level training plan and is geared to those who have been running three times per week for 40-60 minutes for at least six months.";
+                            "description_short" = "14 weeks, 41 workouts";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                            "last_modified" = "2013-09-22T23:30:30Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 3;
+                            revision = 1;
+                            sku = "CFN020021-00M";
+                            tags =                             (
+                            );
+                            title = "Busy Person's 13.1";
+                            "total_weeks" = 13;
+                            type = DEFAULT;
+                            version = 1;
+                            "video_url" = "<null>";
+                        };
+                        "plan_workout_id" = "2e62db32-8f76-4f06-b562-4555f61986b2";
+                        rating = "<null>";
+                        "scheduled_at" = "2014-03-05T09:00:00Z";
+                        status = completed;
+                        title = "Busy Person's - 7.2";
+                        version = 1;
+                        "video_url" = "<null>";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "86ec7e47-22aa-f42d-33d4-9d5a28ce160f";
+                    };
+                },
+                                {
+                    "avg_hr" = 137;
+                    calories = 357;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-02-19T16:35:04Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/53b6b530-6045-4274-be61-95cabbcf5ede/d146f1b5-8d64-4557-9ab0-0443481b40f7_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=LRiW0gsxbCrnxoFwb3as9Vrmz78%3D&Expires=1395189709";
+                    distance = 5697;
+                    duration = 1920;
+                    grade = 41;
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/53b6b530-6045-4274-be61-95cabbcf5ede/d146f1b5-8d64-4557-9ab0-0443481b40f7_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=0SNR4t%2Fnd8YcVovpzJb7V6HgG%2B8%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                129
+                            );
+                            "top_right" =                             (
+                                180,
+                                138
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                180,
+                                139
+                            );
+                            "top_right" =                             (
+                                780,
+                                153
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                780,
+                                175
+                            );
+                            "top_right" =                             (
+                                840,
+                                181
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                840,
+                                139
+                            );
+                            "top_right" =                             (
+                                900,
+                                153
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                900,
+                                175
+                            );
+                            "top_right" =                             (
+                                960,
+                                181
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                960,
+                                139
+                            );
+                            "top_right" =                             (
+                                1020,
+                                153
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1020,
+                                175
+                            );
+                            "top_right" =                             (
+                                1080,
+                                181
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1080,
+                                139
+                            );
+                            "top_right" =                             (
+                                1140,
+                                153
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1140,
+                                175
+                            );
+                            "top_right" =                             (
+                                1200,
+                                181
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1200,
+                                139
+                            );
+                            "top_right" =                             (
+                                1260,
+                                153
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1260,
+                                175
+                            );
+                            "top_right" =                             (
+                                1320,
+                                181
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1320,
+                                139
+                            );
+                            "top_right" =                             (
+                                1380,
+                                153
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1380,
+                                175
+                            );
+                            "top_right" =                             (
+                                1440,
+                                181
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1440,
+                                139
+                            );
+                            "top_right" =                             (
+                                1500,
+                                153
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1500,
+                                175
+                            );
+                            "top_right" =                             (
+                                1560,
+                                181
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1560,
+                                139
+                            );
+                            "top_right" =                             (
+                                1620,
+                                153
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1620,
+                                175
+                            );
+                            "top_right" =                             (
+                                1680,
+                                181
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1680,
+                                139
+                            );
+                            "top_right" =                             (
+                                1740,
+                                153
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1740,
+                                129
+                            );
+                            "top_right" =                             (
+                                1920,
+                                138
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 138;
+                            low = 129;
+                            zone = 1;
+                        },
+                                                {
+                            high = 153;
+                            low = 139;
+                            zone = 2;
+                        },
+                                                {
+                            high = 172;
+                            low = 165;
+                            zone = 3;
+                        },
+                                                {
+                            high = 181;
+                            low = 175;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 182;
+                            zone = 5;
+                        }
+                    );
+                    id = "d146f1b5-8d64-4557-9ab0-0443481b40f7";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/53b6b530-6045-4274-be61-95cabbcf5ede/d146f1b5-8d64-4557-9ab0-0443481b40f7.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=yVS04KCylozLwFd8gqqN%2FIOP59M%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T05:56:35Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-02-19T16:35:04Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/65dbbfaf134440a19c895b5aa2f65f9c.mp3";
+                        author = "coach@jennyhadfield.com";
+                        "completed_at" = "2014-02-19T16:35:04Z";
+                        "description_html" = "This is a interval run.<br><br>Warm up: This one starts with a 3-minute walk, then you will progress to a 10 min easy run in zone 2 <br><br>Main set: The main body of the run includes 8 x 1-min intervals in zone 4 with one min zone 2 easy recovery.<br><br>Cool down: The session finishes with a 3-min walking.  <br><br>Tip: It can be done on any type of route.  <br><br>Total duration: 32 minutes";
+                        "description_short" = "32 min interval run";
+                        distance = "<null>";
+                        duration = 1920;
+                        "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/27d30a6fcec572f3ce985b9d4040a7e6/27d30a6fcec572f3ce985b9d4040a7e6.png";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                        id = "53b6b530-6045-4274-be61-95cabbcf5ede";
+                        "last_modified" = "2014-02-19T16:39:33Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/02d204a4e09246509d828ba60f4a1243.mp3";
+                            author = "Jenny Hadfield";
+                            "description_html" = "A half marathon is a major commitment - but that doesn't mean it has to consume your life.  If you struggle to find time for training or love to mix it up with cross-training, the Busy Person's Half Marathon Plan is for you!  
+\n
+\nThe 14-week schedule trims the fat to include only high quality workouts and what is necessary to perform at your best.  
+\n
+\n
+\nPerfect for the time-crunched runner, the training plan includes three focused high quality running workouts per week.  If you find you have more time on your hands, you can add two cross-training workouts to the mix. 
+\n
+\nThe plan builds slowly to allow your body to adapt to the demands of the training so you can run stronger for longer and includes long endurance runs, interval and tempo workouts, and recovery runs. 
+\n
+\nThis is an intermediate level training plan and is geared to those who have been running three times per week for 40-60 minutes for at least six months.";
+                            "description_short" = "14 weeks, 41 workouts";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                            "last_modified" = "2013-09-22T23:30:30Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 3;
+                            revision = 1;
+                            sku = "CFN020021-00M";
+                            tags =                             (
+                            );
+                            title = "Busy Person's 13.1";
+                            "total_weeks" = 13;
+                            type = DEFAULT;
+                            version = 1;
+                            "video_url" = "<null>";
+                        };
+                        "plan_workout_id" = "4ad4efaf-07dd-47fd-9859-0db73c2b4633";
+                        rating = "<null>";
+                        "scheduled_at" = "2014-02-17T09:00:00Z";
+                        status = completed;
+                        title = "Busy Person's - 5.1";
+                        version = 1;
+                        "video_url" = "<null>";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "27d30a6f-cec5-72f3-ce98-5b9d4040a7e6";
+                    };
+                },
+                                {
+                    "avg_hr" = 138;
+                    calories = 433;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-02-12T16:54:07Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/8ed90bb9-5af8-4853-b171-497f9514632d/84a6d087-7787-4907-84f4-980da855c91d_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=LrCuCu5yT9IBroWeyNHBywy9sm0%3D&Expires=1395189709";
+                    distance = 6961;
+                    duration = 2400;
+                    grade = 72;
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/8ed90bb9-5af8-4853-b171-497f9514632d/84a6d087-7787-4907-84f4-980da855c91d_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=1qV%2FRA2jHi1UEDOtB7%2FedVFMxPs%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                116
+                            );
+                            "top_right" =                             (
+                                180,
+                                122
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                180,
+                                123
+                            );
+                            "top_right" =                             (
+                                780,
+                                147
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                780,
+                                148
+                            );
+                            "top_right" =                             (
+                                1680,
+                                156
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1680,
+                                123
+                            );
+                            "top_right" =                             (
+                                2280,
+                                147
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                2280,
+                                116
+                            );
+                            "top_right" =                             (
+                                2400,
+                                122
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 122;
+                            low = 116;
+                            zone = 1;
+                        },
+                                                {
+                            high = 147;
+                            low = 123;
+                            zone = 2;
+                        },
+                                                {
+                            high = 156;
+                            low = 148;
+                            zone = 3;
+                        },
+                                                {
+                            high = 161;
+                            low = 157;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 162;
+                            zone = 5;
+                        }
+                    );
+                    id = "84a6d087-7787-4907-84f4-980da855c91d";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/8ed90bb9-5af8-4853-b171-497f9514632d/84a6d087-7787-4907-84f4-980da855c91d.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=J2iz92Rd7p%2FSy%2BMjnxtRoSKHvMw%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T05:56:36Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-02-12T16:54:07Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/8d5fbea51b4e4b7c971156931fd17827.mp3";
+                        author = "coach@jennyhadfield.com";
+                        "completed_at" = "2014-02-12T16:54:07Z";
+                        "description_html" = "This is a tempo run.<br><br>Warm up: This one starts with a 3-minute walk, then you will progress to a 10 min easy run in zone 2. <br><br>Main set: The main body of the run includes 15-minute tempo run in zone 3, followed by 10 minutes in zone 2.<br><br>Cool down: The session finishes with a 2-min walking.  <br><br>Tip: It can be done on any type of route.  <br><br>Total duration: 40 minutes";
+                        "description_short" = "40 minute tempo Run";
+                        distance = "<null>";
+                        duration = 2400;
+                        "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/d95f050927b4bdfb6abc325cf8e1fc4c/d95f050927b4bdfb6abc325cf8e1fc4c.png";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                        id = "8ed90bb9-5af8-4853-b171-497f9514632d";
+                        "last_modified" = "2014-02-12T17:18:17Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/02d204a4e09246509d828ba60f4a1243.mp3";
+                            author = "Jenny Hadfield";
+                            "description_html" = "A half marathon is a major commitment - but that doesn't mean it has to consume your life.  If you struggle to find time for training or love to mix it up with cross-training, the Busy Person's Half Marathon Plan is for you!  
+\n
+\nThe 14-week schedule trims the fat to include only high quality workouts and what is necessary to perform at your best.  
+\n
+\n
+\nPerfect for the time-crunched runner, the training plan includes three focused high quality running workouts per week.  If you find you have more time on your hands, you can add two cross-training workouts to the mix. 
+\n
+\nThe plan builds slowly to allow your body to adapt to the demands of the training so you can run stronger for longer and includes long endurance runs, interval and tempo workouts, and recovery runs. 
+\n
+\nThis is an intermediate level training plan and is geared to those who have been running three times per week for 40-60 minutes for at least six months.";
+                            "description_short" = "14 weeks, 41 workouts";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                            "last_modified" = "2013-09-22T23:30:30Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 3;
+                            revision = 1;
+                            sku = "CFN020021-00M";
+                            tags =                             (
+                            );
+                            title = "Busy Person's 13.1";
+                            "total_weeks" = 13;
+                            type = DEFAULT;
+                            version = 1;
+                            "video_url" = "<null>";
+                        };
+                        "plan_workout_id" = "2a81e79d-b8c5-47c9-92ae-f3ffd299cfef";
+                        rating = "<null>";
+                        "scheduled_at" = "2014-02-12T09:00:00Z";
+                        status = completed;
+                        title = "Busy Person's - 4.2";
+                        version = 1;
+                        "video_url" = "<null>";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "d95f0509-27b4-bdfb-6abc-325cf8e1fc4c";
+                    };
+                },
+                                {
+                    "avg_hr" = 138;
+                    calories = 509;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-02-26T16:43:37Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/1ffc36cb-0875-4978-95e4-9cb5cea4afb1/bcc59887-1688-4030-a2c4-adbe8f05b9e1_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=fm38C1BTQ9DJHrHdkfLDnUBi%2BxA%3D&Expires=1395189709";
+                    distance = 6777;
+                    duration = 2400;
+                    grade = 61;
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/1ffc36cb-0875-4978-95e4-9cb5cea4afb1/bcc59887-1688-4030-a2c4-adbe8f05b9e1_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=hNVy7c6FYVycPVeyhJuKrBhMNrs%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                116
+                            );
+                            "top_right" =                             (
+                                180,
+                                123
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                180,
+                                124
+                            );
+                            "top_right" =                             (
+                                780,
+                                137
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                780,
+                                148
+                            );
+                            "top_right" =                             (
+                                1680,
+                                154
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1680,
+                                124
+                            );
+                            "top_right" =                             (
+                                2280,
+                                137
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                2280,
+                                116
+                            );
+                            "top_right" =                             (
+                                2400,
+                                123
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 123;
+                            low = 116;
+                            zone = 1;
+                        },
+                                                {
+                            high = 137;
+                            low = 124;
+                            zone = 2;
+                        },
+                                                {
+                            high = 154;
+                            low = 148;
+                            zone = 3;
+                        },
+                                                {
+                            high = 162;
+                            low = 157;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 163;
+                            zone = 5;
+                        }
+                    );
+                    id = "bcc59887-1688-4030-a2c4-adbe8f05b9e1";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/1ffc36cb-0875-4978-95e4-9cb5cea4afb1/bcc59887-1688-4030-a2c4-adbe8f05b9e1.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=bLdRm2zVYWs2xKaFb%2B6%2B1wcepXY%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T05:56:36Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-02-26T16:43:37Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/8d5fbea51b4e4b7c971156931fd17827.mp3";
+                        author = "coach@jennyhadfield.com";
+                        "completed_at" = "2014-02-26T16:43:37Z";
+                        "description_html" = "This is a tempo run.<br><br>Warm up: This one starts with a 3-minute walk, then you will progress to a 10 min easy run in zone 2. <br><br>Main set: The main body of the run includes 15-minute tempo run in zone 3, followed by 10 minutes in zone 2.<br><br>Cool down: The session finishes with a 2-min walking.  <br><br>Tip: It can be done on any type of route.  <br><br>Total duration: 40 minutes";
+                        "description_short" = "40 minute tempo Run";
+                        distance = "<null>";
+                        duration = 2400;
+                        "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/47fae4a7ad0553cdd762a894431a0d89/47fae4a7ad0553cdd762a894431a0d89.png";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                        id = "1ffc36cb-0875-4978-95e4-9cb5cea4afb1";
+                        "last_modified" = "2014-02-26T17:10:45Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/02d204a4e09246509d828ba60f4a1243.mp3";
+                            author = "Jenny Hadfield";
+                            "description_html" = "A half marathon is a major commitment - but that doesn't mean it has to consume your life.  If you struggle to find time for training or love to mix it up with cross-training, the Busy Person's Half Marathon Plan is for you!  
+\n
+\nThe 14-week schedule trims the fat to include only high quality workouts and what is necessary to perform at your best.  
+\n
+\n
+\nPerfect for the time-crunched runner, the training plan includes three focused high quality running workouts per week.  If you find you have more time on your hands, you can add two cross-training workouts to the mix. 
+\n
+\nThe plan builds slowly to allow your body to adapt to the demands of the training so you can run stronger for longer and includes long endurance runs, interval and tempo workouts, and recovery runs. 
+\n
+\nThis is an intermediate level training plan and is geared to those who have been running three times per week for 40-60 minutes for at least six months.";
+                            "description_short" = "14 weeks, 41 workouts";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                            "last_modified" = "2013-09-22T23:30:30Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 3;
+                            revision = 1;
+                            sku = "CFN020021-00M";
+                            tags =                             (
+                            );
+                            title = "Busy Person's 13.1";
+                            "total_weeks" = 13;
+                            type = DEFAULT;
+                            version = 1;
+                            "video_url" = "<null>";
+                        };
+                        "plan_workout_id" = "bbe44edc-6fd7-4c21-aeda-c0a3d858336e";
+                        rating = "<null>";
+                        "scheduled_at" = "2014-02-26T09:00:00Z";
+                        status = completed;
+                        title = "Busy Person's - 6.2";
+                        version = 1;
+                        "video_url" = "<null>";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "47fae4a7-ad05-53cd-d762-a894431a0d89";
+                    };
+                },
+                                {
+                    "avg_hr" = 140;
+                    calories = 1097;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-03-03T01:12:44Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/2a63ad23-ba41-48c8-afe6-b82ff0aee542/77a863af-efcb-4b1b-81ee-ff782d12f86a_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=iS3e0%2FgGNHHFjZxEy02sTJorhsg%3D&Expires=1395189709";
+                    distance = 12876;
+                    duration = 5081;
+                    grade = "<null>";
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/2a63ad23-ba41-48c8-afe6-b82ff0aee542/77a863af-efcb-4b1b-81ee-ff782d12f86a_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=9B%2B%2FZ%2FaYm8soVuJL30gOBeS6nhM%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                119
+                            );
+                            "top_right" =                             (
+                                150,
+                                126
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                150,
+                                127
+                            );
+                            "top_right" =                             (
+                                5081,
+                                141
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 126;
+                            low = 119;
+                            zone = 1;
+                        },
+                                                {
+                            high = 141;
+                            low = 127;
+                            zone = 2;
+                        },
+                                                {
+                            high = 158;
+                            low = 152;
+                            zone = 3;
+                        },
+                                                {
+                            high = 166;
+                            low = 161;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 167;
+                            zone = 5;
+                        }
+                    );
+                    id = "77a863af-efcb-4b1b-81ee-ff782d12f86a";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/2a63ad23-ba41-48c8-afe6-b82ff0aee542/77a863af-efcb-4b1b-81ee-ff782d12f86a.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=9EvVN%2F888BsQHZ78lzJ3Ug2AQPQ%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T05:56:37Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-03-03T01:12:44Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/1b921a94958a46f5a7f14f8eb150095d.mp3";
+                        author = "coach@jennyhadfield.com";
+                        "completed_at" = "2014-03-03T01:12:44Z";
+                        "description_html" = "This is a long slow endurance run.<br><br>Warm up: This one starts with a 0.2 mile easy walk. <br><br>Main set: The main body of the run includes 7.8 mile run in zone 2.<br><br>Cool down: No cool down, but please walk for extra 5 min after you finish your workout.  <br><br>Tip: It can be done on any type of route.  <br><br>Total duration: 8 Miles";
+                        "description_short" = "8 mile long slow endurance run";
+                        distance = 8;
+                        duration = "<null>";
+                        "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/f196672e3e769c1374e890b44dfaf460/f196672e3e769c1374e890b44dfaf460.png";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                        id = "2a63ad23-ba41-48c8-afe6-b82ff0aee542";
+                        "last_modified" = "2014-03-03T01:13:25Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/02d204a4e09246509d828ba60f4a1243.mp3";
+                            author = "Jenny Hadfield";
+                            "description_html" = "A half marathon is a major commitment - but that doesn't mean it has to consume your life.  If you struggle to find time for training or love to mix it up with cross-training, the Busy Person's Half Marathon Plan is for you!  
+\n
+\nThe 14-week schedule trims the fat to include only high quality workouts and what is necessary to perform at your best.  
+\n
+\n
+\nPerfect for the time-crunched runner, the training plan includes three focused high quality running workouts per week.  If you find you have more time on your hands, you can add two cross-training workouts to the mix. 
+\n
+\nThe plan builds slowly to allow your body to adapt to the demands of the training so you can run stronger for longer and includes long endurance runs, interval and tempo workouts, and recovery runs. 
+\n
+\nThis is an intermediate level training plan and is geared to those who have been running three times per week for 40-60 minutes for at least six months.";
+                            "description_short" = "14 weeks, 41 workouts";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                            "last_modified" = "2013-09-22T23:30:30Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 3;
+                            revision = 1;
+                            sku = "CFN020021-00M";
+                            tags =                             (
+                            );
+                            title = "Busy Person's 13.1";
+                            "total_weeks" = 13;
+                            type = DEFAULT;
+                            version = 1;
+                            "video_url" = "<null>";
+                        };
+                        "plan_workout_id" = "cd3afbfb-a7e1-49ad-a370-1f58cbc86f65";
+                        rating = "<null>";
+                        "scheduled_at" = "2014-02-22T09:00:00Z";
+                        status = completed;
+                        title = "Busy Person's - 5.3";
+                        version = 1;
+                        "video_url" = "<null>";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "f196672e-3e76-9c13-74e8-90b44dfaf460";
+                    };
+                },
+                                {
+                    "avg_hr" = 135;
+                    calories = 379;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-03-03T16:43:56Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/a6acdcdc-d868-4043-aa9b-bd2ba7f744f3/797b884b-f44f-4b2e-aaac-26059d1ffbb9_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=KBfdfrHZi8%2BVwcWHNMg%2B0%2FqITbU%3D&Expires=1395189709";
+                    distance = 5381;
+                    duration = 1860;
+                    grade = 80;
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/a6acdcdc-d868-4043-aa9b-bd2ba7f744f3/797b884b-f44f-4b2e-aaac-26059d1ffbb9_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=k5IGcmwMPs3RJ%2FbmBL5X%2FB9v83E%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                119
+                            );
+                            "top_right" =                             (
+                                180,
+                                126
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                180,
+                                127
+                            );
+                            "top_right" =                             (
+                                780,
+                                141
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                780,
+                                161
+                            );
+                            "top_right" =                             (
+                                900,
+                                166
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                900,
+                                127
+                            );
+                            "top_right" =                             (
+                                1020,
+                                141
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1020,
+                                161
+                            );
+                            "top_right" =                             (
+                                1140,
+                                166
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1140,
+                                127
+                            );
+                            "top_right" =                             (
+                                1260,
+                                141
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1260,
+                                161
+                            );
+                            "top_right" =                             (
+                                1380,
+                                166
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1380,
+                                127
+                            );
+                            "top_right" =                             (
+                                1500,
+                                141
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1500,
+                                161
+                            );
+                            "top_right" =                             (
+                                1620,
+                                166
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1620,
+                                127
+                            );
+                            "top_right" =                             (
+                                1740,
+                                141
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1740,
+                                119
+                            );
+                            "top_right" =                             (
+                                1860,
+                                126
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 126;
+                            low = 119;
+                            zone = 1;
+                        },
+                                                {
+                            high = 141;
+                            low = 127;
+                            zone = 2;
+                        },
+                                                {
+                            high = 158;
+                            low = 152;
+                            zone = 3;
+                        },
+                                                {
+                            high = 166;
+                            low = 161;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 167;
+                            zone = 5;
+                        }
+                    );
+                    id = "797b884b-f44f-4b2e-aaac-26059d1ffbb9";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/a6acdcdc-d868-4043-aa9b-bd2ba7f744f3/797b884b-f44f-4b2e-aaac-26059d1ffbb9.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=POT%2FGg2XPFftM1vgYTk95Vqi6P0%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T05:56:37Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-03-03T16:43:56Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/07616ef8b92944c5816cf811c3f6ba42.mp3";
+                        author = "coach@jennyhadfield.com";
+                        "completed_at" = "2014-03-03T16:43:56Z";
+                        "description_html" = "This is a interval run.<br><br>Warm up: This one starts with a 3-minute walk, then you will progress to a 10 min easy run in zone 2 <br><br>Main set: The main body of the run includes 4 x 2-min intervals in zone 4, with two min zone 2 easy recovery.<br><br>Cool down: The session finishes with a 2-min walking.  <br><br>Tip: It can be done on any type of route.  <br><br>Total duration: 31 minutes";
+                        "description_short" = "31 min interval run";
+                        distance = "<null>";
+                        duration = 1860;
+                        "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/d3fe2568cf50124e7069540b72405b0e/d3fe2568cf50124e7069540b72405b0e.png";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                        id = "a6acdcdc-d868-4043-aa9b-bd2ba7f744f3";
+                        "last_modified" = "2014-03-03T17:52:20Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/02d204a4e09246509d828ba60f4a1243.mp3";
+                            author = "Jenny Hadfield";
+                            "description_html" = "A half marathon is a major commitment - but that doesn't mean it has to consume your life.  If you struggle to find time for training or love to mix it up with cross-training, the Busy Person's Half Marathon Plan is for you!  
+\n
+\nThe 14-week schedule trims the fat to include only high quality workouts and what is necessary to perform at your best.  
+\n
+\n
+\nPerfect for the time-crunched runner, the training plan includes three focused high quality running workouts per week.  If you find you have more time on your hands, you can add two cross-training workouts to the mix. 
+\n
+\nThe plan builds slowly to allow your body to adapt to the demands of the training so you can run stronger for longer and includes long endurance runs, interval and tempo workouts, and recovery runs. 
+\n
+\nThis is an intermediate level training plan and is geared to those who have been running three times per week for 40-60 minutes for at least six months.";
+                            "description_short" = "14 weeks, 41 workouts";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                            "last_modified" = "2013-09-22T23:30:30Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 3;
+                            revision = 1;
+                            sku = "CFN020021-00M";
+                            tags =                             (
+                            );
+                            title = "Busy Person's 13.1";
+                            "total_weeks" = 13;
+                            type = DEFAULT;
+                            version = 1;
+                            "video_url" = "<null>";
+                        };
+                        "plan_workout_id" = "94a9678f-3653-4b87-b33a-157095ca7f1f";
+                        rating = "<null>";
+                        "scheduled_at" = "2014-03-03T09:00:00Z";
+                        status = completed;
+                        title = "Busy Person's - 7.1";
+                        version = 1;
+                        "video_url" = "<null>";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "d3fe2568-cf50-124e-7069-540b72405b0e";
+                    };
+                },
+                                {
+                    "avg_hr" = 141;
+                    calories = 664;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-02-17T18:45:48Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/e31bfc78-94d1-418d-b290-a4f388b713f9/3a9a7d43-09df-4b3b-a41d-0ffc4b93e153_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=I1J7YcgUisVPJR873GNl0Wj8JK0%3D&Expires=1395189709";
+                    distance = 8567;
+                    duration = 3060;
+                    grade = 90;
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/e31bfc78-94d1-418d-b290-a4f388b713f9/3a9a7d43-09df-4b3b-a41d-0ffc4b93e153_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=atAbVXNguijQ9771SrzF37TXBn0%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                116
+                            );
+                            "top_right" =                             (
+                                180,
+                                122
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                180,
+                                123
+                            );
+                            "top_right" =                             (
+                                2880,
+                                147
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                2880,
+                                116
+                            );
+                            "top_right" =                             (
+                                3060,
+                                122
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 122;
+                            low = 116;
+                            zone = 1;
+                        },
+                                                {
+                            high = 147;
+                            low = 123;
+                            zone = 2;
+                        },
+                                                {
+                            high = 156;
+                            low = 148;
+                            zone = 3;
+                        },
+                                                {
+                            high = 161;
+                            low = 157;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 162;
+                            zone = 5;
+                        }
+                    );
+                    id = "3a9a7d43-09df-4b3b-a41d-0ffc4b93e153";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/e31bfc78-94d1-418d-b290-a4f388b713f9/3a9a7d43-09df-4b3b-a41d-0ffc4b93e153.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=g6Lb%2BgskKC%2F64K5TVbfE%2FaXsKPk%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T05:56:38Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-02-17T18:45:48Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/5bd0e9a12f5a4718bc27db1ff31de830.mp3";
+                        author = "coach@jennyhadfield.com";
+                        "completed_at" = "2014-02-17T18:45:48Z";
+                        "description_html" = "This is a easy effort run.<br><br>Warm up: This one starts with a 3-minute walk. <br><br>Main set: The main body of the run includes 45 min in zone 2.<br><br>Cool down: The session finishes with a 3-min walking.  <br><br>Tip: It can be done on any type of route.  <br><br>Total duration: 51 minutes";
+                        "description_short" = "51 min easy effort run";
+                        distance = "<null>";
+                        duration = 3060;
+                        "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/9513eae50009f769a0dcf79c499d646b/9513eae50009f769a0dcf79c499d646b.png";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                        id = "e31bfc78-94d1-418d-b290-a4f388b713f9";
+                        "last_modified" = "2014-02-17T19:41:03Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/02d204a4e09246509d828ba60f4a1243.mp3";
+                            author = "Jenny Hadfield";
+                            "description_html" = "A half marathon is a major commitment - but that doesn't mean it has to consume your life.  If you struggle to find time for training or love to mix it up with cross-training, the Busy Person's Half Marathon Plan is for you!  
+\n
+\nThe 14-week schedule trims the fat to include only high quality workouts and what is necessary to perform at your best.  
+\n
+\n
+\nPerfect for the time-crunched runner, the training plan includes three focused high quality running workouts per week.  If you find you have more time on your hands, you can add two cross-training workouts to the mix. 
+\n
+\nThe plan builds slowly to allow your body to adapt to the demands of the training so you can run stronger for longer and includes long endurance runs, interval and tempo workouts, and recovery runs. 
+\n
+\nThis is an intermediate level training plan and is geared to those who have been running three times per week for 40-60 minutes for at least six months.";
+                            "description_short" = "14 weeks, 41 workouts";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                            "last_modified" = "2013-09-22T23:30:30Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 3;
+                            revision = 1;
+                            sku = "CFN020021-00M";
+                            tags =                             (
+                            );
+                            title = "Busy Person's 13.1";
+                            "total_weeks" = 13;
+                            type = DEFAULT;
+                            version = 1;
+                            "video_url" = "<null>";
+                        };
+                        "plan_workout_id" = "c983f155-e04f-4e32-a5f2-57918e07a04e";
+                        rating = "<null>";
+                        "scheduled_at" = "2014-02-10T09:00:00Z";
+                        status = completed;
+                        title = "Busy Person's - 4.1";
+                        version = 1;
+                        "video_url" = "<null>";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "9513eae5-0009-f769-a0dc-f79c499d646b";
+                    };
+                },
+                                {
+                    "avg_hr" = 114;
+                    calories = 225;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-03-06T20:55:45Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/d13f32e3-5e4d-46f7-a98b-f0dd99e54e05/60e3cd20-b22e-4111-808d-84752f53faaf_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=q59N3zHY7FalXUWOMZS4nC46KvI%3D&Expires=1395189709";
+                    distance = 0;
+                    duration = 1800;
+                    grade = "<null>";
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/d13f32e3-5e4d-46f7-a98b-f0dd99e54e05/60e3cd20-b22e-4111-808d-84752f53faaf_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=Ex9ojjjlxV93qZn1bX5RuQ97wCc%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                0
+                            );
+                            "top_right" =                             (
+                                1800,
+                                0
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 123;
+                            low = 116;
+                            zone = 1;
+                        },
+                                                {
+                            high = 137;
+                            low = 124;
+                            zone = 2;
+                        },
+                                                {
+                            high = 154;
+                            low = 148;
+                            zone = 3;
+                        },
+                                                {
+                            high = 162;
+                            low = 157;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 163;
+                            zone = 5;
+                        }
+                    );
+                    id = "60e3cd20-b22e-4111-808d-84752f53faaf";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/d13f32e3-5e4d-46f7-a98b-f0dd99e54e05/60e3cd20-b22e-4111-808d-84752f53faaf.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=V5BEpTudkf0jAD21vdRSwdokfgI%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T05:56:39Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-03-06T20:55:45Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/3c53f4f3f803485087e440570dbf0531.mp3";
+                        author = "fitwriter@hotmail.com";
+                        "completed_at" = "2014-02-20T20:43:30Z";
+                        "description_html" = "This full-body strength workout includes 9 exercises that are arranged in a circuit, meaning you will do one set of each exercise and move to the next. You will complete the entire circuit twice. The only equipment required is dumbbells of various weights and an aerobics step.<br><br>Total duration: 30 minutes";
+                        "description_short" = "30 min full-body 9-circuit workout";
+                        distance = "<null>";
+                        duration = 1800;
+                        "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/3c105a2f0e742f25eab8eff18f709ad7/3c105a2f0e742f25eab8eff18f709ad7.png";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/e510440b12314a25a72100c453beade5.png";
+                        id = "d13f32e3-5e4d-46f7-a98b-f0dd99e54e05";
+                        "last_modified" = "2014-03-12T05:56:39Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/3c53f4f3f803485087e440570dbf0531.mp3";
+                            author = "Matt Fitzgerald";
+                            "description_html" = "This full-body strength workout includes 9 exercises that are arranged in a circuit, meaning you will do one set of each exercise and move to the next. You will complete the entire circuit twice. The only equipment required is dumbbells of various weights and an aerobics step.<br><br>Total duration: 30 minutes";
+                            "description_short" = "30 min full-body 9-circuit workout";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/3c105a2f0e742f25eab8eff18f709ad7/3c105a2f0e742f25eab8eff18f709ad7.png";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/e510440b12314a25a72100c453beade5.png";
+                            "last_modified" = "2013-11-14T19:02:41Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 1;
+                            revision = 1;
+                            sku = "CFN01001C-00M";
+                            tags =                             (
+                            );
+                            title = "Functional Strength";
+                            "total_weeks" = 1;
+                            type = ALACARTE;
+                            version = 1;
+                            "video_url" = "https://s3.amazonaws.com/content.pearsports.com/videos/82b33a01f4a1484280fb6270b5536a9e.m4v";
+                            "workout_distance" = "<null>";
+                            "workout_duration" = 1800;
+                        };
+                        "plan_workout_id" = "c4c9ef87-02ab-4f77-a313-11e3fd600318";
+                        rating = "<null>";
+                        "scheduled_at" = "<null>";
+                        status = completed;
+                        title = "Functional Strength";
+                        version = 1;
+                        "video_url" = "https://s3.amazonaws.com/content.pearsports.com/videos/82b33a01f4a1484280fb6270b5536a9e.m4v";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "3c105a2f-0e74-2f25-eab8-eff18f709ad7";
+                    };
+                },
+                                {
+                    "avg_hr" = 116;
+                    calories = 282;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-02-27T20:52:12Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/d13f32e3-5e4d-46f7-a98b-f0dd99e54e05/654b6b5e-241d-440a-acab-3f616b058eb4_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=Ad%2BnVtLwZkPZpxk6P2rmYMkJQr4%3D&Expires=1395189709";
+                    distance = 0;
+                    duration = 1800;
+                    grade = "<null>";
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/d13f32e3-5e4d-46f7-a98b-f0dd99e54e05/654b6b5e-241d-440a-acab-3f616b058eb4_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=JjaLLd8DgLV%2F6imjGaBmWhYR2yI%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                0
+                            );
+                            "top_right" =                             (
+                                1800,
+                                0
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 123;
+                            low = 116;
+                            zone = 1;
+                        },
+                                                {
+                            high = 137;
+                            low = 124;
+                            zone = 2;
+                        },
+                                                {
+                            high = 154;
+                            low = 148;
+                            zone = 3;
+                        },
+                                                {
+                            high = 162;
+                            low = 157;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 163;
+                            zone = 5;
+                        }
+                    );
+                    id = "654b6b5e-241d-440a-acab-3f616b058eb4";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/d13f32e3-5e4d-46f7-a98b-f0dd99e54e05/654b6b5e-241d-440a-acab-3f616b058eb4.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=ZBkvv8zHziS%2BB482yuDw8xfrP9A%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T05:56:39Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-02-27T20:52:12Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/3c53f4f3f803485087e440570dbf0531.mp3";
+                        author = "fitwriter@hotmail.com";
+                        "completed_at" = "2014-02-20T20:43:30Z";
+                        "description_html" = "This full-body strength workout includes 9 exercises that are arranged in a circuit, meaning you will do one set of each exercise and move to the next. You will complete the entire circuit twice. The only equipment required is dumbbells of various weights and an aerobics step.<br><br>Total duration: 30 minutes";
+                        "description_short" = "30 min full-body 9-circuit workout";
+                        distance = "<null>";
+                        duration = 1800;
+                        "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/3c105a2f0e742f25eab8eff18f709ad7/3c105a2f0e742f25eab8eff18f709ad7.png";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/e510440b12314a25a72100c453beade5.png";
+                        id = "d13f32e3-5e4d-46f7-a98b-f0dd99e54e05";
+                        "last_modified" = "2014-03-12T05:56:39Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/3c53f4f3f803485087e440570dbf0531.mp3";
+                            author = "Matt Fitzgerald";
+                            "description_html" = "This full-body strength workout includes 9 exercises that are arranged in a circuit, meaning you will do one set of each exercise and move to the next. You will complete the entire circuit twice. The only equipment required is dumbbells of various weights and an aerobics step.<br><br>Total duration: 30 minutes";
+                            "description_short" = "30 min full-body 9-circuit workout";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/3c105a2f0e742f25eab8eff18f709ad7/3c105a2f0e742f25eab8eff18f709ad7.png";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/e510440b12314a25a72100c453beade5.png";
+                            "last_modified" = "2013-11-14T19:02:41Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 1;
+                            revision = 1;
+                            sku = "CFN01001C-00M";
+                            tags =                             (
+                            );
+                            title = "Functional Strength";
+                            "total_weeks" = 1;
+                            type = ALACARTE;
+                            version = 1;
+                            "video_url" = "https://s3.amazonaws.com/content.pearsports.com/videos/82b33a01f4a1484280fb6270b5536a9e.m4v";
+                            "workout_distance" = "<null>";
+                            "workout_duration" = 1800;
+                        };
+                        "plan_workout_id" = "c4c9ef87-02ab-4f77-a313-11e3fd600318";
+                        rating = "<null>";
+                        "scheduled_at" = "<null>";
+                        status = completed;
+                        title = "Functional Strength";
+                        version = 1;
+                        "video_url" = "https://s3.amazonaws.com/content.pearsports.com/videos/82b33a01f4a1484280fb6270b5536a9e.m4v";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "3c105a2f-0e74-2f25-eab8-eff18f709ad7";
+                    };
+                },
+                                {
+                    "avg_hr" = 0;
+                    calories = 0;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-02-20T20:43:30Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/d13f32e3-5e4d-46f7-a98b-f0dd99e54e05/c1cbf097-855f-4d6c-a859-8fb2780884f0_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=ZIIzLM6OXLs%2BUkcMQFNanDfVDVI%3D&Expires=1395189709";
+                    distance = 0;
+                    duration = 1800;
+                    grade = "<null>";
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/d13f32e3-5e4d-46f7-a98b-f0dd99e54e05/c1cbf097-855f-4d6c-a859-8fb2780884f0_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=wkHtOPq7GxRFiorivMuw1Cf%2B9Dw%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                0
+                            );
+                            "top_right" =                             (
+                                1800,
+                                0
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 131;
+                            low = 123;
+                            zone = 1;
+                        },
+                                                {
+                            high = 146;
+                            low = 132;
+                            zone = 2;
+                        },
+                                                {
+                            high = 164;
+                            low = 157;
+                            zone = 3;
+                        },
+                                                {
+                            high = 172;
+                            low = 167;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 173;
+                            zone = 5;
+                        }
+                    );
+                    id = "c1cbf097-855f-4d6c-a859-8fb2780884f0";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/d13f32e3-5e4d-46f7-a98b-f0dd99e54e05/c1cbf097-855f-4d6c-a859-8fb2780884f0.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=D9S1ZYXrfb4hpydN2x8DecKPQ6A%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T05:56:39Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-02-20T20:43:30Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/3c53f4f3f803485087e440570dbf0531.mp3";
+                        author = "fitwriter@hotmail.com";
+                        "completed_at" = "2014-02-20T20:43:30Z";
+                        "description_html" = "This full-body strength workout includes 9 exercises that are arranged in a circuit, meaning you will do one set of each exercise and move to the next. You will complete the entire circuit twice. The only equipment required is dumbbells of various weights and an aerobics step.<br><br>Total duration: 30 minutes";
+                        "description_short" = "30 min full-body 9-circuit workout";
+                        distance = "<null>";
+                        duration = 1800;
+                        "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/3c105a2f0e742f25eab8eff18f709ad7/3c105a2f0e742f25eab8eff18f709ad7.png";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/e510440b12314a25a72100c453beade5.png";
+                        id = "d13f32e3-5e4d-46f7-a98b-f0dd99e54e05";
+                        "last_modified" = "2014-03-12T05:56:39Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/3c53f4f3f803485087e440570dbf0531.mp3";
+                            author = "Matt Fitzgerald";
+                            "description_html" = "This full-body strength workout includes 9 exercises that are arranged in a circuit, meaning you will do one set of each exercise and move to the next. You will complete the entire circuit twice. The only equipment required is dumbbells of various weights and an aerobics step.<br><br>Total duration: 30 minutes";
+                            "description_short" = "30 min full-body 9-circuit workout";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/3c105a2f0e742f25eab8eff18f709ad7/3c105a2f0e742f25eab8eff18f709ad7.png";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/e510440b12314a25a72100c453beade5.png";
+                            "last_modified" = "2013-11-14T19:02:41Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 1;
+                            revision = 1;
+                            sku = "CFN01001C-00M";
+                            tags =                             (
+                            );
+                            title = "Functional Strength";
+                            "total_weeks" = 1;
+                            type = ALACARTE;
+                            version = 1;
+                            "video_url" = "https://s3.amazonaws.com/content.pearsports.com/videos/82b33a01f4a1484280fb6270b5536a9e.m4v";
+                            "workout_distance" = "<null>";
+                            "workout_duration" = 1800;
+                        };
+                        "plan_workout_id" = "c4c9ef87-02ab-4f77-a313-11e3fd600318";
+                        rating = "<null>";
+                        "scheduled_at" = "<null>";
+                        status = completed;
+                        title = "Functional Strength";
+                        version = 1;
+                        "video_url" = "https://s3.amazonaws.com/content.pearsports.com/videos/82b33a01f4a1484280fb6270b5536a9e.m4v";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "3c105a2f-0e74-2f25-eab8-eff18f709ad7";
+                    };
+                },
+                                {
+                    "avg_hr" = 0;
+                    calories = 0;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-03-08T19:28:36Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/2f3092ac-3383-4a16-b90c-09b14f12c196/fdc21a4f-ddd7-46be-a052-f811bf1aa167_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=KuZc%2BLlB36GuTrY7JpouZEp9RfA%3D&Expires=1395189709";
+                    distance = 2101;
+                    duration = 2934;
+                    grade = "<null>";
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/2f3092ac-3383-4a16-b90c-09b14f12c196/fdc21a4f-ddd7-46be-a052-f811bf1aa167_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=cdYdRgyky%2BNy%2FbNn2s477fJnv78%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                0
+                            );
+                            "top_right" =                             (
+                                2934,
+                                0
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 126;
+                            low = 119;
+                            zone = 1;
+                        },
+                                                {
+                            high = 141;
+                            low = 127;
+                            zone = 2;
+                        },
+                                                {
+                            high = 158;
+                            low = 152;
+                            zone = 3;
+                        },
+                                                {
+                            high = 166;
+                            low = 161;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 167;
+                            zone = 5;
+                        }
+                    );
+                    id = "fdc21a4f-ddd7-46be-a052-f811bf1aa167";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/2f3092ac-3383-4a16-b90c-09b14f12c196/fdc21a4f-ddd7-46be-a052-f811bf1aa167.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=PQZaIrqot8ajhn2SGx5hyhqtMcg%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T05:56:40Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-03-08T19:28:36Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "<null>";
+                        author = "fitwriter@hotmail.com";
+                        "completed_at" = "2014-01-03T22:56:40Z";
+                        "description_html" = "This is a free format workout with no coaching. You can use this for any kind of activity. When available, Pear will record your heart rate, calories, time, pace and distance.";
+                        "description_short" = "Free Format Workout";
+                        distance = "<null>";
+                        duration = 28800;
+                        "graph_url" = "<null>";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/775475290f1b45afae3bb3eade269564.png";
+                        id = "2f3092ac-3383-4a16-b90c-09b14f12c196";
+                        "last_modified" = "2014-03-12T05:56:50Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "<null>";
+                            author = "<null>";
+                            "description_html" = "This is a free format workout with no coaching. You can use this for any kind of activity. When available, Pear will record your heart rate, calories, time, pace and distance.";
+                            "description_short" = "Free Format Workout";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "graph_url" = "<null>";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/775475290f1b45afae3bb3eade269564.png";
+                            "last_modified" = "2013-10-12T00:21:05Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 1;
+                            revision = 0;
+                            sku = "CFN000001-00";
+                            tags =                             (
+                            );
+                            title = "Free Format Workout";
+                            "total_weeks" = 1;
+                            type = FREEFORM;
+                            version = 1;
+                            "video_url" = "<null>";
+                            "workout_distance" = "<null>";
+                            "workout_duration" = 28800;
+                        };
+                        "plan_workout_id" = "aa6b418a-f09f-4831-8e09-ceb1164c3dce";
+                        rating = "<null>";
+                        "scheduled_at" = "<null>";
+                        status = completed;
+                        title = "Free Format Workout";
+                        version = 1;
+                        "video_url" = "<null>";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "f54a9ab3-f21b-9536-fb36-e1aa34f388b6";
+                    };
+                },
+                                {
+                    "avg_hr" = 0;
+                    calories = 0;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-02-23T20:26:56Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/2f3092ac-3383-4a16-b90c-09b14f12c196/d09f1d1a-ad3c-481c-979d-cf71c7441a6d_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=l4PTfWxIM7k40Df6b%2F4Jmz3Pfo4%3D&Expires=1395189709";
+                    distance = 4210;
+                    duration = 2726;
+                    grade = "<null>";
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/2f3092ac-3383-4a16-b90c-09b14f12c196/d09f1d1a-ad3c-481c-979d-cf71c7441a6d_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=k3jYCNtfewwS4eTW875D4WlWsSw%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                0
+                            );
+                            "top_right" =                             (
+                                2726,
+                                0
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 131;
+                            low = 123;
+                            zone = 1;
+                        },
+                                                {
+                            high = 146;
+                            low = 132;
+                            zone = 2;
+                        },
+                                                {
+                            high = 164;
+                            low = 157;
+                            zone = 3;
+                        },
+                                                {
+                            high = 172;
+                            low = 167;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 173;
+                            zone = 5;
+                        }
+                    );
+                    id = "d09f1d1a-ad3c-481c-979d-cf71c7441a6d";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/2f3092ac-3383-4a16-b90c-09b14f12c196/d09f1d1a-ad3c-481c-979d-cf71c7441a6d.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=xZZyEpSvO1KRk%2FGEprRVUQqWuQo%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T05:56:41Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-02-23T20:26:56Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "<null>";
+                        author = "fitwriter@hotmail.com";
+                        "completed_at" = "2014-01-03T22:56:40Z";
+                        "description_html" = "This is a free format workout with no coaching. You can use this for any kind of activity. When available, Pear will record your heart rate, calories, time, pace and distance.";
+                        "description_short" = "Free Format Workout";
+                        distance = "<null>";
+                        duration = 28800;
+                        "graph_url" = "<null>";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/775475290f1b45afae3bb3eade269564.png";
+                        id = "2f3092ac-3383-4a16-b90c-09b14f12c196";
+                        "last_modified" = "2014-03-12T05:56:50Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "<null>";
+                            author = "<null>";
+                            "description_html" = "This is a free format workout with no coaching. You can use this for any kind of activity. When available, Pear will record your heart rate, calories, time, pace and distance.";
+                            "description_short" = "Free Format Workout";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "graph_url" = "<null>";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/775475290f1b45afae3bb3eade269564.png";
+                            "last_modified" = "2013-10-12T00:21:05Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 1;
+                            revision = 0;
+                            sku = "CFN000001-00";
+                            tags =                             (
+                            );
+                            title = "Free Format Workout";
+                            "total_weeks" = 1;
+                            type = FREEFORM;
+                            version = 1;
+                            "video_url" = "<null>";
+                            "workout_distance" = "<null>";
+                            "workout_duration" = 28800;
+                        };
+                        "plan_workout_id" = "aa6b418a-f09f-4831-8e09-ceb1164c3dce";
+                        rating = "<null>";
+                        "scheduled_at" = "<null>";
+                        status = completed;
+                        title = "Free Format Workout";
+                        version = 1;
+                        "video_url" = "<null>";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "f54a9ab3-f21b-9536-fb36-e1aa34f388b6";
+                    };
+                },
+                                {
+                    "avg_hr" = 133;
+                    calories = 547;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-03-10T15:49:22Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/63fcaf05-8eb0-430a-9274-7a9c70f9aa8f/9ff579cb-31b9-433b-a7ea-7afa23fb78aa_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=CgKYJS9eY0wJ324xxthHByrOMV4%3D&Expires=1395189709";
+                    distance = 7825;
+                    duration = 3060;
+                    grade = 96;
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/63fcaf05-8eb0-430a-9274-7a9c70f9aa8f/9ff579cb-31b9-433b-a7ea-7afa23fb78aa_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=1jWju9B0gpYESljCQNJZlM5dr%2Bg%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                119
+                            );
+                            "top_right" =                             (
+                                180,
+                                126
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                180,
+                                127
+                            );
+                            "top_right" =                             (
+                                2880,
+                                141
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                2880,
+                                119
+                            );
+                            "top_right" =                             (
+                                3060,
+                                126
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 126;
+                            low = 119;
+                            zone = 1;
+                        },
+                                                {
+                            high = 141;
+                            low = 127;
+                            zone = 2;
+                        },
+                                                {
+                            high = 158;
+                            low = 152;
+                            zone = 3;
+                        },
+                                                {
+                            high = 166;
+                            low = 161;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 167;
+                            zone = 5;
+                        }
+                    );
+                    id = "9ff579cb-31b9-433b-a7ea-7afa23fb78aa";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/63fcaf05-8eb0-430a-9274-7a9c70f9aa8f/9ff579cb-31b9-433b-a7ea-7afa23fb78aa.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=PRzhAXDPbPRQ0Ci4R7svVf9rGeE%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T05:56:50Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-03-10T15:49:22Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/5bd0e9a12f5a4718bc27db1ff31de830.mp3";
+                        author = "coach@jennyhadfield.com";
+                        "completed_at" = "2014-03-10T15:49:22Z";
+                        "description_html" = "This is a easy effort run.<br><br>Warm up: This one starts with a 3-minute walk. <br><br>Main set: The main body of the run includes 45 min in zone 2.<br><br>Cool down: The session finishes with a 3-min walking.  <br><br>Tip: It can be done on any type of route.  <br><br>Total duration: 51 minutes";
+                        "description_short" = "51 min easy effort run";
+                        distance = "<null>";
+                        duration = 3060;
+                        "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/6a3d62cc9aaef3127c3aa148805dbae3/6a3d62cc9aaef3127c3aa148805dbae3.png";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                        id = "63fcaf05-8eb0-430a-9274-7a9c70f9aa8f";
+                        "last_modified" = "2014-03-10T16:10:53Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/02d204a4e09246509d828ba60f4a1243.mp3";
+                            author = "Jenny Hadfield";
+                            "description_html" = "A half marathon is a major commitment - but that doesn't mean it has to consume your life.  If you struggle to find time for training or love to mix it up with cross-training, the Busy Person's Half Marathon Plan is for you!  
+\n
+\nThe 14-week schedule trims the fat to include only high quality workouts and what is necessary to perform at your best.  
+\n
+\n
+\nPerfect for the time-crunched runner, the training plan includes three focused high quality running workouts per week.  If you find you have more time on your hands, you can add two cross-training workouts to the mix. 
+\n
+\nThe plan builds slowly to allow your body to adapt to the demands of the training so you can run stronger for longer and includes long endurance runs, interval and tempo workouts, and recovery runs. 
+\n
+\nThis is an intermediate level training plan and is geared to those who have been running three times per week for 40-60 minutes for at least six months.";
+                            "description_short" = "14 weeks, 41 workouts";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                            "last_modified" = "2013-09-22T23:30:30Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 3;
+                            revision = 1;
+                            sku = "CFN020021-00M";
+                            tags =                             (
+                            );
+                            title = "Busy Person's 13.1";
+                            "total_weeks" = 13;
+                            type = DEFAULT;
+                            version = 1;
+                            "video_url" = "<null>";
+                        };
+                        "plan_workout_id" = "0fed13e4-10a7-4d09-98d5-6624e660e466";
+                        rating = "<null>";
+                        "scheduled_at" = "2014-03-10T09:00:00Z";
+                        status = completed;
+                        title = "Busy Person's - 8.1";
+                        version = 1;
+                        "video_url" = "<null>";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "6a3d62cc-9aae-f312-7c3a-a148805dbae3";
+                    };
+                },
+                                {
+                    "avg_hr" = 141;
+                    calories = 542;
+                    "coach_notes" = "<null>";
+                    "completed_at" = "2014-03-12T15:32:16Z";
+                    "data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/abf99e44-a89d-4ee3-ad92-a9ff4dc22317/4152e181-8fc9-40bf-a98c-4215a3d4077d_raw.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=Fhc1SvSgr3GXbfzEDGXsp%2F61wfc%3D&Expires=1395189709";
+                    distance = 7726;
+                    duration = 2700;
+                    grade = 82;
+                    "hr_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/abf99e44-a89d-4ee3-ad92-a9ff4dc22317/4152e181-8fc9-40bf-a98c-4215a3d4077d_hr.json?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=4hlUEVkBGmqKYK%2BTzGUU0%2BL0cT8%3D&Expires=1395189709";
+                    "hr_target_zones" =                     (
+                                                {
+                            "bottom_left" =                             (
+                                0,
+                                119
+                            );
+                            "top_right" =                             (
+                                180,
+                                126
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                180,
+                                127
+                            );
+                            "top_right" =                             (
+                                780,
+                                141
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                780,
+                                152
+                            );
+                            "top_right" =                             (
+                                1980,
+                                158
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                1980,
+                                127
+                            );
+                            "top_right" =                             (
+                                2580,
+                                141
+                            );
+                        },
+                                                {
+                            "bottom_left" =                             (
+                                2580,
+                                119
+                            );
+                            "top_right" =                             (
+                                2700,
+                                126
+                            );
+                        }
+                    );
+                    "hr_zones" =                     (
+                                                {
+                            high = 126;
+                            low = 119;
+                            zone = 1;
+                        },
+                                                {
+                            high = 141;
+                            low = 127;
+                            zone = 2;
+                        },
+                                                {
+                            high = 158;
+                            low = 152;
+                            zone = 3;
+                        },
+                                                {
+                            high = 166;
+                            low = 161;
+                            zone = 4;
+                        },
+                                                {
+                            high = 230;
+                            low = 167;
+                            zone = 5;
+                        }
+                    );
+                    id = "4152e181-8fc9-40bf-a98c-4215a3d4077d";
+                    "kml_data_url" = "https://s3.amazonaws.com/api.pearsports.com/usc/user_workout/abf99e44-a89d-4ee3-ad92-a9ff4dc22317/4152e181-8fc9-40bf-a98c-4215a3d4077d.kml?AWSAccessKeyId=AKIAJWDA7NNCLGONWJQQ&Signature=ELgTReYeCDJ%2FJfHEOy%2FRRGhd2%2BY%3D&Expires=1395189709";
+                    "last_modified" = "2014-03-12T15:33:55Z";
+                    "lt_hr" = "<null>";
+                    "manual_distance_type" = "<null>";
+                    notes = "<null>";
+                    object = UserWorkoutResult;
+                    "object_md5" = "";
+                    rating = "<null>";
+                    "result_at" = "2014-03-12T15:32:16Z";
+                    session = "<null>";
+                    status = completed;
+                    workout =                     {
+                        "activity_type" = "<null>";
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/c242d4c2096848639722cb41e0b58ce1.mp3";
+                        author = "coach@jennyhadfield.com";
+                        "completed_at" = "2014-03-12T15:32:16Z";
+                        "description_html" = "This is a tempo run.<br><br>Warm up: This one starts with a 3-minute walk, then you will progress to a 10 min easy run in zone 2. <br><br>Main set: The main body of the run includes 20-minute tempo run in zone 3, followed by 10 minutes in zone 2.<br><br>Cool down: The session finishes with a 2-min walking.  <br><br>Tip: It can be done on any type of route.  <br><br>Total duration: 45 minutes";
+                        "description_short" = "45 minute tempo Run";
+                        distance = "<null>";
+                        duration = 2700;
+                        "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/99832a22d1753d205185af68d6694c60/99832a22d1753d205185af68d6694c60.png";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                        id = "abf99e44-a89d-4ee3-ad92-a9ff4dc22317";
+                        "last_modified" = "2014-03-12T15:33:55Z";
+                        notes = "<null>";
+                        object = UserWorkout;
+                        "object_md5" = "";
+                        plan =                         {
+                            "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/02d204a4e09246509d828ba60f4a1243.mp3";
+                            author = "Jenny Hadfield";
+                            "description_html" = "A half marathon is a major commitment - but that doesn't mean it has to consume your life.  If you struggle to find time for training or love to mix it up with cross-training, the Busy Person's Half Marathon Plan is for you!  
+\n
+\nThe 14-week schedule trims the fat to include only high quality workouts and what is necessary to perform at your best.  
+\n
+\n
+\nPerfect for the time-crunched runner, the training plan includes three focused high quality running workouts per week.  If you find you have more time on your hands, you can add two cross-training workouts to the mix. 
+\n
+\nThe plan builds slowly to allow your body to adapt to the demands of the training so you can run stronger for longer and includes long endurance runs, interval and tempo workouts, and recovery runs. 
+\n
+\nThis is an intermediate level training plan and is geared to those who have been running three times per week for 40-60 minutes for at least six months.";
+                            "description_short" = "14 weeks, 41 workouts";
+                            "device_type" = MOBILE;
+                            difficulty = "<null>";
+                            "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                            "last_modified" = "2013-09-22T23:30:30Z";
+                            object = Plan;
+                            "object_md5" = "";
+                            "partner_id" = "<null>";
+                            "per_week" = 3;
+                            revision = 1;
+                            sku = "CFN020021-00M";
+                            tags =                             (
+                            );
+                            title = "Busy Person's 13.1";
+                            "total_weeks" = 13;
+                            type = DEFAULT;
+                            version = 1;
+                            "video_url" = "<null>";
+                        };
+                        "plan_workout_id" = "996b39f1-5eaa-4d0e-af58-2c1919d9c1cd";
+                        rating = "<null>";
+                        "scheduled_at" = "2014-03-12T09:00:00Z";
+                        status = completed;
+                        title = "Busy Person's - 8.2";
+                        version = 1;
+                        "video_url" = "<null>";
+                        "week_day" = "<null>";
+                        "week_num" = "<null>";
+                        "workout_header_id" = "99832a22-d175-3d20-5185-af68d6694c60";
+                    };
+                }
+            );
+            object = UserWorkoutResultList;
+        };
+        "results_count" = 16;
+        workouts =         {
+            count = 4;
+            data =             (
+                                {
+                    "activity_type" = "<null>";
+                    "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/d7f7d36fdbfd457ab0916b8f17025ea1.mp3";
+                    author = "coach@jennyhadfield.com";
+                    "completed_at" = "2014-02-24T06:24:30Z";
+                    "description_html" = "This is a long slow endurance run.<br><br>Warm up: This one starts with a 0.2 mile easy walk. <br><br>Main set: The main body of the run includes 4.8 mile run in zone 2.<br><br>Cool down: No cool down, but please walk for extra 5 min after you finish your workout.  <br><br>Tip: It can be done on any type of route.  <br><br>Total duration: 5 Miles";
+                    "description_short" = "5 mile long slow endurance run";
+                    distance = 5;
+                    duration = "<null>";
+                    "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/9becfb21b14218ad8ec5770ef3ec8546/9becfb21b14218ad8ec5770ef3ec8546.png";
+                    "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                    id = "1a50f61e-4f46-487b-a094-c6659f12d73f";
+                    "last_modified" = "2014-02-24T06:24:30Z";
+                    notes = "<null>";
+                    object = UserWorkout;
+                    "object_md5" = "";
+                    plan =                     {
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/02d204a4e09246509d828ba60f4a1243.mp3";
+                        author = "Jenny Hadfield";
+                        "description_html" = "A half marathon is a major commitment - but that doesn't mean it has to consume your life.  If you struggle to find time for training or love to mix it up with cross-training, the Busy Person's Half Marathon Plan is for you!  
+\n
+\nThe 14-week schedule trims the fat to include only high quality workouts and what is necessary to perform at your best.  
+\n
+\n
+\nPerfect for the time-crunched runner, the training plan includes three focused high quality running workouts per week.  If you find you have more time on your hands, you can add two cross-training workouts to the mix. 
+\n
+\nThe plan builds slowly to allow your body to adapt to the demands of the training so you can run stronger for longer and includes long endurance runs, interval and tempo workouts, and recovery runs. 
+\n
+\nThis is an intermediate level training plan and is geared to those who have been running three times per week for 40-60 minutes for at least six months.";
+                        "description_short" = "14 weeks, 41 workouts";
+                        "device_type" = MOBILE;
+                        difficulty = "<null>";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                        "last_modified" = "2013-09-22T23:30:30Z";
+                        object = Plan;
+                        "object_md5" = "";
+                        "partner_id" = "<null>";
+                        "per_week" = 3;
+                        revision = 1;
+                        sku = "CFN020021-00M";
+                        tags =                         (
+                        );
+                        title = "Busy Person's 13.1";
+                        "total_weeks" = 13;
+                        type = DEFAULT;
+                        version = 1;
+                        "video_url" = "<null>";
+                    };
+                    "plan_workout_id" = "17219dc1-1af1-4143-a624-742e06224916";
+                    rating = "<null>";
+                    "scheduled_at" = "2014-02-15T09:00:00Z";
+                    status = "marked_complete";
+                    title = "Busy Person's - 4.3";
+                    version = 1;
+                    "video_url" = "<null>";
+                    "week_day" = "<null>";
+                    "week_num" = "<null>";
+                    "workout_header_id" = "9becfb21-b142-18ad-8ec5-770ef3ec8546";
+                },
+                                {
+                    "activity_type" = "<null>";
+                    "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/5bd0e9a12f5a4718bc27db1ff31de830.mp3";
+                    author = "coach@jennyhadfield.com";
+                    "completed_at" = "2014-02-24T06:24:22Z";
+                    "description_html" = "This is a easy effort run.<br><br>Warm up: This one starts with a 3-minute walk. <br><br>Main set: The main body of the run includes 45 min in zone 2.<br><br>Cool down: The session finishes with a 3-min walking.  <br><br>Tip: It can be done on any type of route.  <br><br>Total duration: 51 minutes";
+                    "description_short" = "51 min easy effort run";
+                    distance = "<null>";
+                    duration = 3060;
+                    "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/d18a30704946051f13b83ae5772945fd/d18a30704946051f13b83ae5772945fd.png";
+                    "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                    id = "5c485c06-6c69-4f3f-ba41-cff56b782379";
+                    "last_modified" = "2014-02-24T06:24:21Z";
+                    notes = "<null>";
+                    object = UserWorkout;
+                    "object_md5" = "";
+                    plan =                     {
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/02d204a4e09246509d828ba60f4a1243.mp3";
+                        author = "Jenny Hadfield";
+                        "description_html" = "A half marathon is a major commitment - but that doesn't mean it has to consume your life.  If you struggle to find time for training or love to mix it up with cross-training, the Busy Person's Half Marathon Plan is for you!  
+\n
+\nThe 14-week schedule trims the fat to include only high quality workouts and what is necessary to perform at your best.  
+\n
+\n
+\nPerfect for the time-crunched runner, the training plan includes three focused high quality running workouts per week.  If you find you have more time on your hands, you can add two cross-training workouts to the mix. 
+\n
+\nThe plan builds slowly to allow your body to adapt to the demands of the training so you can run stronger for longer and includes long endurance runs, interval and tempo workouts, and recovery runs. 
+\n
+\nThis is an intermediate level training plan and is geared to those who have been running three times per week for 40-60 minutes for at least six months.";
+                        "description_short" = "14 weeks, 41 workouts";
+                        "device_type" = MOBILE;
+                        difficulty = "<null>";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                        "last_modified" = "2013-09-22T23:30:30Z";
+                        object = Plan;
+                        "object_md5" = "";
+                        "partner_id" = "<null>";
+                        "per_week" = 3;
+                        revision = 1;
+                        sku = "CFN020021-00M";
+                        tags =                         (
+                        );
+                        title = "Busy Person's 13.1";
+                        "total_weeks" = 13;
+                        type = DEFAULT;
+                        version = 1;
+                        "video_url" = "<null>";
+                    };
+                    "plan_workout_id" = "85260b3d-f935-4fe0-bce6-91dd2584761b";
+                    rating = "<null>";
+                    "scheduled_at" = "2014-02-19T09:00:00Z";
+                    status = "marked_complete";
+                    title = "Busy Person's - 5.2";
+                    version = 1;
+                    "video_url" = "<null>";
+                    "week_day" = "<null>";
+                    "week_num" = "<null>";
+                    "workout_header_id" = "d18a3070-4946-051f-13b8-3ae5772945fd";
+                },
+                                {
+                    "activity_type" = "<null>";
+                    "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/333f2411d1e24f50ad093b0deb4f311b.mp3";
+                    author = "coach@jennyhadfield.com";
+                    "completed_at" = "2014-03-03T07:15:33Z";
+                    "description_html" = "This is a long slow endurance run.<br><br>Warm up: This one starts with a 0.2 mile easy walk. <br><br>Main set: The main body of the run includes 5.8 mile run in zone 2.<br><br>Cool down: No cool down, but please walk for extra 5 min after you finish your workout.  <br><br>Tip: It can be done on any type of route.  <br><br>Total duration: 6 Miles";
+                    "description_short" = "6 mile long slow endurance run";
+                    distance = 6;
+                    duration = "<null>";
+                    "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/a5a248954a983afd56cc400deaf7bbf9/a5a248954a983afd56cc400deaf7bbf9.png";
+                    "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                    id = "d8d4901e-38a4-4977-9fc8-9e8da6dcfdd8";
+                    "last_modified" = "2014-03-03T07:15:33Z";
+                    notes = "<null>";
+                    object = UserWorkout;
+                    "object_md5" = "";
+                    plan =                     {
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/02d204a4e09246509d828ba60f4a1243.mp3";
+                        author = "Jenny Hadfield";
+                        "description_html" = "A half marathon is a major commitment - but that doesn't mean it has to consume your life.  If you struggle to find time for training or love to mix it up with cross-training, the Busy Person's Half Marathon Plan is for you!  
+\n
+\nThe 14-week schedule trims the fat to include only high quality workouts and what is necessary to perform at your best.  
+\n
+\n
+\nPerfect for the time-crunched runner, the training plan includes three focused high quality running workouts per week.  If you find you have more time on your hands, you can add two cross-training workouts to the mix. 
+\n
+\nThe plan builds slowly to allow your body to adapt to the demands of the training so you can run stronger for longer and includes long endurance runs, interval and tempo workouts, and recovery runs. 
+\n
+\nThis is an intermediate level training plan and is geared to those who have been running three times per week for 40-60 minutes for at least six months.";
+                        "description_short" = "14 weeks, 41 workouts";
+                        "device_type" = MOBILE;
+                        difficulty = "<null>";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                        "last_modified" = "2013-09-22T23:30:30Z";
+                        object = Plan;
+                        "object_md5" = "";
+                        "partner_id" = "<null>";
+                        "per_week" = 3;
+                        revision = 1;
+                        sku = "CFN020021-00M";
+                        tags =                         (
+                        );
+                        title = "Busy Person's 13.1";
+                        "total_weeks" = 13;
+                        type = DEFAULT;
+                        version = 1;
+                        "video_url" = "<null>";
+                    };
+                    "plan_workout_id" = "78a5e177-bb11-46b6-8066-137270c8ca5f";
+                    rating = "<null>";
+                    "scheduled_at" = "2014-03-01T09:00:00Z";
+                    status = "marked_complete";
+                    title = "Busy Person's - 6.3";
+                    version = 1;
+                    "video_url" = "<null>";
+                    "week_day" = "<null>";
+                    "week_num" = "<null>";
+                    "workout_header_id" = "a5a24895-4a98-3afd-56cc-400deaf7bbf9";
+                },
+                                {
+                    "activity_type" = "<null>";
+                    "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/9c7fc19e547b4721a46eb3a8ccf3ac14.mp3";
+                    author = "coach@jennyhadfield.com";
+                    "completed_at" = "<null>";
+                    "description_html" = "This is a long slow endurance run.<br><br>Warm up: This one starts with a 0.2 mile easy walk. <br><br>Main set: The main body of the run includes 8.8 mile run in zone 2.<br><br>Cool down: No cool down, but please walk for extra 5 min after you finish your workout.  <br><br>Tip: It can be done on any type of route.  <br><br>Total duration: 9 Miles";
+                    "description_short" = "9 mile long slow endurance run";
+                    distance = 9;
+                    duration = "<null>";
+                    "graph_url" = "https://s3.amazonaws.com/content.pearsports.com/workouts/ddb8a4799bf5f289907299a41f38f8b5/ddb8a4799bf5f289907299a41f38f8b5.png";
+                    "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                    id = "b800630d-08f6-4811-bc65-82acf07f1fc3";
+                    "last_modified" = "2014-02-10T18:52:06Z";
+                    notes = "<null>";
+                    object = UserWorkout;
+                    "object_md5" = "";
+                    plan =                     {
+                        "audio_url" = "https://s3.amazonaws.com/content.pearsports.com/audios/02d204a4e09246509d828ba60f4a1243.mp3";
+                        author = "Jenny Hadfield";
+                        "description_html" = "A half marathon is a major commitment - but that doesn't mean it has to consume your life.  If you struggle to find time for training or love to mix it up with cross-training, the Busy Person's Half Marathon Plan is for you!  
+\n
+\nThe 14-week schedule trims the fat to include only high quality workouts and what is necessary to perform at your best.  
+\n
+\n
+\nPerfect for the time-crunched runner, the training plan includes three focused high quality running workouts per week.  If you find you have more time on your hands, you can add two cross-training workouts to the mix. 
+\n
+\nThe plan builds slowly to allow your body to adapt to the demands of the training so you can run stronger for longer and includes long endurance runs, interval and tempo workouts, and recovery runs. 
+\n
+\nThis is an intermediate level training plan and is geared to those who have been running three times per week for 40-60 minutes for at least six months.";
+                        "description_short" = "14 weeks, 41 workouts";
+                        "device_type" = MOBILE;
+                        difficulty = "<null>";
+                        "icon_url" = "https://s3.amazonaws.com/content.pearsports.com/icons/24b071ea33a347108f7cd5b21a7e0b9a.png";
+                        "last_modified" = "2013-09-22T23:30:30Z";
+                        object = Plan;
+                        "object_md5" = "";
+                        "partner_id" = "<null>";
+                        "per_week" = 3;
+                        revision = 1;
+                        sku = "CFN020021-00M";
+                        tags =                         (
+                        );
+                        title = "Busy Person's 13.1";
+                        "total_weeks" = 13;
+                        type = DEFAULT;
+                        version = 1;
+                        "video_url" = "<null>";
+                    };
+                    "plan_workout_id" = "32308867-7d98-4257-8cb2-f4553614db19";
+                    rating = "<null>";
+                    "scheduled_at" = "2014-03-08T09:00:00Z";
+                    status = incomplete;
+                    title = "Busy Person's - 7.3";
+                    version = 1;
+                    "video_url" = "<null>";
+                    "week_day" = "<null>";
+                    "week_num" = "<null>";
+                    "workout_header_id" = "ddb8a479-9bf5-f289-9072-99a41f38f8b5";
+                }
+            );
+            object = UserWorkoutList;
+        };
+        "workouts_count" = 4;
+    };
+}
+
+
+*/

@@ -11,6 +11,8 @@
 
 
 @interface GA_ViewController ()
+@property NSString *weekstart;
+@property NSString *weekend;
 
 @end
 
@@ -28,9 +30,13 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    NSLog(@"Hi i am in here");
+    
     [[self.tabBarController.tabBar.items objectAtIndex:2] setTitle:[[API sharedInstance] getTraineeInfo].name];
     self.tabBarController.navigationItem.title =@"Workouts";
     self.tabBarController.navigationItem.backBarButtonItem.title=@"Back";
+    [self getCurrentWeek];
+    [self sendWorkOutRequest];
 }
 
 - (void)viewDidLoad
@@ -52,6 +58,42 @@
 //    // Ensure this is the last "addSubview" because the calendar must be the top most view layer
 //    [self.view addSubview:calendar];
 //    [calendar reload];
+}
+
+-(void)sendWorkOutRequest
+{
+    
+   
+     NSLog(@"weekstart : %@",self.weekstart);
+     NSLog(@"weekend : %@",self.weekend);
+    
+
+    
+    NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
+    NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
+    
+    NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id", nil]];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSURLCredential *credential = [NSURLCredential credentialWithUser:token password:@"" persistence:NSURLCredentialPersistenceNone];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
+    
+    
+ //   NSString *urlstring = [NSString stringWithFormat:@"https://cs477-backend.herokuapp.com/workout_schedule/1392152092/1394744077"];
+    
+    NSString *urlstring = [NSString stringWithFormat:@"https://cs477-backend.herokuapp.com/workout_schedule/%@/%@",self.weekstart,self.weekend];
+    
+    NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"GET" URLString:urlstring parameters:parameters error:nil];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:reqst];
+    [operation setCredential:credential];
+    [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Success: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failure: %@", error);
+    }];
+    
+    [manager.operationQueue addOperation:operation];
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,6 +126,79 @@
     // Configure the cell...
     
     return cell;
+}
+
+
+
+-(void)getCurrentWeek
+{
+    
+    NSDate* sourceDate = [NSDate date];
+    
+    NSTimeZone* sourceTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+    NSTimeZone* destinationTimeZone = [NSTimeZone systemTimeZone];
+    
+    NSInteger sourceGMTOffset = [sourceTimeZone secondsFromGMTForDate:sourceDate];
+    NSInteger destinationGMTOffset = [destinationTimeZone secondsFromGMTForDate:sourceDate];
+    NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset;
+    
+    NSDate* destinationDate = [[NSDate alloc] initWithTimeInterval:interval sinceDate:sourceDate];
+    
+    
+    NSDate *today = destinationDate;
+    NSLog(@"Today date is %@",today);
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];// you can use your format.
+    
+    //Week Start Date
+    
+    NSCalendar *gregorian = [[NSCalendar alloc]        initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSDateComponents *components = [gregorian components:NSWeekdayCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:today];
+    
+    int dayofweek = [[[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:today] weekday];// this will give you current day of week
+    
+    [components setDay:([components day] - ((dayofweek) - 2))];// for beginning of the week.
+    
+    NSDate *beginningOfWeek = [gregorian dateFromComponents:components];
+    
+    
+    self.weekstart =[NSString stringWithFormat:@"%lli",[@(floor([beginningOfWeek timeIntervalSince1970])) longLongValue]];
+    
+    
+    NSDateFormatter *dateFormat_first = [[NSDateFormatter alloc] init];
+    [dateFormat_first setDateFormat:@"yyyy-MM-dd"];
+    NSString * dateString2Prev = [dateFormat stringFromDate:beginningOfWeek];
+    
+    NSDate * weekstartPrev = [dateFormat_first dateFromString:dateString2Prev];
+    
+    
+    
+    NSLog(@"Week start previous %@",weekstartPrev);
+    
+    
+    //Week End Date
+    
+    NSCalendar *gregorianEnd = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSDateComponents *componentsEnd = [gregorianEnd components:NSWeekdayCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:today];
+    
+    int Enddayofweek = [[[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:today] weekday];// this will give you current day of week
+    
+    [componentsEnd setDay:([componentsEnd day]+(7-Enddayofweek)+1)];// for end day of the week
+    
+    NSDate *EndOfWeek = [gregorianEnd dateFromComponents:componentsEnd];
+    
+    self.weekend =[NSString stringWithFormat:@"%lli",[@(floor([EndOfWeek timeIntervalSince1970])) longLongValue]];
+    
+    
+    
+    NSDateFormatter *dateFormat_End = [[NSDateFormatter alloc] init];
+    [dateFormat_End setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateEndPrev = [dateFormat stringFromDate:EndOfWeek];
+    
+    NSDate *weekEndPrev = [dateFormat_End dateFromString:dateEndPrev];
+    NSLog(@"Week end previous %@",weekEndPrev);
 }
 
 /*
