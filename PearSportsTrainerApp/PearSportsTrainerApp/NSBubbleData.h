@@ -42,5 +42,6 @@ typedef enum _NSBubbleType
 
 - (id)initWithData:(NSURL *)data date:(NSDate *)date type:(NSBubbleType)type;
 + (id)dataWithData:(NSURL *)data date:(NSDate *)date type:(NSBubbleType)type;
-
+- (id)initWithURL:(NSURL *)data date:(NSDate *)date type:(NSBubbleType)type;
++ (id)dataWithURL:(NSURL *)data date:(NSDate *)date type:(NSBubbleType)type;
 @end

@@ -45,6 +45,7 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 
 //EDITTTTTTTTT
 
+//RECORDED AUDIO
 + (id)dataWithData:(NSURL *)data date:(NSDate *)date type:(NSBubbleType)type
 {
 #if !__has_feature(objc_arc)
@@ -54,17 +55,51 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 #endif
 }
 
+//SERVER AUDIO
++ (id)dataWithURL:(NSURL *)data date:(NSDate *)date type:(NSBubbleType)type
+{
+#if !__has_feature(objc_arc)
+    return [[[NSBubbleData alloc] initWithURL:data date:date type:type] autorelease];
+#else
+    return [[NSBubbleData alloc] initWithURL:data date:date type:type];
+#endif
+}
+
+//RECORDED AUDIO
 - (id)initWithData:(NSURL *)data date:(NSDate *)date type:(NSBubbleType)type
 {
     CGSize size;
-    size.width = 75;
-    size.height = 75;
+    size.width = 50;
+    size.height = 50;
 
     MyButton *buttonView = [[MyButton alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     UIImage* infobuttonImg =[UIImage imageNamed:@"audio_basic.png"];
     [buttonView setImage:infobuttonImg forState:UIControlStateNormal];
     [buttonView setURL:data];
     [buttonView addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    buttonView.serverAudio = NO;
+    
+#if !__has_feature(objc_arc)
+    [buttonView autorelease];
+#endif
+    
+    UIEdgeInsets insets = (type == BubbleTypeMine ? imageInsetsMine : imageInsetsSomeone);
+    return [self initWithView:buttonView date:date type:type insets:insets];
+}
+
+//SERVER AUDIO
+- (id)initWithURL:(NSURL *)data date:(NSDate *)date type:(NSBubbleType)type
+{
+    CGSize size;
+    size.width = 50;
+    size.height = 50;
+    
+    MyButton *buttonView = [[MyButton alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    UIImage* infobuttonImg =[UIImage imageNamed:@"audio_basic.png"];
+    [buttonView setImage:infobuttonImg forState:UIControlStateNormal];
+    [buttonView setURL:data];
+    [buttonView addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    buttonView.serverAudio = YES;
     
 #if !__has_feature(objc_arc)
     [buttonView autorelease];
@@ -81,25 +116,44 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
     _audioSession = [AVAudioSession sharedInstance];
 	[_audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error: nil];
 	[_audioSession setActive:YES error:nil];
-    
-    NSArray *dirPaths;
-    NSString *docsDir;
-    
-    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    docsDir = [dirPaths objectAtIndex:0];
 
-    NSURL *url = buttonClicked.audioUrl;
+    if(buttonClicked.serverAudio == YES){
+        NSData *_objectData = [NSData dataWithContentsOfURL:buttonClicked.audioUrl];
+        NSError *error;
+        
+        self.audioPlayer = [[AVAudioPlayer alloc] initWithData:_objectData error:&error];
+        self.audioPlayer.numberOfLoops = 0;
+        self.audioPlayer.volume = 1.0f;
+        [self.audioPlayer prepareToPlay];
+        
+        if (self.audioPlayer == nil)
+            NSLog(@"%@", [error description]);
+        else
+            [self.audioPlayer play];
+    }
+    else{
+        
+         NSArray *dirPaths;
+         NSString *docsDir;
+         
+         dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+         docsDir = [dirPaths objectAtIndex:0];
+         
+         NSURL *url = buttonClicked.audioUrl;
+         
+         NSError *error;
+         
+         _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+         _audioPlayer.delegate = self;
+         [_audioPlayer prepareToPlay];
+         
+         if (error)
+         NSLog(@"Error: %@",[error localizedDescription]);
+         else
+         [_audioPlayer play];
+         
+    }
     
-    NSError *error;
-    
-    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    _audioPlayer.delegate = self;
-    [_audioPlayer prepareToPlay];
-    
-    if (error)
-        NSLog(@"Error: %@",[error localizedDescription]);
-    else
-        [_audioPlayer play];
 }
 
 -(void)audioPlayerDidFinishPlaying:

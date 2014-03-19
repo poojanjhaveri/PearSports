@@ -10,10 +10,11 @@
 
 @interface MyButton : UIButton{
     NSURL *_audioUrl;
+    BOOL serverAudio;
 }
 @property (nonatomic, retain) NSURL *audioUrl;
+@property (assign) BOOL serverAudio;
 
 -(void) setURL:(NSURL *)url;
-
 
 @end

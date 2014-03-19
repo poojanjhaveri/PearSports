@@ -72,10 +72,10 @@
             if([[obj objectForKey:@"message_type"]  isEqual: @"text"]){
                 
                 NSString *textMsg = [obj objectForKey:@"content"];
-                NSLog(@"Text: %@", textMsg);
+                //NSLog(@"Text: %@", textMsg);
                 
-                NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeSomeoneElse];
-                sayBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
+                NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
+                sayBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
                 [bubbleData addObject:sayBubble];
                 [bubbleTable reloadData];
                 [bubbleTable scrollBubbleViewToBottomAnimated:YES];
@@ -83,7 +83,15 @@
             else{
                 
                 NSString *textMsg = [obj objectForKey:@"content"];
-                NSLog(@"Audio: %@", textMsg);
+                //NSLog(@"Audio: %@", textMsg);
+                
+                NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
+                
+                NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
+                audioBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
+                [bubbleData addObject:audioBubble];
+                [bubbleTable reloadData];
+                [bubbleTable scrollBubbleViewToBottomAnimated:YES];
             }
         }];
         

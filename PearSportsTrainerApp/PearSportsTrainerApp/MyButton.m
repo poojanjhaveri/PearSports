@@ -11,6 +11,7 @@
 @implementation MyButton
 
 @synthesize audioUrl = _audioUrl;
+@synthesize serverAudio = _serverAudio;
 
 - (id)initWithFrame:(CGRect)frame
 {
