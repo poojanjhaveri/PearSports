@@ -72,26 +72,53 @@
             if([[obj objectForKey:@"message_type"]  isEqual: @"text"]){
                 
                 NSString *textMsg = [obj objectForKey:@"content"];
+                //BOOL i = (BOOL)[obj objectForKey:@"outgoing"];
                 //NSLog(@"Text: %@", textMsg);
+                //NSLog(@"Outgoing: %d", i);
                 
-                NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
-                sayBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
-                [bubbleData addObject:sayBubble];
-                [bubbleTable reloadData];
-                [bubbleTable scrollBubbleViewToBottomAnimated:YES];
+                if((BOOL)[obj objectForKey:@"outgoing"] == 1){
+                    NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
+                    sayBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
+                    [bubbleData addObject:sayBubble];
+                    [bubbleTable reloadData];
+                    [bubbleTable scrollBubbleViewToBottomAnimated:YES];
+                }
+                else{
+                    NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeSomeoneElse];
+                    sayBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
+                    [bubbleData addObject:sayBubble];
+                    [bubbleTable reloadData];
+                    [bubbleTable scrollBubbleViewToBottomAnimated:YES];
+                }
+                
             }
             else{
                 
-                NSString *textMsg = [obj objectForKey:@"content"];
-                //NSLog(@"Audio: %@", textMsg);
+                if((BOOL)[obj objectForKey:@"outgoing"] == 1){
+                    NSString *textMsg = [obj objectForKey:@"content"];
+                    //NSLog(@"Audio: %@", textMsg);
+                    
+                    NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
+                    
+                    NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
+                    audioBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
+                    [bubbleData addObject:audioBubble];
+                    [bubbleTable reloadData];
+                    [bubbleTable scrollBubbleViewToBottomAnimated:YES];
+                }
+                else{
+                    NSString *textMsg = [obj objectForKey:@"content"];
+                    //NSLog(@"Audio: %@", textMsg);
+                    
+                    NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
+                    
+                    NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeSomeoneElse];
+                    audioBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
+                    [bubbleData addObject:audioBubble];
+                    [bubbleTable reloadData];
+                    [bubbleTable scrollBubbleViewToBottomAnimated:YES];
+                }
                 
-                NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
-                
-                NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
-                audioBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
-                [bubbleData addObject:audioBubble];
-                [bubbleTable reloadData];
-                [bubbleTable scrollBubbleViewToBottomAnimated:YES];
             }
         }];
         
