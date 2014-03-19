@@ -18,6 +18,7 @@
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @property (strong, nonatomic) AVAudioSession *audioSession;
 @property (nonatomic, assign) BOOL recording;
+@property (strong, nonatomic) NSArray *arr;
 
 - (IBAction)recordVoice:(id)sender;
 - (NSString*) dateString;

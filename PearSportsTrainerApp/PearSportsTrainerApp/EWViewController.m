@@ -21,6 +21,7 @@
 #import "API.h"
 #import <AFNetworking.h>
 
+
 //TODO AUTOSCROLL
 
 @interface EWViewController ()
@@ -63,14 +64,38 @@
     [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Success: %@", responseObject);
+        
+        NSDictionary *jsonDict = (NSDictionary *) responseObject;
+        self.arr = [jsonDict objectForKey:@"message_list"];
+        
+        [self.arr enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
+            if([[obj objectForKey:@"message_type"]  isEqual: @"text"]){
+                
+                NSString *textMsg = [obj objectForKey:@"content"];
+                NSLog(@"Text: %@", textMsg);
+                
+                NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeSomeoneElse];
+                sayBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
+                [bubbleData addObject:sayBubble];
+                [bubbleTable reloadData];
+                [bubbleTable scrollBubbleViewToBottomAnimated:YES];
+            }
+            else{
+                
+                NSString *textMsg = [obj objectForKey:@"content"];
+                NSLog(@"Audio: %@", textMsg);
+            }
+        }];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure: %@", error);
     }];
     
-    NSLog(@"OPERATION IS %@",operation);
+    //NSLog(@"OPERATION IS %@",operation);
+    
     
     [manager.operationQueue addOperation:operation];
-    
+
 }
 
 - (void)viewDidLoad
