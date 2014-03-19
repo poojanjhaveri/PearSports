@@ -8,11 +8,13 @@
 
 #import "GA_ViewController.h"
 #import "API.h"
+#import "GA_WorkoutListCell.h"
 
 
 @interface GA_ViewController ()
 @property NSString *weekstart;
 @property NSString *weekend;
+@property NSMutableArray *weekarray;
 
 @end
 
@@ -108,25 +110,39 @@
 {
 
     // Return the number of sections.
-    return 10;
+    return [self.weekarray count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
     // Return the number of rows in the section.
-    return 10;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    GA_WorkoutListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     
     return cell;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM-dd-YYYY"];// you can use your format.
+    
+    NSDate *date = [self.weekarray objectAtIndex:section];
+    
+    
+    NSString *header=[NSString stringWithFormat:@"%@ %@",[dateFormat stringFromDate:date],[self getWeekDay:date]];
+    
+    return  header;
+}
+
 
 
 
@@ -199,7 +215,55 @@
     
     NSDate *weekEndPrev = [dateFormat_End dateFromString:dateEndPrev];
     NSLog(@"Week end previous %@",weekEndPrev);
+    
+    
+    self.weekarray = [[NSMutableArray alloc] init];
+    NSDate *iterator=weekstartPrev;
+    for(int i=0;i<7;i++)
+    {
+        [self.weekarray addObject:iterator];
+        iterator=[NSDate dateWithTimeInterval:(24*60*60) sinceDate:iterator];
+    }
+    [self.tableView reloadData];
 }
+
+-(NSString *)getWeekDay:(NSDate *)date
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *weekdayComponents =[gregorian components:NSWeekdayCalendarUnit fromDate:date];
+    NSInteger weekday = [weekdayComponents weekday];
+    NSString *string = [[NSString alloc] init];
+    switch(weekday)
+    {
+        case 1:
+            string=@"Sunday";
+            break;
+        case 2:
+            string=@"Monday";
+            break;
+        case 3:
+            string=@"Tuesday";
+            break;
+        case 4:
+            string=@"Wednesday";
+            break;
+        case 5:
+            string=@"Thursday";
+            break;
+        case 6:
+            string=@"Friday";
+            break;
+        case 7:
+            string=@"Saturday";
+            break;
+
+    }
+    
+    return string;
+}
+
+
+
 
 /*
 // Override to support conditional editing of the table view.
