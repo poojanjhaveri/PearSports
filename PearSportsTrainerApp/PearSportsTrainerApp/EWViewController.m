@@ -72,11 +72,11 @@
             if([[obj objectForKey:@"message_type"]  isEqual: @"text"]){
                 
                 NSString *textMsg = [obj objectForKey:@"content"];
-                //BOOL i = (BOOL)[obj objectForKey:@"outgoing"];
+                NSNumber *val = [obj objectForKey:@"outgoing"];
+                BOOL i = [val boolValue];
                 //NSLog(@"Text: %@", textMsg);
-                //NSLog(@"Outgoing: %d", i);
                 
-                if((BOOL)[obj objectForKey:@"outgoing"] == 1){
+                if(i == 1){
                     NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
                     sayBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
                     [bubbleData addObject:sayBubble];
@@ -93,8 +93,10 @@
                 
             }
             else{
+                NSNumber *val = [obj objectForKey:@"outgoing"];
+                BOOL i = [val boolValue];
                 
-                if((BOOL)[obj objectForKey:@"outgoing"] == 1){
+                if(i == 1){
                     NSString *textMsg = [obj objectForKey:@"content"];
                     //NSLog(@"Audio: %@", textMsg);
                     
