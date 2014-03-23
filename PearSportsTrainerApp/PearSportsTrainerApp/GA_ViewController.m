@@ -7,9 +7,9 @@
 //
 
 #import "GA_ViewController.h"
-#import "API.h"
 #import "GA_WorkoutListCell.h"
-
+#import "GA_WorkoutListViewController.h"
+#import "API.h"
 
 @interface GA_ViewController ()
 @property NSString *weekstart;
@@ -51,15 +51,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
  //    self.navigationItem.rightBarButtonItem = self.editButtonItem;
   
-    
-//    calendar =  [[TKCalendarDateView alloc] init];
-//    calendar.delegate = self;
-//    calendar.dataSource = self;
-//    calendar.frame = CGRectMake(0, 0, calendar.frame.size.width, calendar.frame.size.height);
-//    
-//    // Ensure this is the last "addSubview" because the calendar must be the top most view layer
-//    [self.view addSubview:calendar];
-//    [calendar reload];
 }
 
 -(void)sendWorkOutRequest
@@ -110,6 +101,9 @@
 {
 
     // Return the number of sections.
+    
+    NSLog(@"Number of sections to show... %d", [self.weekarray count]);
+    
     return [self.weekarray count];
 }
 
@@ -142,8 +136,6 @@
     
     return  header;
 }
-
-
 
 
 -(void)getCurrentWeek
@@ -304,7 +296,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -312,8 +304,22 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"showWorkoutList"]){
+        CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+        GA_WorkoutListViewController *destViewController = segue.destinationViewController;
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"MM-dd-YYYY"];// you can use your format.
+        
+        NSDate *date = [self.weekarray objectAtIndex:indexPath.section];
+        
+        destViewController.wDate = date;
+        
+    }
+    
 }
 
- */
+
 
 @end

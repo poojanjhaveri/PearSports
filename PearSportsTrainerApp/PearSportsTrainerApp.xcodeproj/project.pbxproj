@@ -260,9 +260,9 @@
 			children = (
 				0EFDB3D118CB0F3700CFF197 /* WorkoutModel */,
 				0EFDB3CD18CB06F400CFF197 /* WorkoutListCell */,
+				B606C17E18D005FA00125523 /* WorkoutNameListCells */,
 				0E0BC70518BB2D3C00E8580E /* GA_ViewController.h */,
 				0E0BC70618BB2D3C00E8580E /* GA_ViewController.m */,
-				B606C17E18D005FA00125523 /* WorkoutNameListCells */,
 				B606C17B18CFFE2900125523 /* GA_WorkoutListViewController.h */,
 				B606C17C18CFFE2900125523 /* GA_WorkoutListViewController.m */,
 				3F22815118D787BA00AF1AFD /* GA_PersonalizeViewController.h */,

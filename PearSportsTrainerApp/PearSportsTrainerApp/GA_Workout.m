@@ -11,5 +11,7 @@
 @implementation GA_Workout
 
 @synthesize workoutName;
+@synthesize SKU;
+
 
 @end
