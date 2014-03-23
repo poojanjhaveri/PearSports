@@ -15,6 +15,7 @@
 @property NSString *weekstart;
 @property NSString *weekend;
 @property NSMutableArray *weekarray;
+@property (strong,nonatomic) NSDate *currentDay;
 
 @end
 
@@ -44,18 +45,23 @@
     
     [self.tabBarController.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: btnDown,btnUp, nil]];
     
-    [self getCurrentWeek];
-    [self sendWorkOutRequest];
+    [self getWeek:[self getTodayDate]];
+    
 }
 
 
 -(void)prevWeek
 {
-    
+    NSDate *today = self.currentDay;
+    NSDate *nextweekdate=[NSDate dateWithTimeInterval:(-7*24*60*60) sinceDate:today];
+    [self getWeek:nextweekdate];
 }
 
 -(void)nextWeek
 {
+    NSDate *today = self.currentDay;
+    NSDate *nextweekdate=[NSDate dateWithTimeInterval:(7*24*60*60) sinceDate:today];
+    [self getWeek:nextweekdate];
     
 }
 
@@ -161,10 +167,7 @@
     return  header;
 }
 
-
-
-
--(void)getCurrentWeek
+-(NSDate *)getTodayDate
 {
     
     NSDate* sourceDate = [NSDate date];
@@ -180,7 +183,16 @@
     
     
     NSDate *today = destinationDate;
-    NSLog(@"Today date is %@",today);
+        return today;
+}
+
+
+
+
+-(void)getWeek:(NSDate *)today
+{
+
+    self.currentDay=today;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];// you can use your format.
     
@@ -205,10 +217,7 @@
     NSString * dateString2Prev = [dateFormat stringFromDate:beginningOfWeek];
     
     NSDate * weekstartPrev = [dateFormat_first dateFromString:dateString2Prev];
-    
-    
-    
-    NSLog(@"Week start previous %@",weekstartPrev);
+ //   NSLog(@"Week start previous %@",weekstartPrev);
     
     
     //Week End Date
@@ -232,7 +241,7 @@
     NSString *dateEndPrev = [dateFormat stringFromDate:EndOfWeek];
     
     NSDate *weekEndPrev = [dateFormat_End dateFromString:dateEndPrev];
-    NSLog(@"Week end previous %@",weekEndPrev);
+  //  NSLog(@"Week end previous %@",weekEndPrev);
     
     
     self.weekarray = [[NSMutableArray alloc] init];
@@ -243,6 +252,8 @@
         iterator=[NSDate dateWithTimeInterval:(24*60*60) sinceDate:iterator];
     }
     [self.tableView reloadData];
+    [self sendWorkOutRequest];
+    
 }
 
 -(NSString *)getWeekDay:(NSDate *)date
