@@ -13,6 +13,10 @@
 		0E0173A018A1EBF700FC1B46 /* spechbubble_2_icon&24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E01739A18A1EBF700FC1B46 /* spechbubble_2_icon&24.png */; };
 		0E0173A318A1EBF700FC1B46 /* user_icon&24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E01739D18A1EBF700FC1B46 /* user_icon&24.png */; };
 		0E0BC70718BB2D3C00E8580E /* GA_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0BC70618BB2D3C00E8580E /* GA_ViewController.m */; };
+		0E27410718DE6EAE00D3229D /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E27410518DE6EAE00D3229D /* up.png */; };
+		0E27410818DE6EAE00D3229D /* up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E27410618DE6EAE00D3229D /* up@2x.png */; };
+		0E27410B18DE6EB900D3229D /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E27410918DE6EB900D3229D /* down.png */; };
+		0E27410C18DE6EB900D3229D /* down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E27410A18DE6EB900D3229D /* down@2x.png */; };
 		0E44DA0C18BDBEFD004EFB9D /* Joe.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E44DA0B18BDBEFD004EFB9D /* Joe.png */; };
 		0E54EE06187ACF9B00DC976C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E54EE05187ACF9B00DC976C /* Foundation.framework */; };
 		0E54EE08187ACF9B00DC976C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E54EE07187ACF9B00DC976C /* CoreGraphics.framework */; };
@@ -103,6 +107,10 @@
 		0E01739D18A1EBF700FC1B46 /* user_icon&24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_icon&24.png"; sourceTree = "<group>"; };
 		0E0BC70518BB2D3C00E8580E /* GA_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_ViewController.h; sourceTree = "<group>"; };
 		0E0BC70618BB2D3C00E8580E /* GA_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_ViewController.m; sourceTree = "<group>"; };
+		0E27410518DE6EAE00D3229D /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
+		0E27410618DE6EAE00D3229D /* up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "up@2x.png"; sourceTree = "<group>"; };
+		0E27410918DE6EB900D3229D /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
+		0E27410A18DE6EB900D3229D /* down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down@2x.png"; sourceTree = "<group>"; };
 		0E44DA0B18BDBEFD004EFB9D /* Joe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Joe.png; sourceTree = "<group>"; };
 		0E54EE02187ACF9B00DC976C /* PearSportsTrainerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PearSportsTrainerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E54EE05187ACF9B00DC976C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -271,6 +279,17 @@
 			name = Workouts;
 			sourceTree = "<group>";
 		};
+		0E27410018DE6AD000D3229D /* Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				0E27410918DE6EB900D3229D /* down.png */,
+				0E27410A18DE6EB900D3229D /* down@2x.png */,
+				0E27410518DE6EAE00D3229D /* up.png */,
+				0E27410618DE6EAE00D3229D /* up@2x.png */,
+			);
+			name = Workouts;
+			sourceTree = "<group>";
+		};
 		0E54EDF9187ACF9B00DC976C = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +394,7 @@
 		0EA93A7618962DE900463BBC /* ImageResources */ = {
 			isa = PBXGroup;
 			children = (
+				0E27410018DE6AD000D3229D /* Workouts */,
 				FF00F08B18B829D200E6C321 /* MessagingImages */,
 				0E8139F418B5F44700BDA365 /* ClientPhotos */,
 				0E01738318A1E6E500FC1B46 /* Tabbar */,
@@ -609,6 +629,7 @@
 				0E0173A018A1EBF700FC1B46 /* spechbubble_2_icon&24.png in Resources */,
 				0EA93A7818962E4D00463BBC /* pearsports.jpg in Resources */,
 				FF00F0AB18B829FA00E6C321 /* halloween.jpg in Resources */,
+				0E27410B18DE6EB900D3229D /* down.png in Resources */,
 				0E54EE1E187ACF9B00DC976C /* Images.xcassets in Resources */,
 				FF00F0A518B829E600E6C321 /* typingSomeone@2x.png in Resources */,
 				0E0173A318A1EBF700FC1B46 /* user_icon&24.png in Resources */,
@@ -621,9 +642,12 @@
 				FF00F09A18B829E600E6C321 /* stop.png in Resources */,
 				FF00F09C18B829E600E6C321 /* bubbleMine.png in Resources */,
 				FF00F0AA18B829FA00E6C321 /* avatar1.png in Resources */,
+				0E27410C18DE6EB900D3229D /* down@2x.png in Resources */,
 				FF00F09B18B829E600E6C321 /* microphonehot.png in Resources */,
+				0E27410718DE6EAE00D3229D /* up.png in Resources */,
 				FF00F0AC18B829FA00E6C321 /* icon_57.png in Resources */,
 				0E8139F618B5F47200BDA365 /* poojan.jpg in Resources */,
+				0E27410818DE6EAE00D3229D /* up@2x.png in Resources */,
 				0EA1250718D91585000589CA /* SampleJSONCalls in Resources */,
 				FF00F0A118B829E600E6C321 /* missingAvatar@2x.png in Resources */,
 				FF00F0AD18B829FA00E6C321 /* icon_114.png in Resources */,
