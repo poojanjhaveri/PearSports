@@ -37,8 +37,26 @@
     [[self.tabBarController.tabBar.items objectAtIndex:2] setTitle:[[API sharedInstance] getTraineeInfo].name];
     self.tabBarController.navigationItem.title =@"Workouts";
     self.tabBarController.navigationItem.backBarButtonItem.title=@"Back";
+    
+    UIBarButtonItem *btnUp = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"up.png"] style:UIBarButtonItemStylePlain target:self action:@selector(prevWeek)];
+    
+    UIBarButtonItem *btnDown = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"down.png"] style:UIBarButtonItemStylePlain target:self action:@selector(nextWeek)];
+    
+    [self.tabBarController.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: btnDown,btnUp, nil]];
+    
     [self getCurrentWeek];
     [self sendWorkOutRequest];
+}
+
+
+-(void)prevWeek
+{
+    
+}
+
+-(void)nextWeek
+{
+    
 }
 
 - (void)viewDidLoad
