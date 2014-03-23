@@ -161,8 +161,7 @@
     return  header;
 }
 
-
--(void)getCurrentWeek
+-(NSDate *)getTodayDate
 {
     
     NSDate* sourceDate = [NSDate date];
