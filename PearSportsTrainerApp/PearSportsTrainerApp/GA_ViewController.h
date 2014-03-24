@@ -10,4 +10,7 @@
 
 @interface GA_ViewController : UITableViewController
 
+@property (strong, nonatomic) NSArray *wIncompleteList;
+@property (strong, nonatomic) NSArray *wCompleteList;
+
 @end

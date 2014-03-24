@@ -105,8 +105,25 @@
     [operation setCredential:credential];
     [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Success: %@", responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Success of schedule workout: %@", responseObject);
+        
+        NSDictionary *jsonDict = (NSDictionary *) responseObject;
+        
+//        self.wIncompleteList = [jsonDict objectForKey:@"ScheduleList"];
+        self.wCompleteList = [jsonDict objectForKey:@"workouts/data"];
+        
+        
+        NSLog(@"Workout List: %i", _wIncompleteList.count);
+        NSLog(@"Workout List: %i", _wCompleteList.count);
+        
+        [self.wIncompleteList enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
+            if([[obj objectForKey:@"status"]  isEqual: @"incomplete"]){
+                NSLog(@"Backend Works");
+            }
+        
+        }];
+        
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure: %@", error);
     }];
     
