@@ -81,14 +81,14 @@
                     sayBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
                     [bubbleData addObject:sayBubble];
                     [bubbleTable reloadData];
-                    [bubbleTable scrollBubbleViewToBottomAnimated:YES];
+                    [bubbleTable scrollBubbleViewToBottomAnimated:NO];
                 }
                 else{
                     NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeSomeoneElse];
                     sayBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
                     [bubbleData addObject:sayBubble];
                     [bubbleTable reloadData];
-                    [bubbleTable scrollBubbleViewToBottomAnimated:YES];
+                    [bubbleTable scrollBubbleViewToBottomAnimated:NO];
                 }
                 
             }
@@ -106,7 +106,7 @@
                     audioBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
                     [bubbleData addObject:audioBubble];
                     [bubbleTable reloadData];
-                    [bubbleTable scrollBubbleViewToBottomAnimated:YES];
+                    [bubbleTable scrollBubbleViewToBottomAnimated:NO];
                 }
                 else{
                     NSString *textMsg = [obj objectForKey:@"content"];
@@ -118,7 +118,7 @@
                     audioBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
                     [bubbleData addObject:audioBubble];
                     [bubbleTable reloadData];
-                    [bubbleTable scrollBubbleViewToBottomAnimated:YES];
+                    [bubbleTable scrollBubbleViewToBottomAnimated:NO];
                 }
                 
             }
@@ -356,7 +356,7 @@
         textField.text = @"";
         [textField resignFirstResponder];
         
-        [bubbleTable scrollBubbleViewToBottomAnimated:YES];
+        [bubbleTable scrollBubbleViewToBottomAnimated:NO];
         
         
         
@@ -443,7 +443,7 @@
     
     textField.text = @"";
     [textField resignFirstResponder];
-    [bubbleTable scrollBubbleViewToBottomAnimated:YES];
+    [bubbleTable scrollBubbleViewToBottomAnimated:NO];
 }
 
 -(void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error
