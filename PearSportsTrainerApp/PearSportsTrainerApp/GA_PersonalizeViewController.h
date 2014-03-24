@@ -11,6 +11,8 @@
 @interface GA_PersonalizeViewController : UIViewController <UITextViewDelegate>
 
 @property NSString *wName;
+@property NSString *wSKU;
 @property NSString *notes;
+@property NSDate *wDate;
 
 @end

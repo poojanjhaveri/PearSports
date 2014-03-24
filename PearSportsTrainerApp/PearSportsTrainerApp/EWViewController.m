@@ -51,6 +51,9 @@
 {
     [super viewWillAppear:YES];
     self.tabBarController.navigationItem.title =@"Messages";
+     [self.tabBarController.navigationItem setRightBarButtonItems:nil];
+    
+    
     
     NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
     NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];

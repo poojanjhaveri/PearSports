@@ -16,6 +16,8 @@
 
 @implementation GA_WorkoutListViewController
 
+@synthesize wDate = _wDate;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -36,21 +38,62 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.workoutList = [[NSMutableArray alloc] init];
+
     
-    [self addWorkout:@"Run"];
-    [self addWorkout:@"Power Walk"];
-    [self addWorkout:@"Bike"];
-    [self addWorkout:@"Treadmill"];
-    [self addWorkout:@"Stretch/Yoga"];
-    [self addWorkout:@"Water Fitness"];
-    [self addWorkout:@"Core and Strength"];
+    [self addWorkout:@"Endurance Ride 73 min" :@"CFN030014-00M"];
+    [self addWorkout:@"Pyramid Indoor Cycle": @"CFN01001D-00M"];
+    [self addWorkout:@"Fat-Burn 1": @"CFN01000E-00M"];
+    [self addWorkout:@"Post Run Strength Mini": @"CFN020024-00M"];
+    [self addWorkout:@"Interval Advanced Run ": @"CFN030006-00M"];
+    [self addWorkout:@"Speed Treadmill": @"CFN020003-00M"];
+    [self addWorkout:@"Tempo Treadmill": @"CFN020004-00M"];
+    [self addWorkout:@"Fat-Burn 3": @"CFN01000G-00M"];
+    [self addWorkout:@"Fat-Burn 2": @"CFN01000F-00M"];
+    [self addWorkout:@"Sprint Triathlon Brick": @"CFN01000Z-00M"];
+    [self addWorkout:@"Iron Triathlon Brick": @"CFN01000Y-00M"];
+    [self addWorkout:@"Functional Strength ": @"CFN030005-00M"];
+    [self addWorkout:@"Bike Trainer 1": @"CFN030007-00M"];
+    [self addWorkout:@"Endurance Ride": @"CFN030008-00M"];
+    [self addWorkout:@"Super SlimTone Bands 3": @"CFN050040-00M"];
+    [self addWorkout:@"Robert Reames - Super SlimTone Bands 2": @"CFN050041-00M"];
+    [self addWorkout:@"Super SlimTone Gym 3": @"CFN050032-00M"];
+    [self addWorkout:@"Time Saver Super Blast 1": @"CFN050014-00M"];
+    [self addWorkout:@"Super SlimTone Gym 1": @"CFN050030-00M"];
+    [self addWorkout:@"Super SlimTone Gym 2": @"CFN050031-00M"];
+    [self addWorkout:@"Time Saver Super Blast 2": @"CFN050015-00M"];
+    [self addWorkout:@"Interval Walk Run Climb": @"CFN050016-00M"];
+    [self addWorkout:@"Super SlimTone Bands 1": @"CFN050036-00M"];
+    [self addWorkout:@"Short Interval Special": @"CFN050017-00M"];
+    [self addWorkout:@"Post Cardio Flexibility": @"CFN050011-00M"];
+    [self addWorkout:@"Injury Prevention": @"CFN01008M-00M"];
+    [self addWorkout:@"Lunchtime Power Walk": @"CFN090003-00M"];
+    [self addWorkout:@"The 5 min Warmup": @"CFN090008-00M"];
+    [self addWorkout:@"Cardio Band Blast 2": @"CFN090002-00M"];
+    [self addWorkout:@"Endurance Ride 110min": @"CFN030012-00M"];
+    [self addWorkout:@"Endurance Ride 83min": @"CFN030017-00M"];
+    [self addWorkout:@"Cardio Band Blast 1": @"CFN090001-00M"];
+    [self addWorkout:@"Endurance Ride 95min": @"CFN030019-00M"];
+    [self addWorkout:@"Endurance Ride 100min": @"CFN030011-00M"];
+    [self addWorkout:@"Endurance Ride 70min": @"CFN030013-00M"];
+    [self addWorkout:@"Endurance Ride 75min": @"CFN030015-00M"];
+    [self addWorkout:@"Endurance Ride 77min": @"CFN030016-00M"];
+    [self addWorkout:@"Endurance + Hill Run": @"CFN030010-00M"];
+    [self addWorkout:@"Endurance Ride 90min": @"CFN030018-00M"];
+    [self addWorkout:@"Pyramid + Hill Run": @"CFN030021-00M"];
+    [self addWorkout:@"Hi-Intensity Interval 1": @"CFN01000H-00M"];
+    [self addWorkout:@"HIIT 30 Thirties": @"CFN080003-00M"];
+    [self addWorkout:@"Tread 'N' Shred Advanced 1": @"CFN150003-00M"];
+    [self addWorkout:@"Tread'N'Shred Moderate 1": @"CFN150002-00M"];
+    [self addWorkout:@"Functional Strength Circuit": @"CFN01001C-00M"];
+    [self addWorkout:@"Tred'N'Shred Beginner 1": @"CFN150001-00M"];
 
 }
 
--(void) addWorkout: (NSString*) name
+-(void) addWorkout: (NSString*) name :(NSString*) SKU
 {
     GA_Workout *wname = [[GA_Workout alloc] init];
     wname.workoutName = name;
+    wname.SKU = SKU;
     [self.workoutList addObject:wname];
 }
 
@@ -142,6 +185,8 @@
         
         GA_Workout *w = [self.workoutList objectAtIndex:indexPath.row];
         destViewController.wName = w.workoutName;
+        destViewController.wDate = _wDate;
+        destViewController.wSKU = w.SKU;
         
     }
 }

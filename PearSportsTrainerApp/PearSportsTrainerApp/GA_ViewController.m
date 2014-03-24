@@ -7,14 +7,15 @@
 //
 
 #import "GA_ViewController.h"
-#import "API.h"
 #import "GA_WorkoutListCell.h"
-
+#import "GA_WorkoutListViewController.h"
+#import "API.h"
 
 @interface GA_ViewController ()
 @property NSString *weekstart;
 @property NSString *weekend;
 @property NSMutableArray *weekarray;
+@property (strong,nonatomic) NSDate *currentDay;
 
 @end
 
@@ -37,8 +38,31 @@
     [[self.tabBarController.tabBar.items objectAtIndex:2] setTitle:[[API sharedInstance] getTraineeInfo].name];
     self.tabBarController.navigationItem.title =@"Workouts";
     self.tabBarController.navigationItem.backBarButtonItem.title=@"Back";
-    [self getCurrentWeek];
-    [self sendWorkOutRequest];
+    
+    UIBarButtonItem *btnUp = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"up.png"] style:UIBarButtonItemStylePlain target:self action:@selector(prevWeek)];
+    
+    UIBarButtonItem *btnDown = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"down.png"] style:UIBarButtonItemStylePlain target:self action:@selector(nextWeek)];
+    
+    [self.tabBarController.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: btnDown,btnUp, nil]];
+    
+    [self getWeek:[self getTodayDate]];
+    
+}
+
+
+-(void)prevWeek
+{
+    NSDate *today = self.currentDay;
+    NSDate *nextweekdate=[NSDate dateWithTimeInterval:(-7*24*60*60) sinceDate:today];
+    [self getWeek:nextweekdate];
+}
+
+-(void)nextWeek
+{
+    NSDate *today = self.currentDay;
+    NSDate *nextweekdate=[NSDate dateWithTimeInterval:(7*24*60*60) sinceDate:today];
+    [self getWeek:nextweekdate];
+    
 }
 
 - (void)viewDidLoad
@@ -51,15 +75,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
  //    self.navigationItem.rightBarButtonItem = self.editButtonItem;
   
-    
-//    calendar =  [[TKCalendarDateView alloc] init];
-//    calendar.delegate = self;
-//    calendar.dataSource = self;
-//    calendar.frame = CGRectMake(0, 0, calendar.frame.size.width, calendar.frame.size.height);
-//    
-//    // Ensure this is the last "addSubview" because the calendar must be the top most view layer
-//    [self.view addSubview:calendar];
-//    [calendar reload];
 }
 
 -(void)sendWorkOutRequest
@@ -110,6 +125,9 @@
 {
 
     // Return the number of sections.
+    
+    NSLog(@"Number of sections to show... %d", [self.weekarray count]);
+    
     return [self.weekarray count];
 }
 
@@ -143,10 +161,7 @@
     return  header;
 }
 
-
-
-
--(void)getCurrentWeek
+-(NSDate *)getTodayDate
 {
     
     NSDate* sourceDate = [NSDate date];
@@ -162,7 +177,16 @@
     
     
     NSDate *today = destinationDate;
-    NSLog(@"Today date is %@",today);
+        return today;
+}
+
+
+
+
+-(void)getWeek:(NSDate *)today
+{
+
+    self.currentDay=today;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];// you can use your format.
     
@@ -187,10 +211,7 @@
     NSString * dateString2Prev = [dateFormat stringFromDate:beginningOfWeek];
     
     NSDate * weekstartPrev = [dateFormat_first dateFromString:dateString2Prev];
-    
-    
-    
-    NSLog(@"Week start previous %@",weekstartPrev);
+ //   NSLog(@"Week start previous %@",weekstartPrev);
     
     
     //Week End Date
@@ -214,7 +235,7 @@
     NSString *dateEndPrev = [dateFormat stringFromDate:EndOfWeek];
     
     NSDate *weekEndPrev = [dateFormat_End dateFromString:dateEndPrev];
-    NSLog(@"Week end previous %@",weekEndPrev);
+  //  NSLog(@"Week end previous %@",weekEndPrev);
     
     
     self.weekarray = [[NSMutableArray alloc] init];
@@ -225,6 +246,8 @@
         iterator=[NSDate dateWithTimeInterval:(24*60*60) sinceDate:iterator];
     }
     [self.tableView reloadData];
+    [self sendWorkOutRequest];
+    
 }
 
 -(NSString *)getWeekDay:(NSDate *)date
@@ -304,7 +327,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -312,8 +335,22 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"showWorkoutList"]){
+        CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+        GA_WorkoutListViewController *destViewController = segue.destinationViewController;
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"MM-dd-YYYY"];// you can use your format.
+        
+        NSDate *date = [self.weekarray objectAtIndex:indexPath.section];
+        
+        destViewController.wDate = date;
+        
+    }
+    
 }
 
- */
+
 
 @end

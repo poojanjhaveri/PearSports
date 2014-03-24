@@ -13,4 +13,6 @@
 
 @property (nonatomic, retain) NSMutableArray *workoutList;
 
+@property NSDate *wDate;
+
 @end

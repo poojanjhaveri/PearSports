@@ -36,6 +36,7 @@
 {
     [super viewWillAppear:YES];
     self.tabBarController.navigationItem.title =[[API sharedInstance] getTraineeInfo].name;
+    [self.tabBarController.navigationItem setRightBarButtonItems:nil];
 }
 
 

@@ -7,19 +7,23 @@
 //
 
 #import "GA_PersonalizeViewController.h"
+#import "API.h"
 
 @interface GA_PersonalizeViewController () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
 @property (weak, nonatomic) IBOutlet UILabel *workoutNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *scheduleBtn;
 
 @end
 
 @implementation GA_PersonalizeViewController
 
 @synthesize wName = _wName;
+@synthesize wSKU = _wSKU;
 @synthesize notes = _notes;
+@synthesize wDate = _wDate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,9 +44,18 @@
 {
     [super viewDidLoad];
     // @TODO update with actual inforamtion
+
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM-dd-YYYY"];// you can use your format
+    
+    
     [self.notesTextView setText: @"Your notes will go here"];
     [self.workoutNameLabel setText:[NSString stringWithFormat:@"%@", _wName]];
-    [self.dateLabel setText:@"March 14, 2014"];
+    [self.dateLabel setText:[NSString stringWithFormat:@"%@",[dateFormat stringFromDate:_wDate]]];
+
+    [self.scheduleBtn addTarget:self action:@selector(buttonClicked: ) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     
     // Main Setup
     [self.notesTextView setDelegate:self];
@@ -62,6 +75,13 @@
     
     [self.view addGestureRecognizer:tap];
 
+}
+
+- (IBAction) buttonClicked: (id)sender
+{
+    NSLog(@"Tap");
+    
+    [self sendWorkOutRequest];
 }
 
 - (void)didReceiveMemoryWarning
@@ -108,6 +128,44 @@
     
     return YES;
 }
+
+-(void)sendWorkOutRequest
+{
+    
+    
+//    NSLog(@"weekstart : %@",self.weekstart);
+//    NSLog(@"weekend : %@",self.weekend);
+    
+    NSTimeInterval ti = [_wDate timeIntervalSince1970];
+    
+    
+    NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
+    NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
+    NSString *time_st = [NSString stringWithFormat:@"%a", ti];
+    NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id, time_st, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id", @"start", nil]];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSURLCredential *credential = [NSURLCredential credentialWithUser:token password:@"" persistence:NSURLCredentialPersistenceNone];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
+
+    NSString *urlstring = [NSString stringWithFormat:@"https://cs477-backend.herokuapp.com/workout/%@",self.wSKU];
+    
+    NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"POST" URLString:urlstring parameters:parameters error:nil];
+    
+//    NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"POST" URLString:@"https://cs477-backend.herokuapp.com/workout/@%a",  parameters:parameters error:nil];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:reqst];
+    [operation setCredential:credential];
+    [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Success: %@", responseObject);
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failure: %@", error);
+    }];
+    
+    [manager.operationQueue addOperation:operation];
+}
+
 
 
 

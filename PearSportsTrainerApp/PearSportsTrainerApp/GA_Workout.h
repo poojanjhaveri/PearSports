@@ -11,5 +11,6 @@
 @interface GA_Workout : NSObject
 
 @property (nonatomic, copy) NSString *workoutName;
+@property (nonatomic, copy) NSString *SKU;
 
 @end
