@@ -79,15 +79,28 @@
                 BOOL i = [val boolValue];
                 //NSLog(@"Text: %@", textMsg);
                 
+                
+                NSNumber *time =[obj objectForKey:@"created_at"];
+                NSTimeInterval interval = [time doubleValue];
+                /*
+                NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
+                NSDate *online = [NSDate date];
+                online = [NSDate dateWithTimeIntervalSince1970:interval];
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"HH:mm:ss"];
+                
+                NSLog(@"DATEEE: %@", [dateFormatter stringFromDate:online]);
+                 */
+                
                 if(i == 1){
-                    NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
+                    NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
                     sayBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
                     [bubbleData addObject:sayBubble];
                     [bubbleTable reloadData];
                     [bubbleTable scrollBubbleViewToBottomAnimated:NO];
                 }
                 else{
-                    NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeSomeoneElse];
+                    NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
                     sayBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
                     [bubbleData addObject:sayBubble];
                     [bubbleTable reloadData];
@@ -98,6 +111,8 @@
             else{
                 NSNumber *val = [obj objectForKey:@"outgoing"];
                 BOOL i = [val boolValue];
+                NSNumber *time =[obj objectForKey:@"created_at"];
+                NSTimeInterval interval = [time doubleValue];
                 
                 if(i == 1){
                     NSString *textMsg = [obj objectForKey:@"content"];
@@ -105,7 +120,8 @@
                     
                     NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
                     
-                    NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
+                    
+                    NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
                     audioBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
                     [bubbleData addObject:audioBubble];
                     [bubbleTable reloadData];
@@ -117,7 +133,7 @@
                     
                     NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
                     
-                    NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeSomeoneElse];
+                    NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
                     audioBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
                     [bubbleData addObject:audioBubble];
                     [bubbleTable reloadData];
