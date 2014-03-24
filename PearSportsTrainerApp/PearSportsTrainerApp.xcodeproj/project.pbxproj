@@ -52,6 +52,8 @@
 		73B7D44518BAFEF3001846C3 /* AG_ClientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */; };
 		B606C17D18CFFE2900125523 /* GA_WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B606C17C18CFFE2900125523 /* GA_WorkoutListViewController.m */; };
 		B606C18118D006CD00125523 /* GA_WorkoutNameListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B606C18018D006CD00125523 /* GA_WorkoutNameListTableCell.m */; };
+		B68BA10F18DF8620004DF201 /* GA_DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68BA10E18DF8620004DF201 /* GA_DetailViewController.m */; };
+		B68BA11118DF92A3004DF201 /* workout.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B68BA11018DF92A3004DF201 /* workout.jpeg */; };
 		FF00F08318B829C500E6C321 /* EWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07318B829C500E6C321 /* EWAppDelegate.m */; };
 		FF00F08418B829C500E6C321 /* EWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07518B829C500E6C321 /* EWViewController.m */; };
 		FF00F08518B829C500E6C321 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07718B829C500E6C321 /* NSBubbleData.m */; };
@@ -161,6 +163,9 @@
 		B606C17C18CFFE2900125523 /* GA_WorkoutListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_WorkoutListViewController.m; sourceTree = "<group>"; };
 		B606C17F18D006CD00125523 /* GA_WorkoutNameListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_WorkoutNameListTableCell.h; sourceTree = "<group>"; };
 		B606C18018D006CD00125523 /* GA_WorkoutNameListTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_WorkoutNameListTableCell.m; sourceTree = "<group>"; };
+		B68BA10D18DF8620004DF201 /* GA_DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_DetailViewController.h; sourceTree = "<group>"; };
+		B68BA10E18DF8620004DF201 /* GA_DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_DetailViewController.m; sourceTree = "<group>"; };
+		B68BA11018DF92A3004DF201 /* workout.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = workout.jpeg; sourceTree = "<group>"; };
 		FF00F07218B829C500E6C321 /* EWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWAppDelegate.h; sourceTree = "<group>"; };
 		FF00F07318B829C500E6C321 /* EWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWAppDelegate.m; sourceTree = "<group>"; };
 		FF00F07418B829C500E6C321 /* EWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWViewController.h; sourceTree = "<group>"; };
@@ -275,6 +280,8 @@
 				B606C17C18CFFE2900125523 /* GA_WorkoutListViewController.m */,
 				3F22815118D787BA00AF1AFD /* GA_PersonalizeViewController.h */,
 				3F22815218D787BA00AF1AFD /* GA_PersonalizeViewController.m */,
+				B68BA10D18DF8620004DF201 /* GA_DetailViewController.h */,
+				B68BA10E18DF8620004DF201 /* GA_DetailViewController.m */,
 			);
 			name = Workouts;
 			sourceTree = "<group>";
@@ -282,6 +289,7 @@
 		0E27410018DE6AD000D3229D /* Workouts */ = {
 			isa = PBXGroup;
 			children = (
+				B68BA11018DF92A3004DF201 /* workout.jpeg */,
 				0E27410918DE6EB900D3229D /* down.png */,
 				0E27410A18DE6EB900D3229D /* down@2x.png */,
 				0E27410518DE6EAE00D3229D /* up.png */,
@@ -643,6 +651,7 @@
 				FF00F09C18B829E600E6C321 /* bubbleMine.png in Resources */,
 				FF00F0AA18B829FA00E6C321 /* avatar1.png in Resources */,
 				0E27410C18DE6EB900D3229D /* down@2x.png in Resources */,
+				B68BA11118DF92A3004DF201 /* workout.jpeg in Resources */,
 				FF00F09B18B829E600E6C321 /* microphonehot.png in Resources */,
 				0E27410718DE6EAE00D3229D /* up.png in Resources */,
 				FF00F0AC18B829FA00E6C321 /* icon_57.png in Resources */,
@@ -728,6 +737,7 @@
 				0E54EE12187ACF9B00DC976C /* main.m in Sources */,
 				73B7D44518BAFEF3001846C3 /* AG_ClientSummaryViewController.m in Sources */,
 				0EFDB3D418CB0F5800CFF197 /* GA_Workout.m in Sources */,
+				B68BA10F18DF8620004DF201 /* GA_DetailViewController.m in Sources */,
 				FF00F08818B829C500E6C321 /* UIBubbleTableViewCell.m in Sources */,
 				FF00F08A18B829C500E6C321 /* MyButton.m in Sources */,
 				0EE2E367189EF80E00CF5F16 /* PJ_SettingsViewController.m in Sources */,

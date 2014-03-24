@@ -12,6 +12,12 @@
 
 @synthesize workoutName;
 @synthesize SKU;
+@synthesize date;
+@synthesize duration;
+@synthesize avgHeartRate;
+@synthesize distance;
+@synthesize calories;
+@synthesize avgPace;
 
 
 @end
