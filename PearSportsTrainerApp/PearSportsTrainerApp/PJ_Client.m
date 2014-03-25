@@ -10,7 +10,7 @@
 
 @implementation PJ_Client
 
-@synthesize name, numNotifications, trainee_id,age=_age,height,weight,gender,dob,email,imageName;
+@synthesize name, numNotifications, trainee_id,age=_age,height,weight,gender,dob,email,imageName,workoutArray;
 
 
 -(void)setAge:(NSString *)age

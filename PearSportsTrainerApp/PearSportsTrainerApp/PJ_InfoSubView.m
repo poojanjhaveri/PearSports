@@ -7,6 +7,7 @@
 //
 
 #import "PJ_InfoSubView.h"
+#import "PJ_Client.h"
 
 static float sq_start = 5;
 static float sq_width = 20;
@@ -15,7 +16,7 @@ static float sq_buffer = 20;
 
 @implementation PJ_InfoSubView
 
-@synthesize headerLabel, subViewType, workoutArray;
+@synthesize headerLabel, subViewType, workoutArray, client;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -38,18 +39,18 @@ static float sq_buffer = 20;
     if ([self subViewType] == SubViewThisWeek) {
         
         [self.headerLabel setText:@"This Week"];
-        [self setWorkoutArray:[[NSArray alloc] initWithObjects:@"complete", @"missed", @"complete", @"unscheduled", @"unscheduled", @"scheduled", @"unscheduled", nil]];
+        [self setWorkoutArray:[[self client] workoutArray][2]];
         
     } else if ([self subViewType] == SubViewLastWeek) {
         
         [self.headerLabel setText:@"Last Week"];
-        [self setWorkoutArray:[[NSArray alloc] initWithObjects:@"complete", @"complete", @"complete", @"unscheduled", @"unscheduled", @"missed", @"unscheduled", nil]];
+        [self setWorkoutArray:[[self client] workoutArray][1]];
         
         
     } else {
         
         [self.headerLabel setText:@"Two Weeks Ago"];
-        [self setWorkoutArray:[[NSArray alloc] initWithObjects:@"missed", @"complete", @"complete", @"unscheduled", @"unscheduled", @"complete", @"unscheduled", nil]];
+        [self setWorkoutArray:[[self client] workoutArray][0]];
 
         
     }
@@ -72,11 +73,11 @@ static float sq_buffer = 20;
         [aLabel setTextAlignment:NSTextAlignmentCenter];
         if (i == 0) {
             
-            aLabel.text = @"Sat";
+            aLabel.text = @"Sun";
             
         } else if (i == 6) {
             
-            aLabel.text = @"Sun";
+            aLabel.text = @"Sat";
             
         } else if (i == 2) {
             
