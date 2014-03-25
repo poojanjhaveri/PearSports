@@ -22,5 +22,8 @@
 @property  NSString * weight;
 @property  NSString * imageName;
 
+@property (nonatomic, strong) NSMutableArray * workoutArray;
+
+
 
 @end

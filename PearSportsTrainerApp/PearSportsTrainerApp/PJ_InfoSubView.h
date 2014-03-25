@@ -9,7 +9,7 @@
 
 
 #import <UIKit/UIKit.h>
-@class PJ_ClientCell;
+@class PJ_ClientCell, PJ_Client;
 
 enum InfoSubViewType{
     SubViewThisWeek,
@@ -25,6 +25,8 @@ enum InfoSubViewType{
 @property (nonatomic) enum InfoSubViewType subViewType;
 
 @property (nonatomic, strong) NSArray * workoutArray;
+
+@property (nonatomic, weak) PJ_Client * client;
 
 - (void) updateHeaderLabelText;
 
