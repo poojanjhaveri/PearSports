@@ -310,9 +310,9 @@
         [self.weekarray addObject:iterator];
         iterator=[NSDate dateWithTimeInterval:(24*60*60) sinceDate:iterator];
     }
-    [self.tableView reloadData];
-    [self sendWorkOutRequest];
     
+    [self sendWorkOutRequest];
+    [self.tableView reloadData];
 }
 
 -(NSString *)getWeekDay:(NSDate *)date
