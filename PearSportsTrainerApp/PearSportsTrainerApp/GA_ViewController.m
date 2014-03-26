@@ -18,6 +18,8 @@
 @property NSMutableArray *weekarrayRaw;
 @property (strong,nonatomic) NSDate *currentDay;
 @property NSMutableArray *workouts;
+@property NSMutableArray *calendarWorkouts;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *workoutLabel;
 
@@ -127,25 +129,80 @@
             w.wdate = [obj objectForKey:@"scheduled_at"];
             w.wdate = [w.wdate substringToIndex:10];
             w.date = [obj objectForKey:@"scheduled_at"];
+            w.status = [obj objectForKey:@"status"];
             w.workoutName = [[obj objectForKey:@"plan"] objectForKey:@"title"];
             w.SKU = [[obj objectForKey:@"plan"] objectForKey:@"sku"];
-            
-            NSLog(@"name: %@", w.workoutName);
-            NSLog(@"date: %@", w.wdate);
             
             
             [self.workouts addObject:w];
             
         }];
+        
 
-        NSLog(@"Workout List: %i", _workouts.count);
+        [self.wCompleteList enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
+            
+            GA_Workout *w = [GA_Workout alloc];
+            w.wdate = [obj objectForKey:@"completed_at"];
+            w.wdate = [w.wdate substringToIndex:10];
+            w.date = [obj objectForKey:@"completed_at"];
+            w.status = [obj objectForKey:@"status"];
+            w.workoutName = [[obj objectForKey:@"workout"] objectForKey:@"title"];
+            w.SKU = [[[obj objectForKey:@"workout"] objectForKey:@"plan"]objectForKey:@"sku"];
+            w.duration = [obj objectForKey:@"duration"];
+            w.avgHeartRate = [obj objectForKey:@"avg_hr"];
+            w.distance = [obj objectForKey:@"distance"];
+            w.calories = [obj objectForKey:@"calories"];
 
+            
+            [self.workouts addObject:w];
+            
+        }];
+
+
+
+        [self createCalendarList];
+        
+        [self.tableView reloadData];
         
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure: %@", error);
     }];
     
     [manager.operationQueue addOperation:operation];
+    
+    [self.tableView reloadData];
+    
+}
+
+
+- (void) createCalendarList
+{
+    self.calendarWorkouts = [[NSMutableArray alloc] init];
+    GA_WorkoutListForCalendar *workout = [[GA_WorkoutListForCalendar alloc] init];
+    GA_Workout *wname = [[GA_Workout alloc] init];
+    
+    for(int i=0;i<7;i++)
+    {
+        GA_WorkoutListForCalendar *work = [[GA_WorkoutListForCalendar alloc] init];
+        NSDate *date = [self.weekarrayRaw objectAtIndex:i];
+        work.date = date;
+        
+        [self.calendarWorkouts addObject:work];
+    }
+    
+    for(int i=0;i<self.workouts.count;i++)
+    {
+        wname = [(self.workouts) objectAtIndex:i];
+        for(int j=0;j<self.calendarWorkouts.count;j++)
+        {
+            workout = [(self.calendarWorkouts)objectAtIndex:j];
+            if([workout checkIfDateExists:wname.wdate] == true){
+                [workout addWorkoutToList:wname];
+                
+            }
+        }
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -170,38 +227,54 @@
 {
 
     // Return the number of rows in the section.
-    return 1;
+//    return 1;
+    
+    return [[self.calendarWorkouts objectAtIndex:section] getWorkoutCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     static NSString *CellIdentifier = @"Cell";
     GA_WorkoutListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    // Configure the cell..
+
     GA_Workout *wname = [GA_Workout alloc];
     
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    format.dateFormat = @"yyyy-MM-dd";
+    wname = [[self.calendarWorkouts objectAtIndex:indexPath.section] getWorkout:(NSInteger*)indexPath.row];
     
-    NSString *date = [format stringFromDate:[(self.weekarrayRaw) objectAtIndex:indexPath.section]];
-    
- //   NSLog(@"workout at %i: %@", indexPath.section, date);
-   
-    cell.textLabel.text = @"Schedule a Workout";
-    
-    for(int i=0;i<self.workouts.count;i++)
+    if(wname == nil)
     {
-        wname = [(self.workouts)objectAtIndex:i];
-        if([wname.wdate isEqualToString: date]){
-        
-            cell.textLabel.text = [wname workoutName];
-            NSLog(@"workout at %i: %@", indexPath.section, [wname workoutName]);
-//            [(self.workouts) removeObjectAtIndex:i];
-        }
-        
+        cell.textLabel.text = @"Schedule a Workout";
     }
-
+    else
+    {
+        cell.textLabel.text = [wname workoutName];
+    }
+    
+    
+//    GA_Workout *wname = [GA_Workout alloc];
+//    
+//    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+//    format.dateFormat = @"yyyy-MM-dd";
+//    
+//    NSString *date = [format stringFromDate:[(self.weekarrayRaw) objectAtIndex:indexPath.section]];
+//
+// //   NSLog(@"workout at %i: %@", indexPath.section, date);
+//   
+//    cell.textLabel.text = @"Schedule a Workout";
+//    
+//    for(int i=0;i<self.workouts.count;i++)
+//    {
+//        wname = [(self.workouts)objectAtIndex:i];
+//        if([wname.wdate isEqualToString: date]){
+//        
+//            cell.textLabel.text = [wname workoutName];
+//        }
+//        
+//    }
+//
     
     return cell;
 }
@@ -312,7 +385,7 @@
     }
     
     [self sendWorkOutRequest];
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
 }
 
 -(NSString *)getWeekDay:(NSDate *)date

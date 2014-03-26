@@ -19,6 +19,8 @@
 @property (nonatomic, copy) NSString *distance;
 @property (nonatomic, copy) NSString *calories;
 @property (nonatomic, copy) NSString *avgPace;
+@property (nonatomic, copy) NSString *status;
+
 
 
 @end

@@ -54,6 +54,7 @@
 		B606C18118D006CD00125523 /* GA_WorkoutNameListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B606C18018D006CD00125523 /* GA_WorkoutNameListTableCell.m */; };
 		B68BA10F18DF8620004DF201 /* GA_DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68BA10E18DF8620004DF201 /* GA_DetailViewController.m */; };
 		B68BA11118DF92A3004DF201 /* workout.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B68BA11018DF92A3004DF201 /* workout.jpeg */; };
+		B6D73A7018E272D9007D080C /* GA_WorkoutListForCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D73A6F18E272D9007D080C /* GA_WorkoutListForCalendar.m */; };
 		FF00F08318B829C500E6C321 /* EWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07318B829C500E6C321 /* EWAppDelegate.m */; };
 		FF00F08418B829C500E6C321 /* EWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07518B829C500E6C321 /* EWViewController.m */; };
 		FF00F08518B829C500E6C321 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07718B829C500E6C321 /* NSBubbleData.m */; };
@@ -166,6 +167,8 @@
 		B68BA10D18DF8620004DF201 /* GA_DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_DetailViewController.h; sourceTree = "<group>"; };
 		B68BA10E18DF8620004DF201 /* GA_DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_DetailViewController.m; sourceTree = "<group>"; };
 		B68BA11018DF92A3004DF201 /* workout.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = workout.jpeg; sourceTree = "<group>"; };
+		B6D73A6E18E272D9007D080C /* GA_WorkoutListForCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_WorkoutListForCalendar.h; sourceTree = "<group>"; };
+		B6D73A6F18E272D9007D080C /* GA_WorkoutListForCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_WorkoutListForCalendar.m; sourceTree = "<group>"; };
 		FF00F07218B829C500E6C321 /* EWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWAppDelegate.h; sourceTree = "<group>"; };
 		FF00F07318B829C500E6C321 /* EWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWAppDelegate.m; sourceTree = "<group>"; };
 		FF00F07418B829C500E6C321 /* EWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWViewController.h; sourceTree = "<group>"; };
@@ -455,6 +458,8 @@
 		0EFDB3D118CB0F3700CFF197 /* WorkoutModel */ = {
 			isa = PBXGroup;
 			children = (
+				B6D73A6E18E272D9007D080C /* GA_WorkoutListForCalendar.h */,
+				B6D73A6F18E272D9007D080C /* GA_WorkoutListForCalendar.m */,
 				0EFDB3D218CB0F5800CFF197 /* GA_Workout.h */,
 				0EFDB3D318CB0F5800CFF197 /* GA_Workout.m */,
 			);
@@ -743,6 +748,7 @@
 				0EE2E367189EF80E00CF5F16 /* PJ_SettingsViewController.m in Sources */,
 				0E54EE1C187ACF9B00DC976C /* PJ_ViewController.m in Sources */,
 				0EB53EA8188C4F05007CA739 /* API.m in Sources */,
+				B6D73A7018E272D9007D080C /* GA_WorkoutListForCalendar.m in Sources */,
 				FF00F08518B829C500E6C321 /* NSBubbleData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

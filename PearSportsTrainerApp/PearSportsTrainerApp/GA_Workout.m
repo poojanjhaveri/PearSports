@@ -19,6 +19,6 @@
 @synthesize distance;
 @synthesize calories;
 @synthesize avgPace;
-
+@synthesize status;
 
 @end

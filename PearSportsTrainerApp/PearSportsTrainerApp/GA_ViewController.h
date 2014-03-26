@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GA_WorkoutListForCalendar.h"
 
 @interface GA_ViewController : UITableViewController
 
