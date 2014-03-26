@@ -86,6 +86,8 @@
     [self addWorkout:@"Tread'N'Shred Moderate 1": @"CFN150002-00M"];
     [self addWorkout:@"Functional Strength Circuit": @"CFN01001C-00M"];
     [self addWorkout:@"Tred'N'Shred Beginner 1": @"CFN150001-00M"];
+    
+    
 
 }
 

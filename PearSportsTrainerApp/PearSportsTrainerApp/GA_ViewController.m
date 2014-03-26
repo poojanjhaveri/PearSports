@@ -236,6 +236,7 @@
     GA_WorkoutListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell..
+    cell.addButton.hidden=FALSE;
 
     GA_Workout *wname = [GA_Workout alloc];
     
@@ -243,11 +244,14 @@
     
     if(wname == nil)
     {
-        cell.textLabel.text = @"Schedule a Workout";
+       // cell.textLabel.text = @"Schedule a Workout";
+        cell.workoutName.text=@"Schedule a Workout";
+        cell.colourCode.backgroundColor=[UIColor clearColor];
+        
     }
     else
     {
-        cell.textLabel.text = [wname workoutName];
+        cell.workoutName.text = [wname workoutName];
     }
     
     
