@@ -50,6 +50,9 @@
 		3F22815318D787BA00AF1AFD /* GA_PersonalizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22815218D787BA00AF1AFD /* GA_PersonalizeViewController.m */; };
 		65B7771738254FF3AFA26964 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFCF36E3D2542AA8D79EB64 /* libPods.a */; };
 		73B7D44518BAFEF3001846C3 /* AG_ClientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */; };
+		73F9933218E24D7C00099504 /* AG_ClientSummaryChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F9933118E24D7C00099504 /* AG_ClientSummaryChartViewController.m */; };
+		73F9933518E2512000099504 /* AG_ClientSummaryChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F9933418E2512000099504 /* AG_ClientSummaryChartInformationView.m */; };
+		73F9933818E2539700099504 /* AG_ClientSummaryChartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F9933718E2539700099504 /* AG_ClientSummaryChartHeaderView.m */; };
 		B606C17D18CFFE2900125523 /* GA_WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B606C17C18CFFE2900125523 /* GA_WorkoutListViewController.m */; };
 		B606C18118D006CD00125523 /* GA_WorkoutNameListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B606C18018D006CD00125523 /* GA_WorkoutNameListTableCell.m */; };
 		B68BA10F18DF8620004DF201 /* GA_DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68BA10E18DF8620004DF201 /* GA_DetailViewController.m */; };
@@ -159,6 +162,12 @@
 		670102BCE36E482A9A05BE4C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		73B7D44318BAFEF3001846C3 /* AG_ClientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AG_ClientSummaryViewController.h; sourceTree = "<group>"; };
 		73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_ClientSummaryViewController.m; sourceTree = "<group>"; };
+		73F9933018E24D7C00099504 /* AG_ClientSummaryChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AG_ClientSummaryChartViewController.h; sourceTree = "<group>"; };
+		73F9933118E24D7C00099504 /* AG_ClientSummaryChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_ClientSummaryChartViewController.m; sourceTree = "<group>"; };
+		73F9933318E2512000099504 /* AG_ClientSummaryChartInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AG_ClientSummaryChartInformationView.h; sourceTree = "<group>"; };
+		73F9933418E2512000099504 /* AG_ClientSummaryChartInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_ClientSummaryChartInformationView.m; sourceTree = "<group>"; };
+		73F9933618E2539700099504 /* AG_ClientSummaryChartHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AG_ClientSummaryChartHeaderView.h; sourceTree = "<group>"; };
+		73F9933718E2539700099504 /* AG_ClientSummaryChartHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_ClientSummaryChartHeaderView.m; sourceTree = "<group>"; };
 		B606C17B18CFFE2900125523 /* GA_WorkoutListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_WorkoutListViewController.h; sourceTree = "<group>"; };
 		B606C17C18CFFE2900125523 /* GA_WorkoutListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_WorkoutListViewController.m; sourceTree = "<group>"; };
 		B606C17F18D006CD00125523 /* GA_WorkoutNameListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_WorkoutNameListTableCell.h; sourceTree = "<group>"; };
@@ -466,6 +475,12 @@
 			children = (
 				73B7D44318BAFEF3001846C3 /* AG_ClientSummaryViewController.h */,
 				73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */,
+				73F9933018E24D7C00099504 /* AG_ClientSummaryChartViewController.h */,
+				73F9933118E24D7C00099504 /* AG_ClientSummaryChartViewController.m */,
+				73F9933318E2512000099504 /* AG_ClientSummaryChartInformationView.h */,
+				73F9933418E2512000099504 /* AG_ClientSummaryChartInformationView.m */,
+				73F9933618E2539700099504 /* AG_ClientSummaryChartHeaderView.h */,
+				73F9933718E2539700099504 /* AG_ClientSummaryChartHeaderView.m */,
 			);
 			name = ClientSummary;
 			sourceTree = "<group>";
@@ -719,8 +734,10 @@
 				0E8139F918B5F55000BDA365 /* DM_SinglePageView.m in Sources */,
 				0E0BC70718BB2D3C00E8580E /* GA_ViewController.m in Sources */,
 				0E7FD5EF1898D70500D601B3 /* PJ_SignUpViewController.m in Sources */,
+				73F9933218E24D7C00099504 /* AG_ClientSummaryChartViewController.m in Sources */,
 				FFAEF6EB18B3347D006E7C3D /* PJ_ClientCell.m in Sources */,
 				FF5FB2C418A8462100C19893 /* PJ_NotificationView.m in Sources */,
+				73F9933518E2512000099504 /* AG_ClientSummaryChartInformationView.m in Sources */,
 				FFAEF6F518B4557A006E7C3D /* PJ_InfoSubView.m in Sources */,
 				FF00F08718B829C500E6C321 /* UIBubbleTableView.m in Sources */,
 				FF00F08918B829C500E6C321 /* UIBubbleTypingTableViewCell.m in Sources */,
@@ -728,6 +745,7 @@
 				B606C18118D006CD00125523 /* GA_WorkoutNameListTableCell.m in Sources */,
 				3F22815318D787BA00AF1AFD /* GA_PersonalizeViewController.m in Sources */,
 				FF5FB2C818A84CE200C19893 /* PJ_Client.m in Sources */,
+				73F9933818E2539700099504 /* AG_ClientSummaryChartHeaderView.m in Sources */,
 				FF00F08318B829C500E6C321 /* EWAppDelegate.m in Sources */,
 				B606C17D18CFFE2900125523 /* GA_WorkoutListViewController.m in Sources */,
 				FF00F08418B829C500E6C321 /* EWViewController.m in Sources */,

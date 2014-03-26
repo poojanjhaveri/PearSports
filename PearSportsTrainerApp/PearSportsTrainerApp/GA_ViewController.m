@@ -15,7 +15,11 @@
 @property NSString *weekstart;
 @property NSString *weekend;
 @property NSMutableArray *weekarray;
+@property NSMutableArray *weekarrayRaw;
 @property (strong,nonatomic) NSDate *currentDay;
+@property NSMutableArray *workouts;
+
+@property (weak, nonatomic) IBOutlet UILabel *workoutLabel;
 
 @end
 
@@ -105,23 +109,37 @@
     [operation setCredential:credential];
     [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Success of schedule workout: %@", responseObject);
+        NSLog(@"Success of schedule workout: %@", [responseObject objectForKey:@"workout_data"]);
         
-        NSDictionary *jsonDict = (NSDictionary *) responseObject;
+        self.workouts = [[NSMutableArray alloc] init];
+        self.wIncompleteList = [[[responseObject objectForKey:@"workout_data"] objectForKey:@"workouts"] objectForKey: @"data"];
+        self.wCompleteList = [[[responseObject objectForKey:@"workout_data"] objectForKey:@"results"] objectForKey: @"data"];
         
-//        self.wIncompleteList = [jsonDict objectForKey:@"ScheduleList"];
-        self.wCompleteList = [jsonDict objectForKey:@"workouts/data"];
-        
-        
-        NSLog(@"Workout List: %i", _wIncompleteList.count);
-        NSLog(@"Workout List: %i", _wCompleteList.count);
+//        NSLog(@"trainee: %@", [[API sharedInstance] getTraineeInfo].trainee_id);
+//        NSLog(@"Start: %@", self.weekstart);
+//        NSLog(@"End: %@", self.weekend);
+//        NSLog(@"Workout List: %i", _wIncompleteList.count);
+//        NSLog(@"Workout List: %i", _wCompleteList.count);
         
         [self.wIncompleteList enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
-            if([[obj objectForKey:@"status"]  isEqual: @"incomplete"]){
-                NSLog(@"Backend Works");
-            }
-        
+            
+            GA_Workout *w = [GA_Workout alloc];
+            w.wdate = [obj objectForKey:@"scheduled_at"];
+            w.wdate = [w.wdate substringToIndex:10];
+            w.date = [obj objectForKey:@"scheduled_at"];
+            w.workoutName = [[obj objectForKey:@"plan"] objectForKey:@"title"];
+            w.SKU = [[obj objectForKey:@"plan"] objectForKey:@"sku"];
+            
+            NSLog(@"name: %@", w.workoutName);
+            NSLog(@"date: %@", w.wdate);
+            
+            
+            [self.workouts addObject:w];
+            
         }];
+
+        NSLog(@"Workout List: %i", _workouts.count);
+
         
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure: %@", error);
@@ -161,6 +179,29 @@
     GA_WorkoutListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    GA_Workout *wname = [GA_Workout alloc];
+    
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    format.dateFormat = @"yyyy-MM-dd";
+    
+    NSString *date = [format stringFromDate:[(self.weekarrayRaw) objectAtIndex:indexPath.section]];
+    
+ //   NSLog(@"workout at %i: %@", indexPath.section, date);
+   
+    cell.textLabel.text = @"Schedule a Workout";
+    
+    for(int i=0;i<self.workouts.count;i++)
+    {
+        wname = [(self.workouts)objectAtIndex:i];
+        if([wname.wdate isEqualToString: date]){
+        
+            cell.textLabel.text = [wname workoutName];
+            NSLog(@"workout at %i: %@", indexPath.section, [wname workoutName]);
+//            [(self.workouts) removeObjectAtIndex:i];
+        }
+        
+    }
+
     
     return cell;
 }
@@ -222,6 +263,13 @@
     
     self.weekstart =[NSString stringWithFormat:@"%lli",[@(floor([beginningOfWeek timeIntervalSince1970])) longLongValue]];
     
+    self.weekarrayRaw = [[NSMutableArray alloc] init];
+    NSDate *it = beginningOfWeek;
+    for(int i=0;i<7;i++)
+    {
+        [self.weekarrayRaw addObject:it];
+        it=[NSDate dateWithTimeInterval:(24*60*60) sinceDate:it];
+    }
     
     NSDateFormatter *dateFormat_first = [[NSDateFormatter alloc] init];
     [dateFormat_first setDateFormat:@"yyyy-MM-dd"];
@@ -262,9 +310,9 @@
         [self.weekarray addObject:iterator];
         iterator=[NSDate dateWithTimeInterval:(24*60*60) sinceDate:iterator];
     }
-    [self.tableView reloadData];
-    [self sendWorkOutRequest];
     
+    [self sendWorkOutRequest];
+    [self.tableView reloadData];
 }
 
 -(NSString *)getWeekDay:(NSDate *)date

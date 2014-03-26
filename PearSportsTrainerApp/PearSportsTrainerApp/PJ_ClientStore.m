@@ -59,7 +59,7 @@
     [[[PJ_ClientStore sharedClientStore] clients] addObject:client2];
     [[[PJ_ClientStore sharedClientStore] clients] addObject:client3];
     
-    NSLog(@"Number of clients = %ld", [[PJ_ClientStore sharedClientStore] clients].count);
+
     
 }
 
@@ -82,8 +82,6 @@
          //NSLog(@"%@", responseObject);
          
          NSMutableArray * traineeList = [NSMutableArray arrayWithArray:responseObject[@"trainee_list"]];
-         
-         NSLog(@"Trainee List : %@", traineeList);
          
          for (NSString * trainee_id in traineeList) {
              PJ_Client * theTrainee = [[PJ_Client alloc] init];
@@ -135,6 +133,7 @@
          [[responseObject objectForKey:@"trainee_list"] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
              
              PJ_Client * theTrainee = [[PJ_Client alloc] init];
+           
              [theTrainee setName:[obj objectForKey:@"screen_name"]];
              [theTrainee setTrainee_id:key];
              [theTrainee setAge:[obj objectForKey:@"age"]];
@@ -151,11 +150,179 @@
              {
                  [theTrainee setImageName:@"poojan.jpg"];
              }
-
+             
+             [theTrainee setWorkoutArray:[[NSMutableArray alloc] initWithCapacity:3]];
+             
+             [[theTrainee workoutArray] insertObject:[[NSMutableArray alloc] initWithCapacity:7] atIndex:0];
+             [[theTrainee workoutArray] insertObject:[[NSMutableArray alloc] initWithCapacity:7] atIndex:1];
+             [[theTrainee workoutArray] insertObject:[[NSMutableArray alloc] initWithCapacity:7] atIndex:2];
+             
+             
+             
+             for (int i = 0; i < 7; i++) {
+                 
+                 [[theTrainee workoutArray][0] insertObject:@"unscheduled" atIndex:i];
+                 [[theTrainee workoutArray][1] insertObject:@"unscheduled" atIndex:i];
+                 [[theTrainee workoutArray][2] insertObject:@"unscheduled" atIndex:i];
+                 
+             }
+             
+             NSMutableArray * completeTimes = [[obj objectForKey:@"workout_schedule_stats"] objectForKey:@"complete_times"];
+           NSLog(@"%@", obj);
+             NSMutableArray * incompleteTimes = [[obj objectForKey:@"workout_schedule_stats"] objectForKey:@"incomplete_times"];
+             
+             NSMutableArray * futureTimes = [[obj objectForKey:@"workout_schedule_stats"] objectForKey:@"future_times"];
+             
+             NSCalendar * aCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+             
+             
+             
+             NSDateComponents *todaysDateComponents = [aCalendar components: NSCalendarUnitWeekOfYear  | NSCalendarUnitWeekday fromDate:[NSDate dateWithTimeIntervalSinceNow:0]];
+             
+             int myWeek = [todaysDateComponents weekOfYear];
+           
+              NSString *lastWork = [NSString stringWithFormat:@"Never"];
+              for (NSString * aString in completeTimes) {
+               
+                 int anInt = [aString integerValue];
+                
+                 NSDate * aDate = [NSDate dateWithTimeIntervalSince1970:anInt];
+                
+                NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+                [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+                
+                lastWork = [dateFormatter stringFromDate:aDate];
+                
+                 NSDateComponents *aDateComponent = [aCalendar components: NSCalendarUnitWeekOfYear  | NSCalendarUnitWeekday fromDate:aDate];
+                 
+                 int completedWeek = [aDateComponent weekOfYear];
+                 int completedDay = [aDateComponent weekday];
+                 
+                 int weekIndex = -1;
+                 int dayIndex;
+                 
+                 if (completedWeek == (myWeek - 2) ) {
+                     
+                     weekIndex = 0;
+                     dayIndex = completedDay - 1;
+                     
+                 } else if (completedWeek == (myWeek - 1)) {
+                     
+                     weekIndex = 1;
+                     dayIndex = completedDay - 1;
+                     
+                 } else if (completedWeek == myWeek) {
+                     
+                     weekIndex = 2;
+                     dayIndex = completedDay - 1;
+                     
+                 }
+                 
+                 if (weekIndex != -1) {
+                     
+                     
+                     [[theTrainee workoutArray][weekIndex] replaceObjectAtIndex:dayIndex withObject:@"complete"];
+                     
+                 }
+                 
+                 
+                 
+                 
+             }
+           
+           [theTrainee setLastWorkout:lastWork];
+           NSLog(@"LST: %@", lastWork);
+             
+             for (NSString * aString in incompleteTimes) {
+                 
+                 int anInt = [aString integerValue];
+                 
+                 NSDate * aDate = [NSDate dateWithTimeIntervalSince1970:anInt];
+                 
+                 NSDateComponents *aDateComponent = [aCalendar components: NSCalendarUnitWeekOfYear  | NSCalendarUnitWeekday fromDate:aDate];
+                 
+                 int incompletedWeek = [aDateComponent weekOfYear];
+                 int incompletedDay = [aDateComponent weekday];
+                 
+                 int weekIndex = -1;
+                 int dayIndex;
+                 
+                 if (incompletedWeek == (myWeek - 2) ) {
+                     
+                     weekIndex = 0;
+                     dayIndex = incompletedDay - 1;
+                     
+                 } else if (incompletedWeek == (myWeek - 1)) {
+                     
+                     weekIndex = 1;
+                     dayIndex = incompletedDay - 1;
+                     
+                 } else if (incompletedWeek == myWeek) {
+                     
+                     weekIndex = 2;
+                     dayIndex = incompletedDay - 1;
+                     
+                 }
+                 
+                 if (weekIndex != -1) {
+                    [[theTrainee workoutArray][weekIndex] replaceObjectAtIndex:dayIndex withObject:@"missed"];
+                 }
+                 
+                 
+                 
+                 
+             }
+             
+             for (NSString * aString in futureTimes) {
+                 
+                 int anInt = [aString integerValue];
+                 
+                 NSDate * aDate = [NSDate dateWithTimeIntervalSince1970:anInt];
+                 
+                 NSDateComponents *aDateComponent = [aCalendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:aDate];
+                 
+                 
+                 int futureWeek = [aDateComponent weekOfYear];
+                 int futureDay = [aDateComponent weekday];
+                 
+                 int weekIndex = -1;
+                 int dayIndex;
+                 
+                 if (futureWeek == (myWeek - 2) ) {
+                     
+                     weekIndex = 0;
+                     dayIndex = futureDay - 1;
+                     
+                 } else if (futureWeek == (myWeek - 1)) {
+                     
+                     weekIndex = 1;
+                     dayIndex = futureDay - 1;
+                     
+                 } else if (futureWeek == myWeek) {
+                     
+                     weekIndex = 2;
+                     dayIndex = futureDay - 1;
+                     
+                 }
+                 
+                 if (weekIndex != -1) {
+                     [[theTrainee workoutArray][weekIndex] replaceObjectAtIndex:dayIndex withObject:@"scheduled"];
+                     
+                 }
+                 
+                 
+                 
+                 
+             }
+             
 
              [self.clients addObject:theTrainee];
              
-             NSLog(@"%@ %@",obj,key);
+             //NSLog(@"%@ %@",obj,key);
+             
+           //NSLog(@"Trainee %@'s Workouts : %@", [theTrainee name], [theTrainee workoutArray]);
+             
          }];
          
          
