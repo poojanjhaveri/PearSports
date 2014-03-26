@@ -133,6 +133,7 @@
          [[responseObject objectForKey:@"trainee_list"] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
              
              PJ_Client * theTrainee = [[PJ_Client alloc] init];
+           
              [theTrainee setName:[obj objectForKey:@"screen_name"]];
              [theTrainee setTrainee_id:key];
              [theTrainee setAge:[obj objectForKey:@"age"]];
@@ -167,7 +168,7 @@
              }
              
              NSMutableArray * completeTimes = [[obj objectForKey:@"workout_schedule_stats"] objectForKey:@"complete_times"];
-             
+           NSLog(@"%@", obj);
              NSMutableArray * incompleteTimes = [[obj objectForKey:@"workout_schedule_stats"] objectForKey:@"incomplete_times"];
              
              NSMutableArray * futureTimes = [[obj objectForKey:@"workout_schedule_stats"] objectForKey:@"future_times"];
@@ -179,13 +180,20 @@
              NSDateComponents *todaysDateComponents = [aCalendar components: NSCalendarUnitWeekOfYear  | NSCalendarUnitWeekday fromDate:[NSDate dateWithTimeIntervalSinceNow:0]];
              
              int myWeek = [todaysDateComponents weekOfYear];
-             
-             for (NSString * aString in completeTimes) {
-                 
+           
+              NSString *lastWork = [NSString stringWithFormat:@"Never"];
+              for (NSString * aString in completeTimes) {
+               
                  int anInt = [aString integerValue];
-                 
+                
                  NSDate * aDate = [NSDate dateWithTimeIntervalSince1970:anInt];
-                 
+                
+                NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+                [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+                
+                lastWork = [dateFormatter stringFromDate:aDate];
+                
                  NSDateComponents *aDateComponent = [aCalendar components: NSCalendarUnitWeekOfYear  | NSCalendarUnitWeekday fromDate:aDate];
                  
                  int completedWeek = [aDateComponent weekOfYear];
@@ -222,7 +230,9 @@
                  
                  
              }
-             
+           
+           [theTrainee setLastWorkout:lastWork];
+           NSLog(@"LST: %@", lastWork);
              
              for (NSString * aString in incompleteTimes) {
                  
@@ -311,7 +321,7 @@
              
              //NSLog(@"%@ %@",obj,key);
              
-             //NSLog(@"Trainee %@'s Workouts : %@", [theTrainee name], [theTrainee workoutArray]);
+           //NSLog(@"Trainee %@'s Workouts : %@", [theTrainee name], [theTrainee workoutArray]);
              
          }];
          

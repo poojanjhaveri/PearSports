@@ -715,25 +715,6 @@ These Terms and any other electronic documents, policies and guidelines incorpor
             </objects>
             <point key="canvasLocation" x="2636" y="-1132"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="41E-Kg-ocy">
-            <objects>
-                <viewController id="SNi-uL-sIK" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LWQ-cx-Es8"/>
-                        <viewControllerLayoutGuide type="bottom" id="mBg-YK-Ybm"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PJ3-A3-6tm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="tHh-Q7-uF9"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LYX-1V-j0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3085" y="-411"/>
-        </scene>
         <!--Client Summary View Controller - John Doe-->
         <scene sceneID="xLh-8r-T0Y">
             <objects>
@@ -765,8 +746,8 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                 <rect key="frame" x="20" y="20" width="100" height="99"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goal:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPI-GG-3Ar">
-                                <rect key="frame" x="128" y="20" width="44" height="33"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gender:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPI-GG-3Ar">
+                                <rect key="frame" x="128" y="20" width="63" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -794,7 +775,7 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHR-CV-D4G">
-                                <rect key="frame" x="180" y="26" width="109" height="21"/>
+                                <rect key="frame" x="199" y="26" width="109" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -811,25 +792,22 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Contact:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="729-fU-h8R">
-                                <rect key="frame" x="20" y="157" width="106" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25s-cK-YTR">
                                 <rect key="frame" x="138" y="133" width="162" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiX-0F-Y41">
-                                <rect key="frame" x="134" y="163" width="166" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Zo-vW-s3R">
+                                <rect key="frame" x="69" y="213" width="163" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Summary Charts">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="UTr-Be-Ik8" kind="push" id="GkM-da-eHa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -839,7 +817,6 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                         <outlet property="ageLabel" destination="iXk-7r-rHS" id="UwW-Lq-mch"/>
                         <outlet property="clientImageView" destination="cVN-eG-WLf" id="jtr-Me-M0Y"/>
                         <outlet property="goalLabel" destination="HHR-CV-D4G" id="FdI-0r-3jA"/>
-                        <outlet property="lastContactLabel" destination="GiX-0F-Y41" id="GNi-as-kdY"/>
                         <outlet property="lastWorkoutLabel" destination="25s-cK-YTR" id="wkd-Ts-9AH"/>
                         <outlet property="notesTextView" destination="5BB-qH-WZx" id="Hzp-bQ-0kB"/>
                         <outlet property="weightLabel" destination="4aX-Jb-osE" id="c8s-SG-rDO"/>
@@ -848,6 +825,25 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mpZ-Zf-eUr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2642" y="-433"/>
+        </scene>
+        <!--Client Summary Chart View Controller-->
+        <scene sceneID="e0p-Bm-Src">
+            <objects>
+                <viewController id="UTr-Be-Ik8" customClass="AG_ClientSummaryChartViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ooq-5w-x3K"/>
+                        <viewControllerLayoutGuide type="bottom" id="DXz-z8-D8n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ebM-wN-CLL">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TfS-NX-7GU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NKr-oc-gzR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3069" y="-434"/>
         </scene>
         <!--Client List View Controller - Pear Sports-->
         <scene sceneID="tWP-M3-cNU">

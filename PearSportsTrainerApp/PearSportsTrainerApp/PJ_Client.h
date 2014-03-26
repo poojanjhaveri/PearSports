@@ -11,16 +11,17 @@
 @interface PJ_Client : NSObject
 
 
-@property (copy) NSString * name;
+@property (strong, nonatomic) NSString * name;
 @property (copy) NSString * trainee_id;
 @property int numNotifications;
-@property  (strong,nonatomic) NSString *  age;
-@property (copy) NSString * dob;
+@property (strong, nonatomic) NSString *  age;
+@property (strong, nonatomic) NSString * dob;
 @property (copy) NSString * email;
-@property (copy) NSString * gender;
-@property  NSString *  height;
-@property  NSString * weight;
-@property  NSString * imageName;
+@property (strong, nonatomic) NSString * gender;
+@property (strong, nonatomic) NSString *  height;
+@property (strong, nonatomic) NSString * weight;
+@property (strong, nonatomic) NSString * imageName;
+@property (strong, nonatomic) NSString * lastWorkout;
 
 
 /*
