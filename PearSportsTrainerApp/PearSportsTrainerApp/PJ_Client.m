@@ -10,31 +10,13 @@
 
 @implementation PJ_Client
 
-@synthesize name, numNotifications, trainee_id,age=_age,height,weight=_weight,gender=_gender,dob=_dob,email,imageName,workoutArray, lastWorkout=_lastWorkout;
+@synthesize name, numNotifications, trainee_id,age=_age,height,weight,gender,dob,email,imageName;
 
 
 -(void)setAge:(NSString *)age
 {
-  _age=age;
+    _age=age;
+    NSLog(@"%@",age);
 }
 
--(void)setDob:(NSString *)dob
-{
-  _dob = dob;
-}
-
--(void)setWeight:(NSString *)weight
-{
-  _weight = weight;
-}
-
--(void)setGender:(NSString *)gender
-{
-  _gender = gender;
-}
-
--(void)setLastWorkout:(NSString *)lastWorkout
-{
-  _lastWorkout = lastWorkout;
-}
 @end

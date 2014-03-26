@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weightLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastWorkoutLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastContactLabel;
 @end
 
 @implementation AG_ClientSummaryViewController
@@ -45,16 +46,13 @@
   // Client Setup
   // @TODO update with actual inforamtion
   [self.notesTextView setText:@"User Notes will Go Here"];
-  [self.goalLabel setText:[[API sharedInstance] getTraineeInfo].gender];
-  
-  int weight = [[[API sharedInstance] getTraineeInfo].weight intValue] / 1000;
-  [self.weightLabel setText:[NSString stringWithFormat:@"%d lbs", weight]];
-  
-  [self.ageLabel setText:[NSString stringWithFormat:@"%@", [[API sharedInstance] getTraineeInfo].age]];
-  
-  [self.lastWorkoutLabel setText:[NSString stringWithFormat:@"%@", [[API sharedInstance] getTraineeInfo].lastWorkout]];
-
-  self.clientImageView.image=[UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
+  [self.goalLabel setText:@"Weight Loss"];
+  [self.ageLabel setText:@"47"];
+  //  [self.weightLabel setText:[[API sharedInstance] getTraineeInfo].dob];
+  [self.weightLabel setText:@"123lb"];
+  [self.lastWorkoutLabel setText:@"Today at 6:00pm"];
+  [self.lastContactLabel setText:@"Yesterday"];
+    self.clientImageView.image=[UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
   
   // Main Setup
   [self.notesTextView setDelegate:self];

@@ -50,7 +50,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    /*
     self.tabBarController.navigationItem.title =@"Messages";
      [self.tabBarController.navigationItem setRightBarButtonItems:nil];
     
@@ -92,8 +91,7 @@
                 
                 NSLog(@"DATEEE: %@", [dateFormatter stringFromDate:online]);
                  */
-    
-    /*
+                
                 if(i == 1){
                     NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
                     sayBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
@@ -153,7 +151,7 @@
     
     
     [manager.operationQueue addOperation:operation];
-*/
+
 }
 
 - (void)viewDidLoad
@@ -243,107 +241,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
     
-    self.tabBarController.navigationItem.title =@"Messages";
-    [self.tabBarController.navigationItem setRightBarButtonItems:nil];
-    
-    
-    
-    NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
-    NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
-    NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id", nil]];
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSURLCredential *credential = [NSURLCredential credentialWithUser:token password:@"" persistence:NSURLCredentialPersistenceNone];
-    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
-    NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"GET" URLString:@"https://cs477-backend.herokuapp.com/trainer/messages" parameters:parameters error:nil];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:reqst];
-    [operation setCredential:credential];
-    [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Success: %@", responseObject);
-        
-        NSDictionary *jsonDict = (NSDictionary *) responseObject;
-        self.arr = [jsonDict objectForKey:@"message_list"];
-        
-        [self.arr enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
-            if([[obj objectForKey:@"message_type"]  isEqual: @"text"]){
-                
-                NSString *textMsg = [obj objectForKey:@"content"];
-                NSNumber *val = [obj objectForKey:@"outgoing"];
-                BOOL i = [val boolValue];
-                //NSLog(@"Text: %@", textMsg);
-                
-                
-                NSNumber *time =[obj objectForKey:@"created_at"];
-                NSTimeInterval interval = [time doubleValue];
-                /*
-                 NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
-                 NSDate *online = [NSDate date];
-                 online = [NSDate dateWithTimeIntervalSince1970:interval];
-                 NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                 [dateFormatter setDateFormat:@"HH:mm:ss"];
-                 
-                 NSLog(@"DATEEE: %@", [dateFormatter stringFromDate:online]);
-                 */
-                
-                if(i == 1){
-                    NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
-                    sayBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
-                    [bubbleData addObject:sayBubble];
-                    [bubbleTable reloadData];
-                    [bubbleTable scrollBubbleViewToBottomAnimated:NO];
-                }
-                else{
-                    NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
-                    sayBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
-                    [bubbleData addObject:sayBubble];
-                    [bubbleTable reloadData];
-                    [bubbleTable scrollBubbleViewToBottomAnimated:NO];
-                }
-                
-            }
-            else{
-                NSNumber *val = [obj objectForKey:@"outgoing"];
-                BOOL i = [val boolValue];
-                NSNumber *time =[obj objectForKey:@"created_at"];
-                NSTimeInterval interval = [time doubleValue];
-                
-                if(i == 1){
-                    NSString *textMsg = [obj objectForKey:@"content"];
-                    //NSLog(@"Audio: %@", textMsg);
-                    
-                    NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
-                    
-                    
-                    NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
-                    audioBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
-                    [bubbleData addObject:audioBubble];
-                    [bubbleTable reloadData];
-                    [bubbleTable scrollBubbleViewToBottomAnimated:NO];
-                }
-                else{
-                    NSString *textMsg = [obj objectForKey:@"content"];
-                    //NSLog(@"Audio: %@", textMsg);
-                    
-                    NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
-                    
-                    NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
-                    audioBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
-                    [bubbleData addObject:audioBubble];
-                    [bubbleTable reloadData];
-                    [bubbleTable scrollBubbleViewToBottomAnimated:NO];
-                }
-                
-            }
-        }];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Failure: %@", error);
-    }];
-    
-    //NSLog(@"OPERATION IS %@",operation);
-    
-    
-    [manager.operationQueue addOperation:operation];
 }
 
 /*
