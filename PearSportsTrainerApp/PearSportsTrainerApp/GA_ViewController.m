@@ -15,6 +15,7 @@
 @property NSString *weekstart;
 @property NSString *weekend;
 @property NSMutableArray *weekarray;
+@property NSMutableArray *weekarrayRaw;
 @property (strong,nonatomic) NSDate *currentDay;
 @property NSMutableArray *workouts;
 @property NSMutableArray *calendarWorkouts;
@@ -114,12 +115,10 @@
         
         NSDictionary *jsonDict = (NSDictionary *) responseObject;
         
-//        self.wIncompleteList = [jsonDict objectForKey:@"ScheduleList"];
-        self.wCompleteList = [jsonDict objectForKey:@"workouts/data"];
+        self.workouts = [[NSMutableArray alloc] init];
+        self.wIncompleteList = [[[jsonDict objectForKey:@"workout_data"] objectForKey:@"workouts"] objectForKey:@"data"];
+        self.wCompleteList = [[[jsonDict objectForKey:@"workout_data"] objectForKey:@"results"] objectForKey:@"data"];
         
-        
-        NSLog(@"Workout List: %i", _wIncompleteList.count);
-        NSLog(@"Workout List: %i", _wCompleteList.count);
         
         [self.wIncompleteList enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
             
@@ -168,8 +167,6 @@
     
     [manager.operationQueue addOperation:operation];
     
-    [self.tableView reloadData];
-    
 }
 
 
@@ -196,10 +193,12 @@
             workout = [(self.calendarWorkouts)objectAtIndex:j];
             if([workout checkIfDateExists:wname.wdate] == true){
                 [workout addWorkoutToList:wname];
-                
+                NSLog(@"Match");
             }
         }
     }
+    
+    NSLog(@"Calendar List: %i", self.calendarWorkouts.count);
     
 }
 
@@ -331,6 +330,14 @@
     
     NSDate *beginningOfWeek = [gregorian dateFromComponents:components];
     
+    self.weekarrayRaw = [[NSMutableArray alloc] init];
+    NSDate *it=beginningOfWeek;
+    for(int i=0;i<7;i++)
+    {
+        [self.weekarrayRaw addObject:it];
+        it=[NSDate dateWithTimeInterval:(24*60*60) sinceDate:it];
+    }
+
     
     self.weekstart =[NSString stringWithFormat:@"%lli",[@(floor([beginningOfWeek timeIntervalSince1970])) longLongValue]];
     
