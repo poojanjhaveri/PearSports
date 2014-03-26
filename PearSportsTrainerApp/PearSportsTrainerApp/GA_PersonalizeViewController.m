@@ -138,10 +138,10 @@
     
     NSTimeInterval ti = [_wDate timeIntervalSince1970];
     
+    
     NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
     NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
-    NSString *time_st = [NSString stringWithFormat:@"%f", ti];
-
+    NSString *time_st = [NSString stringWithFormat:@"%a", ti];
     NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id, time_st, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id", @"start", nil]];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSURLCredential *credential = [NSURLCredential credentialWithUser:token password:@"" persistence:NSURLCredentialPersistenceNone];
@@ -151,19 +151,19 @@
     
     NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"POST" URLString:urlstring parameters:parameters error:nil];
     
+//    NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"POST" URLString:@"https://cs477-backend.herokuapp.com/workout/@%a",  parameters:parameters error:nil];
+    
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:reqst];
     [operation setCredential:credential];
     [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@" Workout Success: %@", responseObject);
+        NSLog(@"Success: %@", responseObject);
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure: %@", error);
     }];
     
     [manager.operationQueue addOperation:operation];
-    
-    
 }
 
 

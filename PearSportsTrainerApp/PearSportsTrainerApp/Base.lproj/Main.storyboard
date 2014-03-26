@@ -378,6 +378,13 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                                 <segue destination="2nP-gT-aMv" kind="push" identifier="showWorkoutList" id="tJg-ze-MCo"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Schedule a Workout" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0G-8L-7Gu">
+                                            <rect key="frame" x="20" y="11" width="154" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eZ-7A-iC7">
                                             <rect key="frame" x="0.0" y="0.0" width="12" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -387,6 +394,9 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="workoutName" destination="S0G-8L-7Gu" id="K3j-wS-UoF"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
