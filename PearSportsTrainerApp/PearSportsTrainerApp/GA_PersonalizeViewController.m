@@ -141,7 +141,8 @@
     
     NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
     NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
-    NSString *time_st = [NSString stringWithFormat:@"%a", ti];
+    NSString *time_st = [NSString stringWithFormat:@"%f", ti];
+    NSLog(@"workout date: %@", time_st);
     NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id, time_st, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id", @"start", nil]];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSURLCredential *credential = [NSURLCredential credentialWithUser:token password:@"" persistence:NSURLCredentialPersistenceNone];

@@ -193,12 +193,9 @@
             workout = [(self.calendarWorkouts)objectAtIndex:j];
             if([workout checkIfDateExists:wname.wdate] == true){
                 [workout addWorkoutToList:wname];
-                NSLog(@"Match");
             }
         }
     }
-    
-    NSLog(@"Calendar List: %i", self.calendarWorkouts.count);
     
 }
 
@@ -250,28 +247,6 @@
         cell.textLabel.text = [wname workoutName];
     }
     
-    
-//    GA_Workout *wname = [GA_Workout alloc];
-//    
-//    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-//    format.dateFormat = @"yyyy-MM-dd";
-//    
-//    NSString *date = [format stringFromDate:[(self.weekarrayRaw) objectAtIndex:indexPath.section]];
-//
-// //   NSLog(@"workout at %i: %@", indexPath.section, date);
-//   
-//    cell.textLabel.text = @"Schedule a Workout";
-//    
-//    for(int i=0;i<self.workouts.count;i++)
-//    {
-//        wname = [(self.workouts)objectAtIndex:i];
-//        if([wname.wdate isEqualToString: date]){
-//        
-//            cell.textLabel.text = [wname workoutName];
-//        }
-//        
-//    }
-//
     
     return cell;
 }
