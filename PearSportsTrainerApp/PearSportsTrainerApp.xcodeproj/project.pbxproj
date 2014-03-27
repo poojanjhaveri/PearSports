@@ -37,6 +37,9 @@
 		0E7FD5F01898D70500D601B3 /* PJ_SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7FD5EE1898D70500D601B3 /* PJ_SignUpViewController.m */; };
 		0E8139F618B5F47200BDA365 /* poojan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0E8139F518B5F47200BDA365 /* poojan.jpg */; };
 		0E8139F918B5F55000BDA365 /* DM_SinglePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8139F818B5F55000BDA365 /* DM_SinglePageView.m */; };
+		0E8530EA18E2C9150092704D /* AG_ClientSummaryChartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8530E918E2C9140092704D /* AG_ClientSummaryChartHeaderView.m */; };
+		0E8530ED18E2C95B0092704D /* AG_ClientSummaryChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8530EC18E2C95A0092704D /* AG_ClientSummaryChartInformationView.m */; };
+		0E8530F018E2C9AC0092704D /* AG_ClientSummaryChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8530EF18E2C9AC0092704D /* AG_ClientSummaryChartViewController.m */; };
 		0EA1250718D91585000589CA /* SampleJSONCalls in Resources */ = {isa = PBXBuildFile; fileRef = 0EA1250618D91585000589CA /* SampleJSONCalls */; };
 		0EA93A7818962E4D00463BBC /* pearsports.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0EA93A7718962E4D00463BBC /* pearsports.jpg */; };
 		0EAE019F1888C515008E6795 /* PJ_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE019E1888C515008E6795 /* PJ_LoginViewController.m */; };
@@ -140,6 +143,12 @@
 		0E8139F518B5F47200BDA365 /* poojan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poojan.jpg; sourceTree = "<group>"; };
 		0E8139F718B5F55000BDA365 /* DM_SinglePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DM_SinglePageView.h; sourceTree = "<group>"; };
 		0E8139F818B5F55000BDA365 /* DM_SinglePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DM_SinglePageView.m; sourceTree = "<group>"; };
+		0E8530E818E2C9140092704D /* AG_ClientSummaryChartHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AG_ClientSummaryChartHeaderView.h; sourceTree = "<group>"; };
+		0E8530E918E2C9140092704D /* AG_ClientSummaryChartHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_ClientSummaryChartHeaderView.m; sourceTree = "<group>"; };
+		0E8530EB18E2C95A0092704D /* AG_ClientSummaryChartInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AG_ClientSummaryChartInformationView.h; sourceTree = "<group>"; };
+		0E8530EC18E2C95A0092704D /* AG_ClientSummaryChartInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_ClientSummaryChartInformationView.m; sourceTree = "<group>"; };
+		0E8530EE18E2C9AC0092704D /* AG_ClientSummaryChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AG_ClientSummaryChartViewController.h; sourceTree = "<group>"; };
+		0E8530EF18E2C9AC0092704D /* AG_ClientSummaryChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_ClientSummaryChartViewController.m; sourceTree = "<group>"; };
 		0EA1250618D91585000589CA /* SampleJSONCalls */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SampleJSONCalls; sourceTree = "<group>"; };
 		0EA93A7718962E4D00463BBC /* pearsports.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pearsports.jpg; sourceTree = "<group>"; };
 		0EAE019D1888C515008E6795 /* PJ_LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_LoginViewController.h; sourceTree = "<group>"; };
@@ -471,6 +480,12 @@
 			children = (
 				73B7D44318BAFEF3001846C3 /* AG_ClientSummaryViewController.h */,
 				73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */,
+				0E8530E818E2C9140092704D /* AG_ClientSummaryChartHeaderView.h */,
+				0E8530E918E2C9140092704D /* AG_ClientSummaryChartHeaderView.m */,
+				0E8530EB18E2C95A0092704D /* AG_ClientSummaryChartInformationView.h */,
+				0E8530EC18E2C95A0092704D /* AG_ClientSummaryChartInformationView.m */,
+				0E8530EE18E2C9AC0092704D /* AG_ClientSummaryChartViewController.h */,
+				0E8530EF18E2C9AC0092704D /* AG_ClientSummaryChartViewController.m */,
 			);
 			name = ClientSummary;
 			sourceTree = "<group>";
@@ -728,6 +743,7 @@
 				FF5FB2C418A8462100C19893 /* PJ_NotificationView.m in Sources */,
 				FFAEF6F518B4557A006E7C3D /* PJ_InfoSubView.m in Sources */,
 				FF00F08718B829C500E6C321 /* UIBubbleTableView.m in Sources */,
+				0E8530F018E2C9AC0092704D /* AG_ClientSummaryChartViewController.m in Sources */,
 				FF00F08918B829C500E6C321 /* UIBubbleTypingTableViewCell.m in Sources */,
 				FF00F08618B829C500E6C321 /* UIBubbleHeaderTableViewCell.m in Sources */,
 				B606C18118D006CD00125523 /* GA_WorkoutNameListTableCell.m in Sources */,
@@ -737,6 +753,7 @@
 				B606C17D18CFFE2900125523 /* GA_WorkoutListViewController.m in Sources */,
 				FF00F08418B829C500E6C321 /* EWViewController.m in Sources */,
 				0EAE019F1888C515008E6795 /* PJ_LoginViewController.m in Sources */,
+				0E8530EA18E2C9150092704D /* AG_ClientSummaryChartHeaderView.m in Sources */,
 				0E54EE16187ACF9B00DC976C /* PJ_AppDelegate.m in Sources */,
 				0E01738218A1E34600FC1B46 /* PJ_ClientListViewController.m in Sources */,
 				0E54EE12187ACF9B00DC976C /* main.m in Sources */,
@@ -748,6 +765,7 @@
 				0EE2E367189EF80E00CF5F16 /* PJ_SettingsViewController.m in Sources */,
 				0E54EE1C187ACF9B00DC976C /* PJ_ViewController.m in Sources */,
 				0EB53EA8188C4F05007CA739 /* API.m in Sources */,
+				0E8530ED18E2C95B0092704D /* AG_ClientSummaryChartInformationView.m in Sources */,
 				B6D73A7018E272D9007D080C /* GA_WorkoutListForCalendar.m in Sources */,
 				FF00F08518B829C500E6C321 /* NSBubbleData.m in Sources */,
 			);

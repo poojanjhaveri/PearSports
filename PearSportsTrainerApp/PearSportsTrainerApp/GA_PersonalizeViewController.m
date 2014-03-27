@@ -82,6 +82,7 @@
     NSLog(@"Tap");
     
     [self sendWorkOutRequest];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,7 +104,7 @@
     [UIView setAnimationDuration:[notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
     [UIView setAnimationCurve:[notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
     [UIView setAnimationBeginsFromCurrentState:YES];
-    self.view.frame = CGRectMake(0, 0 - keyboardSize.height + 49, self.view.frame.size.width, self.view.frame.size.height);
+    self.view.frame = CGRectMake(0, 0 - keyboardSize.height+89, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
     
 }
