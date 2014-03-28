@@ -241,7 +241,6 @@
     
     if(wname == nil)
     {
-       // cell.textLabel.text = @"Schedule a Workout";
         cell.workoutName.text=@"Schedule a Workout";
         cell.colourCode.backgroundColor=[UIColor clearColor];
         
