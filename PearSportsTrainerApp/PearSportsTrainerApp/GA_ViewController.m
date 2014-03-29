@@ -255,17 +255,13 @@
     }
     else
     {
-        
+   
         //grey: complete no results
         //red: skipped
         //green: complete
         //blue: future
         
-        UIImage *placeholder = [UIImage imageNamed:@"box.png"];
-        [cell.imageView setImage:placeholder];
-        [cell.imageView setFrame:CGRectMake(0, 0, 30, 30)];
-        [cell.imageView setBounds:CGRectMake(0, 0, placeholder.size.width, placeholder.size.height)];
-        
+    
         NSDate * now = [NSDate date];
         NSComparisonResult result = [now compare:wname.date];
         
@@ -273,43 +269,40 @@
         {
             case NSOrderedAscending:{
                 if ([wname.status isEqualToString:@"marked_complete"]) {
-                    cell.imageView.backgroundColor = [UIColor grayColor];
+                    cell.colourCode.backgroundColor=[UIColor lightGrayColor];
                 }
                 else if ([wname.status isEqualToString:@"completed"]) {
-                    cell.imageView.backgroundColor = [UIColor greenColor];
+                    cell.colourCode.backgroundColor=[UIColor greenColor];
                 }
                 else{
-                    cell.imageView.backgroundColor = [UIColor blueColor];
+                    cell.colourCode.backgroundColor=[UIColor blueColor];
                 }
                 break;
             }
             case NSOrderedDescending:{
                 if ([wname.status isEqualToString:@"marked_complete"]) {
-                    cell.imageView.backgroundColor = [UIColor grayColor];
+                    cell.colourCode.backgroundColor=[UIColor lightGrayColor];
                 }
                 else if ([wname.status isEqualToString:@"completed"]) {
-                    cell.imageView.backgroundColor = [UIColor greenColor];
+                    cell.colourCode.backgroundColor=[UIColor greenColor];
                 }
                 else{
-                    cell.imageView.backgroundColor = [UIColor redColor];
+                    cell.colourCode.backgroundColor=[UIColor redColor];
                 }
                 break;            }
             case NSOrderedSame:
                 if ([wname.status isEqualToString:@"marked_complete"]) {
-                    cell.imageView.backgroundColor = [UIColor grayColor];
+                    cell.colourCode.backgroundColor=[UIColor lightGrayColor];
                 }
                 else if ([wname.status isEqualToString:@"completed"]) {
-                    cell.imageView.backgroundColor = [UIColor greenColor];
+                    cell.colourCode.backgroundColor=[UIColor greenColor];
                 }
                 else{
-                    cell.imageView.backgroundColor = [UIColor blueColor];
+                    cell.colourCode.backgroundColor=[UIColor blueColor];
                 }
                 break;
             default: NSLog(@"erorr dates"); break;
         }
-        
-        //        cell.colourCode.backgroundColor=[UIColor greenColor];
-        
 
 //        [cell.workoutName setText:[wname workoutName]];
         cell.textLabel.text = [wname workoutName];
@@ -491,23 +484,6 @@
 }
 */
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -516,8 +492,11 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"showWorkoutList"]){
+     
+        
         CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+        
         GA_WorkoutListViewController *destViewController = segue.destinationViewController;
         
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -532,5 +511,44 @@
 }
 
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    //Headerview
+    UIView *myView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 20.0)];
+    [myView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    [button setFrame:CGRectMake(275.0, 5.0, 30.0, 30.0)];
+    button.tag = section;
+    button.hidden = NO;
+    [button setBackgroundColor:[UIColor clearColor]];
+    [button addTarget:self action:@selector(addButtonPressed:) forControlEvents:UIControlEventTouchDown];
+    [myView addSubview:button];
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM-dd-YYYY"];// you can use your format.
+    
+    NSDate *date = [self.weekarray objectAtIndex:section];
+    
+    
+    NSString *header=[NSString stringWithFormat:@"%@ %@",[dateFormat stringFromDate:date],[self getWeekDay:date]];
+
+    
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 200, 40)];
+    label.text=header;
+    [label setFont:[UIFont fontWithName:@"Avenir" size:16.0f]];
+    [myView addSubview:label];
+    
+    return myView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 40.0;
+}
+
+-(void)addButtonPressed:(id)sender
+{
+    [self performSegueWithIdentifier:@"showWorkoutList" sender:sender];
+}
 
 @end
