@@ -125,12 +125,15 @@
             GA_Workout *w = [GA_Workout alloc];
             w.wdate = [obj objectForKey:@"scheduled_at"];
             w.wdate = [w.wdate substringToIndex:10];
-            w.date = [obj objectForKey:@"scheduled_at"];
+            NSNumber *time =[obj objectForKey:@"scheduled_at"];
+            NSTimeInterval ti = [time doubleValue];
+            //            NSTimeIntervalSince1970 *ti = [obj objectForKey:@"completed_at"];
+            w.date =[NSDate dateWithTimeIntervalSince1970:ti];
             w.status = [obj objectForKey:@"status"];
             w.workoutName = [[obj objectForKey:@"plan"] objectForKey:@"title"];
             w.SKU = [[obj objectForKey:@"plan"] objectForKey:@"sku"];
             
-            
+            NSLog(@"workout %@ date: %@", w.workoutName, w.date);
             [self.workouts addObject:w];
             
         }];
@@ -141,7 +144,10 @@
             GA_Workout *w = [GA_Workout alloc];
             w.wdate = [obj objectForKey:@"completed_at"];
             w.wdate = [w.wdate substringToIndex:10];
-            w.date = [obj objectForKey:@"completed_at"];
+            NSNumber *time =[obj objectForKey:@"completed_at"];
+            NSTimeInterval ti = [time doubleValue];
+//            NSTimeIntervalSince1970 *ti = [obj objectForKey:@"completed_at"];
+            w.date =[NSDate dateWithTimeIntervalSince1970:ti];
             w.status = [obj objectForKey:@"status"];
             w.workoutName = [[obj objectForKey:@"workout"] objectForKey:@"title"];
             w.SKU = [[[obj objectForKey:@"workout"] objectForKey:@"plan"]objectForKey:@"sku"];
@@ -150,7 +156,7 @@
             w.distance = [obj objectForKey:@"distance"];
             w.calories = [obj objectForKey:@"calories"];
 
-            
+            NSLog(@"workout %@ date: %@", w.workoutName, w.date);
             [self.workouts addObject:w];
             
         }];
@@ -241,13 +247,15 @@
     
     if(wname == nil)
     {
-        cell.workoutName.text=@"Schedule a Workout";
+        cell.textLabel.text=@"Schedule a Workout";
         cell.colourCode.backgroundColor=[UIColor clearColor];
         
     }
     else
     {
         cell.workoutName.text = [wname workoutName];
+        cell.textLabel.text = [wname workoutName];
+        
     }
     
     
