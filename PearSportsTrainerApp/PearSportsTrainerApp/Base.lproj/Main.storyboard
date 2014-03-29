@@ -386,7 +386,7 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                                 <segue destination="2nP-gT-aMv" kind="push" identifier="showWorkoutList" id="tJg-ze-MCo"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eZ-7A-iC7">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eZ-7A-iC7" colorLabel="IBBuiltInLabel-Green">
                                             <rect key="frame" x="0.0" y="0.0" width="12" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -402,6 +402,9 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="colourCode" destination="9eZ-7A-iC7" id="6fE-8V-Enl"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

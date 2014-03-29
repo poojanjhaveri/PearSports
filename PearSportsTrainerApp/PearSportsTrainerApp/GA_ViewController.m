@@ -125,15 +125,17 @@
             GA_Workout *w = [GA_Workout alloc];
             w.wdate = [obj objectForKey:@"scheduled_at"];
             w.wdate = [w.wdate substringToIndex:10];
-            NSNumber *time =[obj objectForKey:@"scheduled_at"];
-            NSTimeInterval ti = [time doubleValue];
-            //            NSTimeIntervalSince1970 *ti = [obj objectForKey:@"completed_at"];
-            w.date =[NSDate dateWithTimeIntervalSince1970:ti];
+
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            NSString *input = [obj objectForKey:@"scheduled_at"];
+            [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"]; //iso 8601 format
+            NSDate *output = [dateFormat dateFromString:input];
+            w.date = output;
+            
             w.status = [obj objectForKey:@"status"];
             w.workoutName = [[obj objectForKey:@"plan"] objectForKey:@"title"];
             w.SKU = [[obj objectForKey:@"plan"] objectForKey:@"sku"];
             
-            NSLog(@"workout %@ date: %@", w.workoutName, w.date);
             [self.workouts addObject:w];
             
         }];
@@ -144,10 +146,13 @@
             GA_Workout *w = [GA_Workout alloc];
             w.wdate = [obj objectForKey:@"completed_at"];
             w.wdate = [w.wdate substringToIndex:10];
-            NSNumber *time =[obj objectForKey:@"completed_at"];
-            NSTimeInterval ti = [time doubleValue];
-//            NSTimeIntervalSince1970 *ti = [obj objectForKey:@"completed_at"];
-            w.date =[NSDate dateWithTimeIntervalSince1970:ti];
+            
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            NSString *input = [obj objectForKey:@"scheduled_at"];
+            [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"]; //iso 8601 format
+            NSDate *output = [dateFormat dateFromString:input];
+            w.date = output;
+
             w.status = [obj objectForKey:@"status"];
             w.workoutName = [[obj objectForKey:@"workout"] objectForKey:@"title"];
             w.SKU = [[[obj objectForKey:@"workout"] objectForKey:@"plan"]objectForKey:@"sku"];
@@ -156,7 +161,6 @@
             w.distance = [obj objectForKey:@"distance"];
             w.calories = [obj objectForKey:@"calories"];
 
-            NSLog(@"workout %@ date: %@", w.workoutName, w.date);
             [self.workouts addObject:w];
             
         }];
@@ -228,7 +232,7 @@
 
     // Return the number of rows in the section.
 //    return 1;
-    
+
     return [[self.calendarWorkouts objectAtIndex:section] getWorkoutCount];
 }
 
@@ -248,12 +252,66 @@
     if(wname == nil)
     {
         cell.textLabel.text=@"Schedule a Workout";
-        cell.colourCode.backgroundColor=[UIColor clearColor];
-        
     }
     else
     {
-        cell.workoutName.text = [wname workoutName];
+        
+        //grey: complete no results
+        //red: skipped
+        //green: complete
+        //blue: future
+        
+        UIImage *placeholder = [UIImage imageNamed:@"box.png"];
+        [cell.imageView setImage:placeholder];
+        [cell.imageView setFrame:CGRectMake(0, 0, 30, 30)];
+        [cell.imageView setBounds:CGRectMake(0, 0, placeholder.size.width, placeholder.size.height)];
+        
+        NSDate * now = [NSDate date];
+        NSComparisonResult result = [now compare:wname.date];
+        
+        switch (result)
+        {
+            case NSOrderedAscending:{
+                if ([wname.status isEqualToString:@"marked_complete"]) {
+                    cell.imageView.backgroundColor = [UIColor grayColor];
+                }
+                else if ([wname.status isEqualToString:@"completed"]) {
+                    cell.imageView.backgroundColor = [UIColor greenColor];
+                }
+                else{
+                    cell.imageView.backgroundColor = [UIColor blueColor];
+                }
+                break;
+            }
+            case NSOrderedDescending:{
+                if ([wname.status isEqualToString:@"marked_complete"]) {
+                    cell.imageView.backgroundColor = [UIColor grayColor];
+                }
+                else if ([wname.status isEqualToString:@"completed"]) {
+                    cell.imageView.backgroundColor = [UIColor greenColor];
+                }
+                else{
+                    cell.imageView.backgroundColor = [UIColor redColor];
+                }
+                break;            }
+            case NSOrderedSame:
+                if ([wname.status isEqualToString:@"marked_complete"]) {
+                    cell.imageView.backgroundColor = [UIColor grayColor];
+                }
+                else if ([wname.status isEqualToString:@"completed"]) {
+                    cell.imageView.backgroundColor = [UIColor greenColor];
+                }
+                else{
+                    cell.imageView.backgroundColor = [UIColor blueColor];
+                }
+                break;
+            default: NSLog(@"erorr dates"); break;
+        }
+        
+        //        cell.colourCode.backgroundColor=[UIColor greenColor];
+        
+
+//        [cell.workoutName setText:[wname workoutName]];
         cell.textLabel.text = [wname workoutName];
         
     }

@@ -57,6 +57,7 @@
 		B606C18118D006CD00125523 /* GA_WorkoutNameListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B606C18018D006CD00125523 /* GA_WorkoutNameListTableCell.m */; };
 		B68BA10F18DF8620004DF201 /* GA_DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68BA10E18DF8620004DF201 /* GA_DetailViewController.m */; };
 		B68BA11118DF92A3004DF201 /* workout.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B68BA11018DF92A3004DF201 /* workout.jpeg */; };
+		B6ABB1D918E70FF100E635B3 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = B6ABB1D818E70FF100E635B3 /* box.png */; };
 		B6D73A7018E272D9007D080C /* GA_WorkoutListForCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D73A6F18E272D9007D080C /* GA_WorkoutListForCalendar.m */; };
 		FF00F08318B829C500E6C321 /* EWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07318B829C500E6C321 /* EWAppDelegate.m */; };
 		FF00F08418B829C500E6C321 /* EWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF00F07518B829C500E6C321 /* EWViewController.m */; };
@@ -176,6 +177,7 @@
 		B68BA10D18DF8620004DF201 /* GA_DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_DetailViewController.h; sourceTree = "<group>"; };
 		B68BA10E18DF8620004DF201 /* GA_DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_DetailViewController.m; sourceTree = "<group>"; };
 		B68BA11018DF92A3004DF201 /* workout.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = workout.jpeg; sourceTree = "<group>"; };
+		B6ABB1D818E70FF100E635B3 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
 		B6D73A6E18E272D9007D080C /* GA_WorkoutListForCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_WorkoutListForCalendar.h; sourceTree = "<group>"; };
 		B6D73A6F18E272D9007D080C /* GA_WorkoutListForCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_WorkoutListForCalendar.m; sourceTree = "<group>"; };
 		FF00F07218B829C500E6C321 /* EWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWAppDelegate.h; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				B68BA11018DF92A3004DF201 /* workout.jpeg */,
+				B6ABB1D818E70FF100E635B3 /* box.png */,
 				0E27410918DE6EB900D3229D /* down.png */,
 				0E27410A18DE6EB900D3229D /* down@2x.png */,
 				0E27410518DE6EAE00D3229D /* up.png */,
@@ -665,6 +668,7 @@
 				FFC7EF3818BAFF8000AB1BAB /* left1.png in Resources */,
 				FF00F0A318B829E600E6C321 /* typingMine@2x.png in Resources */,
 				FF00F0A418B829E600E6C321 /* typingSomeone.png in Resources */,
+				B6ABB1D918E70FF100E635B3 /* box.png in Resources */,
 				0E01737E18A1DC3900FC1B46 /* PEAR_reagular_C-BLKlogo.png in Resources */,
 				0E54EE19187ACF9B00DC976C /* Main.storyboard in Resources */,
 				FF00F09A18B829E600E6C321 /* stop.png in Resources */,

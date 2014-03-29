@@ -20,9 +20,9 @@
     self = [super init];
     if (self) {
         self.workoutList = [[NSMutableArray alloc] init];
-        GA_Workout *ga = [[GA_Workout alloc] init];
-        ga.workoutName = @"Schedule a workout";
-        [self addWorkoutToList:ga];
+//        GA_Workout *ga = [[GA_Workout alloc] init];
+//        ga.workoutName = @"Schedule a workout";
+//        [self addWorkoutToList:ga];
     }
     return self;
 }
