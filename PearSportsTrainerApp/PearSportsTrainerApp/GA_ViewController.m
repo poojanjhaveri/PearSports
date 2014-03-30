@@ -9,6 +9,8 @@
 #import "GA_ViewController.h"
 #import "GA_WorkoutListCell.h"
 #import "GA_WorkoutListViewController.h"
+#import "GA_DetailViewController.h"
+#import "GA_IncDetailViewController.h"
 #import "API.h"
 
 @interface GA_ViewController ()
@@ -19,6 +21,7 @@
 @property (strong,nonatomic) NSDate *currentDay;
 @property NSMutableArray *workouts;
 @property NSMutableArray *calendarWorkouts;
+@property GA_Workout *selectedWorkout;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *workoutLabel;
@@ -241,9 +244,10 @@
     
     static NSString *CellIdentifier = @"Cell";
     GA_WorkoutListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     // Configure the cell..
-    cell.addButton.hidden=FALSE;
+    cell.addButton.hidden=TRUE;
 
     GA_Workout *wname = [GA_Workout alloc];
     
@@ -251,7 +255,7 @@
     
     if(wname == nil)
     {
-        cell.textLabel.text=@"Schedule a Workout";
+        NSLog(@"No workout");
     }
     else
     {
@@ -333,6 +337,24 @@
     return  header;
 }
 
+- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    GA_Workout *wname = [GA_Workout alloc];
+    wname = [[self.calendarWorkouts objectAtIndex:indexPath.section] getWorkout:(NSInteger*)indexPath.row];
+    
+    self.selectedWorkout = [GA_Workout alloc];
+    self.selectedWorkout = wname;
+    
+    
+    if ([wname.status isEqualToString:@"completed"]) {
+        [self performSegueWithIdentifier:@"showCompleteDetails" sender:self];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"showIncompleteDetails" sender:self];
+    }
+}
+
 -(NSDate *)getTodayDate
 {
     
@@ -351,9 +373,6 @@
     NSDate *today = destinationDate;
         return today;
 }
-
-
-
 
 -(void)getWeek:(NSDate *)today
 {
@@ -528,6 +547,26 @@
         destViewController.wDate = date;
         
     }
+    else if([segue.identifier isEqualToString:@"showCompleteDetails"]){
+
+        NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+        
+        GA_Workout *wname = [GA_Workout alloc];
+        wname = [[self.calendarWorkouts objectAtIndex:indexPath.section] getWorkout:(NSInteger*)indexPath.row];
+        
+        GA_DetailViewController *destViewController = segue.destinationViewController;
+        destViewController.workout = self.selectedWorkout;
+    }
+    else if([segue.identifier isEqualToString:@"showIncompleteDetails"]){
+        NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+        
+        GA_Workout *wname = [GA_Workout alloc];
+        wname = [[self.calendarWorkouts objectAtIndex:indexPath.section] getWorkout:(NSInteger*)indexPath.row];
+        
+        GA_DetailViewController *destViewController = segue.destinationViewController;
+        destViewController.workout = self.selectedWorkout;
+    }
+    
     
 }
 
