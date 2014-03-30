@@ -443,6 +443,17 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iWw-x9-F2e" id="SuV-sg-7lu">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eZ-7A-iC7" colorLabel="IBBuiltInLabel-Green">
+                                            <rect key="frame" x="0.0" y="0.0" width="12" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="12" id="MXU-GT-NA1"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="9eZ-7A-iC7" secondAttribute="bottom" id="0No-gW-KYI"/>
@@ -458,13 +469,13 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Workouts" image="calendar_2_icon&amp;24.png" id="KuE-fQ-Jv7"/>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="uoz-MW-RRP"/>
-                    </toolbarItems>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="fy0-01-aMC"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="mL0-dN-84g" kind="push" identifier="showCompleteDetails" id="Ir3-il-ub1"/>
-                        <segue destination="Kk7-4j-Fq5" kind="push" identifier="showIncompleteDetails" id="Uux-um-auq"/>
+                        <segue destination="2nP-gT-aMv" kind="push" identifier="showWorkoutList" id="5dK-ZJ-v7J"/>
+                        <segue destination="mL0-dN-84g" kind="push" identifier="showCompleteDetails" id="dQP-3r-ju3"/>
+                        <segue destination="Kk7-4j-Fq5" kind="push" identifier="showIncompleteDetails" id="fRC-Hg-pN2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Us-qB-ASi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -612,7 +623,7 @@ These Terms and any other electronic documents, policies and guidelines incorpor
             <objects>
                 <tableViewController id="2nP-gT-aMv" customClass="GA_WorkoutListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mb2-7D-BlD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -648,7 +659,7 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                         <viewControllerLayoutGuide type="bottom" id="JHf-aw-ISf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oJQ-8B-BNZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Workout " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pK5-rP-Uss">
