@@ -461,6 +461,9 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                         <constraint firstItem="9eZ-7A-iC7" firstAttribute="top" secondItem="SuV-sg-7lu" secondAttribute="top" id="t5o-xM-0GK"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="colourCode" destination="9eZ-7A-iC7" id="5IK-gh-ja7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
