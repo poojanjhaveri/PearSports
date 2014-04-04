@@ -248,7 +248,8 @@
     
     // Configure the cell..
     cell.addButton.hidden=TRUE;
-
+    [cell.addButton setTag:indexPath.section];
+    
     GA_Workout *wname = [GA_Workout alloc];
     
     wname = [[self.calendarWorkouts objectAtIndex:indexPath.section] getWorkout:(NSInteger*)indexPath.row];
@@ -348,6 +349,7 @@
     }
 }
 
+
 -(NSDate *)getTodayDate
 {
     
@@ -390,6 +392,7 @@
     NSDate *it=beginningOfWeek;
     for(int i=0;i<7;i++)
     {
+        NSLog(@"Day %i: %@", i, it);
         [self.weekarrayRaw addObject:it];
         it=[NSDate dateWithTimeInterval:(24*60*60) sinceDate:it];
     }
@@ -511,17 +514,17 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"showWorkoutList"]){
-     
-        
-        CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
-        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
-        
+
+        UIButton *button = (UIButton *)sender;
+        NSLog(@"%ld",(long)button.tag);
+                
         GA_WorkoutListViewController *destViewController = segue.destinationViewController;
         
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"MM-dd-YYYY"];// you can use your format.
         
-        NSDate *date = [self.weekarray objectAtIndex:indexPath.section];
+        NSDate *date = [self.weekarrayRaw objectAtIndex:button.tag];
+        NSLog(@"Date passed at index %i: %@", button.tag, date);
         
         destViewController.wDate = date;
         
