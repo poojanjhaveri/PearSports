@@ -20,6 +20,11 @@
 @property (nonatomic, copy) NSString *calories;
 @property (nonatomic, copy) NSString *avgPace;
 @property (nonatomic, copy) NSString *status;
+@property (nonatomic, copy) NSString *grade;
+@property (nonatomic, copy) NSString *activityType;
+@property (nonatomic, copy) NSString *shortDes;
+@property (nonatomic, copy) NSString *longDes;
+@property (nonatomic, copy) NSString *wID;
 
 
 

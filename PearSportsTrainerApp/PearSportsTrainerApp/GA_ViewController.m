@@ -138,6 +138,10 @@
             w.status = [obj objectForKey:@"status"];
             w.workoutName = [[obj objectForKey:@"plan"] objectForKey:@"title"];
             w.SKU = [[obj objectForKey:@"plan"] objectForKey:@"sku"];
+            w.activityType = [obj objectForKey:@"activity_type"];
+            w.shortDes = [obj objectForKey:@"description_short"];
+            w.longDes = [obj objectForKey:@"description_long"];
+            w.wID = [obj objectForKey:@"workout_header_id"];
             
             [self.workouts addObject:w];
             
@@ -163,6 +167,12 @@
             w.avgHeartRate = [obj objectForKey:@"avg_hr"];
             w.distance = [obj objectForKey:@"distance"];
             w.calories = [obj objectForKey:@"calories"];
+            w.grade = [obj objectForKey:@"grade"];
+            w.activityType = [[obj objectForKey:@"plan"] objectForKey:@"activity_type"];
+            w.shortDes = [[obj objectForKey:@"plan"] objectForKey:@"description_short"];
+            w.longDes = [[obj objectForKey:@"plan"] objectForKey:@"description_long"];
+            w.wID = [[obj objectForKey:@"plan"] objectForKey:@"workout_header_id"];
+            
 
             [self.workouts addObject:w];
             
@@ -517,7 +527,7 @@
 
         UIButton *button = (UIButton *)sender;
         NSLog(@"%ld",(long)button.tag);
-                
+        
         GA_WorkoutListViewController *destViewController = segue.destinationViewController;
         
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];

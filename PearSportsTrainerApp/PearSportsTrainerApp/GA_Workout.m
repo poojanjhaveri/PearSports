@@ -20,5 +20,11 @@
 @synthesize calories;
 @synthesize avgPace;
 @synthesize status;
+@synthesize grade;
+@synthesize activityType;
+@synthesize shortDes;
+@synthesize longDes;
+@synthesize wID;
+
 
 @end
