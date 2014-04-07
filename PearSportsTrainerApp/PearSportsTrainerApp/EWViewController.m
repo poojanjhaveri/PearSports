@@ -20,7 +20,7 @@
 #import "NSBubbleData.h"
 #import "API.h"
 #import <AFNetworking.h>
-
+#import <MBProgressHUD.h>
 
 //TODO AUTOSCROLL
 
@@ -60,6 +60,8 @@
     [self.tabBarController.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: refresh, nil]];
     
     
+    
+    
 }
 
 - (void) refreshChat{
@@ -67,26 +69,13 @@
     NSLog(@"refreshing");
 }
 
-- (void) setupActivityIndicator
-{
-    
-    UIActivityIndicatorView *ac = [[UIActivityIndicatorView alloc]
-                                   initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(150, 65, 320, 50)];
-    [view addSubview:ac]; // <-- Your UIActivityIndicatorView
-    [bubbleTable addSubview:view];
-    
-    [ac startAnimating];
-    
-    
-}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     
-    [self setupActivityIndicator];
     
     NSLog(@"TRainee name : %@ %@ %@ %@ %@ %@",[[API sharedInstance] getTraineeInfo].name,[[API sharedInstance] getTraineeInfo].age,[[API sharedInstance] getTraineeInfo].weight,[[API sharedInstance] getTraineeInfo].height,[[API sharedInstance] getTraineeInfo].gender,[[API sharedInstance] getTraineeInfo].trainee_id);
     
@@ -146,10 +135,10 @@
     bubbleTable.bubbleDataSource = self;
     
     // The line below sets the snap interval in seconds. This defines how the bubbles will be grouped in time.
-    // Interval of 120 means that if the next messages comes in 2 minutes since the last message, it will be added into the same group.
+    // Interval of 300 means that if the next messages comes in 5 minutes since the last message, it will be added into the same group.
     // Groups are delimited with header which contains date and time for the first message in the group.
     
-    bubbleTable.snapInterval = 120;
+    bubbleTable.snapInterval = 300;
     
     // The line below enables avatar support. Avatar can be specified for each bubble with .avatar property of NSBubbleData.
     // Avatars are enabled for the whole table at once. If particular NSBubbleData misses the avatar, a default placeholder will be set (missingAvatar.png)
@@ -171,9 +160,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
     
-    self.tabBarController.navigationItem.title =@"Messages";
-    [self.tabBarController.navigationItem setRightBarButtonItems:nil];
+    //self.tabBarController.navigationItem.title =@"Messages";
+    //[self.tabBarController.navigationItem setRightBarButtonItems:nil];
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
     
     
     NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
@@ -263,15 +254,22 @@
                 
             }
         }];
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure: %@", error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
     }];
     
     //NSLog(@"OPERATION IS %@",operation);
     
     
     [manager.operationQueue addOperation:operation];
+    
+    });
 
 }
 

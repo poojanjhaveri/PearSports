@@ -20,6 +20,8 @@
 @property (nonatomic, assign) BOOL recording;
 @property (strong, nonatomic) NSArray *arr;
 
+@property (strong) UIActivityIndicatorView * activityIndicator;
+
 - (IBAction)recordVoice:(id)sender;
 - (NSString*) dateString;
 
