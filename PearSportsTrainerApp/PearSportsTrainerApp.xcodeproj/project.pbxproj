@@ -90,6 +90,7 @@
 		FF5FB2C418A8462100C19893 /* PJ_NotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5FB2C318A8462100C19893 /* PJ_NotificationView.m */; };
 		FF5FB2C818A84CE200C19893 /* PJ_Client.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5FB2C718A84CE200C19893 /* PJ_Client.m */; };
 		FF5FB2CB18A84D5C00C19893 /* PJ_ClientStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5FB2CA18A84D5C00C19893 /* PJ_ClientStore.m */; };
+		FFA7B10618F2494D0003298B /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA7B10518F2494D0003298B /* refresh.png */; };
 		FFAEF6EB18B3347D006E7C3D /* PJ_ClientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEF6EA18B3347D006E7C3D /* PJ_ClientCell.m */; };
 		FFAEF6F518B4557A006E7C3D /* PJ_InfoSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEF6F418B4557A006E7C3D /* PJ_InfoSubView.m */; };
 		FFC7EF3618BAFDB800AB1BAB /* right1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC7EF3518BAFDB800AB1BAB /* right1.png */; };
@@ -225,6 +226,7 @@
 		FF5FB2C718A84CE200C19893 /* PJ_Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_Client.m; sourceTree = "<group>"; };
 		FF5FB2C918A84D5C00C19893 /* PJ_ClientStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_ClientStore.h; sourceTree = "<group>"; };
 		FF5FB2CA18A84D5C00C19893 /* PJ_ClientStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_ClientStore.m; sourceTree = "<group>"; };
+		FFA7B10518F2494D0003298B /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
 		FFAEF6E918B3347D006E7C3D /* PJ_ClientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_ClientCell.h; sourceTree = "<group>"; };
 		FFAEF6EA18B3347D006E7C3D /* PJ_ClientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJ_ClientCell.m; sourceTree = "<group>"; };
 		FFAEF6F318B4557A006E7C3D /* PJ_InfoSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJ_InfoSubView.h; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 		FF00F08B18B829D200E6C321 /* MessagingImages */ = {
 			isa = PBXGroup;
 			children = (
+				FFA7B10518F2494D0003298B /* refresh.png */,
 				FFC7EF3718BAFF8000AB1BAB /* left1.png */,
 				FFC7EF3518BAFDB800AB1BAB /* right1.png */,
 				FF00F08C18B829E600E6C321 /* audio_basic.png */,
@@ -667,6 +670,7 @@
 				FF00F0AB18B829FA00E6C321 /* halloween.jpg in Resources */,
 				0E27410B18DE6EB900D3229D /* down.png in Resources */,
 				0E54EE1E187ACF9B00DC976C /* Images.xcassets in Resources */,
+				FFA7B10618F2494D0003298B /* refresh.png in Resources */,
 				FF00F0A518B829E600E6C321 /* typingSomeone@2x.png in Resources */,
 				0E0173A318A1EBF700FC1B46 /* user_icon&24.png in Resources */,
 				0E54EE10187ACF9B00DC976C /* InfoPlist.strings in Resources */,

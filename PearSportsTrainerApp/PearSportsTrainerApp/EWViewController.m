@@ -51,6 +51,20 @@
 {
     [super viewWillAppear:YES];
     
+    self.tabBarController.navigationItem.title =@"Mesaging";
+    self.tabBarController.navigationItem.backBarButtonItem.title=@"Back";
+    
+    UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"refresh.png"] style:UIBarButtonItemStylePlain target:self action:@selector(refreshChat)];
+    
+    
+    [self.tabBarController.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: refresh, nil]];
+    
+    
+}
+
+- (void) refreshChat{
+    [bubbleTable reloadData];
+    NSLog(@"refreshing");
 }
 
 - (void) setupActivityIndicator
