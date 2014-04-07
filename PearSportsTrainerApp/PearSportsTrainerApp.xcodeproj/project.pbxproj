@@ -519,8 +519,8 @@
 			isa = PBXGroup;
 			children = (
 				FF00F07218B829C500E6C321 /* EWAppDelegate.h */,
-				FF00F07518B829C500E6C321 /* EWViewController.m */,
 				FF00F07418B829C500E6C321 /* EWViewController.h */,
+				FF00F07518B829C500E6C321 /* EWViewController.m */,
 				FF00F07318B829C500E6C321 /* EWAppDelegate.m */,
 				FF00F07618B829C500E6C321 /* NSBubbleData.h */,
 				FF00F07718B829C500E6C321 /* NSBubbleData.m */,

@@ -134,8 +134,17 @@
                                            nil);
         
         if(image != nil){
-            NSLog(@"NEED TO SEND IMAGE HERE");
-            //TO DO SEND IMAGE HERE
+            NSBubbleData *imageBubble = [NSBubbleData dataWithImage:image date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
+            imageBubble.avatar = nil;
+            [bubbleData addObject:imageBubble];
+            [bubbleTable reloadData];
+            textField.text = @"";
+            [textField resignFirstResponder];
+            
+            [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+            NSLog(@"NEED TO SEND IMAGE TO SERVER HERE");
+            
+            
         }
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
