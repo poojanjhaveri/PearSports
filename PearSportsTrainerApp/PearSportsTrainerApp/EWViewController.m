@@ -110,7 +110,7 @@
     NSBubbleData *replyBubble = [NSBubbleData dataWithText:@"Wow.." date:[NSDate dateWithTimeIntervalSinceNow:-5] type:BubbleTypeMine];
     replyBubble.avatar = nil;
     
-    bubbleData = [[NSMutableArray alloc] initWithObjects:heyBubble, nil];
+    bubbleData = [[NSMutableArray alloc] initWithObjects: nil];
     //bubbleData = [ [NSMutableArray alloc] init];
     bubbleTable.bubbleDataSource = self;
     
@@ -281,6 +281,7 @@
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
+    
     [UIView animateWithDuration:0.2f animations:^{
         
         CGRect frame = textInputView.frame;
@@ -288,7 +289,8 @@
         textInputView.frame = frame;
         
         frame = bubbleTable.frame;
-        frame.size.height -= kbSize.height-50;
+        frame.origin.y -= 166;
+        //frame.size.height -= kbSize.height-50;
         bubbleTable.frame = frame;
         
         
@@ -307,7 +309,8 @@
         textInputView.frame = frame;
         
         frame = bubbleTable.frame;
-        frame.size.height += kbSize.height-50;
+        frame.origin.y += 166;
+        //frame.size.height += kbSize.height-50;
         bubbleTable.frame = frame;
         
     }];

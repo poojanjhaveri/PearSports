@@ -123,7 +123,7 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
         
         self.audioPlayer = [[AVAudioPlayer alloc] initWithData:_objectData error:&error];
         self.audioPlayer.numberOfLoops = 0;
-        self.audioPlayer.volume = 1.0f;
+        self.audioPlayer.volume = 25.0f;
         [self.audioPlayer prepareToPlay];
         
         if (self.audioPlayer == nil)
@@ -145,6 +145,8 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
          
          _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
          _audioPlayer.delegate = self;
+        self.audioPlayer.numberOfLoops = 0;
+        self.audioPlayer.volume = 25.0f;
          [_audioPlayer prepareToPlay];
          
          if (error)
