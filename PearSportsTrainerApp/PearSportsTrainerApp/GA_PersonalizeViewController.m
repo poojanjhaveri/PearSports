@@ -82,6 +82,7 @@
     NSLog(@"Tap");
     
     [self sendWorkOutRequest];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,7 +104,7 @@
     [UIView setAnimationDuration:[notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
     [UIView setAnimationCurve:[notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
     [UIView setAnimationBeginsFromCurrentState:YES];
-    self.view.frame = CGRectMake(0, 0 - keyboardSize.height + 49, self.view.frame.size.width, self.view.frame.size.height);
+    self.view.frame = CGRectMake(0, 0 - keyboardSize.height+89, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
     
 }
@@ -141,7 +142,8 @@
     
     NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
     NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
-    NSString *time_st = [NSString stringWithFormat:@"%a", ti];
+    NSString *time_st = [NSString stringWithFormat:@"%f", ti];
+    NSLog(@"workout date: %@", time_st);
     NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id, time_st, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id", @"start", nil]];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSURLCredential *credential = [NSURLCredential credentialWithUser:token password:@"" persistence:NSURLCredentialPersistenceNone];

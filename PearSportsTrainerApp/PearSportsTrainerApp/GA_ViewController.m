@@ -9,13 +9,22 @@
 #import "GA_ViewController.h"
 #import "GA_WorkoutListCell.h"
 #import "GA_WorkoutListViewController.h"
+#import "GA_DetailViewController.h"
+#import "GA_IncDetailViewController.h"
 #import "API.h"
 
 @interface GA_ViewController ()
 @property NSString *weekstart;
 @property NSString *weekend;
 @property NSMutableArray *weekarray;
+@property NSMutableArray *weekarrayRaw;
 @property (strong,nonatomic) NSDate *currentDay;
+@property NSMutableArray *workouts;
+@property NSMutableArray *calendarWorkouts;
+@property GA_Workout *selectedWorkout;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *workoutLabel;
 
 @end
 
@@ -109,25 +118,108 @@
         
         NSDictionary *jsonDict = (NSDictionary *) responseObject;
         
-//        self.wIncompleteList = [jsonDict objectForKey:@"ScheduleList"];
-        self.wCompleteList = [jsonDict objectForKey:@"workouts/data"];
+        self.workouts = [[NSMutableArray alloc] init];
+        self.wIncompleteList = [[[jsonDict objectForKey:@"workout_data"] objectForKey:@"workouts"] objectForKey:@"data"];
+        self.wCompleteList = [[[jsonDict objectForKey:@"workout_data"] objectForKey:@"results"] objectForKey:@"data"];
         
-        
-        NSLog(@"Workout List: %i", _wIncompleteList.count);
-        NSLog(@"Workout List: %i", _wCompleteList.count);
         
         [self.wIncompleteList enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
-            if([[obj objectForKey:@"status"]  isEqual: @"incomplete"]){
-                NSLog(@"Backend Works");
-            }
-        
+            
+            GA_Workout *w = [GA_Workout alloc];
+            w.wdate = [obj objectForKey:@"scheduled_at"];
+            w.wdate = [w.wdate substringToIndex:10];
+
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            NSString *input = [obj objectForKey:@"scheduled_at"];
+            [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"]; //iso 8601 format
+            NSDate *output = [dateFormat dateFromString:input];
+            w.date = output;
+            
+            w.status = [obj objectForKey:@"status"];
+            w.workoutName = [[obj objectForKey:@"plan"] objectForKey:@"title"];
+            w.SKU = [[obj objectForKey:@"plan"] objectForKey:@"sku"];
+            w.activityType = [obj objectForKey:@"activity_type"];
+            w.shortDes = [obj objectForKey:@"description_short"];
+            w.longDes = [obj objectForKey:@"description_long"];
+            w.wID = [obj objectForKey:@"workout_header_id"];
+            
+            [self.workouts addObject:w];
+            
         }];
+        
+
+        [self.wCompleteList enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
+            
+            GA_Workout *w = [GA_Workout alloc];
+            w.wdate = [obj objectForKey:@"completed_at"];
+            w.wdate = [w.wdate substringToIndex:10];
+            
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            NSString *input = [obj objectForKey:@"scheduled_at"];
+            [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"]; //iso 8601 format
+            NSDate *output = [dateFormat dateFromString:input];
+            w.date = output;
+
+            w.status = [obj objectForKey:@"status"];
+            w.workoutName = [[obj objectForKey:@"workout"] objectForKey:@"title"];
+            w.SKU = [[[obj objectForKey:@"workout"] objectForKey:@"plan"]objectForKey:@"sku"];
+            w.duration = [obj objectForKey:@"duration"];
+            w.avgHeartRate = [obj objectForKey:@"avg_hr"];
+            w.distance = [obj objectForKey:@"distance"];
+            w.calories = [obj objectForKey:@"calories"];
+            w.grade = [obj objectForKey:@"grade"];
+            w.activityType = [[obj objectForKey:@"plan"] objectForKey:@"activity_type"];
+            w.shortDes = [[obj objectForKey:@"plan"] objectForKey:@"description_short"];
+            w.longDes = [[obj objectForKey:@"plan"] objectForKey:@"description_long"];
+            w.wID = [[obj objectForKey:@"plan"] objectForKey:@"workout_header_id"];
+            
+
+            [self.workouts addObject:w];
+            
+        }];
+
+
+
+        [self createCalendarList];
+        
+        [self.tableView reloadData];
         
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure: %@", error);
     }];
     
     [manager.operationQueue addOperation:operation];
+    
+}
+
+
+- (void) createCalendarList
+{
+    self.calendarWorkouts = [[NSMutableArray alloc] init];
+    GA_WorkoutListForCalendar *workout = [[GA_WorkoutListForCalendar alloc] init];
+    GA_Workout *wname = [[GA_Workout alloc] init];
+    
+    for(int i=0;i<7;i++)
+    {
+        GA_WorkoutListForCalendar *work = [[GA_WorkoutListForCalendar alloc] init];
+        NSDate *date = [self.weekarrayRaw objectAtIndex:i];
+        work.date = date;
+        
+        [self.calendarWorkouts addObject:work];
+    }
+    
+    for(int i=0;i<self.workouts.count;i++)
+    {
+        wname = [(self.workouts) objectAtIndex:i];
+        for(int j=0;j<self.calendarWorkouts.count;j++)
+        {
+            workout = [(self.calendarWorkouts)objectAtIndex:j];
+            if([workout checkIfDateExists:wname.wdate] == true){
+                [workout addWorkoutToList:wname];
+            }
+        }
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -152,15 +244,86 @@
 {
 
     // Return the number of rows in the section.
-    return 1;
+//    return 1;
+
+    return [[self.calendarWorkouts objectAtIndex:section] getWorkoutCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     static NSString *CellIdentifier = @"Cell";
     GA_WorkoutListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    // Configure the cell...
+    // Configure the cell..
+    cell.addButton.hidden=TRUE;
+    [cell.addButton setTag:indexPath.section];
+    
+    GA_Workout *wname = [GA_Workout alloc];
+    
+    wname = [[self.calendarWorkouts objectAtIndex:indexPath.section] getWorkout:(NSInteger*)indexPath.row];
+    
+    if(wname == nil)
+    {
+        NSLog(@"No workout");
+    }
+    else
+    {
+   
+        //grey: complete no results
+        //red: skipped
+        //green: complete
+        //blue: future
+        
+    
+        NSDate * now = [NSDate date];
+        NSComparisonResult result = [now compare:wname.date];
+        
+        switch (result)
+        {
+            case NSOrderedAscending:{
+                if ([wname.status isEqualToString:@"marked_complete"]) {
+                    cell.colourCode.backgroundColor=[UIColor lightGrayColor];
+                }
+                else if ([wname.status isEqualToString:@"completed"]) {
+                    cell.colourCode.backgroundColor=[UIColor greenColor];
+                }
+                else{
+                    cell.colourCode.backgroundColor=[UIColor blueColor];
+                }
+                break;
+            }
+            case NSOrderedDescending:{
+                if ([wname.status isEqualToString:@"marked_complete"]) {
+                    cell.colourCode.backgroundColor=[UIColor lightGrayColor];
+                }
+                else if ([wname.status isEqualToString:@"completed"]) {
+                    cell.colourCode.backgroundColor=[UIColor greenColor];
+                }
+                else{
+                    cell.colourCode.backgroundColor=[UIColor redColor];
+                }
+                break;            }
+            case NSOrderedSame:
+                if ([wname.status isEqualToString:@"marked_complete"]) {
+                    cell.colourCode.backgroundColor=[UIColor lightGrayColor];
+                }
+                else if ([wname.status isEqualToString:@"completed"]) {
+                    cell.colourCode.backgroundColor=[UIColor greenColor];
+                }
+                else{
+                    cell.colourCode.backgroundColor=[UIColor blueColor];
+                }
+                break;
+            default: NSLog(@"erorr dates"); break;
+        }
+
+//        [cell.workoutName setText:[wname workoutName]];
+        cell.textLabel.text = [wname workoutName];
+        
+    }
+    
     
     return cell;
 }
@@ -177,6 +340,25 @@
     
     return  header;
 }
+
+- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    GA_Workout *wname = [GA_Workout alloc];
+    wname = [[self.calendarWorkouts objectAtIndex:indexPath.section] getWorkout:(NSInteger*)indexPath.row];
+    
+    self.selectedWorkout = [GA_Workout alloc];
+    self.selectedWorkout = wname;
+    
+    
+    if ([wname.status isEqualToString:@"completed"]) {
+        [self performSegueWithIdentifier:@"showCompleteDetails" sender:self];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"showIncompleteDetails" sender:self];
+    }
+}
+
 
 -(NSDate *)getTodayDate
 {
@@ -197,9 +379,6 @@
         return today;
 }
 
-
-
-
 -(void)getWeek:(NSDate *)today
 {
 
@@ -219,6 +398,15 @@
     
     NSDate *beginningOfWeek = [gregorian dateFromComponents:components];
     
+    self.weekarrayRaw = [[NSMutableArray alloc] init];
+    NSDate *it=beginningOfWeek;
+    for(int i=0;i<7;i++)
+    {
+        NSLog(@"Day %i: %@", i, it);
+        [self.weekarrayRaw addObject:it];
+        it=[NSDate dateWithTimeInterval:(24*60*60) sinceDate:it];
+    }
+
     
     self.weekstart =[NSString stringWithFormat:@"%lli",[@(floor([beginningOfWeek timeIntervalSince1970])) longLongValue]];
     
@@ -262,9 +450,9 @@
         [self.weekarray addObject:iterator];
         iterator=[NSDate dateWithTimeInterval:(24*60*60) sinceDate:iterator];
     }
-    [self.tableView reloadData];
-    [self sendWorkOutRequest];
     
+    [self sendWorkOutRequest];
+//    [self.tableView reloadData];
 }
 
 -(NSString *)getWeekDay:(NSDate *)date
@@ -328,23 +516,6 @@
 }
 */
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -353,21 +524,83 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"showWorkoutList"]){
-        CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
-        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+
+        UIButton *button = (UIButton *)sender;
+        NSLog(@"%ld",(long)button.tag);
+        
         GA_WorkoutListViewController *destViewController = segue.destinationViewController;
         
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"MM-dd-YYYY"];// you can use your format.
         
-        NSDate *date = [self.weekarray objectAtIndex:indexPath.section];
+        NSDate *date = [self.weekarrayRaw objectAtIndex:button.tag];
+        NSLog(@"Date passed at index %i: %@", button.tag, date);
         
         destViewController.wDate = date;
         
     }
+    else if([segue.identifier isEqualToString:@"showCompleteDetails"]){
+
+        NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+        
+        GA_Workout *wname = [GA_Workout alloc];
+        wname = [[self.calendarWorkouts objectAtIndex:indexPath.section] getWorkout:(NSInteger*)indexPath.row];
+        
+        GA_DetailViewController *destViewController = segue.destinationViewController;
+        destViewController.workout = self.selectedWorkout;
+    }
+    else if([segue.identifier isEqualToString:@"showIncompleteDetails"]){
+        NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+        
+        GA_Workout *wname = [GA_Workout alloc];
+        wname = [[self.calendarWorkouts objectAtIndex:indexPath.section] getWorkout:(NSInteger*)indexPath.row];
+        
+        GA_DetailViewController *destViewController = segue.destinationViewController;
+        destViewController.workout = self.selectedWorkout;
+    }
+    
     
 }
 
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    //Headerview
+    UIView *myView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 20.0)];
+    [myView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    [button setFrame:CGRectMake(275.0, 5.0, 30.0, 30.0)];
+    button.tag = section;
+    button.hidden = NO;
+    [button setBackgroundColor:[UIColor clearColor]];
+    [button addTarget:self action:@selector(addButtonPressed:) forControlEvents:UIControlEventTouchDown];
+    [myView addSubview:button];
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM-dd-YYYY"];// you can use your format.
+    
+    NSDate *date = [self.weekarray objectAtIndex:section];
+    
+    
+    NSString *header=[NSString stringWithFormat:@"%@ %@",[dateFormat stringFromDate:date],[self getWeekDay:date]];
+
+    
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 200, 40)];
+    label.text=header;
+    [label setFont:[UIFont fontWithName:@"Avenir" size:16.0f]];
+    [myView addSubview:label];
+    
+    return myView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 40.0;
+}
+
+-(void)addButtonPressed:(id)sender
+{
+    [self performSegueWithIdentifier:@"showWorkoutList" sender:sender];
+}
 
 @end

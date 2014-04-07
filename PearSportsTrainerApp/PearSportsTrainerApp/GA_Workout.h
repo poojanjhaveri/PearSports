@@ -13,11 +13,19 @@
 @property (nonatomic, copy) NSString *workoutName;
 @property (nonatomic, copy) NSString *SKU;
 @property (nonatomic, copy) NSDate *date;
+@property (nonatomic, copy) NSString *wdate;
 @property (nonatomic, copy) NSString *duration;
 @property (nonatomic, copy) NSString *avgHeartRate;
 @property (nonatomic, copy) NSString *distance;
 @property (nonatomic, copy) NSString *calories;
 @property (nonatomic, copy) NSString *avgPace;
+@property (nonatomic, copy) NSString *status;
+@property (nonatomic, copy) NSString *grade;
+@property (nonatomic, copy) NSString *activityType;
+@property (nonatomic, copy) NSString *shortDes;
+@property (nonatomic, copy) NSString *longDes;
+@property (nonatomic, copy) NSString *wID;
+
 
 
 @end

@@ -27,6 +27,8 @@
 
 @implementation GA_DetailViewController
 
+@synthesize workout;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -41,18 +43,34 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     // @TODO update with actual inforamtion
-    [self.notesTextView setText:@"User Notes will Go Here"];
-    [self.durationLabel setText:@"1:30:29"];
-    [self.avgHRLabel setText:@"144 bpm"];
-    [self.distanceLabel setText:@"5.55 miles"];
-    [self.caloriesLabel setText:@"405"];
-    [self.avgPaceLabel setText:@"1:52"];
+    if(workout == nil){
+        [self.notesTextView setText:@"User Notes will Go Here"];
+        [self.durationLabel setText:@"1:30:29"];
+        [self.avgHRLabel setText:@"144 bpm"];
+        [self.distanceLabel setText:@"5.55 miles"];
+        [self.caloriesLabel setText:@"405"];
+        [self.avgPaceLabel setText:@"1:52"];
 
-    [self.workoutNameLabel setText:@"Workout Name"];
-    [self.workoutDateLabel setText:@"March 29, 2014"];
+        [self.workoutNameLabel setText:@"Workout Name"];
+        [self.workoutDateLabel setText:@"March 29, 2014"];
 
-    UIImage *image = [UIImage imageNamed: @"workout.jpeg"];
-    [self.workoutImageView setImage: image];
+        UIImage *image = [UIImage imageNamed: @"workout.jpeg"];
+        [self.workoutImageView setImage: image];
+    }
+   else{
+        [self.notesTextView setText:@"User Notes will Go Here"];
+        [self.durationLabel setText:[NSString stringWithFormat:@"%@", workout.duration]];
+        [self.avgHRLabel setText:[NSString stringWithFormat:@"%@ bpm", workout.avgHeartRate]];
+        [self.distanceLabel setText:[NSString stringWithFormat:@"%@ miles", workout.distance]];
+        [self.caloriesLabel setText:[NSString stringWithFormat:@"%@", workout.calories]];
+        [self.avgPaceLabel setText:@"1:52"];
+       
+        [self.workoutNameLabel setText:[NSString stringWithFormat:@"%@", workout.workoutName]];
+        [self.workoutDateLabel setText:[NSString stringWithFormat:@"%@", workout.wdate]];
+        
+        UIImage *image = [UIImage imageNamed: @"workout.jpeg"];
+        [self.workoutImageView setImage: image];
+    }
     
     // Main Setup
     [self.notesTextView setDelegate:self];
@@ -138,3 +156,4 @@
 */
 
 @end
+    

@@ -10,5 +10,7 @@
 
 @interface GA_WorkoutListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *workoutName;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+@property (weak, nonatomic) IBOutlet UILabel *colourCode;
 
 @end
