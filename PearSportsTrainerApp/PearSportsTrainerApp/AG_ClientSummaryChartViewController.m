@@ -123,7 +123,8 @@ NSInteger const kJBBarChartViewControllerMinBarHeight = 0;
 
 - (CGFloat)barChartView:(JBBarChartView *)barChartView heightForBarViewAtAtIndex:(NSUInteger)index
 {
-    int week = 7 - index;
+    int count = (int)[[[API sharedInstance] getTraineeInfo].workoutArray count] - 1;
+    int week = count - (int)index;
     
     if (week >= [[[API sharedInstance] getTraineeInfo].workoutArray count]) {
         return 0;
@@ -145,7 +146,7 @@ NSInteger const kJBBarChartViewControllerMinBarHeight = 0;
 
 - (NSUInteger)numberOfBarsInBarChartView:(JBBarChartView *)barChartView
 {
-    return kJBBarChartViewControllerNumBars;
+    return [[[API sharedInstance] getTraineeInfo].workoutArray count];
 }
 
 - (NSUInteger)barPaddingForBarChartView:(JBBarChartView *)barChartView
@@ -168,8 +169,8 @@ NSInteger const kJBBarChartViewControllerMinBarHeight = 0;
 - (void)barChartView:(JBBarChartView *)barChartView didSelectBarAtIndex:(NSUInteger)index touchPoint:(CGPoint)touchPoint
 {
     
-    int week = 7 - index;
-    
+    int count = (int)[[[API sharedInstance] getTraineeInfo].workoutArray count] - 1;
+    int week = count - (int)index;
     if (week >= [[[API sharedInstance] getTraineeInfo].workoutArray count]) {
         [self.informationView setValueText:[NSString stringWithFormat:@"0 workouts"] unitText:nil];
     } else {
