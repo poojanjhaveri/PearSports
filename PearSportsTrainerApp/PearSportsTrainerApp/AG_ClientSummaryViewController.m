@@ -55,7 +55,10 @@
     [self.lastWorkoutLabel setText:[NSString stringWithFormat:@"%@", [[API sharedInstance] getTraineeInfo].lastWorkout]];
     
     self.clientImageView.image=[UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
-    
+  
+  
+    [self updateLifeTimeStats];
+  
     // Main Setup
     [self.notesTextView setDelegate:self];
     [self.notesTextView setReturnKeyType:UIReturnKeyDone];
@@ -157,6 +160,45 @@
     }
     
     return YES;
+}
+
+
+#pragma mark - Update information
+
+-(void) updateLifeTimeStats
+{
+  
+  NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
+  
+  NSURLCredential *credential = [NSURLCredential credentialWithUser:token
+                                                           password:@""
+                                                        persistence:NSURLCredentialPersistenceNone];
+  
+  NSString *url = [NSString stringWithFormat:@"http://cs477-backend.herokuapp.com/stats?trainee_id=%@",
+                   [[API sharedInstance] getTraineeInfo].trainee_id];
+  
+  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
+  
+  NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:@"GET"
+                                                                    URLString:url
+                                                                   parameters:nil
+                                                                        error:nil];
+  
+  AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+  [operation setCredential:credential];
+  [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
+  [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    NSLog(@"Success loading lifetime stats: %@", responseObject);
+   
+    
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@"Error loading lifetime stats: %@", error);
+  }];
+  
+  [manager.operationQueue addOperation:operation];
+  
 }
 
 @end

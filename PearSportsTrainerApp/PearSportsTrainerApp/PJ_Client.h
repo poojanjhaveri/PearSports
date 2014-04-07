@@ -47,6 +47,7 @@
  */
 
 @property (nonatomic, strong) NSMutableArray * workoutArray;
+@property (nonatomic, strong) NSMutableArray * lifeTimeStats;
 
 
 
