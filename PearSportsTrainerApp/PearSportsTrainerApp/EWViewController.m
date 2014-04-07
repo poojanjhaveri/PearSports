@@ -53,9 +53,26 @@
     
 }
 
+- (void) setupActivityIndicator
+{
+    
+    UIActivityIndicatorView *ac = [[UIActivityIndicatorView alloc]
+                                   initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(150, 65, 320, 50)];
+    [view addSubview:ac]; // <-- Your UIActivityIndicatorView
+    [bubbleTable addSubview:view];
+    
+    [ac startAnimating];
+    
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self setupActivityIndicator];
     
     NSLog(@"TRainee name : %@ %@ %@ %@ %@ %@",[[API sharedInstance] getTraineeInfo].name,[[API sharedInstance] getTraineeInfo].age,[[API sharedInstance] getTraineeInfo].weight,[[API sharedInstance] getTraineeInfo].height,[[API sharedInstance] getTraineeInfo].gender,[[API sharedInstance] getTraineeInfo].trainee_id);
     
