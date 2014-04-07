@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface GA_WorkoutListCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *workoutName;
+
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UILabel *colourCode;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionText;
+@property (weak, nonatomic) IBOutlet UILabel *workoutName;
 
 @end
