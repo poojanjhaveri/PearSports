@@ -320,7 +320,7 @@
         }
 
 //        [cell.workoutName setText:[wname workoutName]];
-        cell.textLabel.text = [wname workoutName];
+        cell.workoutName.text = [wname workoutName];
         
     }
     
