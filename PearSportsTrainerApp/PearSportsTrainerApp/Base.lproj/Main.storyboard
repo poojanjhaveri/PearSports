@@ -742,7 +742,7 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bjs-bt-gn8">
-                                                <rect key="frame" x="2" y="3" width="262" height="30"/>
+                                                <rect key="frame" x="48" y="3" width="225" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -751,7 +751,7 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4i-UP-QTH">
-                                                <rect key="frame" x="272" y="0.0" width="39" height="33"/>
+                                                <rect key="frame" x="281" y="0.0" width="39" height="33"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" image="microphonehot.png">
@@ -759,6 +759,17 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                                 </state>
                                                 <connections>
                                                     <action selector="recordVoice:" destination="6iU-U8-J7M" eventType="touchUpInside" id="Mog-Hc-fCd"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAJ-Ld-dUP">
+                                                <rect key="frame" x="0.0" y="-11" width="47" height="57"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="arrow_up.png">
+                                                    <color key="titleColor" red="0.076551007589999998" green="0.54381277949999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" red="0.076551007589999998" green="0.54381277949999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="imageButton:" destination="6iU-U8-J7M" eventType="touchUpInside" id="y5a-N0-Vpz"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1323,6 +1334,7 @@ These Terms and any other electronic documents, policies and guidelines incorpor
     </scenes>
     <resources>
         <image name="PEAR_reagular_C-BLKlogo.png" width="1189" height="493"/>
+        <image name="arrow_up.png" width="24" height="24"/>
         <image name="calendar_2_icon&amp;24.png" width="24" height="24"/>
         <image name="cog_icon&amp;24.png" width="24" height="24"/>
         <image name="microphonehot.png" width="128" height="128"/>
