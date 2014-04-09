@@ -142,9 +142,41 @@
             [textField resignFirstResponder];
             
             [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+            
             NSLog(@"NEED TO SEND IMAGE TO SERVER HERE");
             
+            /*
+            NSString *token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
+            NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
+            NSData *theData = UIImagePNGRepresentation(image);
+            //NSData *theData = [NSData dataWithContentsOfURL:soundFileURL];
             
+            NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id", nil]];
+            
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+            NSURLCredential *credential = [NSURLCredential credentialWithUser:token password:@"" persistence:NSURLCredentialPersistenceNone];
+            
+            [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
+            
+            NSMutableURLRequest *reqst = [manager.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:@"https://cs477-backend.herokuapp.com/message/image" parameters:parameters constructingBodyWithBlock: ^(id <AFMultipartFormData>formData){
+                [formData appendPartWithFileData:theData name:@"content" fileName:[self dateString] mimeType:@"image/png"];
+            }];
+            
+            //NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"POST" URLString:@"https://cs477-backend.herokuapp.com/message/audio" parameters:parameters error:nil];
+            
+            AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:reqst];
+            [operation setCredential:credential];
+            [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
+            [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"Success: %@", responseObject);
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"Failure: %@", error);
+            }];
+            
+            NSLog(@"OPERATION IS %@",operation);
+            
+            [manager.operationQueue addOperation:operation];
+            */
         }
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
@@ -196,9 +228,6 @@ finishedSavingWithError:(NSError *)error
 }
 
 
-
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -212,36 +241,6 @@ finishedSavingWithError:(NSError *)error
 	[_audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error: nil];
 	[_audioSession setActive:YES error:nil];
     self.recording = NO;
-    
-    /*
-    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    docsDir = [dirPaths objectAtIndex:0];
-    
-    soundFilePath = [docsDir stringByAppendingPathComponent:[self dateString]];
-    soundFileURL = [NSURL fileURLWithPath:soundFilePath];
-    
-    NSDictionary *recordSettings = [NSDictionary
-                                    dictionaryWithObjectsAndKeys:
-                                    [NSNumber numberWithInt:AVAudioQualityMin],
-                                    AVEncoderAudioQualityKey,
-                                    [NSNumber numberWithInt:16],
-                                    AVEncoderBitRateKey,
-                                    [NSNumber numberWithInt: 2],
-                                    AVNumberOfChannelsKey,
-                                    [NSNumber numberWithFloat:44100.0],
-                                    AVSampleRateKey,
-                                    nil];
-    
-    NSError *error = nil;
-    
-    _audioRecorder = [[AVAudioRecorder alloc] initWithURL:soundFileURL settings:recordSettings error:&error];
-    [_audioRecorder setDelegate:self];
-    
-    if (error)
-        NSLog(@"error: %@", [error localizedDescription]);
-    else
-        [_audioRecorder prepareToRecord];
-     */
     
     //BUBBLE
     
@@ -322,15 +321,6 @@ finishedSavingWithError:(NSError *)error
                 
                 NSNumber *time =[obj objectForKey:@"created_at"];
                 NSTimeInterval interval = [time doubleValue];
-                /*
-                 NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
-                 NSDate *online = [NSDate date];
-                 online = [NSDate dateWithTimeIntervalSince1970:interval];
-                 NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                 [dateFormatter setDateFormat:@"HH:mm:ss"];
-                 
-                 NSLog(@"DATEEE: %@", [dateFormatter stringFromDate:online]);
-                 */
                 
                 if(i == 1){
                     NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
@@ -348,7 +338,7 @@ finishedSavingWithError:(NSError *)error
                 }
                 
             }
-            else{
+            else if([[obj objectForKey:@"message_type"]  isEqual: @"audio"]){
                 NSNumber *val = [obj objectForKey:@"outgoing"];
                 BOOL i = [val boolValue];
                 NSNumber *time =[obj objectForKey:@"created_at"];
@@ -379,7 +369,40 @@ finishedSavingWithError:(NSError *)error
                     [bubbleTable reloadData];
                     [bubbleTable scrollBubbleViewToBottomAnimated:NO];
                 }
+            }
+            else {
+                NSNumber *val = [obj objectForKey:@"outgoing"];
+                BOOL i = [val boolValue];
+                NSNumber *time =[obj objectForKey:@"created_at"];
+                NSTimeInterval interval = [time doubleValue];
                 
+                if(i == 1){
+                    NSString *textMsg = [obj objectForKey:@"content"];
+                    
+                    NSURL *imageURL = [[NSURL alloc] initWithString:textMsg];
+                    NSData *data = [NSData dataWithContentsOfURL:imageURL];
+                    UIImage *img = [[UIImage alloc] initWithData:data];
+                    
+                    NSBubbleData *imageBubble = [NSBubbleData dataWithImage:img date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
+                    imageBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
+                    [bubbleData addObject:imageBubble];
+                    [bubbleTable reloadData];
+                    [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+                }
+                else{
+                    NSString *textMsg = [obj objectForKey:@"content"];
+                    
+                    NSURL *imageURL = [[NSURL alloc] initWithString:textMsg];
+                    NSData *data = [NSData dataWithContentsOfURL:imageURL];
+                    UIImage *img = [[UIImage alloc] initWithData:data];
+                    
+                    NSBubbleData *imageBubble = [NSBubbleData dataWithImage:img date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
+                    imageBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
+                    [bubbleData addObject:imageBubble];
+                    [bubbleTable reloadData];
+                    [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+                }
+ 
             }
         }];
         dispatch_async(dispatch_get_main_queue(), ^{
