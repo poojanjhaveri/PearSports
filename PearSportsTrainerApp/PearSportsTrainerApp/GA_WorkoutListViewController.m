@@ -38,10 +38,10 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.workoutList = [[NSMutableArray alloc] init];
+    self.planList = [[NSMutableArray alloc] init];
 
     
     NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
-//    NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
     NSString *workout_type = [NSString stringWithFormat:@"workout"];
     
     NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:workout_type, nil] forKeys:[NSArray arrayWithObjects:@"type", nil]];
@@ -53,13 +53,38 @@
     
     NSString *urlstring = [NSString stringWithFormat:@"https://cs477-backend.herokuapp.com/sku_list"];
     
-    NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"GET" URLString:urlstring parameters:parameters error:nil];
+    NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"GET" URLString:urlstring parameters:nil error:nil];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:reqst];
     [operation setCredential:credential];
     [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Success of workout list: %@", responseObject);
+        
+        NSDictionary *jsonDict = (NSDictionary *) responseObject;
 
+        NSMutableArray *list = [[NSMutableArray alloc] init];
+        list = [jsonDict objectForKey:@"sku_list"];
+        
+        [list enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
+           
+            GA_Workout *w = [GA_Workout alloc];
+            w.workoutName = [obj objectForKey:@"title"];
+            w.SKU = [obj objectForKey:@"sku"];
+            
+            NSString *sku_type = [obj objectForKey:@"sku_type"];
+            
+            if([sku_type isEqualToString:[NSString stringWithFormat:@"workout"]]){
+                [self.workoutList addObject:w];
+            }
+            else{
+                [self.planList addObject:w];
+            }
+//            
+            
+        }];
+        
+        [self.tableView reloadData];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure: %@", error);
     }];
@@ -68,6 +93,7 @@
 
   
     
+ /*
     
     [self addWorkout:@"Endurance Ride 73 min" :@"CFN030014-00M"];
     [self addWorkout:@"Pyramid Indoor Cycle": @"CFN01001D-00M"];
@@ -116,7 +142,7 @@
     [self addWorkout:@"Functional Strength Circuit": @"CFN01001C-00M"];
     [self addWorkout:@"Tred'N'Shred Beginner 1": @"CFN150001-00M"];
     
-    
+*/
 
 }
 
@@ -160,9 +186,16 @@
     static NSString *CellIdentifier = @"WorkoutCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    GA_Workout *wname = [GA_Workout alloc];
-    wname = [(self.workoutList)objectAtIndex:indexPath.row];
-    cell.textLabel.text = [wname workoutName];
+    if(indexPath.section == 0){
+        GA_Workout *wname = [GA_Workout alloc];
+        wname = [(self.workoutList)objectAtIndex:indexPath.row];
+        cell.textLabel.text = [wname workoutName];
+    }
+    else{
+        GA_Workout *wname = [GA_Workout alloc];
+        wname = [(self.planList)objectAtIndex:indexPath.row];
+        cell.textLabel.text = [wname workoutName];
+    }
     
     return cell;
 }
