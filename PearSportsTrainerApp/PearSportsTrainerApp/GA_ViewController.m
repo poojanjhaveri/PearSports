@@ -168,11 +168,13 @@
             w.distance = [obj objectForKey:@"distance"];
             w.calories = [obj objectForKey:@"calories"];
             w.grade = [obj objectForKey:@"grade"];
-            w.activityType = [[obj objectForKey:@"plan"] objectForKey:@"activity_type"];
-            w.shortDes = [[obj objectForKey:@"plan"] objectForKey:@"description_short"];
-            w.longDes = [[obj objectForKey:@"plan"] objectForKey:@"description_long"];
-            w.wID = [[obj objectForKey:@"plan"] objectForKey:@"workout_header_id"];
+            w.activityType = [[obj objectForKey:@"workout"] objectForKey:@"activity_type"];
+            w.shortDes = [[obj objectForKey:@"workout"] objectForKey:@"description_short"];
+            w.longDes = [[obj objectForKey:@"workout"] objectForKey:@"description_html"];
+            w.wID = [[obj objectForKey:@"workout"] objectForKey:@"workout_header_id"];
             
+            NSLog(@"Grade: %@", w.grade);
+            NSLog(@"Activity Type: %@", w.activityType);
 
             [self.workouts addObject:w];
             
@@ -280,47 +282,63 @@
         NSDate * now = [NSDate date];
         NSComparisonResult result = [now compare:wname.date];
         
+        [cell.activityTypeText sizeToFit];
+        
         switch (result)
         {
             case NSOrderedAscending:{
                 if ([wname.status isEqualToString:@"marked_complete"]) {
                     cell.colourCode.backgroundColor=[UIColor lightGrayColor];
+                    cell.gradeText.hidden = true;
                 }
                 else if ([wname.status isEqualToString:@"completed"]) {
                     cell.colourCode.backgroundColor=[UIColor greenColor];
+                    cell.gradeText.hidden = false;
+                    cell.gradeText.text = [wname grade];
                 }
                 else{
                     cell.colourCode.backgroundColor=[UIColor blueColor];
+                    cell.gradeText.hidden = true;
                 }
                 break;
             }
             case NSOrderedDescending:{
                 if ([wname.status isEqualToString:@"marked_complete"]) {
                     cell.colourCode.backgroundColor=[UIColor lightGrayColor];
+                    cell.gradeText.hidden = true;
                 }
                 else if ([wname.status isEqualToString:@"completed"]) {
                     cell.colourCode.backgroundColor=[UIColor greenColor];
+                    cell.gradeText.hidden = false;
+                    cell.gradeText.text = [wname grade];
                 }
                 else{
                     cell.colourCode.backgroundColor=[UIColor redColor];
+                    cell.gradeText.hidden = true;
                 }
                 break;            }
-            case NSOrderedSame:
+            case NSOrderedSame:{
                 if ([wname.status isEqualToString:@"marked_complete"]) {
                     cell.colourCode.backgroundColor=[UIColor lightGrayColor];
+                    cell.gradeText.hidden = true;
                 }
                 else if ([wname.status isEqualToString:@"completed"]) {
                     cell.colourCode.backgroundColor=[UIColor greenColor];
+//                    cell.activityTypeText.text = [wname activityType];
+//                    cell.gradeText.text = [wname grade];
                 }
                 else{
                     cell.colourCode.backgroundColor=[UIColor blueColor];
+                    cell.gradeText.hidden = true;
                 }
-                break;
+                break;  }
             default: NSLog(@"erorr dates"); break;
         }
 
 //        [cell.workoutName setText:[wname workoutName]];
         cell.workoutName.text = [wname workoutName];
+        cell.descriptionText.text = [wname shortDes];
+        cell.activityTypeText.text = [NSString stringWithFormat:@"Type: %@",[wname activityType]];
         
     }
     

@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UILabel *colourCode;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionText;
+@property (weak, nonatomic) IBOutlet UILabel *gradeText;
+@property (weak, nonatomic) IBOutlet UILabel *activityTypeText;
 @property (weak, nonatomic) IBOutlet UILabel *workoutName;
 
 @end
