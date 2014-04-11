@@ -40,6 +40,35 @@
     self.workoutList = [[NSMutableArray alloc] init];
 
     
+    NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
+//    NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
+    NSString *workout_type = [NSString stringWithFormat:@"workout"];
+    
+    NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:workout_type, nil] forKeys:[NSArray arrayWithObjects:@"type", nil]];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSURLCredential *credential = [NSURLCredential credentialWithUser:token password:@"" persistence:NSURLCredentialPersistenceNone];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
+    
+    
+    NSString *urlstring = [NSString stringWithFormat:@"https://cs477-backend.herokuapp.com/sku_list"];
+    
+    NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"GET" URLString:urlstring parameters:parameters error:nil];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:reqst];
+    [operation setCredential:credential];
+    [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Success of workout list: %@", responseObject);
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failure: %@", error);
+    }];
+    
+    [manager.operationQueue addOperation:operation];
+
+  
+    
+    
     [self addWorkout:@"Endurance Ride 73 min" :@"CFN030014-00M"];
     [self addWorkout:@"Pyramid Indoor Cycle": @"CFN01001D-00M"];
     [self addWorkout:@"Fat-Burn 1": @"CFN01000E-00M"];
@@ -110,7 +139,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -118,8 +147,12 @@
 
     // Return the number of rows in the section.
     NSLog(@"Number of Workoutrows to show... %d", [self.workoutList count]);
-    
-    return [self.workoutList count];
+    if(section == 0){
+        return [self.workoutList count];
+    }
+    else{
+        return [self.planList count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -133,6 +166,20 @@
     
     return cell;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *header;
+    if(section == 0){
+        header = [NSString stringWithFormat:@"Workout List"];
+    }
+    else{
+        header = [NSString stringWithFormat:@"Plan List"];
+    }
+    
+    return  header;
+}
+
 
 /*
 // Override to support conditional editing of the table view.

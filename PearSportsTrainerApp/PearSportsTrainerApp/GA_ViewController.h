@@ -14,4 +14,6 @@
 @property (strong, nonatomic) NSArray *wIncompleteList;
 @property (strong, nonatomic) NSArray *wCompleteList;
 
+-(void) showAlert;
+
 @end

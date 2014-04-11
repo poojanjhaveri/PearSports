@@ -283,6 +283,9 @@
         NSComparisonResult result = [now compare:wname.date];
         
         [cell.activityTypeText sizeToFit];
+        [cell.gradeText sizeToFit];
+        cell.gradeText.hidden = NO;
+        
         
         switch (result)
         {
@@ -293,7 +296,7 @@
                 }
                 else if ([wname.status isEqualToString:@"completed"]) {
                     cell.colourCode.backgroundColor=[UIColor greenColor];
-                    cell.gradeText.hidden = false;
+//                    cell.gradeText.hidden = false;
                     cell.gradeText.text = [wname grade];
                 }
                 else{
@@ -309,7 +312,7 @@
                 }
                 else if ([wname.status isEqualToString:@"completed"]) {
                     cell.colourCode.backgroundColor=[UIColor greenColor];
-                    cell.gradeText.hidden = false;
+//                    cell.gradeText.hidden = false;
                     cell.gradeText.text = [wname grade];
                 }
                 else{
@@ -320,7 +323,7 @@
             case NSOrderedSame:{
                 if ([wname.status isEqualToString:@"marked_complete"]) {
                     cell.colourCode.backgroundColor=[UIColor lightGrayColor];
-                    cell.gradeText.hidden = true;
+//                    cell.gradeText.hidden = true;
                 }
                 else if ([wname.status isEqualToString:@"completed"]) {
                     cell.colourCode.backgroundColor=[UIColor greenColor];
@@ -329,7 +332,7 @@
                 }
                 else{
                     cell.colourCode.backgroundColor=[UIColor blueColor];
-                    cell.gradeText.hidden = true;
+ //                   cell.gradeText.hidden = true;
                 }
                 break;  }
             default: NSLog(@"erorr dates"); break;
@@ -339,6 +342,7 @@
         cell.workoutName.text = [wname workoutName];
         cell.descriptionText.text = [wname shortDes];
         cell.activityTypeText.text = [NSString stringWithFormat:@"Type: %@",[wname activityType]];
+        cell.gradeText.text = [NSString stringWithFormat:@"Grade: %@", [wname grade]];
         
     }
     
@@ -377,6 +381,21 @@
     }
 }
 
+//- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+//{
+//    if( sourceIndexPath.section != proposedDestinationIndexPath.section )
+//    {
+//        return sourceIndexPath;
+//    }
+//    else
+//    {
+//        return proposedDestinationIndexPath;
+//    }
+//}
+
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
 
 -(NSDate *)getTodayDate
 {
@@ -533,6 +552,21 @@
     }   
 }
 */
+
+-(void) showAlert
+{
+    UIAlertView *autosaveAlert = [[UIAlertView alloc]initWithTitle:@"Close" message:@"Autosave in (%d) seconds" delegate:self cancelButtonTitle:@"Press to cancel" otherButtonTitles:nil];
+    [autosaveAlert show];
+    
+    for(int i = 10; i>=0; i--){
+        NSString *tmp = @"Close in (%d) seconds";
+        NSString *str = [NSString stringWithFormat:tmp, i];
+        [autosaveAlert setMessage:str];
+        CFRunLoopRunInMode(kCFRunLoopDefaultMode,1, false);
+    }
+    
+    [autosaveAlert dismissWithClickedButtonIndex:0 animated:TRUE];
+}
 
 #pragma mark - Navigation
 

@@ -12,6 +12,7 @@
 
 @synthesize workoutName;
 @synthesize SKU;
+@synthesize workoutType;
 @synthesize date;
 @synthesize wdate;
 @synthesize duration;

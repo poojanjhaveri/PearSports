@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GA_ViewController.h"
 
 @interface GA_PersonalizeViewController : UIViewController <UITextViewDelegate>
 

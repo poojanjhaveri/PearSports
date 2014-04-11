@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "GA_Workout.h"
+#import "API.h"
 
 @interface GA_WorkoutListViewController : UITableViewController
 
 @property (nonatomic, retain) NSMutableArray *workoutList;
+@property (nonatomic, retain) NSMutableArray *planList;
 
 @property NSDate *wDate;
 
