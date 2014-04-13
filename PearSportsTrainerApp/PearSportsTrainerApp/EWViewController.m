@@ -143,9 +143,9 @@
             
             [bubbleTable scrollBubbleViewToBottomAnimated:NO];
             
-            NSLog(@"NEED TO SEND IMAGE TO SERVER HERE");
+            NSLog(@"Sending image to server");
             
-            /*
+            
             NSString *token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
             NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
             NSData *theData = UIImagePNGRepresentation(image);
@@ -159,7 +159,7 @@
             [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
             
             NSMutableURLRequest *reqst = [manager.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:@"https://cs477-backend.herokuapp.com/message/image" parameters:parameters constructingBodyWithBlock: ^(id <AFMultipartFormData>formData){
-                [formData appendPartWithFileData:theData name:@"content" fileName:[self dateString] mimeType:@"image/png"];
+                [formData appendPartWithFileData:theData name:@"content" fileName:[self dateString2] mimeType:@"image/png"];
             }];
             
             //NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"POST" URLString:@"https://cs477-backend.herokuapp.com/message/audio" parameters:parameters error:nil];
@@ -176,7 +176,7 @@
             NSLog(@"OPERATION IS %@",operation);
             
             [manager.operationQueue addOperation:operation];
-            */
+            
         }
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
@@ -223,8 +223,144 @@ finishedSavingWithError:(NSError *)error
 }
 
 - (void) refreshChat{
+    bubbleData = nil;
+    bubbleData = [[NSMutableArray alloc]init];
     [bubbleTable reloadData];
+    
     NSLog(@"refreshing");
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        
+        NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
+        NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
+        NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id", nil]];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSURLCredential *credential = [NSURLCredential credentialWithUser:token password:@"" persistence:NSURLCredentialPersistenceNone];
+        [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
+        NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"GET" URLString:@"https://cs477-backend.herokuapp.com/trainer/messages" parameters:parameters error:nil];
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:reqst];
+        [operation setCredential:credential];
+        [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"Success: %@", responseObject);
+            
+            NSDictionary *jsonDict = (NSDictionary *) responseObject;
+            self.arr = [jsonDict objectForKey:@"message_list"];
+            
+            [self.arr enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
+                if([[obj objectForKey:@"message_type"]  isEqual: @"text"]){
+                    
+                    NSString *textMsg = [obj objectForKey:@"content"];
+                    NSNumber *val = [obj objectForKey:@"outgoing"];
+                    BOOL i = [val boolValue];
+                    //NSLog(@"Text: %@", textMsg);
+                    
+                    
+                    NSNumber *time =[obj objectForKey:@"created_at"];
+                    NSTimeInterval interval = [time doubleValue];
+                    
+                    if(i == 1){
+                        NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
+                        sayBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
+                        [bubbleData addObject:sayBubble];
+                        [bubbleTable reloadData];
+                        [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+                    }
+                    else{
+                        NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
+                        sayBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
+                        [bubbleData addObject:sayBubble];
+                        [bubbleTable reloadData];
+                        [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+                    }
+                    
+                }
+                else if([[obj objectForKey:@"message_type"]  isEqual: @"audio"]){
+                    NSNumber *val = [obj objectForKey:@"outgoing"];
+                    BOOL i = [val boolValue];
+                    NSNumber *time =[obj objectForKey:@"created_at"];
+                    NSTimeInterval interval = [time doubleValue];
+                    
+                    if(i == 1){
+                        NSString *textMsg = [obj objectForKey:@"content"];
+                        //NSLog(@"Audio: %@", textMsg);
+                        
+                        NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
+                        
+                        
+                        NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
+                        audioBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
+                        [bubbleData addObject:audioBubble];
+                        [bubbleTable reloadData];
+                        [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+                    }
+                    else{
+                        NSString *textMsg = [obj objectForKey:@"content"];
+                        //NSLog(@"Audio: %@", textMsg);
+                        
+                        NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
+                        
+                        NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
+                        audioBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
+                        [bubbleData addObject:audioBubble];
+                        [bubbleTable reloadData];
+                        [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+                    }
+                }
+                else {
+                    NSNumber *val = [obj objectForKey:@"outgoing"];
+                    BOOL i = [val boolValue];
+                    NSNumber *time =[obj objectForKey:@"created_at"];
+                    NSTimeInterval interval = [time doubleValue];
+                    
+                    if(i == 1){
+                        NSString *textMsg = [obj objectForKey:@"content"];
+                        
+                        NSURL *imageURL = [[NSURL alloc] initWithString:textMsg];
+                        NSData *data = [NSData dataWithContentsOfURL:imageURL];
+                        UIImage *img = [[UIImage alloc] initWithData:data];
+                        
+                        NSBubbleData *imageBubble = [NSBubbleData dataWithImage:img date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
+                        imageBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
+                        [bubbleData addObject:imageBubble];
+                        [bubbleTable reloadData];
+                        [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+                    }
+                    else{
+                        NSString *textMsg = [obj objectForKey:@"content"];
+                        
+                        NSURL *imageURL = [[NSURL alloc] initWithString:textMsg];
+                        NSData *data = [NSData dataWithContentsOfURL:imageURL];
+                        UIImage *img = [[UIImage alloc] initWithData:data];
+                        
+                        NSBubbleData *imageBubble = [NSBubbleData dataWithImage:img date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
+                        imageBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
+                        [bubbleData addObject:imageBubble];
+                        [bubbleTable reloadData];
+                        [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+                    }
+                    
+                }
+            }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Failure: %@", error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        }];
+        
+        //NSLog(@"OPERATION IS %@",operation);
+        
+        
+        [manager.operationQueue addOperation:operation];
+        
+    });
+
 }
 
 
@@ -505,6 +641,14 @@ finishedSavingWithError:(NSError *)error
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"ddMMMYY_hhmmssa";
     return [[formatter stringFromDate:[NSDate date]] stringByAppendingString:@".flac"];
+}
+
+- (NSString *) dateString2
+{
+    // return a formatted string for a file name
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"ddMMMYY_hhmmssa";
+    return [[formatter stringFromDate:[NSDate date]] stringByAppendingString:@".png"];
 }
 
 
