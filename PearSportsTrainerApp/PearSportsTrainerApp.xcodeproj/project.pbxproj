@@ -55,6 +55,7 @@
 		73B7D44518BAFEF3001846C3 /* AG_ClientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */; };
 		B606C17D18CFFE2900125523 /* GA_WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B606C17C18CFFE2900125523 /* GA_WorkoutListViewController.m */; };
 		B606C18118D006CD00125523 /* GA_WorkoutNameListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B606C18018D006CD00125523 /* GA_WorkoutNameListTableCell.m */; };
+		B65AB52818FE37A800CAA826 /* GA_PlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65AB52718FE37A800CAA826 /* GA_PlanViewController.m */; };
 		B68BA10F18DF8620004DF201 /* GA_DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68BA10E18DF8620004DF201 /* GA_DetailViewController.m */; };
 		B68BA11118DF92A3004DF201 /* workout.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B68BA11018DF92A3004DF201 /* workout.jpeg */; };
 		B6ABB1D918E70FF100E635B3 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = B6ABB1D818E70FF100E635B3 /* box.png */; };
@@ -178,6 +179,8 @@
 		B606C17C18CFFE2900125523 /* GA_WorkoutListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_WorkoutListViewController.m; sourceTree = "<group>"; };
 		B606C17F18D006CD00125523 /* GA_WorkoutNameListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_WorkoutNameListTableCell.h; sourceTree = "<group>"; };
 		B606C18018D006CD00125523 /* GA_WorkoutNameListTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_WorkoutNameListTableCell.m; sourceTree = "<group>"; };
+		B65AB52618FE37A800CAA826 /* GA_PlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_PlanViewController.h; sourceTree = "<group>"; };
+		B65AB52718FE37A800CAA826 /* GA_PlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_PlanViewController.m; sourceTree = "<group>"; };
 		B68BA10D18DF8620004DF201 /* GA_DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_DetailViewController.h; sourceTree = "<group>"; };
 		B68BA10E18DF8620004DF201 /* GA_DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_DetailViewController.m; sourceTree = "<group>"; };
 		B68BA11018DF92A3004DF201 /* workout.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = workout.jpeg; sourceTree = "<group>"; };
@@ -304,6 +307,8 @@
 				B606C17C18CFFE2900125523 /* GA_WorkoutListViewController.m */,
 				3F22815118D787BA00AF1AFD /* GA_PersonalizeViewController.h */,
 				3F22815218D787BA00AF1AFD /* GA_PersonalizeViewController.m */,
+				B65AB52618FE37A800CAA826 /* GA_PlanViewController.h */,
+				B65AB52718FE37A800CAA826 /* GA_PlanViewController.m */,
 				B68BA10D18DF8620004DF201 /* GA_DetailViewController.h */,
 				B68BA10E18DF8620004DF201 /* GA_DetailViewController.m */,
 				B6ABB1DA18E7182200E635B3 /* GA_IncDetailViewController.h */,
@@ -766,6 +771,7 @@
 				FFAEF6F518B4557A006E7C3D /* PJ_InfoSubView.m in Sources */,
 				FF00F08718B829C500E6C321 /* UIBubbleTableView.m in Sources */,
 				0E8530F018E2C9AC0092704D /* AG_ClientSummaryChartViewController.m in Sources */,
+				B65AB52818FE37A800CAA826 /* GA_PlanViewController.m in Sources */,
 				FF00F08918B829C500E6C321 /* UIBubbleTypingTableViewCell.m in Sources */,
 				FF00F08618B829C500E6C321 /* UIBubbleHeaderTableViewCell.m in Sources */,
 				B606C18118D006CD00125523 /* GA_WorkoutNameListTableCell.m in Sources */,

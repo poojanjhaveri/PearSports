@@ -8,6 +8,7 @@
 
 #import "GA_WorkoutListViewController.h"
 #import "GA_PersonalizeViewController.h"
+#import "GA_PlanViewController.h"
 #import "GA_Workout.h"
 
 @interface GA_WorkoutListViewController ()
@@ -70,6 +71,9 @@
             GA_Workout *w = [GA_Workout alloc];
             w.workoutName = [obj objectForKey:@"title"];
             w.SKU = [obj objectForKey:@"sku"];
+            w.longDes = [obj objectForKey:@"description_short"];
+            w.totalWeeks = [obj objectForKey:@"total_weeks"];
+            w.perWeek = [obj objectForKey:@"per_week"];
             
             NSString *sku_type = [obj objectForKey:@"sku_type"];
             
@@ -264,6 +268,16 @@
     if([segue.identifier isEqualToString:@"showWorkoutDetail"]){
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         GA_PersonalizeViewController *destViewController = segue.destinationViewController;
+        
+        GA_Workout *w = [self.workoutList objectAtIndex:indexPath.row];
+        destViewController.wName = w.workoutName;
+        destViewController.wDate = _wDate;
+        destViewController.wSKU = w.SKU;
+        
+    }
+    else if([segue.identifier isEqualToString:@"showPlanDetail"]){
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        GA_PlanViewController *destViewController = segue.destinationViewController;
         
         GA_Workout *w = [self.workoutList objectAtIndex:indexPath.row];
         destViewController.wName = w.workoutName;

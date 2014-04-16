@@ -26,6 +26,10 @@
 @property (nonatomic, copy) NSString *shortDes;
 @property (nonatomic, copy) NSString *longDes;
 @property (nonatomic, copy) NSString *wID;
+@property (nonatomic, copy) NSString *totalWeeks;
+@property (nonatomic, copy) NSString *perWeek;
+
+
 
 
 
