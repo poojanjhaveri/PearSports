@@ -87,8 +87,7 @@
     if ([UIImagePickerController isSourceTypeAvailable:
          UIImagePickerControllerSourceTypeCamera])
     {
-        UIImagePickerController *imagePicker =
-        [[UIImagePickerController alloc] init];
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
         imagePicker.delegate = self;
         imagePicker.sourceType =
         UIImagePickerControllerSourceTypeCamera;
@@ -126,7 +125,8 @@
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = info[UIImagePickerControllerOriginalImage];
         
-        imageView.image = image;
+        imageView.image = [self scaleAndRotateImage:image];
+        //imageView.image = image;
         if (_newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
                                            self,
@@ -185,6 +185,114 @@
     }
 }
 
+- (UIImage *)scaleAndRotateImage:(UIImage *)image {
+    int kMaxResolution = 640; // Or whatever
+    
+    CGImageRef imgRef = image.CGImage;
+    
+    CGFloat width = CGImageGetWidth(imgRef);
+    CGFloat height = CGImageGetHeight(imgRef);
+    
+    
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    CGRect bounds = CGRectMake(0, 0, width, height);
+    if (width > kMaxResolution || height > kMaxResolution) {
+        CGFloat ratio = width/height;
+        if (ratio > 1) {
+            bounds.size.width = kMaxResolution;
+            bounds.size.height = roundf(bounds.size.width / ratio);
+        }
+        else {
+            bounds.size.height = kMaxResolution;
+            bounds.size.width = roundf(bounds.size.height * ratio);
+        }
+    }
+    
+    CGFloat scaleRatio = bounds.size.width / width;
+    CGSize imageSize = CGSizeMake(CGImageGetWidth(imgRef), CGImageGetHeight(imgRef));
+    CGFloat boundHeight;
+    UIImageOrientation orient = image.imageOrientation;
+    switch(orient) {
+            
+        case UIImageOrientationUp: //EXIF = 1
+            transform = CGAffineTransformIdentity;
+            break;
+            
+        case UIImageOrientationUpMirrored: //EXIF = 2
+            transform = CGAffineTransformMakeTranslation(imageSize.width, 0.0);
+            transform = CGAffineTransformScale(transform, -1.0, 1.0);
+            break;
+            
+        case UIImageOrientationDown: //EXIF = 3
+            transform = CGAffineTransformMakeTranslation(imageSize.width, imageSize.height);
+            transform = CGAffineTransformRotate(transform, M_PI);
+            break;
+            
+        case UIImageOrientationDownMirrored: //EXIF = 4
+            transform = CGAffineTransformMakeTranslation(0.0, imageSize.height);
+            transform = CGAffineTransformScale(transform, 1.0, -1.0);
+            break;
+            
+        case UIImageOrientationLeftMirrored: //EXIF = 5
+            boundHeight = bounds.size.height;
+            bounds.size.height = bounds.size.width;
+            bounds.size.width = boundHeight;
+            transform = CGAffineTransformMakeTranslation(imageSize.height, imageSize.width);
+            transform = CGAffineTransformScale(transform, -1.0, 1.0);
+            transform = CGAffineTransformRotate(transform, 3.0 * M_PI / 2.0);
+            break;
+            
+        case UIImageOrientationLeft: //EXIF = 6
+            boundHeight = bounds.size.height;
+            bounds.size.height = bounds.size.width;
+            bounds.size.width = boundHeight;
+            transform = CGAffineTransformMakeTranslation(0.0, imageSize.width);
+            transform = CGAffineTransformRotate(transform, 3.0 * M_PI / 2.0);
+            break;
+            
+        case UIImageOrientationRightMirrored: //EXIF = 7
+            boundHeight = bounds.size.height;
+            bounds.size.height = bounds.size.width;
+            bounds.size.width = boundHeight;
+            transform = CGAffineTransformMakeScale(-1.0, 1.0);
+            transform = CGAffineTransformRotate(transform, M_PI / 2.0);
+            break;
+            
+        case UIImageOrientationRight: //EXIF = 8
+            boundHeight = bounds.size.height;
+            bounds.size.height = bounds.size.width;
+            bounds.size.width = boundHeight;
+            transform = CGAffineTransformMakeTranslation(imageSize.height, 0.0);
+            transform = CGAffineTransformRotate(transform, M_PI / 2.0);
+            break;
+            
+        default:
+            [NSException raise:NSInternalInconsistencyException format:@"Invalid image orientation"];
+            
+    }
+    
+    UIGraphicsBeginImageContext(bounds.size);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    if (orient == UIImageOrientationRight || orient == UIImageOrientationLeft) {
+        CGContextScaleCTM(context, -scaleRatio, scaleRatio);
+        CGContextTranslateCTM(context, -height, 0);
+    }
+    else {
+        CGContextScaleCTM(context, scaleRatio, -scaleRatio);
+        CGContextTranslateCTM(context, 0, -height);
+    }
+    
+    CGContextConcatCTM(context, transform);
+    
+    CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, width, height), imgRef);
+    UIImage *imageCopy = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return imageCopy;
+}
+
 -(void)image:(UIImage *)image
 finishedSavingWithError:(NSError *)error
  contextInfo:(void *)contextInfo
@@ -223,9 +331,12 @@ finishedSavingWithError:(NSError *)error
 }
 
 - (void) refreshChat{
-    bubbleData = nil;
-    bubbleData = [[NSMutableArray alloc]init];
-    [bubbleTable reloadData];
+    int x = [bubbleData count];
+    int count = 0;
+    
+    //bubbleData = nil;
+    //bubbleData = [[NSMutableArray alloc]init];
+    //[bubbleTable reloadData];
     
     NSLog(@"refreshing");
     
@@ -249,101 +360,112 @@ finishedSavingWithError:(NSError *)error
             NSDictionary *jsonDict = (NSDictionary *) responseObject;
             self.arr = [jsonDict objectForKey:@"message_list"];
             
-            [self.arr enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
-                if([[obj objectForKey:@"message_type"]  isEqual: @"text"]){
-                    
-                    NSString *textMsg = [obj objectForKey:@"content"];
-                    NSNumber *val = [obj objectForKey:@"outgoing"];
-                    BOOL i = [val boolValue];
-                    //NSLog(@"Text: %@", textMsg);
-                    
-                    
-                    NSNumber *time =[obj objectForKey:@"created_at"];
-                    NSTimeInterval interval = [time doubleValue];
-                    
-                    if(i == 1){
-                        NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
-                        sayBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
-                        [bubbleData addObject:sayBubble];
-                        [bubbleTable reloadData];
-                        [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+            int num = [self.arr count];
+            
+            if(num <= x){
+                //Don't need to do anything
+            }
+            else{
+                [self.arr enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
+                    //NSLog(@"index : %lu", (unsigned long)idx);
+                    if((int)idx >= x){
+                        if([[obj objectForKey:@"message_type"]  isEqual: @"text"]){
+                            
+                            NSString *textMsg = [obj objectForKey:@"content"];
+                            NSNumber *val = [obj objectForKey:@"outgoing"];
+                            BOOL i = [val boolValue];
+                            //NSLog(@"Text: %@", textMsg);
+                            
+                            
+                            NSNumber *time =[obj objectForKey:@"created_at"];
+                            NSTimeInterval interval = [time doubleValue];
+                            
+                            if(i == 1){
+                                NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
+                                sayBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
+                                [bubbleData addObject:sayBubble];
+                                [bubbleTable reloadData];
+                                [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+                            }
+                            else{
+                                NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
+                                sayBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
+                                [bubbleData addObject:sayBubble];
+                                [bubbleTable reloadData];
+                                [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+                            }
+                            
+                        }
+                        else if([[obj objectForKey:@"message_type"]  isEqual: @"audio"]){
+                            NSNumber *val = [obj objectForKey:@"outgoing"];
+                            BOOL i = [val boolValue];
+                            NSNumber *time =[obj objectForKey:@"created_at"];
+                            NSTimeInterval interval = [time doubleValue];
+                            
+                            if(i == 1){
+                                NSString *textMsg = [obj objectForKey:@"content"];
+                                //NSLog(@"Audio: %@", textMsg);
+                                
+                                NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
+                                
+                                
+                                NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
+                                audioBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
+                                [bubbleData addObject:audioBubble];
+                                [bubbleTable reloadData];
+                                [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+                            }
+                            else{
+                                NSString *textMsg = [obj objectForKey:@"content"];
+                                //NSLog(@"Audio: %@", textMsg);
+                                
+                                NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
+                                
+                                NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
+                                audioBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
+                                [bubbleData addObject:audioBubble];
+                                [bubbleTable reloadData];
+                                [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+                            }
+                        }
+                        else {
+                            NSNumber *val = [obj objectForKey:@"outgoing"];
+                            BOOL i = [val boolValue];
+                            NSNumber *time =[obj objectForKey:@"created_at"];
+                            NSTimeInterval interval = [time doubleValue];
+                            
+                            if(i == 1){
+                                NSString *textMsg = [obj objectForKey:@"content"];
+                                
+                                NSURL *imageURL = [[NSURL alloc] initWithString:textMsg];
+                                NSData *data = [NSData dataWithContentsOfURL:imageURL];
+                                UIImage *img = [[UIImage alloc] initWithData:data];
+                                
+                                NSBubbleData *imageBubble = [NSBubbleData dataWithImage:img date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
+                                imageBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
+                                [bubbleData addObject:imageBubble];
+                                [bubbleTable reloadData];
+                                [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+                            }
+                            else{
+                                NSString *textMsg = [obj objectForKey:@"content"];
+                                
+                                NSURL *imageURL = [[NSURL alloc] initWithString:textMsg];
+                                NSData *data = [NSData dataWithContentsOfURL:imageURL];
+                                UIImage *img = [[UIImage alloc] initWithData:data];
+                                
+                                NSBubbleData *imageBubble = [NSBubbleData dataWithImage:img date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
+                                imageBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
+                                [bubbleData addObject:imageBubble];
+                                [bubbleTable reloadData];
+                                [bubbleTable scrollBubbleViewToBottomAnimated:NO];
+                            }
+                            
+                        }
                     }
-                    else{
-                        NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
-                        sayBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
-                        [bubbleData addObject:sayBubble];
-                        [bubbleTable reloadData];
-                        [bubbleTable scrollBubbleViewToBottomAnimated:NO];
-                    }
                     
-                }
-                else if([[obj objectForKey:@"message_type"]  isEqual: @"audio"]){
-                    NSNumber *val = [obj objectForKey:@"outgoing"];
-                    BOOL i = [val boolValue];
-                    NSNumber *time =[obj objectForKey:@"created_at"];
-                    NSTimeInterval interval = [time doubleValue];
-                    
-                    if(i == 1){
-                        NSString *textMsg = [obj objectForKey:@"content"];
-                        //NSLog(@"Audio: %@", textMsg);
-                        
-                        NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
-                        
-                        
-                        NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
-                        audioBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
-                        [bubbleData addObject:audioBubble];
-                        [bubbleTable reloadData];
-                        [bubbleTable scrollBubbleViewToBottomAnimated:NO];
-                    }
-                    else{
-                        NSString *textMsg = [obj objectForKey:@"content"];
-                        //NSLog(@"Audio: %@", textMsg);
-                        
-                        NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
-                        
-                        NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
-                        audioBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
-                        [bubbleData addObject:audioBubble];
-                        [bubbleTable reloadData];
-                        [bubbleTable scrollBubbleViewToBottomAnimated:NO];
-                    }
-                }
-                else {
-                    NSNumber *val = [obj objectForKey:@"outgoing"];
-                    BOOL i = [val boolValue];
-                    NSNumber *time =[obj objectForKey:@"created_at"];
-                    NSTimeInterval interval = [time doubleValue];
-                    
-                    if(i == 1){
-                        NSString *textMsg = [obj objectForKey:@"content"];
-                        
-                        NSURL *imageURL = [[NSURL alloc] initWithString:textMsg];
-                        NSData *data = [NSData dataWithContentsOfURL:imageURL];
-                        UIImage *img = [[UIImage alloc] initWithData:data];
-                        
-                        NSBubbleData *imageBubble = [NSBubbleData dataWithImage:img date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
-                        imageBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
-                        [bubbleData addObject:imageBubble];
-                        [bubbleTable reloadData];
-                        [bubbleTable scrollBubbleViewToBottomAnimated:NO];
-                    }
-                    else{
-                        NSString *textMsg = [obj objectForKey:@"content"];
-                        
-                        NSURL *imageURL = [[NSURL alloc] initWithString:textMsg];
-                        NSData *data = [NSData dataWithContentsOfURL:imageURL];
-                        UIImage *img = [[UIImage alloc] initWithData:data];
-                        
-                        NSBubbleData *imageBubble = [NSBubbleData dataWithImage:img date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
-                        imageBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
-                        [bubbleData addObject:imageBubble];
-                        [bubbleTable reloadData];
-                        [bubbleTable scrollBubbleViewToBottomAnimated:NO];
-                    }
-                    
-                }
-            }];
+                }];
+            }
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
             });
@@ -640,7 +762,7 @@ finishedSavingWithError:(NSError *)error
     // return a formatted string for a file name
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"ddMMMYY_hhmmssa";
-    return [[formatter stringFromDate:[NSDate date]] stringByAppendingString:@".flac"];
+    return [[formatter stringFromDate:[NSDate date]] stringByAppendingString:@".m4a"];
 }
 
 - (NSString *) dateString2
@@ -662,6 +784,7 @@ finishedSavingWithError:(NSError *)error
         soundFilePath = [docsDir stringByAppendingPathComponent:[self dateString]];
         soundFileURL = [NSURL fileURLWithPath:soundFilePath];
         
+        /*
         NSDictionary *recordSettings = [NSDictionary
                                         dictionaryWithObjectsAndKeys:
                                         [NSNumber numberWithInt:AVAudioQualityMin],
@@ -672,6 +795,15 @@ finishedSavingWithError:(NSError *)error
                                         AVNumberOfChannelsKey,
                                         [NSNumber numberWithFloat:44100.0],
                                         AVSampleRateKey,
+                                        nil];*/
+        
+        NSDictionary *recordSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [NSNumber numberWithInt:kAudioFormatMPEG4AAC], AVFormatIDKey,
+                                        [NSNumber numberWithFloat:44100.0], AVSampleRateKey,
+                                        [NSNumber numberWithInt:1], AVNumberOfChannelsKey,
+                                        [NSNumber numberWithInt:AVAudioQualityHigh], AVSampleRateConverterAudioQualityKey,
+                                        [NSNumber numberWithInt:128000], AVEncoderBitRateKey,
+                                        [NSNumber numberWithInt:16], AVEncoderBitDepthHintKey,
                                         nil];
         
         NSError *error = nil;
@@ -720,7 +852,7 @@ finishedSavingWithError:(NSError *)error
         [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:token password:@""];
         
         NSMutableURLRequest *reqst = [manager.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:@"https://cs477-backend.herokuapp.com/message/audio" parameters:parameters constructingBodyWithBlock: ^(id <AFMultipartFormData>formData){
-            [formData appendPartWithFileData:theData name:@"content" fileName:[self dateString] mimeType:@"audio/flac"];
+            [formData appendPartWithFileData:theData name:@"content" fileName:[self dateString] mimeType:@"audio/m4a"];
         }];
         
         //NSMutableURLRequest *reqst = [manager.requestSerializer requestWithMethod:@"POST" URLString:@"https://cs477-backend.herokuapp.com/message/audio" parameters:parameters error:nil];
