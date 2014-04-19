@@ -16,12 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PEAR_reagular_C-BLKlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="REw-vH-atc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PEAR_reagular_C-BLKlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="REw-vH-atc">
                                 <rect key="frame" x="0.0" y="25" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="REw-vH-atc" secondAttribute="trailing" id="7Hw-Cj-jDe"/>
+                            <constraint firstItem="REw-vH-atc" firstAttribute="leading" secondItem="Dyp-hM-2k6" secondAttribute="leading" id="B74-Wz-915"/>
+                            <constraint firstAttribute="bottom" secondItem="REw-vH-atc" secondAttribute="bottom" constant="-25" id="err-rk-TV7"/>
+                            <constraint firstItem="REw-vH-atc" firstAttribute="top" secondItem="WgC-bW-USx" secondAttribute="bottom" constant="5" id="gog-6n-i6P"/>
+                        </constraints>
                     </view>
                     <connections>
                         <segue destination="iLP-AT-6Jm" kind="modal" identifier="AlreadyLoggedIn" animates="NO" id="ZW1-7y-jOc"/>
@@ -61,8 +67,8 @@
                             <rect key="frame" x="0.0" y="184" width="320" height="214"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVo-Ye-fDm">
-                                    <rect key="frame" x="91" y="92" width="139" height="33"/>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVo-Ye-fDm">
+                                    <rect key="frame" x="91" y="36" width="139" height="33"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -74,8 +80,8 @@
                                         <action selector="forgotPasswordTouched:" destination="C8K-uD-drT" eventType="touchUpInside" id="E4l-Dr-Mda"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpb-0R-ZLR">
-                                    <rect key="frame" x="90" y="133" width="140" height="30"/>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpb-0R-ZLR">
+                                    <rect key="frame" x="90" y="77" width="140" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -89,10 +95,6 @@
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.0" green="0.67450980390000004" blue="0.92549019610000005" alpha="1" colorSpace="deviceRGB"/>
-                            <constraints>
-                                <constraint firstItem="fVo-Ye-fDm" firstAttribute="top" secondItem="dYb-AK-rTg" secondAttribute="top" constant="92" id="6BI-0J-SAd"/>
-                                <constraint firstItem="qpb-0R-ZLR" firstAttribute="top" secondItem="dYb-AK-rTg" secondAttribute="top" constant="133" id="KvW-6O-ddu"/>
-                            </constraints>
                         </view>
                         <connections>
                             <outlet property="dataSource" destination="C8K-uD-drT" id="KhC-yK-RfX"/>
@@ -119,12 +121,15 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXv-bF-gXO">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="364"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXv-bF-gXO">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="276"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="276" id="BRb-rk-0ta"/>
+                                </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="Terms of Use">
+                                    <fragment content="                                                              Terms of Use">
                                         <attributes>
                                             <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
@@ -292,9 +297,12 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="32U-uo-ci6">
-                                <rect key="frame" x="20" y="416" width="280" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="32U-uo-ci6">
+                                <rect key="frame" x="20" y="328" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="QcN-eG-2k2"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -302,16 +310,19 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                     <outlet property="delegate" destination="5x9-MO-khL" id="17j-MY-p6H"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="By Clicking on Submit, you agree to all terms and conditions" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="h0z-gv-blc">
-                                <rect key="frame" x="20" y="372" width="280" height="36"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Clicking on Submit, you agree to all terms and conditions" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="h0z-gv-blc">
+                                <rect key="frame" x="20" y="284" width="280" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFq-Tc-S7c">
-                                <rect key="frame" x="20" y="454" width="280" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFq-Tc-S7c">
+                                <rect key="frame" x="20" y="366" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JZ3-cO-Kcy"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -324,6 +335,20 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="32U-uo-ci6" firstAttribute="trailing" secondItem="h0z-gv-blc" secondAttribute="trailing" id="KT3-EB-mf1"/>
+                            <constraint firstItem="rXv-bF-gXO" firstAttribute="top" secondItem="KRl-4n-o0A" secondAttribute="top" id="QrC-DB-2n1"/>
+                            <constraint firstItem="rXv-bF-gXO" firstAttribute="leading" secondItem="KRl-4n-o0A" secondAttribute="leading" id="S5r-9U-25Y"/>
+                            <constraint firstItem="IFq-Tc-S7c" firstAttribute="top" secondItem="32U-uo-ci6" secondAttribute="bottom" constant="8" symbolic="YES" id="VBO-Ia-bCQ"/>
+                            <constraint firstItem="h0z-gv-blc" firstAttribute="centerX" secondItem="rXv-bF-gXO" secondAttribute="centerX" id="dsU-7s-Tzp"/>
+                            <constraint firstItem="32U-uo-ci6" firstAttribute="top" secondItem="h0z-gv-blc" secondAttribute="bottom" constant="8" symbolic="YES" id="e4o-2d-nls"/>
+                            <constraint firstItem="h0z-gv-blc" firstAttribute="top" secondItem="rXv-bF-gXO" secondAttribute="bottom" constant="8" symbolic="YES" id="gCR-Ol-TZx"/>
+                            <constraint firstItem="fGr-37-dpm" firstAttribute="top" secondItem="IFq-Tc-S7c" secondAttribute="bottom" constant="108" id="j0R-bB-yko"/>
+                            <constraint firstItem="IFq-Tc-S7c" firstAttribute="leading" secondItem="32U-uo-ci6" secondAttribute="leading" id="k2S-DH-D9M"/>
+                            <constraint firstItem="h0z-gv-blc" firstAttribute="leading" secondItem="KRl-4n-o0A" secondAttribute="leading" constant="20" symbolic="YES" id="tAj-6p-46D"/>
+                            <constraint firstItem="h0z-gv-blc" firstAttribute="leading" secondItem="32U-uo-ci6" secondAttribute="leading" id="wNK-CP-ZIZ"/>
+                            <constraint firstItem="32U-uo-ci6" firstAttribute="trailing" secondItem="IFq-Tc-S7c" secondAttribute="trailing" id="yzH-yD-lXX"/>
+                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Rfv-bt-5MA" appends="YES" id="haa-5A-dlB"/>
                         </connections>
@@ -1263,23 +1288,6 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e8-dM-3cS">
                                 <rect key="frame" x="251" y="56" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yn-d2-uME">
-                                <rect key="frame" x="20" y="112" width="148" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Jk-nS-JWz">
-                                <rect key="frame" x="20" y="153" width="162" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="09q-86-gd3">
-                                <rect key="frame" x="251" y="148" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
                         </subviews>

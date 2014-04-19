@@ -111,7 +111,7 @@
 -(void)logout
 {
     self.user=NULL;
-    [[NSUserDefaults standardUserDefaults] setObject:self.user forKey:@"CurrentUser" ];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"CurrentUser"];
 }
 
 @end

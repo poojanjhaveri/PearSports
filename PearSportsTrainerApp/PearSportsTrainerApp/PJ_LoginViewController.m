@@ -76,15 +76,23 @@
         
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         //     manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        
+        
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         
-        NSLog(@"%@ %@",emailaddress,pwtext);
+        NSLog(@"Login credentials are : %@ %@",emailaddress,pwtext);
         //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+        [manager.requestSerializer clearAuthorizationHeader];
+        NSLog(@"Login credentials are : %@ %@",emailaddress,pwtext);
         [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:emailaddress password:pwtext];
+        
+        
+        NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage]; NSArray *cookies = [cookieStorage cookies]; for (NSHTTPCookie *cookie in cookies) { [cookieStorage deleteCookie:cookie];  }
+        
         
         [manager POST:@"https://cs477-backend.herokuapp.com/sign-in" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
          {
-             
+             NSLog(@"Operation is %@",operation);
              NSLog(@"JSON: %@", responseObject);
              [[API sharedInstance] saveCurrentUser:[responseObject objectForKey:@"trainer_info"]];
              self.emailFieldCell.textField.text=@"";
@@ -112,43 +120,13 @@
         
     });
     
-  /*
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    //     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    NSLog(@"%@ %@",emailaddress,pwtext);
-    //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:emailaddress password:pwtext];
-    
-    [manager POST:@"https://cs477-backend.herokuapp.com/sign-in" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
-     {
-         
-         NSLog(@"JSON: %@", responseObject);
-         [[API sharedInstance] saveCurrentUser:[responseObject objectForKey:@"trainer_info"]];
-         self.emailFieldCell.textField.text=@"";
-         self.passwordFieldCell.textField.text=@"";
-         [self performSegueWithIdentifier:@"LoggedIn" sender:self];
-         
-     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
-     
-     {
-         
-         NSLog(@"Error: %@", error);
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error" message:@"Please check your username and password." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
-         [alert show];
-         
-     }];*/
 
     
     
 }
 
 
-- (IBAction)loginButtonPressed:(id)sender {
-    
 
-}
 
 - (IBAction)forgotPasswordTouched:(id)sender {
     UIAlertView *forgotalert = [[UIAlertView alloc] initWithTitle:@"Forgot Password" message:@"Please enter your emaill address" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Send", nil];
@@ -361,11 +339,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if(indexPath.section==1 && indexPath.row==0)
+  
+    if(indexPath.section==1 && indexPath.row==0 )
     {
         [self processlogin:self.emailFieldCell.textField.text password:self.passwordFieldCell.textField.text];
     }
-    
 
 }
 
