@@ -75,15 +75,10 @@
         
         
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        //     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-        
         
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         
-        NSLog(@"Login credentials are : %@ %@",emailaddress,pwtext);
-        //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         [manager.requestSerializer clearAuthorizationHeader];
-        NSLog(@"Login credentials are : %@ %@",emailaddress,pwtext);
         [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:emailaddress password:pwtext];
         
         
@@ -92,8 +87,7 @@
         
         [manager POST:@"https://cs477-backend.herokuapp.com/sign-in" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
          {
-             NSLog(@"Operation is %@",operation);
-             NSLog(@"JSON: %@", responseObject);
+            NSLog(@"JSON: %@", responseObject);
              [[API sharedInstance] saveCurrentUser:[responseObject objectForKey:@"trainer_info"]];
              self.emailFieldCell.textField.text=@"";
              self.passwordFieldCell.textField.text=@"";
@@ -111,9 +105,16 @@
                  [MBProgressHUD hideHUDForView:self.view animated:YES];
              });
              
-             NSLog(@"Error: %@", error);
-             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error" message:@"Please check your username and password." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
-             [alert show];
+             if([operation.response statusCode]==401)
+             {
+                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error" message:@"Please check your username and password." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+                 [alert show];
+             }
+             else{
+                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection" message:@"Please try again." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+                 [alert show];
+             }
+           
              
          }];
 
@@ -160,6 +161,11 @@
         
         NSLog(@"getstring %@",getstring);
         
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -167,18 +173,23 @@
   //       manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         [manager GET:getstring parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"JSON: %@", responseObject);
-            if(!([[responseObject objectForKey:@"object"] isEqualToString:@"message"]))
-            {
-               
-            }
-            else
-            {
-            
+           
+            dispatch_async(dispatch_get_main_queue(), ^{
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                });
+
+
             UIAlertView *resetpassword =[[UIAlertView alloc] initWithTitle:@"Reset password" message:@"Your reset password link has been sent to your email address." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
             [resetpassword show];
-            }
+            
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+
+            
             
             if([operation.response statusCode]==400)
             {
@@ -192,6 +203,8 @@
             [alert show];
             }
         }];
+        
+        });
        
 
     

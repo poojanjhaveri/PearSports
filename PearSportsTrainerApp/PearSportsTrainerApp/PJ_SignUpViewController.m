@@ -8,6 +8,7 @@
 
 #import "PJ_SignUpViewController.h"
 #import "API.h"
+#import <MBProgressHUD.h>
 
 @interface PJ_SignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailAddress;
@@ -36,6 +37,12 @@
     
     if([self.emailAddress.text length] > 0)
     {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            
+
+        
     
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         //   manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
@@ -45,35 +52,42 @@
     
         NSDictionary *parameters = @{@"email": emailpass};
         [manager POST:@"https://cs477-backend.herokuapp.com/sign-up" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
+           
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+            
         
         NSLog(@"JSON: %@", responseObject);
         [self textFieldShouldReturn:self.emailAddress];
-        if([responseObject objectForKey:@"error"])
-        {
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign-Up request failed" message:@"Please check your your email address. This email address is already signed up." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
-            [alert show];
-            
-            
-        }
-        else
-        {
-        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign-Up request sent" message:@"Please check your your email for continuing your process of registration." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
                  [alert show];
-        }
         
         
         
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+            
+            if([operation.response statusCode]==400)
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign-Up request failed" message:@"Please check your your email address. This email address is already signed up." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+                [alert show];
+            }
+            else{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection" message:@"Please try again." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+                [alert show];
+            }
+            
             NSLog(@"Error: %@", error);
-                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Please check your internet connection." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
-                 [alert show];
-        
+
         
         }];
+            
+        });
     }
     else
     {
