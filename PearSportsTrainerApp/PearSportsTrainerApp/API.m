@@ -17,7 +17,7 @@
 
 @interface API ()
 //the authorized user
-@property (strong, nonatomic) NSDictionary* user;
+@property (strong, nonatomic) NSMutableDictionary* user;
 @property (strong, nonatomic) PJ_Client* currenttrainee;
 @end
 
@@ -35,7 +35,7 @@
     static API *sharedInstance = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
-        sharedInstance = [[self alloc] initWithBaseURL:[NSURL URLWithString:kAPIHost]];
+        sharedInstance = [[self alloc] init];
     });
     
     return sharedInstance;
@@ -52,38 +52,14 @@
     
     if (self != nil) {
         //initialize the object
-        user = nil;
+        user = [[NSMutableDictionary alloc] initWithObjectsAndKeys:nil, nil];
         
     }
     
     return self;
 }
 
-/*
--(void)commandWithParams:(NSMutableDictionary*)params filepath:(NSString *)filepath filename:(NSString *)filename apiurl:(NSString *)apiurl onCompletion:(JSONResponseBlock)completionBlock
-{
 
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = params;
-    NSURL *filePath;
-    if([filepath length]!=0)
-    {
-    filePath = [NSURL fileURLWithPath:filepath];
-    }
-    NSString *posturl=[NSString stringWithFormat:@"http://cs477-backend.herokuapp.com/%@",apiurl];
-    
-    [manager POST:posturl parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFileURL:filePath name:filename error:nil];
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Success: %@", responseObject);
-        completionBlock(responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-        completionBlock([NSDictionary dictionaryWithObject:[error localizedDescription] forKey:@"error"]);
-    }];
-}
-*/
 
 
 -(BOOL)isAuthorized
@@ -91,9 +67,23 @@
     return [[user objectForKey:@"IdUser"] intValue]>0;
 }
 
--(void)saveCurrentUser:(NSDictionary*)currentuser
+-(void)saveCurrentUser:(NSMutableDictionary*)currentuser
 {
-    self.user=currentuser;
+   
+    self.user=[NSMutableDictionary dictionaryWithDictionary:currentuser];
+ // So that if a new user signs up and we dont have data from pear trainee, then we give him a default name so as to atleast login and show it in UI
+    if([currentuser objectForKey:@"first_name"])
+    {
+        
+              [self.user setObject:@"" forKey:@"first_name"];
+    }
+    
+    if([currentuser objectForKey:@"last_name"])
+    {
+         [self.user setObject:@"" forKey:@"last_name"];
+    }
+    
+    
     [[NSUserDefaults standardUserDefaults] setObject:self.user forKey:@"CurrentUser" ];
 }
 
