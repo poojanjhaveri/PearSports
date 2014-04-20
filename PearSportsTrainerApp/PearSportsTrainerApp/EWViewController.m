@@ -53,13 +53,13 @@
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles:@"Take a picture", @"Select from Library", nil];
     actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-    [actionSheet showInView:self.view];
+    [actionSheet showInView:textInputView];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    int i = buttonIndex;
-    switch(i)
+    
+    switch(buttonIndex)
     {
         case 0:
         {
@@ -77,7 +77,7 @@
             [self presentViewController:picker animated:YES completion:^{}];
         }
         default:
-            // Do Nothing.........
+            [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
             break;
     }
 }
@@ -489,7 +489,9 @@ finishedSavingWithError:(NSError *)error
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    
+    [textInputView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     
     
     NSLog(@"TRainee name : %@ %@ %@ %@ %@ %@",[[API sharedInstance] getTraineeInfo].name,[[API sharedInstance] getTraineeInfo].age,[[API sharedInstance] getTraineeInfo].weight,[[API sharedInstance] getTraineeInfo].height,[[API sharedInstance] getTraineeInfo].gender,[[API sharedInstance] getTraineeInfo].trainee_id);
