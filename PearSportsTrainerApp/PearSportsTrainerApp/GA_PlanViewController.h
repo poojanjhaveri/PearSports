@@ -14,5 +14,20 @@
 @property NSString *wSKU;
 @property NSString *notes;
 @property NSDate *wDate;
+@property NSMutableArray *switches;
+
+@property (weak, nonatomic) IBOutlet UILabel *workoutNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *scheduleBtn;
+
+@property (weak, nonatomic) IBOutlet UISwitch *switch0;
+@property (weak, nonatomic) IBOutlet UISwitch *switch1;
+@property (weak, nonatomic) IBOutlet UISwitch *switch2;
+@property (weak, nonatomic) IBOutlet UISwitch *switch3;
+@property (weak, nonatomic) IBOutlet UISwitch *switch4;
+@property (weak, nonatomic) IBOutlet UISwitch *switch5;
+@property (weak, nonatomic) IBOutlet UISwitch *switch6;
+
+
 
 @end
