@@ -77,12 +77,6 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
- //    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-  
 }
 
 -(void)sendWorkOutRequest
@@ -234,10 +228,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 
-    // Return the number of sections.
-    
-    //NSLog(@"Number of sections to show... %d", [self.weekarray count]);
-    
     return [self.weekarray count];
 }
 
@@ -290,15 +280,19 @@
         {
             case NSOrderedAscending:{
                 if ([wname.status isEqualToString:@"marked_complete"]) {
+                    cell.workoutName.textColor=[UIColor darkGrayColor];
+                    
                     cell.colourCode.backgroundColor=[UIColor lightGrayColor];
                     cell.gradeText.hidden = true;
                 }
                 else if ([wname.status isEqualToString:@"completed"]) {
+                    cell.workoutName.textColor=[UIColor greenColor];
                     cell.colourCode.backgroundColor=[UIColor greenColor];
 //                    cell.gradeText.hidden = false;
                     cell.gradeText.text = [wname grade];
                 }
                 else{
+                    cell.workoutName.textColor=[UIColor blueColor];
                     cell.colourCode.backgroundColor=[UIColor blueColor];
                     cell.gradeText.hidden = true;
                 }
@@ -306,30 +300,36 @@
             }
             case NSOrderedDescending:{
                 if ([wname.status isEqualToString:@"marked_complete"]) {
+                     cell.workoutName.textColor=[UIColor darkGrayColor];
                     cell.colourCode.backgroundColor=[UIColor lightGrayColor];
                     cell.gradeText.hidden = true;
                 }
                 else if ([wname.status isEqualToString:@"completed"]) {
+                     cell.workoutName.textColor=[UIColor greenColor];
                     cell.colourCode.backgroundColor=[UIColor greenColor];
 //                    cell.gradeText.hidden = false;
                     cell.gradeText.text = [wname grade];
                 }
                 else{
+                     cell.workoutName.textColor=[UIColor redColor];
                     cell.colourCode.backgroundColor=[UIColor redColor];
                     cell.gradeText.hidden = true;
                 }
                 break;            }
             case NSOrderedSame:{
                 if ([wname.status isEqualToString:@"marked_complete"]) {
+                     cell.workoutName.textColor=[UIColor darkGrayColor];
                     cell.colourCode.backgroundColor=[UIColor lightGrayColor];
 //                    cell.gradeText.hidden = true;
                 }
                 else if ([wname.status isEqualToString:@"completed"]) {
+                     cell.workoutName.textColor=[UIColor greenColor];
                     cell.colourCode.backgroundColor=[UIColor greenColor];
 //                    cell.activityTypeText.text = [wname activityType];
 //                    cell.gradeText.text = [wname grade];
                 }
                 else{
+                     cell.workoutName.textColor=[UIColor blueColor];
                     cell.colourCode.backgroundColor=[UIColor blueColor];
  //                   cell.gradeText.hidden = true;
                 }
