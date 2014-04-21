@@ -124,8 +124,9 @@
     
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = info[UIImagePickerControllerOriginalImage];
+        image = [self scaleAndRotateImage:image];
         
-        imageView.image = [self scaleAndRotateImage:image];
+        imageView.image = image;
         //imageView.image = image;
         if (_newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
@@ -440,6 +441,8 @@ finishedSavingWithError:(NSError *)error
                                 NSURL *imageURL = [[NSURL alloc] initWithString:textMsg];
                                 NSData *data = [NSData dataWithContentsOfURL:imageURL];
                                 UIImage *img = [[UIImage alloc] initWithData:data];
+                                //img = [self scaleAndRotateImage:img];
+
                                 
                                 NSBubbleData *imageBubble = [NSBubbleData dataWithImage:img date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeMine];
                                 imageBubble.avatar = [UIImage imageNamed:@"pearsports.jpg"];
