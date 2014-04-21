@@ -10,6 +10,7 @@
 #import "API.h"
 
 @interface PJ_SettingsViewController ()
+@property (weak, nonatomic) IBOutlet UISwitch *AcceptNewTrainees;
 
 @end
 
@@ -40,6 +41,13 @@
     
     [[API sharedInstance] logout];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (IBAction)AcceptNewTraineeValueChanged:(id)sender {
+    
+    
+    
 }
 
 @end

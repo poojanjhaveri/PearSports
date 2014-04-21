@@ -42,7 +42,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    //NSLog(@"Hi i am in here");
     
     [[self.tabBarController.tabBar.items objectAtIndex:2] setTitle:[[API sharedInstance] getTraineeInfo].name];
     self.tabBarController.navigationItem.title =@"Workouts";
@@ -476,7 +475,7 @@
     [dateFormat_End setDateFormat:@"yyyy-MM-dd"];
     NSString *dateEndPrev = [dateFormat stringFromDate:EndOfWeek];
     
-    NSDate *weekEndPrev = [dateFormat_End dateFromString:dateEndPrev];
+ //   NSDate *weekEndPrev = [dateFormat_End dateFromString:dateEndPrev];
   //  NSLog(@"Week end previous %@",weekEndPrev);
     
     

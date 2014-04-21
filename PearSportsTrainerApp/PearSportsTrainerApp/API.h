@@ -20,7 +20,7 @@ typedef void (^JSONResponseBlock)(NSDictionary* json);
 //check whether there's an authorized user
 -(BOOL)isAuthorized;
 //-(void)commandWithParams:(NSMutableDictionary*)params filepath:(NSString *)filepath filename:(NSString *)filename apiurl:(NSString *)apiurl onCompletion:(JSONResponseBlock)completionBlock;
--(void)saveCurrentUser:(NSDictionary*)user;
+-(void)saveCurrentUser:(NSMutableDictionary*)user;
 
 
 // TO save current trainee

@@ -26,6 +26,8 @@
 @synthesize shortDes;
 @synthesize longDes;
 @synthesize wID;
+@synthesize totalWeeks;
+@synthesize perWeek;
 
 
 @end
