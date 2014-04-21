@@ -137,8 +137,6 @@ static float sq_buffer = 20;
             
             NSArray * workouts = [[[self workoutArray] objectAtIndex:i] componentsSeparatedByString:@"!"];
             
-            //NSLog(@"Array is %@", workouts);
-            
             for (int i = 0; i < 3; i++) {
                 
                 if (i < [workouts count]) {
@@ -151,22 +149,21 @@ static float sq_buffer = 20;
                     
                     if ([workouts[i]  isEqual: @"scheduled"] ) {
                         
-                        CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.0);
-                        
-                        CGPathRef path = CGPathCreateWithRect(rectangle, NULL);
-                        
-                        CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 0.5);
-                        
-                        CGContextAddPath(context, path);
-                        CGContextDrawPath(context, kCGPathFillStroke);
+                        CGContextSetRGBFillColor(context, 0.0, 0.0, 1.0, 1.0);
                         
                         
                     } else if ( [workouts[i]  isEqual: @"incomplete"] ) {
                         
                         CGContextSetRGBFillColor(context, 1.0, 0.0, 0.0, 1.0);
+                        
                     } else if ( [workouts[i]  isEqual: @"complete"] ) {
                         
                         CGContextSetRGBFillColor(context, 0.0, 1.0, 0.0, 1.0);
+                        
+                    } else if( [workouts[i] isEqual:@"markedComplete"]) {
+                        
+                        CGContextSetRGBFillColor(context, 0.5, 0.5, 0.5, 1.0);
+
                         
                     } else {
                         

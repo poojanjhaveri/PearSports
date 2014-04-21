@@ -151,7 +151,7 @@
                  [theTrainee setImageName:@"poojan.jpg"];
              }
              
-             [theTrainee setWorkoutArray:[[NSMutableArray alloc] initWithCapacity:3]];
+             [theTrainee setWorkoutArray:[[NSMutableArray alloc] initWithCapacity:4]];
              
              [[theTrainee workoutArray] insertObject:[[NSMutableArray alloc] initWithCapacity:7] atIndex:0];
              [[theTrainee workoutArray] insertObject:[[NSMutableArray alloc] initWithCapacity:7] atIndex:1];
@@ -170,6 +170,10 @@
                  [[theTrainee workoutArray][2] insertObject:c atIndex:i];
                  
              }
+             
+            
+             
+             NSMutableArray * markedCompleteTimes = [[obj objectForKey:@"workout_schedule_stats"] objectForKey:@"marked_complete_times"];
              
              NSMutableArray * completeTimes = [[obj objectForKey:@"workout_schedule_stats"] objectForKey:@"complete_times"];
              //NSLog(@"%@", obj);
@@ -290,14 +294,14 @@
                  
                  NSDate * aDate = [NSDate dateWithTimeIntervalSince1970:anInt];
                  
-                 NSDateComponents *aDateComponent = [aCalendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:aDate];
+                 NSDateComponents *aDateComponent = [aCalendar components:NSCalendarUnitWeekOfYear  | NSCalendarUnitWeekday fromDate:aDate];
                  
                  
                  int futureWeek = [aDateComponent weekOfYear];
                  int futureDay = [aDateComponent weekday];
                  
                  int weekIndex = -1;
-                 int dayIndex;
+                 int dayIndex = -1;
                  
                  if (futureWeek == (myWeek - 2) ) {
                      
@@ -316,6 +320,10 @@
                      
                  }
                  
+                 
+                 //NSLog(@"Future week is %d, my week is %d", futureWeek, myWeek);
+                 //NSLog(@"Week Index is %d, day index is %d", weekIndex, dayIndex);
+                 
                  if (weekIndex != -1) {
                      NSString * s = [theTrainee workoutArray][weekIndex][dayIndex];
                      s = [s stringByAppendingString:@"scheduled!"];
@@ -327,6 +335,58 @@
                  
                  
              }
+             
+             for (NSString * aString in markedCompleteTimes) {
+                 
+                 int anInt = [aString integerValue];
+                 
+                 NSDate * aDate = [NSDate dateWithTimeIntervalSince1970:anInt];
+                 
+                 NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+                 [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+                 [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+                 
+                 lastWork = [dateFormatter stringFromDate:aDate];
+                 
+                 NSDateComponents *aDateComponent = [aCalendar components: NSCalendarUnitWeekOfYear  | NSCalendarUnitWeekday fromDate:aDate];
+                 
+                 int markedCompletedWeek = [aDateComponent weekOfYear];
+                 int markedCompletedDay = [aDateComponent weekday];
+                 
+                 int weekIndex = -1;
+                 int dayIndex;
+                 
+                 if (markedCompletedWeek == (myWeek - 2) ) {
+                     
+                     weekIndex = 0;
+                     dayIndex = markedCompletedDay - 1;
+                     
+                 } else if (markedCompletedWeek == (myWeek - 1)) {
+                     
+                     weekIndex = 1;
+                     dayIndex = markedCompletedDay - 1;
+                     
+                 } else if (markedCompletedWeek == myWeek) {
+                     
+                     weekIndex = 2;
+                     dayIndex = markedCompletedDay - 1;
+                     
+                 }
+                 
+                 if (weekIndex != -1) {
+                     
+                     
+                     NSString * s = [theTrainee workoutArray][weekIndex][dayIndex];
+                     s = [s stringByAppendingString:@"markedComplete!"];
+                     [theTrainee workoutArray][weekIndex][dayIndex] = s;
+                     
+                 }
+                 
+                 
+                 
+                 
+             }
+
              
              
              [self.clients addObject:theTrainee];
