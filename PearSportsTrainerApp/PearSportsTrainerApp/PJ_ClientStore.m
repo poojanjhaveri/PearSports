@@ -333,7 +333,7 @@
              
              //NSLog(@"%@ %@",obj,key);
              
-             NSLog(@"Trainee %@'s Workouts : %@", [theTrainee name], [theTrainee workoutArray]);
+             //NSLog(@"Trainee %@'s Workouts : %@", [theTrainee name], [theTrainee workoutArray]);
              
          }];
          

@@ -137,7 +137,7 @@ static float sq_buffer = 20;
             
             NSArray * workouts = [[[self workoutArray] objectAtIndex:i] componentsSeparatedByString:@"!"];
             
-            NSLog(@"Array is %@", workouts);
+            //NSLog(@"Array is %@", workouts);
             
             for (int i = 0; i < 3; i++) {
                 
@@ -147,7 +147,7 @@ static float sq_buffer = 20;
                     
                     CGRect rectangle = CGRectMake(left, top, sq_width, sq_height);
                     
-                    NSLog(@"Workouts of i is %@ ", workouts[i]);
+                    //NSLog(@"Workouts of i is %@ ", workouts[i]);
                     
                     if ([workouts[i]  isEqual: @"scheduled"] ) {
                         
