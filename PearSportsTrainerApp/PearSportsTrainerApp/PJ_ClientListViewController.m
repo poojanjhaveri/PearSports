@@ -168,10 +168,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     [[API sharedInstance] saveTrainee:[[[PJ_ClientStore sharedClientStore] clients] objectAtIndex:indexPath.row]];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSLog(@"Hey there");
     
 }
 
