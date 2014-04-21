@@ -161,14 +161,18 @@
              
              for (int i = 0; i < 7; i++) {
                  
-                 [[theTrainee workoutArray][0] insertObject:@"unscheduled" atIndex:i];
-                 [[theTrainee workoutArray][1] insertObject:@"unscheduled" atIndex:i];
-                 [[theTrainee workoutArray][2] insertObject:@"unscheduled" atIndex:i];
+                 NSString * a = @"";
+                 NSString * b = @"";
+                 NSString * c = @"";
+                 
+                 [[theTrainee workoutArray][0] insertObject:a atIndex:i];
+                 [[theTrainee workoutArray][1] insertObject:b atIndex:i];
+                 [[theTrainee workoutArray][2] insertObject:c atIndex:i];
                  
              }
              
              NSMutableArray * completeTimes = [[obj objectForKey:@"workout_schedule_stats"] objectForKey:@"complete_times"];
-             NSLog(@"%@", obj);
+             //NSLog(@"%@", obj);
              NSMutableArray * incompleteTimes = [[obj objectForKey:@"workout_schedule_stats"] objectForKey:@"incomplete_times"];
              
              NSMutableArray * futureTimes = [[obj objectForKey:@"workout_schedule_stats"] objectForKey:@"future_times"];
@@ -222,7 +226,9 @@
                  if (weekIndex != -1) {
                      
                      
-                     [[theTrainee workoutArray][weekIndex] replaceObjectAtIndex:dayIndex withObject:@"complete"];
+                     NSString * s = [theTrainee workoutArray][weekIndex][dayIndex];
+                     s = [s stringByAppendingString:@"complete!"];
+                     [theTrainee workoutArray][weekIndex][dayIndex] = s;
                      
                  }
                  
@@ -232,7 +238,7 @@
              }
              
              [theTrainee setLastWorkout:lastWork];
-             NSLog(@"LST: %@", lastWork);
+             //NSLog(@"LST: %@", lastWork);
              
              for (NSString * aString in incompleteTimes) {
                  
@@ -266,7 +272,11 @@
                  }
                  
                  if (weekIndex != -1) {
-                     [[theTrainee workoutArray][weekIndex] replaceObjectAtIndex:dayIndex withObject:@"missed"];
+                     
+                     NSString * s = [theTrainee workoutArray][weekIndex][dayIndex];
+                     s = [s stringByAppendingString:@"incomplete!"];
+                     [theTrainee workoutArray][weekIndex][dayIndex] = s;
+                     
                  }
                  
                  
@@ -307,7 +317,9 @@
                  }
                  
                  if (weekIndex != -1) {
-                     [[theTrainee workoutArray][weekIndex] replaceObjectAtIndex:dayIndex withObject:@"scheduled"];
+                     NSString * s = [theTrainee workoutArray][weekIndex][dayIndex];
+                     s = [s stringByAppendingString:@"scheduled!"];
+                     [theTrainee workoutArray][weekIndex][dayIndex] = s;
                      
                  }
                  
@@ -321,7 +333,7 @@
              
              //NSLog(@"%@ %@",obj,key);
              
-             //NSLog(@"Trainee %@'s Workouts : %@", [theTrainee name], [theTrainee workoutArray]);
+             NSLog(@"Trainee %@'s Workouts : %@", [theTrainee name], [theTrainee workoutArray]);
              
          }];
          

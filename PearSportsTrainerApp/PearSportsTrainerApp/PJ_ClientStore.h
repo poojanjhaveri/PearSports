@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+enum WORKOUTS {
+    
+    INCOMPLETE = 0,
+    COMPLETE = 1,
+    FUTURE = 2
+    
+};
+
 @interface PJ_ClientStore : NSObject
 
 

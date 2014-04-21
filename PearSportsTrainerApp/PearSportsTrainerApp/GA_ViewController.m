@@ -42,7 +42,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    NSLog(@"Hi i am in here");
+    //NSLog(@"Hi i am in here");
     
     [[self.tabBarController.tabBar.items objectAtIndex:2] setTitle:[[API sharedInstance] getTraineeInfo].name];
     self.tabBarController.navigationItem.title =@"Workouts";
@@ -90,8 +90,8 @@
 {
     
    
-     NSLog(@"weekstart : %@",self.weekstart);
-     NSLog(@"weekend : %@",self.weekend);
+     //NSLog(@"weekstart : %@",self.weekstart);
+     //NSLog(@"weekend : %@",self.weekend);
     
 
     
@@ -114,7 +114,7 @@
     [operation setCredential:credential];
     [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Success of schedule workout: %@", responseObject);
+        //NSLog(@"Success of schedule workout: %@", responseObject);
         
         NSDictionary *jsonDict = (NSDictionary *) responseObject;
         
@@ -173,8 +173,8 @@
             w.longDes = [[obj objectForKey:@"workout"] objectForKey:@"description_html"];
             w.wID = [[obj objectForKey:@"workout"] objectForKey:@"workout_header_id"];
             
-            NSLog(@"Grade: %@", w.grade);
-            NSLog(@"Activity Type: %@", w.activityType);
+            //NSLog(@"Grade: %@", w.grade);
+            //NSLog(@"Activity Type: %@", w.activityType);
 
             [self.workouts addObject:w];
             
@@ -237,7 +237,7 @@
 
     // Return the number of sections.
     
-    NSLog(@"Number of sections to show... %d", [self.weekarray count]);
+    //NSLog(@"Number of sections to show... %d", [self.weekarray count]);
     
     return [self.weekarray count];
 }
@@ -439,7 +439,7 @@
     NSDate *it=beginningOfWeek;
     for(int i=0;i<7;i++)
     {
-        NSLog(@"Day %i: %@", i, it);
+        //NSLog(@"Day %i: %@", i, it);
         [self.weekarrayRaw addObject:it];
         it=[NSDate dateWithTimeInterval:(24*60*60) sinceDate:it];
     }
@@ -578,7 +578,7 @@
     if([segue.identifier isEqualToString:@"showWorkoutList"]){
 
         UIButton *button = (UIButton *)sender;
-        NSLog(@"%ld",(long)button.tag);
+        //NSLog(@"%ld",(long)button.tag);
         
         GA_WorkoutListViewController *destViewController = segue.destinationViewController;
         
@@ -586,7 +586,7 @@
         [dateFormat setDateFormat:@"MM-dd-YYYY"];// you can use your format.
         
         NSDate *date = [self.weekarrayRaw objectAtIndex:button.tag];
-        NSLog(@"Date passed at index %i: %@", button.tag, date);
+        //NSLog(@"Date passed at index %i: %@", button.tag, date);
         
         destViewController.wDate = date;
         

@@ -11,7 +11,7 @@
 
 static float sq_start = 5;
 static float sq_width = 20;
-static float sq_height = 20;
+static float sq_height = 5;
 static float sq_buffer = 20;
 
 @implementation PJ_InfoSubView
@@ -68,7 +68,7 @@ static float sq_buffer = 20;
         
         float left = sq_start + (i * (sq_width + sq_buffer));
         
-        UILabel *aLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, 20, sq_width, sq_height)];
+        UILabel *aLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, 20, sq_width, 20)];
         [aLabel setFont:[UIFont fontWithName:@"Avenir" size:9]];
         [aLabel setTextAlignment:NSTextAlignmentCenter];
         if (i == 0) {
@@ -133,37 +133,57 @@ static float sq_buffer = 20;
         
         float left = sq_start + (i * (sq_width + sq_buffer));
         
-        CGRect rectangle = CGRectMake(left, 40, sq_width, sq_height);
         if ([self workoutArray] != nil){
-            if ([[self.workoutArray objectAtIndex:i]  isEqual: @"scheduled"] ) {
+            
+            NSArray * workouts = [[[self workoutArray] objectAtIndex:i] componentsSeparatedByString:@"!"];
+            
+            NSLog(@"Array is %@", workouts);
+            
+            for (int i = 0; i < 3; i++) {
                 
-                CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.0);
+                if (i < [workouts count]) {
+                    
+                    float top = 40 + (i*8);
+                    
+                    CGRect rectangle = CGRectMake(left, top, sq_width, sq_height);
+                    
+                    NSLog(@"Workouts of i is %@ ", workouts[i]);
+                    
+                    if ([workouts[i]  isEqual: @"scheduled"] ) {
+                        
+                        CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.0);
+                        
+                        CGPathRef path = CGPathCreateWithRect(rectangle, NULL);
+                        
+                        CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 0.5);
+                        
+                        CGContextAddPath(context, path);
+                        CGContextDrawPath(context, kCGPathFillStroke);
+                        
+                        
+                    } else if ( [workouts[i]  isEqual: @"incomplete"] ) {
+                        
+                        CGContextSetRGBFillColor(context, 1.0, 0.0, 0.0, 1.0);
+                    } else if ( [workouts[i]  isEqual: @"complete"] ) {
+                        
+                        CGContextSetRGBFillColor(context, 0.0, 1.0, 0.0, 1.0);
+                        
+                    } else {
+                        
+                        CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.0);
+                    }
+                    
+                    CGContextFillRect(context, rectangle);
+                    
+                }
                 
-                CGPathRef path = CGPathCreateWithRect(rectangle, NULL);
-                
-                CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 0.5);
-                
-                CGContextAddPath(context, path);
-                CGContextDrawPath(context, kCGPathFillStroke);
-                
-                
-            } else if ( [[self.workoutArray objectAtIndex:i]  isEqual: @"missed"] ) {
-                
-                CGContextSetRGBFillColor(context, 1.0, 0.0, 0.0, 1.0);
-            } else if ( [[self.workoutArray objectAtIndex:i]  isEqual: @"complete"] ) {
-                
-                CGContextSetRGBFillColor(context, 0.0, 1.0, 0.0, 1.0);
-                
-            } else {
-                
-                CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.0);
             }
+            
+            
         } else {
             CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.0);
             
         }
-        
-        CGContextFillRect(context, rectangle);
         
     }
     
