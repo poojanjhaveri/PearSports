@@ -35,7 +35,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         
-        [[PJ_ClientStore sharedClientStore] updateDataAndPerformSelector:@selector(refreshView) withTarget:self];
+        [[PJ_ClientStore sharedClientStore] updateDataAndPerformSelector:@selector(refreshView) withTarget:self onError:@selector(errorUpdatingData:)];
         
     }
     return self;
@@ -48,17 +48,35 @@
     // Have some flag regarding a need for refresh
     if (false) {
         
-        [[PJ_ClientStore sharedClientStore] updateDataAndPerformSelector:@selector(refreshView) withTarget:self];
+        [[PJ_ClientStore sharedClientStore] updateDataAndPerformSelector:@selector(refreshView) withTarget:self onError:@selector(errorUpdatingData:)];
         
     }
     
     
 }
 
+- (void) errorUpdatingData:(NSError *) anError {
+    
+    
+    NSLog(@"Got error %@", anError);
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:@"There was an error retrieving the data."
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    
+    NSLog(@" activity indicator is %@", [self activityIndicator]);
+    
+    [self refreshViewAndRemoveRefreshIcon];
+    
+}
+
 - (void) refreshRequested:(UIRefreshControl *)sender
 {
     
-    [[PJ_ClientStore sharedClientStore] updateDataAndPerformSelector:@selector(refreshViewAndRemoveRefreshIcon) withTarget:self];
+    [[PJ_ClientStore sharedClientStore] updateDataAndPerformSelector:@selector(refreshViewAndRemoveRefreshIcon) withTarget:self onError:@selector(errorUpdatingData:)];
     
 }
 

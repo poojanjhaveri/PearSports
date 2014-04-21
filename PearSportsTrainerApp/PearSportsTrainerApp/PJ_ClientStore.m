@@ -113,7 +113,7 @@
     
 }
 
-- (void) updateDataAndPerformSelector:(SEL)aSelector withTarget:(id)aTarget
+- (void) updateDataAndPerformSelector:(SEL)aSelector withTarget:(id)aTarget onError:(SEL)errorSelector
 {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -412,7 +412,7 @@
      {
          
          
-         NSLog(@"Error: %@", error);
+         [aTarget performSelector:errorSelector withObject:error];
          
          
      }];

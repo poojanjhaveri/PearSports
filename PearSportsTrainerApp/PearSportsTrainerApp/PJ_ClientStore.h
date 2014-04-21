@@ -26,7 +26,7 @@ enum WORKOUTS {
 
 
 - (void) updateData;
-- (void) updateDataAndPerformSelector:(SEL)aSelector withTarget:(id)aTarget;
+- (void) updateDataAndPerformSelector:(SEL)aSelector withTarget:(id)aTarget onError:(SEL)errorSelector;
 
 // Only for testing
 - (void) addRandomClients;
