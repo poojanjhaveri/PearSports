@@ -635,6 +635,34 @@
     NSDate *date = [self.weekarray objectAtIndex:section];
     
     
+    NSDate *now = [NSDate date];
+    NSComparisonResult result = [now compare:date];
+    
+    
+    switch (result)
+    {
+        case NSOrderedAscending:{
+            button.hidden = NO;
+            button.enabled = YES;
+            break;
+        }
+        case NSOrderedDescending:{
+            button.hidden = YES;
+            button.enabled = NO;
+            break;
+        }
+        case NSOrderedSame:{
+            button.hidden = YES;
+            button.enabled = NO;
+            break;
+        }
+        default: NSLog(@"erorr dates"); break;
+    }
+
+    
+    
+    
+    
     NSString *header=[NSString stringWithFormat:@"%@ %@",[dateFormat stringFromDate:date],[self getWeekDay:date]];
 
     
