@@ -7,6 +7,7 @@
 //
 
 #import "GA_DetailViewController.h"
+#import "AG_WorkoutHRZonesChartViewController.h"
 #import "API.h"
 
 @interface GA_DetailViewController () <UITextViewDelegate>
@@ -144,16 +145,18 @@
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+  if([segue.identifier isEqualToString:@"HRZoneCharts"]){
+  
+    AG_WorkoutHRZonesChartViewController *destViewController = segue.destinationViewController;
+    destViewController.workout = [self workout];
+  }
+
 }
-*/
 
 @end
-    

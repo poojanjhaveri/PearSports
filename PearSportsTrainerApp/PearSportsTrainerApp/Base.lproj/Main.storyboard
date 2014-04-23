@@ -616,7 +616,7 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                 <rect key="frame" x="20" y="193" width="280" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Charts">
+                                <state key="normal" title="Summary Charts">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -1708,14 +1708,6 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOY-Me-1Z8">
-                                <rect key="frame" x="20" y="236" width="280" height="57"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Charts for Workouts">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAc-ff-jU1">
                                 <rect key="frame" x="20" y="319" width="51" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1730,6 +1722,19 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDf-OT-n0H">
+                                <rect key="frame" x="20" y="234" width="280" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.75686274509999996" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="Summary Charts">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="lPN-Xp-w8m" kind="push" identifier="HRZoneCharts" id="xLg-NU-fIy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1749,6 +1754,25 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5pj-ZK-peQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3169" y="-1728"/>
+        </scene>
+        <!--WorkoutHR Zones Chart View Controller - Heart Rate Zones-->
+        <scene sceneID="Yxa-Mv-25U">
+            <objects>
+                <viewController storyboardIdentifier="HRZonesChart" title="Heart Rate Zones" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lPN-Xp-w8m" customClass="AG_WorkoutHRZonesChartViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DLC-SR-XPQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="V9n-vl-6hO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pyc-0q-SUY">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fEN-6y-VSz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3PG-5N-iPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3572" y="-1728"/>
         </scene>
     </scenes>
     <resources>

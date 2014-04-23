@@ -29,6 +29,7 @@
 @synthesize totalWeeks;
 @synthesize perWeek;
 @synthesize hrZones;
+@synthesize hrData;
 
 
 - (id)init

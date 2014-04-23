@@ -66,6 +66,7 @@
 		0EFDB3D418CB0F5800CFF197 /* GA_Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFDB3D318CB0F5800CFF197 /* GA_Workout.m */; };
 		3F22815318D787BA00AF1AFD /* GA_PersonalizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22815218D787BA00AF1AFD /* GA_PersonalizeViewController.m */; };
 		65B7771738254FF3AFA26964 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFCF36E3D2542AA8D79EB64 /* libPods.a */; };
+		73AA271D19082C320072744A /* AG_WorkoutHRZonesChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73AA271C19082C320072744A /* AG_WorkoutHRZonesChartViewController.m */; };
 		73B7D44518BAFEF3001846C3 /* AG_ClientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */; };
 		B606C17D18CFFE2900125523 /* GA_WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B606C17C18CFFE2900125523 /* GA_WorkoutListViewController.m */; };
 		B606C18118D006CD00125523 /* GA_WorkoutNameListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B606C18018D006CD00125523 /* GA_WorkoutNameListTableCell.m */; };
@@ -200,6 +201,9 @@
 		3F22815118D787BA00AF1AFD /* GA_PersonalizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_PersonalizeViewController.h; sourceTree = "<group>"; };
 		3F22815218D787BA00AF1AFD /* GA_PersonalizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_PersonalizeViewController.m; sourceTree = "<group>"; };
 		670102BCE36E482A9A05BE4C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		73AA271A19082BBD0072744A /* AG_JBConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AG_JBConstants.h; sourceTree = "<group>"; };
+		73AA271B19082C320072744A /* AG_WorkoutHRZonesChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AG_WorkoutHRZonesChartViewController.h; sourceTree = "<group>"; };
+		73AA271C19082C320072744A /* AG_WorkoutHRZonesChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_WorkoutHRZonesChartViewController.m; sourceTree = "<group>"; };
 		73B7D44318BAFEF3001846C3 /* AG_ClientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AG_ClientSummaryViewController.h; sourceTree = "<group>"; };
 		73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_ClientSummaryViewController.m; sourceTree = "<group>"; };
 		B606C17B18CFFE2900125523 /* GA_WorkoutListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_WorkoutListViewController.h; sourceTree = "<group>"; };
@@ -342,6 +346,7 @@
 				B68BA10E18DF8620004DF201 /* GA_DetailViewController.m */,
 				B6ABB1DA18E7182200E635B3 /* GA_IncDetailViewController.h */,
 				B6ABB1DB18E7182200E635B3 /* GA_IncDetailViewController.m */,
+				73AA271919082BA30072744A /* WorkoutCharts */,
 			);
 			name = Workouts;
 			sourceTree = "<group>";
@@ -524,6 +529,16 @@
 				0EFDB3D318CB0F5800CFF197 /* GA_Workout.m */,
 			);
 			name = WorkoutModel;
+			sourceTree = "<group>";
+		};
+		73AA271919082BA30072744A /* WorkoutCharts */ = {
+			isa = PBXGroup;
+			children = (
+				73AA271A19082BBD0072744A /* AG_JBConstants.h */,
+				73AA271B19082C320072744A /* AG_WorkoutHRZonesChartViewController.h */,
+				73AA271C19082C320072744A /* AG_WorkoutHRZonesChartViewController.m */,
+			);
+			name = WorkoutCharts;
 			sourceTree = "<group>";
 		};
 		73B7D44218BAFEDB001846C3 /* ClientSummary */ = {
@@ -818,6 +833,7 @@
 				0E8139F918B5F55000BDA365 /* DM_SinglePageView.m in Sources */,
 				0E0BC70718BB2D3C00E8580E /* GA_ViewController.m in Sources */,
 				0E7FD5EF1898D70500D601B3 /* PJ_SignUpViewController.m in Sources */,
+				73AA271D19082C320072744A /* AG_WorkoutHRZonesChartViewController.m in Sources */,
 				FFAEF6EB18B3347D006E7C3D /* PJ_ClientCell.m in Sources */,
 				FF5FB2C418A8462100C19893 /* PJ_NotificationView.m in Sources */,
 				FFAEF6F518B4557A006E7C3D /* PJ_InfoSubView.m in Sources */,
