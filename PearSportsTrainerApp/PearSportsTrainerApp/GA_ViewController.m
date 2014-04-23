@@ -134,7 +134,7 @@
             w.activityType = [obj objectForKey:@"activity_type"];
             w.shortDes = [obj objectForKey:@"description_short"];
             w.longDes = [obj objectForKey:@"description_long"];
-            w.wID = [obj objectForKey:@"workout_header_id"];
+            w.wID = [obj objectForKey:@"id"];
             
             [self.workouts addObject:w];
             
@@ -164,11 +164,12 @@
             w.activityType = [[obj objectForKey:@"workout"] objectForKey:@"activity_type"];
             w.shortDes = [[obj objectForKey:@"workout"] objectForKey:@"description_short"];
             w.longDes = [[obj objectForKey:@"workout"] objectForKey:@"description_html"];
-            w.wID = [[obj objectForKey:@"workout"] objectForKey:@"workout_header_id"];
-            
-            //NSLog(@"Grade: %@", w.grade);
-            //NSLog(@"Activity Type: %@", w.activityType);
+            w.wID = [[obj objectForKey:@"workout"] objectForKey:@"id"];
+            NSMutableArray *hr = [[NSMutableArray alloc] init];
+            hr = [obj objectForKey:@"hr_zones"];
+            w.hrZones = hr;
 
+  
             [self.workouts addObject:w];
             
         }];

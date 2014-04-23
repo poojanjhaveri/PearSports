@@ -28,6 +28,21 @@
 @synthesize wID;
 @synthesize totalWeeks;
 @synthesize perWeek;
+@synthesize hrZones;
+
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.hrZones = [[NSMutableArray alloc] init];
+        
+    }
+    return self;
+}
 
 
 @end
+
+
+
