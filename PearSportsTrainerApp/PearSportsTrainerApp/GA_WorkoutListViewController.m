@@ -124,7 +124,7 @@
 {
 
     // Return the number of rows in the section.
-    NSLog(@"Number of Workoutrows to show... %d", [self.workoutList count]);
+    NSLog(@"Number of Workoutrows to show... %ld", [self.workoutList count]);
     if(section == 0){
         return [self.workoutList count];
     }
