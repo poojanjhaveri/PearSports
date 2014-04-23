@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GA_ViewController.h"
 
-@interface GA_PersonalizeViewController : UIViewController <UITextViewDelegate>
+@interface GA_PersonalizeViewController : UITableViewController <UITextViewDelegate>
 
 @property NSString *wName;
 @property NSString *wSKU;

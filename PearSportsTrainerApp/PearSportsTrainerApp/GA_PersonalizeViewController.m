@@ -43,7 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // @TODO update with actual inforamtion
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MM-dd-YYYY"];// you can use your format
@@ -62,25 +62,23 @@
     [self.notesTextView setReturnKeyType:UIReturnKeyDone];
     [self.notesTextView setSpellCheckingType:UITextSpellCheckingTypeDefault];
     self.parentViewController.view.backgroundColor = [UIColor whiteColor];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShown:)
-                                                 name:UIKeyboardWillShowNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillBeHidden:)
-                                                 name:UIKeyboardWillHideNotification object:nil];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(dismissKeyboard)];
-    
-    [self.view addGestureRecognizer:tap];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(keyboardWillShown:)
+//                                                 name:UIKeyboardWillShowNotification object:nil];
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(keyboardWillBeHidden:)
+//                                                 name:UIKeyboardWillHideNotification object:nil];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+//                                   initWithTarget:self
+//                                   action:@selector(dismissKeyboard)];
+//    
+////    [self.view addGestureRecognizer:tap];
 
 }
 
 - (IBAction) buttonClicked: (id)sender
 {
-    NSLog(@"Tap");
-    
     [self sendWorkOutRequest];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
