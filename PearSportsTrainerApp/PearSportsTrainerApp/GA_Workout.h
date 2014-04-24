@@ -28,8 +28,9 @@
 @property (nonatomic, copy) NSString *wID;
 @property (nonatomic, copy) NSString *totalWeeks;
 @property (nonatomic, copy) NSString *perWeek;
+@property (nonatomic, copy) NSString *hrDataURL;
 @property (nonatomic, copy) NSMutableArray *hrZones;
-@property (nonatomic, copy) NSString *hrData;
+@property (nonatomic, copy) NSMutableArray *hrZonesData;
 
 
 

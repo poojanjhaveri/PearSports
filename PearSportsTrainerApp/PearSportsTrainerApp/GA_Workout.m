@@ -29,15 +29,15 @@
 @synthesize totalWeeks;
 @synthesize perWeek;
 @synthesize hrZones;
-@synthesize hrData;
-
+@synthesize hrZonesData;
+@synthesize hrDataURL;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        self.hrZones = [[NSMutableArray alloc] init];
-        
+      self.hrZones = [[NSMutableArray alloc] init];
+      self.hrZonesData = [[NSMutableArray alloc] init];
     }
     return self;
 }

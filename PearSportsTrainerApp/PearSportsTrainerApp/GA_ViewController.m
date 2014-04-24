@@ -165,14 +165,14 @@
             w.shortDes = [[obj objectForKey:@"workout"] objectForKey:@"description_short"];
             w.longDes = [[obj objectForKey:@"workout"] objectForKey:@"description_html"];
             w.wID = [obj objectForKey:@"id"];
-            w.hrData =  [obj objectForKey:@"hr_data_url"];
+            w.hrDataURL = [obj objectForKey:@"hr_data_url"];
             NSMutableArray *hr = [[NSMutableArray alloc] init];
             hr = [obj objectForKey:@"hr_zones"];
             w.hrZones = hr;
-
-  
-            [self.workouts addObject:w];
-            
+          
+          [self.workouts addObject:w];
+          
+          
         }];
 
 
