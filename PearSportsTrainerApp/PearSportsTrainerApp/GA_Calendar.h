@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GA_WorkoutListForCalendar.h"
 
-@interface GA_ViewController : UITableViewController
+@interface GA_Calendar : UITableViewController
 
 @property (strong, nonatomic) NSArray *wIncompleteList;
 @property (strong, nonatomic) NSArray *wCompleteList;

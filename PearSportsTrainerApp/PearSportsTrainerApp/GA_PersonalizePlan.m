@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Poojan Jhaveri. All rights reserved.
 //
 
-#import "GA_PlanViewController.h"
+#import "GA_PersonalizePlan.h"
 #import "API.h"
 
-@interface GA_PlanViewController ()
+@interface GA_PersonalizePlan ()
 
 
 
 @end
 
-@implementation GA_PlanViewController
+@implementation GA_PersonalizePlan
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,7 +61,11 @@
     NSLog(@"Tap");
     
     [self sendWorkOutRequest];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    UIViewController *prevVC = [self.navigationController.viewControllers objectAtIndex:1];
+    [self.navigationController popToViewController:prevVC animated:YES];
+
 }
 
 

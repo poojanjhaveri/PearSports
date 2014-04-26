@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GA_Workout.h"
 
-@interface GA_DetailViewController : UIViewController <UITextViewDelegate>
+@interface GA_CompleteWorkoutDetails : UIViewController <UITextViewDelegate>
 
 @property GA_Workout *workout;
 

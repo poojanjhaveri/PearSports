@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GA_ViewController.h"
+#import "GA_Calendar.h"
 
-@interface GA_PersonalizeViewController : UITableViewController <UITextViewDelegate>
+@interface GA_PersonalizeWorkout : UITableViewController <UITextViewDelegate>
 
 @property NSString *wName;
 @property NSString *wSKU;

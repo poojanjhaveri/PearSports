@@ -376,10 +376,10 @@ These Terms and any other electronic documents, policies and guidelines incorpor
             </objects>
             <point key="canvasLocation" x="1338" y="781"/>
         </scene>
-        <!--View Controller - Workouts-->
+        <!--Calendar - Workouts-->
         <scene sceneID="Zhm-el-OaJ">
             <objects>
-                <tableViewController id="3cV-6e-F22" customClass="GA_ViewController" sceneMemberID="viewController">
+                <tableViewController id="3cV-6e-F22" customClass="GA_Calendar" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="69" sectionHeaderHeight="22" sectionFooterHeight="22" id="QxZ-WC-394">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -518,10 +518,10 @@ These Terms and any other electronic documents, policies and guidelines incorpor
             </objects>
             <point key="canvasLocation" x="2663" y="-1813"/>
         </scene>
-        <!--Detail View Controller - Title-->
+        <!--Complete Workout Details - Title-->
         <scene sceneID="MLi-Qb-cYG">
             <objects>
-                <viewController id="mL0-dN-84g" customClass="GA_DetailViewController" sceneMemberID="viewController">
+                <viewController id="mL0-dN-84g" customClass="GA_CompleteWorkoutDetails" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4cb-J1-wFe"/>
                         <viewControllerLayoutGuide type="bottom" id="tAj-oc-rYn"/>
@@ -687,10 +687,10 @@ These Terms and any other electronic documents, policies and guidelines incorpor
             </objects>
             <point key="canvasLocation" x="3169" y="-2399"/>
         </scene>
-        <!--Personalize View Controller - Recommend Workout-->
+        <!--Personalize Workout - Recommend Workout-->
         <scene sceneID="IGz-dz-iy3">
             <objects>
-                <tableViewController id="15q-BX-8Ro" customClass="GA_PersonalizeViewController" sceneMemberID="viewController">
+                <tableViewController id="15q-BX-8Ro" customClass="GA_PersonalizeWorkout" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ith-cM-uR4">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -813,10 +813,10 @@ These Terms and any other electronic documents, policies and guidelines incorpor
             </objects>
             <point key="canvasLocation" x="3620" y="-2720"/>
         </scene>
-        <!--Plan View Controller - Recommend Plan-->
+        <!--Personalize Plan - Recommend Plan-->
         <scene sceneID="VwC-P9-LJ5">
             <objects>
-                <tableViewController id="GLY-nb-wUb" customClass="GA_PlanViewController" sceneMemberID="viewController">
+                <tableViewController id="GLY-nb-wUb" customClass="GA_PersonalizePlan" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4wz-nh-omv">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1085,10 +1085,10 @@ These Terms and any other electronic documents, policies and guidelines incorpor
             </objects>
             <point key="canvasLocation" x="2636" y="-1132"/>
         </scene>
-        <!--Inc Detail View Controller - Title-->
+        <!--Incomplete Workout Details - Title-->
         <scene sceneID="ixG-xn-FK6">
             <objects>
-                <viewController id="Kk7-4j-Fq5" customClass="GA_IncDetailViewController" sceneMemberID="viewController">
+                <viewController id="Kk7-4j-Fq5" customClass="GA_IncompleteWorkoutDetails" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O44-7Q-0N0"/>
                         <viewControllerLayoutGuide type="bottom" id="Tfp-6M-OJd"/>
@@ -1534,10 +1534,10 @@ These Terms and any other electronic documents, policies and guidelines incorpor
             </objects>
             <point key="canvasLocation" x="1948" y="-1482"/>
         </scene>
-        <!--Detail View Controller - Title-->
+        <!--Complete Workout Details - Title-->
         <scene sceneID="pBg-VB-zQa">
             <objects>
-                <viewController id="1Sz-BF-Ddj" customClass="GA_DetailViewController" sceneMemberID="viewController">
+                <viewController id="1Sz-BF-Ddj" customClass="GA_CompleteWorkoutDetails" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dyy-54-sEE"/>
                         <viewControllerLayoutGuide type="bottom" id="Zl1-tP-ZIK"/>

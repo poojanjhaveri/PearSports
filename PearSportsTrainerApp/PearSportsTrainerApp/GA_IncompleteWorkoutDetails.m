@@ -1,32 +1,23 @@
 //
-//  GA_DetailViewController.m
+//  GA_IncDetailViewController.m
 //  PearSportsTrainerApp
 //
-//  Created by Garima Aggarwal on 3/23/14.
+//  Created by Garima Aggarwal on 3/29/14.
 //  Copyright (c) 2014 Poojan Jhaveri. All rights reserved.
 //
 
-#import "GA_DetailViewController.h"
-#import "AG_WorkoutHRZonesChartViewController.h"
+#import "GA_IncompleteWorkoutDetails.h"
 #import "API.h"
 
-@interface GA_DetailViewController () <UITextViewDelegate>
+@interface GA_IncompleteWorkoutDetails () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
-@property (weak, nonatomic) IBOutlet UIImageView *workoutImageView;
 @property (weak, nonatomic) IBOutlet UILabel *workoutNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workoutDateLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *durationLabel;
-@property (weak, nonatomic) IBOutlet UILabel *avgHRLabel;
-@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *caloriesLabel;
-@property (weak, nonatomic) IBOutlet UILabel *avgPaceLabel;
-
-
 @end
 
-@implementation GA_DetailViewController
+@implementation GA_IncompleteWorkoutDetails
 
 @synthesize workout;
 
@@ -43,34 +34,18 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    // @TODO update with actual inforamtion
+    
     if(workout == nil){
         [self.notesTextView setText:@"User Notes will Go Here"];
-        [self.durationLabel setText:@"1:30:29"];
-        [self.avgHRLabel setText:@"144 bpm"];
-        [self.distanceLabel setText:@"5.55 miles"];
-        [self.caloriesLabel setText:@"405"];
-        [self.avgPaceLabel setText:@"1:52"];
 
         [self.workoutNameLabel setText:@"Workout Name"];
-        [self.workoutDateLabel setText:@"March 29, 2014"];
-
-        UIImage *image = [UIImage imageNamed: @"workout.jpeg"];
-        [self.workoutImageView setImage: image];
+        [self.workoutDateLabel setText:@"Workout Date"];
     }
-   else{
+    else{
         [self.notesTextView setText:@"User Notes will Go Here"];
-        [self.durationLabel setText:[NSString stringWithFormat:@"%@", workout.duration]];
-        [self.avgHRLabel setText:[NSString stringWithFormat:@"%@ bpm", workout.avgHeartRate]];
-        [self.distanceLabel setText:[NSString stringWithFormat:@"%@ miles", workout.distance]];
-        [self.caloriesLabel setText:[NSString stringWithFormat:@"%@", workout.calories]];
-        [self.avgPaceLabel setText:@"1:52"];
-       
-        [self.workoutNameLabel setText:[NSString stringWithFormat:@"%@", workout.workoutName]];
-        [self.workoutDateLabel setText:[NSString stringWithFormat:@"%@", workout.wdate]];
         
-        UIImage *image = [UIImage imageNamed: @"workout.jpeg"];
-        [self.workoutImageView setImage: image];
+        [self.workoutNameLabel setText:workout.workoutName];
+        [self.workoutDateLabel setText:workout.wdate];
     }
     
     // Main Setup
@@ -90,6 +65,7 @@
                                    action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -98,6 +74,7 @@
     
     self.navigationItem.title  = [[API sharedInstance] getTraineeInfo].name;
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -145,18 +122,15 @@
 }
 
 
-
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-  if([segue.identifier isEqualToString:@"HRZoneCharts"]){
-  
-    AG_WorkoutHRZonesChartViewController *destViewController = segue.destinationViewController;
-    destViewController.workout = [self workout];
-  }
-
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
+*/
 
 @end

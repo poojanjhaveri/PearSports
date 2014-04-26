@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GA_PlanViewController : UITableViewController
+@interface GA_PersonalizePlan : UITableViewController
 
 @property NSString *wName;
 @property NSString *wSKU;

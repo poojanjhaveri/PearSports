@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Poojan Jhaveri. All rights reserved.
 //
 
-#import "GA_ViewController.h"
+#import "GA_Calendar.h"
 #import "GA_WorkoutListCell.h"
 #import "GA_WorkoutListViewController.h"
-#import "GA_DetailViewController.h"
-#import "GA_IncDetailViewController.h"
+#import "GA_CompleteWorkoutDetails.h"
+#import "GA_IncompleteWorkoutDetails.h"
 #import "API.h"
 
-@interface GA_ViewController ()
+@interface GA_Calendar ()
 @property NSString *weekstart;
 @property NSString *weekend;
 @property NSMutableArray *weekarray;
@@ -28,7 +28,7 @@
 
 @end
 
-@implementation GA_ViewController
+@implementation GA_Calendar
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -53,7 +53,13 @@
     
     [self.tabBarController.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: btnDown,btnUp, nil]];
     
-    [self getWeek:[self getTodayDate]];
+    if(self.currentDay == nil){
+        [self getWeek:[self getTodayDate]];
+    }
+    else{
+        [self getWeek:[self currentDay]];
+    }
+    
     
 }
 
@@ -639,7 +645,7 @@
         GA_Workout *wname = [GA_Workout alloc];
         wname = [[self.calendarWorkouts objectAtIndex:indexPath.section] getWorkout:(NSInteger*)indexPath.row];
         
-        GA_DetailViewController *destViewController = segue.destinationViewController;
+        GA_CompleteWorkoutDetails *destViewController = segue.destinationViewController;
         destViewController.workout = self.selectedWorkout;
     }
     else if([segue.identifier isEqualToString:@"showIncompleteDetails"]){
@@ -648,7 +654,7 @@
         GA_Workout *wname = [GA_Workout alloc];
         wname = [[self.calendarWorkouts objectAtIndex:indexPath.section] getWorkout:(NSInteger*)indexPath.row];
         
-        GA_DetailViewController *destViewController = segue.destinationViewController;
+        GA_CompleteWorkoutDetails *destViewController = segue.destinationViewController;
         destViewController.workout = self.selectedWorkout;
     }
     

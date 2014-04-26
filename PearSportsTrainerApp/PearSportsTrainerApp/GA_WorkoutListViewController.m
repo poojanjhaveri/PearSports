@@ -7,8 +7,8 @@
 //
 
 #import "GA_WorkoutListViewController.h"
-#import "GA_PersonalizeViewController.h"
-#import "GA_PlanViewController.h"
+#import "GA_PersonalizeWorkout.h"
+#import "GA_PersonalizePlan.h"
 #import "GA_Workout.h"
 
 @interface GA_WorkoutListViewController ()
@@ -230,7 +230,7 @@
     // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"showWorkoutDetail"]){
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        GA_PersonalizeViewController *destViewController = segue.destinationViewController;
+        GA_PersonalizeWorkout *destViewController = segue.destinationViewController;
         
         GA_Workout *w = [self.workoutList objectAtIndex:indexPath.row];
         destViewController.wName = w.workoutName;
@@ -240,7 +240,7 @@
     }
     else if([segue.identifier isEqualToString:@"showPlanDetail"]){
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        GA_PlanViewController *destViewController = segue.destinationViewController;
+        GA_PersonalizePlan *destViewController = segue.destinationViewController;
         
         GA_Workout *w = [self.planList objectAtIndex:indexPath.row];
         destViewController.wName = w.workoutName;

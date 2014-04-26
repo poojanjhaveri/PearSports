@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Poojan Jhaveri. All rights reserved.
 //
 
-#import "GA_PersonalizeViewController.h"
+#import "GA_PersonalizeWorkout.h"
 #import "API.h"
 
-@interface GA_PersonalizeViewController () <UITextViewDelegate>
+@interface GA_PersonalizeWorkout () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
 @property (weak, nonatomic) IBOutlet UILabel *workoutNameLabel;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation GA_PersonalizeViewController
+@implementation GA_PersonalizeWorkout
 
 @synthesize wName = _wName;
 @synthesize wSKU = _wSKU;
@@ -177,7 +177,7 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-        GA_ViewController *destViewController = segue.destinationViewController;
+        GA_Calendar *destViewController = segue.destinationViewController;
         
         [destViewController showAlert];
         
