@@ -549,7 +549,7 @@
         
         wname = [[self.calendarWorkouts objectAtIndex:indexPath.section] getWorkout:(NSInteger*)indexPath.row];
         
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//
         
         
         NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
@@ -576,7 +576,7 @@
             
 //            NSDictionary *jsonDict = (NSDictionary *) responseObject;
 
-
+// [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 
             [self.tableView reloadData];
         
@@ -584,7 +584,7 @@
         NSLog(@"Failure: %@", error);
     }];
 
-        
+        [operation start];
     }
 }
 
