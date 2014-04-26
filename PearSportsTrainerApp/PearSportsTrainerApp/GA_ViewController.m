@@ -584,7 +584,12 @@
         NSLog(@"Failure: %@", error);
     }];
 
-        [operation start];
+//        [operation start];
+        
+        [manager.operationQueue addOperation:operation];
+        
+        [self sendWorkOutRequest];
+        
     }
 }
 
