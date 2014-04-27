@@ -43,9 +43,6 @@
 
     
     NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
-    NSString *workout_type = [NSString stringWithFormat:@"workout"];
-    
-    NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:workout_type, nil] forKeys:[NSArray arrayWithObjects:@"type", nil]];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSURLCredential *credential = [NSURLCredential credentialWithUser:token password:@"" persistence:NSURLCredentialPersistenceNone];
@@ -124,7 +121,6 @@
 {
 
     // Return the number of rows in the section.
-    NSLog(@"Number of Workoutrows to show... %ld", [self.workoutList count]);
     if(section == 0){
         return [self.workoutList count];
     }
@@ -236,6 +232,7 @@
         destViewController.wName = w.workoutName;
         destViewController.wDate = _wDate;
         destViewController.wSKU = w.SKU;
+        destViewController.notes = w.longDes;
         
     }
     else if([segue.identifier isEqualToString:@"showPlanDetail"]){

@@ -49,14 +49,15 @@
     [dateFormat setDateFormat:@"MM-dd-YYYY"];// you can use your format
     
     
-    [self.notesTextView setText: @"Your notes will go here"];
+    [self.notesTextView setText: [NSString stringWithFormat:@"%@", _notes]];
     [self.workoutNameLabel setText:[NSString stringWithFormat:@"%@", _wName]];
     [self.dateLabel setText:[NSString stringWithFormat:@"%@",[dateFormat stringFromDate:_wDate]]];
 
     [self.scheduleBtn addTarget:self action:@selector(buttonClicked: ) forControlEvents:UIControlEventTouchUpInside];
     
     
-    
+    [self.notesTextView setEditable:NO];
+/*
     // Main Setup
     [self.notesTextView setDelegate:self];
     [self.notesTextView setReturnKeyType:UIReturnKeyDone];
@@ -74,6 +75,7 @@
 //                                   action:@selector(dismissKeyboard)];
 //    
 ////    [self.view addGestureRecognizer:tap];
+ */
 
 }
 

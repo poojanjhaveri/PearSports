@@ -42,12 +42,19 @@
         [self.workoutDateLabel setText:@"Workout Date"];
     }
     else{
-        [self.notesTextView setText:@"User Notes will Go Here"];
+        if([workout.longDes isEqualToString:@"(null)"])
+            [self.notesTextView setText:[NSString stringWithFormat:@"%@", workout.shortDes]];
+        else{
+            NSLog(@"Long Des: %@", workout.longDes);
+            [self.notesTextView setText:[NSString stringWithFormat:@"%@", workout.longDes]];
+        }
         
         [self.workoutNameLabel setText:workout.workoutName];
         [self.workoutDateLabel setText:workout.wdate];
     }
     
+        [self.notesTextView setEditable:NO];
+/*
     // Main Setup
     [self.notesTextView setDelegate:self];
     [self.notesTextView setReturnKeyType:UIReturnKeyDone];
@@ -65,6 +72,7 @@
                                    action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+ */
 
 }
 

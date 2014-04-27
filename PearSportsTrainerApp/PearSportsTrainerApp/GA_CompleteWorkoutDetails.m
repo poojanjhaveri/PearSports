@@ -59,8 +59,14 @@
         [self.workoutImageView setImage: image];
     }
    else{
-        [self.notesTextView setText:@"User Notes will Go Here"];
-        [self.durationLabel setText:[NSString stringWithFormat:@"%@", workout.duration]];
+       if([workout.longDes isEqualToString:@"(null)"])
+           [self.notesTextView setText:[NSString stringWithFormat:@"%@", workout.shortDes]];
+       else{
+           NSLog(@"Long Des: %@", workout.longDes);
+           [self.notesTextView setText:[NSString stringWithFormat:@"%@", workout.longDes]];
+       }
+
+       [self.durationLabel setText:[NSString stringWithFormat:@"%@", workout.duration]];
         [self.avgHRLabel setText:[NSString stringWithFormat:@"%@ bpm", workout.avgHeartRate]];
         [self.distanceLabel setText:[NSString stringWithFormat:@"%@ miles", workout.distance]];
         [self.caloriesLabel setText:[NSString stringWithFormat:@"%@", workout.calories]];
@@ -73,6 +79,8 @@
         [self.workoutImageView setImage: image];
     }
     
+        [self.notesTextView setEditable:NO];
+/*
     // Main Setup
     [self.notesTextView setDelegate:self];
     [self.notesTextView setReturnKeyType:UIReturnKeyDone];
@@ -90,6 +98,7 @@
                                    action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+ */
 }
 
 -(void)viewWillAppear:(BOOL)animated

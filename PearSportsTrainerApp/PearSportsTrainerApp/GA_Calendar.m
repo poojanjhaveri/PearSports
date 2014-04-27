@@ -139,7 +139,7 @@
             w.SKU = [[obj objectForKey:@"plan"] objectForKey:@"sku"];
             w.activityType = [obj objectForKey:@"activity_type"];
             w.shortDes = [obj objectForKey:@"description_short"];
-            w.longDes = [obj objectForKey:@"description_long"];
+            w.longDes = [obj objectForKey:@"description_html"];
             w.wID = [obj objectForKey:@"id"];
             
             [self.workouts addObject:w];
@@ -481,7 +481,7 @@
     
     NSDateFormatter *dateFormat_End = [[NSDateFormatter alloc] init];
     [dateFormat_End setDateFormat:@"yyyy-MM-dd"];
-    NSString *dateEndPrev = [dateFormat stringFromDate:EndOfWeek];
+//    NSString *dateEndPrev = [dateFormat stringFromDate:EndOfWeek];
     
  //   NSDate *weekEndPrev = [dateFormat_End dateFromString:dateEndPrev];
   //  NSLog(@"Week end previous %@",weekEndPrev);
