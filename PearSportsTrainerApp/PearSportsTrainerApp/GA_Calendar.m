@@ -60,6 +60,9 @@
         [self getWeek:[self currentDay]];
     }
     
+    [self performSelector:@selector(sendWorkOutRequest) withObject:NULL afterDelay:2.0];
+//    [self sendWorkOutRequest];
+//    [self.tableView reloadData];
     
 }
 
@@ -495,7 +498,7 @@
         iterator=[NSDate dateWithTimeInterval:(24*60*60) sinceDate:iterator];
     }
     
-    [self sendWorkOutRequest];
+//    [self sendWorkOutRequest];
 //    [self.tableView reloadData];
 }
 
@@ -594,7 +597,7 @@
         
         [manager.operationQueue addOperation:operation];
         
-        [self sendWorkOutRequest];
+    [self performSelector:@selector(sendWorkOutRequest) withObject:NULL afterDelay:2.0];
         
     }
 }
