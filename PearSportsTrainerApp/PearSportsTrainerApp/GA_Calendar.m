@@ -60,6 +60,9 @@
         [self getWeek:[self currentDay]];
     }
     
+    [self performSelector:@selector(sendWorkOutRequest) withObject:NULL afterDelay:2.0];
+//    [self sendWorkOutRequest];
+//    [self.tableView reloadData];
     
 }
 
@@ -189,10 +192,22 @@
         
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure: %@", error);
+
+        [self showLoadingError];
+
     }];
     
     [manager.operationQueue addOperation:operation];
     
+}
+
+
+-(void) showLoadingError
+{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error retrieving the data." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert setTag:12];
+    [alert show];
 }
 
 
@@ -495,7 +510,7 @@
         iterator=[NSDate dateWithTimeInterval:(24*60*60) sinceDate:iterator];
     }
     
-    [self sendWorkOutRequest];
+//    [self sendWorkOutRequest];
 //    [self.tableView reloadData];
 }
 
@@ -588,31 +603,26 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure: %@", error);
+
+        [self showDeleteError];
     }];
 
 //        [operation start];
         
         [manager.operationQueue addOperation:operation];
         
-        [self sendWorkOutRequest];
+    [self performSelector:@selector(sendWorkOutRequest) withObject:NULL afterDelay:2.0];
         
     }
 }
 
 
--(void) showAlert
+-(void) showDeleteError
 {
-    UIAlertView *autosaveAlert = [[UIAlertView alloc]initWithTitle:@"Close" message:@"Autosave in (%d) seconds" delegate:self cancelButtonTitle:@"Press to cancel" otherButtonTitles:nil];
-    [autosaveAlert show];
     
-    for(int i = 10; i>=0; i--){
-        NSString *tmp = @"Close in (%d) seconds";
-        NSString *str = [NSString stringWithFormat:tmp, i];
-        [autosaveAlert setMessage:str];
-        CFRunLoopRunInMode(kCFRunLoopDefaultMode,1, false);
-    }
-    
-    [autosaveAlert dismissWithClickedButtonIndex:0 animated:TRUE];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Cannot delete workout due to no internet connectivity" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert setTag:12];
+    [alert show];
 }
 
 #pragma mark - Navigation

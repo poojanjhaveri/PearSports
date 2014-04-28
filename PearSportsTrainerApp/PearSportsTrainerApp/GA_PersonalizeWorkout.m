@@ -166,11 +166,20 @@
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure: %@", error);
+        
+        [self showLoadingError];
     }];
     
     [manager.operationQueue addOperation:operation];
 }
 
+-(void) showLoadingError
+{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error retrieving the data." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert setTag:12];
+    [alert show];
+}
 
 #pragma mark - Navigation
 
