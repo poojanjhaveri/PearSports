@@ -144,7 +144,10 @@
            [theTrainee setWeight:[obj objectForKey:@"weight"]];
            [theTrainee setNotes:[obj objectForKey:@"notes"]];
              [theTrainee setImageName:[obj objectForKey:@"photo_url"]];
-
+             if([[obj objectForKey:@"photo_url"] isEqualToString:@""])
+             {
+                 [theTrainee setImageName:@"http://3.bp.blogspot.com/-xma5UhDPjVQ/UgF9gJgVzvI/AAAAAAAAGDU/DwueSqKx2AI/s1600/7.jpg"];
+             }
              
 //             if([[obj objectForKey:@"screen_name"] isEqualToString:@"Joe R"])
 //             {
