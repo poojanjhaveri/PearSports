@@ -11,6 +11,7 @@
 #import "PJ_Client.h"
 #import "PJ_NotificationView.h"
 #import "DM_SinglePageView.h"
+#import <NZCircularImageView.h>
 
 @implementation PJ_ClientCell
 @synthesize client, viewControllers;
@@ -68,7 +69,8 @@
     
     // For testing
     [self nameLabel].text = self.client.name;
-    self.clientImage.image=[UIImage imageNamed:self.client.imageName];
+//    self.clientImage.image=[UIImage imageNamed:self.client.imageName];
+    [self.clientImage setImageWithURL:[NSURL URLWithString:self.client.imageName]];
        
     // NOTIFICATION LABEL
     

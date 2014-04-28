@@ -143,14 +143,17 @@
            [theTrainee setHeight:[obj objectForKey:@"height"]];
            [theTrainee setWeight:[obj objectForKey:@"weight"]];
            [theTrainee setNotes:[obj objectForKey:@"notes"]];
-             if([[obj objectForKey:@"screen_name"] isEqualToString:@"Joe R"])
-             {
-                 [theTrainee setImageName:@"Joe.png"];
-             }
-             else
-             {
-                 [theTrainee setImageName:@"poojan.jpg"];
-             }
+             [theTrainee setImageName:[obj objectForKey:@"photo_url"]];
+
+             
+//             if([[obj objectForKey:@"screen_name"] isEqualToString:@"Joe R"])
+//             {
+//                 [theTrainee setImageName:@"Joe.png"];
+//             }
+//             else
+//             {
+//                 [theTrainee setImageName:@"poojan.jpg"];
+//             }
              
              [theTrainee setWorkoutArray:[[NSMutableArray alloc] initWithCapacity:4]];
              

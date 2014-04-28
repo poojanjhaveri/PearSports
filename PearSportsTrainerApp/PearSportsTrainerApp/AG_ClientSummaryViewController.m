@@ -8,12 +8,13 @@
 
 #import "AG_ClientSummaryViewController.h"
 #import "API.h"
+#import <NZCircularImageView.h>
 
 @interface AG_ClientSummaryViewController () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *chartsTableView;
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
-@property (weak, nonatomic) IBOutlet UIImageView *clientImageView;
+@property (weak, nonatomic) IBOutlet NZCircularImageView *clientImageView;
 @property (weak, nonatomic) IBOutlet UILabel *goalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weightLabel;
@@ -55,8 +56,7 @@
     [self.ageLabel setText:[NSString stringWithFormat:@"%@", [[API sharedInstance] getTraineeInfo].age]];
     
   
-    self.clientImageView.image=[UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
-  
+      [self.clientImageView setImageWithURL:[NSURL URLWithString:[[API sharedInstance] getTraineeInfo].imageName]];
   
     [self updateLifeTimeStats];
   

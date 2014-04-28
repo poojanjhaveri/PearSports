@@ -21,6 +21,7 @@
 #import "API.h"
 #import <AFNetworking.h>
 #import <MBProgressHUD.h>
+#import <NZCircularImageView.h>
 
 
 //TODO AUTOSCROLL
@@ -390,7 +391,7 @@ finishedSavingWithError:(NSError *)error
                             }
                             else{
                                 NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
-                                sayBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
+                                sayBubble.avatar = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[API sharedInstance] getTraineeInfo].imageName]]];;
                                 [bubbleData addObject:sayBubble];
                                 [bubbleTable reloadData];
                                 [bubbleTable scrollBubbleViewToBottomAnimated:NO];
@@ -423,7 +424,7 @@ finishedSavingWithError:(NSError *)error
                                 NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
                                 
                                 NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
-                                audioBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
+                                audioBubble.avatar = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[API sharedInstance] getTraineeInfo].imageName]]];
                                 [bubbleData addObject:audioBubble];
                                 [bubbleTable reloadData];
                                 [bubbleTable scrollBubbleViewToBottomAnimated:NO];
@@ -508,7 +509,8 @@ finishedSavingWithError:(NSError *)error
     //BUBBLE
     
     NSBubbleData *heyBubble = [NSBubbleData dataWithText:@"Hi" date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse];
-    heyBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
+   
+    heyBubble.avatar =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[API sharedInstance] getTraineeInfo].imageName]]];
     
     NSBubbleData *photoBubble = [NSBubbleData dataWithImage:[UIImage imageNamed:@"halloween.jpg"] date:[NSDate dateWithTimeIntervalSinceNow:-290] type:BubbleTypeSomeoneElse];
     photoBubble.avatar = [UIImage imageNamed:@"avatar1.png"];
@@ -521,7 +523,7 @@ finishedSavingWithError:(NSError *)error
     replyBubble.avatar = nil;
     
     bubbleData = [[NSMutableArray alloc] initWithObjects: nil];
-    //bubbleData = [ [NSMutableArray alloc] init];
+ //   bubbleData = [ [NSMutableArray alloc] initWithObjects:heyBubble, nil];
     bubbleTable.bubbleDataSource = self;
     
     // The line below sets the snap interval in seconds. This defines how the bubbles will be grouped in time.
@@ -594,7 +596,7 @@ finishedSavingWithError:(NSError *)error
                 }
                 else{
                     NSBubbleData *sayBubble = [NSBubbleData dataWithText:textMsg date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
-                    sayBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
+                    sayBubble.avatar = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[API sharedInstance] getTraineeInfo].imageName]]];
                     [bubbleData addObject:sayBubble];
                     [bubbleTable reloadData];
                     [bubbleTable scrollBubbleViewToBottomAnimated:NO];
@@ -627,7 +629,7 @@ finishedSavingWithError:(NSError *)error
                     NSURL *sfURL = [[NSURL alloc] initWithString:textMsg];
                     
                     NSBubbleData *audioBubble = [NSBubbleData dataWithURL:sfURL date:[NSDate dateWithTimeIntervalSince1970:interval] type:BubbleTypeSomeoneElse];
-                    audioBubble.avatar = [UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
+                    audioBubble.avatar = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[API sharedInstance] getTraineeInfo].imageName]]];;
                     [bubbleData addObject:audioBubble];
                     [bubbleTable reloadData];
                     [bubbleTable scrollBubbleViewToBottomAnimated:NO];
