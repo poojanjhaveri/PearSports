@@ -60,9 +60,8 @@
         [self getWeek:[self currentDay]];
     }
     
-    [self performSelector:@selector(sendWorkOutRequest) withObject:NULL afterDelay:2.0];
-//    [self sendWorkOutRequest];
-//    [self.tableView reloadData];
+//    [self performSelector:@selector(sendWorkOutRequest) withObject:NULL afterDelay:2.0];
+    [self sendWorkOutRequest];
     
 }
 
@@ -72,6 +71,7 @@
     NSDate *today = self.currentDay;
     NSDate *nextweekdate=[NSDate dateWithTimeInterval:(-7*24*60*60) sinceDate:today];
     [self getWeek:nextweekdate];
+    [self sendWorkOutRequest];
 }
 
 -(void)nextWeek
@@ -79,7 +79,7 @@
     NSDate *today = self.currentDay;
     NSDate *nextweekdate=[NSDate dateWithTimeInterval:(7*24*60*60) sinceDate:today];
     [self getWeek:nextweekdate];
-    
+    [self sendWorkOutRequest];
 }
 
 - (void)viewDidLoad
@@ -291,7 +291,9 @@
         //blue: future
         
     
-        NSDate * now = [NSDate date];
+        NSDate * today = [NSDate date];
+        NSDate *now=[NSDate dateWithTimeInterval:(-24*60*60) sinceDate:today];
+        
         NSComparisonResult result = [now compare:wname.date];
         
         [cell.activityTypeText sizeToFit];
@@ -606,12 +608,10 @@
 
         [self showDeleteError];
     }];
-
-//        [operation start];
         
         [manager.operationQueue addOperation:operation];
         
-    [self performSelector:@selector(sendWorkOutRequest) withObject:NULL afterDelay:2.0];
+    [self performSelector:@selector(sendWorkOutRequest) withObject:NULL afterDelay:1.0];
         
     }
 }
@@ -691,7 +691,9 @@
     NSDate *date = [self.weekarray objectAtIndex:section];
     
     
-    NSDate *now = [NSDate date];
+    NSDate *today = [NSDate date];
+    NSDate *now=[NSDate dateWithTimeInterval:(-24*60*60) sinceDate:today];
+    
     NSComparisonResult result = [now compare:date];
     
     
