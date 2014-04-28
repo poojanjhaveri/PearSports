@@ -17,7 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *goalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weightLabel;
-@property (weak, nonatomic) IBOutlet UILabel *lastWorkoutLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalCalories;
+@property (weak, nonatomic) IBOutlet UILabel *totalDistance;
+@property (weak, nonatomic) IBOutlet UILabel *totalTime;
 @end
 
 @implementation AG_ClientSummaryViewController
@@ -52,8 +54,7 @@
     
     [self.ageLabel setText:[NSString stringWithFormat:@"%@", [[API sharedInstance] getTraineeInfo].age]];
     
-    [self.lastWorkoutLabel setText:[NSString stringWithFormat:@"%@", [[API sharedInstance] getTraineeInfo].lastWorkout]];
-    
+  
     self.clientImageView.image=[UIImage imageNamed:[[API sharedInstance] getTraineeInfo].imageName];
   
   
@@ -217,8 +218,9 @@
   [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
   [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
     
-    NSLog(@"Success loading lifetime stats: %@", responseObject);
-   
+    [self.totalCalories setText:[NSString stringWithFormat:@"%@", [[responseObject objectForKey:@"trainee_stats"] objectForKey:@"calories"]]];
+    [self.totalDistance setText:[NSString stringWithFormat:@"%@ mi", [[responseObject objectForKey:@"trainee_stats"] objectForKey:@"distance_mi"]]];
+    [self.totalTime setText:[NSString stringWithFormat:@"%@", [[responseObject objectForKey:@"trainee_stats"] objectForKey:@"duration_formatted"]]];
     
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     NSLog(@"Error loading lifetime stats: %@", error);
