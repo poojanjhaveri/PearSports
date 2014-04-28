@@ -61,10 +61,10 @@
     NSLog(@"Tap");
     
     [self sendWorkOutRequest];
-//    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
     
-    UIViewController *prevVC = [self.navigationController.viewControllers objectAtIndex:1];
-    [self.navigationController popToViewController:prevVC animated:YES];
+//    UIViewController *prevVC = [self.navigationController.viewControllers objectAtIndex:1];
+//    [self.navigationController popToViewController:prevVC animated:YES];
 
 }
 
