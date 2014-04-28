@@ -31,8 +31,6 @@
 @property (nonatomic, copy) NSString *hrDataURL;
 @property (nonatomic, copy) NSMutableArray *hrZones;
 @property (nonatomic, copy) NSMutableArray *hrZonesData;
-
-
-
+@property (nonatomic, copy) NSMutableArray *hrRawData;
 
 @end

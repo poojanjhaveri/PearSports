@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vSm-f0-t5S">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vSm-f0-t5S">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -616,7 +616,7 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                 <rect key="frame" x="20" y="193" width="280" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Summary Charts">
+                                <state key="normal" title="aaaas">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -1643,16 +1643,29 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDf-OT-n0H">
-                                <rect key="frame" x="20" y="234" width="280" height="35"/>
+                                <rect key="frame" x="20" y="225" width="280" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.75686274509999996" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Summary Charts">
+                                <state key="normal" title="Heart Rate Zones">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="lPN-Xp-w8m" kind="push" identifier="HRZoneCharts" id="xLg-NU-fIy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pe-me-kzD">
+                                <rect key="frame" x="20" y="267" width="280" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.75686274509999996" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="Heart Rate Timeline">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="9EJ-kY-9Yd" kind="push" identifier="HRLineCharts" id="h9q-jp-OOM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1678,7 +1691,7 @@ These Terms and any other electronic documents, policies and guidelines incorpor
         <!--WorkoutHR Zones Chart View Controller - Heart Rate Zones-->
         <scene sceneID="Yxa-Mv-25U">
             <objects>
-                <viewController storyboardIdentifier="HRZonesChart" title="Heart Rate Zones" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lPN-Xp-w8m" customClass="AG_WorkoutHRZonesChartViewController" sceneMemberID="viewController">
+                <viewController title="Heart Rate Zones" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lPN-Xp-w8m" customClass="AG_WorkoutHRZonesChartViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DLC-SR-XPQ"/>
                         <viewControllerLayoutGuide type="bottom" id="V9n-vl-6hO"/>
@@ -1692,7 +1705,26 @@ These Terms and any other electronic documents, policies and guidelines incorpor
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3PG-5N-iPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3572" y="-1728"/>
+            <point key="canvasLocation" x="3620" y="-1944"/>
+        </scene>
+        <!--WorkoutHR Line Chart View Controller - Heart Rate Zones-->
+        <scene sceneID="n3f-Qt-pdl">
+            <objects>
+                <viewController title="Heart Rate Zones" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9EJ-kY-9Yd" customClass="AG_WorkoutHRLineChartViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RDt-ZV-808"/>
+                        <viewControllerLayoutGuide type="bottom" id="3ii-FM-q7z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uve-C7-PVX">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZSg-tJ-AuS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1pa-Ra-ipi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3636" y="-1256"/>
         </scene>
     </scenes>
     <resources>

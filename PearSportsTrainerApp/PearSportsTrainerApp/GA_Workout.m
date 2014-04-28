@@ -38,6 +38,7 @@
     if (self) {
       self.hrZones = [[NSMutableArray alloc] init];
       self.hrZonesData = [[NSMutableArray alloc] init];
+      self.hrRawData = [[NSMutableArray alloc] init];
     }
     return self;
 }

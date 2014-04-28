@@ -17,4 +17,20 @@
 #define kJBColorBarChartBarGreen UIColorFromHex(0x34b234)
 #define kJBColorBarChartHeaderSeparatorColor UIColorFromHex(0x686868)
 
+#define kJBColorLineChartControllerBackground UIColorFromHex(0xb7e3e4)
+#define kJBColorLineChartBackground UIColorFromHex(0xb7e3e4)
+#define kJBColorLineChartHeader UIColorFromHex(0x1c474e)
+#define kJBColorLineChartHeaderSeparatorColor UIColorFromHex(0x8eb6b7)
+#define kJBColorLineChartDefaultSolidLineColor [UIColor colorWithWhite:1.0 alpha:0.5]
+#define kJBColorLineChartDefaultSolidSelectedLineColor [UIColor colorWithWhite:1.0 alpha:1.0]
+#define kJBColorLineChartDefaultDashedLineColor [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0]
+#define kJBColorLineChartDefaultDashedSelectedLineColor [UIColor colorWithWhite:1.0 alpha:1.0]
+
+#define kJBStringLabel2013 localize(@"label.2013", @"2013")
+#define kJBStringLabelSanFrancisco2013 localize(@"label.san.francisco.2013", @"San Francisco - 2013")
+#define kJBStringLabelAverageDailyRainfall localize(@"label.average.daily.rainfall", @"Average Daily Rainfall")
+#define kJBStringLabelMm localize(@"label.mm", @"mm")
+#define kJBStringLabelMetropolitanAverage localize(@"label.metropolitan.average", @"Metropolitan Average")
+#define kJBStringLabelNationalAverage localize(@"label.national.average", @"National Average")
+
 #endif

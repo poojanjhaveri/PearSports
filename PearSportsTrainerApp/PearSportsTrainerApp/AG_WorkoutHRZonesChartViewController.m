@@ -187,7 +187,7 @@ NSInteger const kJBBarChartViewControllerMinBarHeight = 0;
     [self.informationView setValueText:[NSString stringWithFormat:@"%d:%d (%.02f%%) ", minutes, seconds, percentage] unitText:nil];
     
     
-    [self.informationView setTitleText:[NSString stringWithFormat:@"Zone %lu", (unsigned long)index]];
+    [self.informationView setTitleText:@"Zone 1"];
     [self.informationView setHidden:NO animated:YES];
     
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -252,7 +252,7 @@ NSInteger const kJBBarChartViewControllerMinBarHeight = 0;
   [self.informationView setValueText:[NSString stringWithFormat:@"%d:%d (%.02f%%) ", minutes, seconds, percentage] unitText:nil];
   
   
-  [self.informationView setTitleText:[NSString stringWithFormat:@"Zone %lu", (unsigned long)index]];
+  [self.informationView setTitleText:[NSString stringWithFormat:@"Zone %lu", (unsigned long)index+1]];
   [self.informationView setHidden:NO animated:YES];
 }
 

@@ -8,6 +8,7 @@
 
 #import "GA_CompleteWorkoutDetails.h"
 #import "AG_WorkoutHRZonesChartViewController.h"
+#import "AG_WorkoutHRLineChartViewController.h"
 #import "API.h"
 
 @interface GA_CompleteWorkoutDetails () <UITextViewDelegate>
@@ -161,8 +162,13 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
   if([segue.identifier isEqualToString:@"HRZoneCharts"]){
-  
+    
     AG_WorkoutHRZonesChartViewController *destViewController = segue.destinationViewController;
+    destViewController.workout = [self workout];
+  }
+  if([segue.identifier isEqualToString:@"HRLineCharts"]){
+
+    AG_WorkoutHRLineChartViewController *destViewController = segue.destinationViewController;
     destViewController.workout = [self workout];
   }
 

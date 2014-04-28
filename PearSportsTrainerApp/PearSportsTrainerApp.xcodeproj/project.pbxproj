@@ -68,6 +68,7 @@
 		65B7771738254FF3AFA26964 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFCF36E3D2542AA8D79EB64 /* libPods.a */; };
 		73AA271D19082C320072744A /* AG_WorkoutHRZonesChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73AA271C19082C320072744A /* AG_WorkoutHRZonesChartViewController.m */; };
 		73B7D44518BAFEF3001846C3 /* AG_ClientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */; };
+		73F98DEB190E048700EDED22 /* AG_WorkoutHRLineChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F98DEA190E048700EDED22 /* AG_WorkoutHRLineChartViewController.m */; };
 		B606C17D18CFFE2900125523 /* GA_WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B606C17C18CFFE2900125523 /* GA_WorkoutListViewController.m */; };
 		B606C18118D006CD00125523 /* GA_WorkoutNameListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B606C18018D006CD00125523 /* GA_WorkoutNameListTableCell.m */; };
 		B65AB52818FE37A800CAA826 /* GA_PersonalizePlan.m in Sources */ = {isa = PBXBuildFile; fileRef = B65AB52718FE37A800CAA826 /* GA_PersonalizePlan.m */; };
@@ -206,6 +207,8 @@
 		73AA271C19082C320072744A /* AG_WorkoutHRZonesChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_WorkoutHRZonesChartViewController.m; sourceTree = "<group>"; };
 		73B7D44318BAFEF3001846C3 /* AG_ClientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AG_ClientSummaryViewController.h; sourceTree = "<group>"; };
 		73B7D44418BAFEF3001846C3 /* AG_ClientSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_ClientSummaryViewController.m; sourceTree = "<group>"; };
+		73F98DE9190E048700EDED22 /* AG_WorkoutHRLineChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AG_WorkoutHRLineChartViewController.h; sourceTree = "<group>"; };
+		73F98DEA190E048700EDED22 /* AG_WorkoutHRLineChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AG_WorkoutHRLineChartViewController.m; sourceTree = "<group>"; };
 		B606C17B18CFFE2900125523 /* GA_WorkoutListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_WorkoutListViewController.h; sourceTree = "<group>"; };
 		B606C17C18CFFE2900125523 /* GA_WorkoutListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GA_WorkoutListViewController.m; sourceTree = "<group>"; };
 		B606C17F18D006CD00125523 /* GA_WorkoutNameListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GA_WorkoutNameListTableCell.h; sourceTree = "<group>"; };
@@ -537,6 +540,8 @@
 				73AA271A19082BBD0072744A /* AG_JBConstants.h */,
 				73AA271B19082C320072744A /* AG_WorkoutHRZonesChartViewController.h */,
 				73AA271C19082C320072744A /* AG_WorkoutHRZonesChartViewController.m */,
+				73F98DE9190E048700EDED22 /* AG_WorkoutHRLineChartViewController.h */,
+				73F98DEA190E048700EDED22 /* AG_WorkoutHRLineChartViewController.m */,
 			);
 			name = WorkoutCharts;
 			sourceTree = "<group>";
@@ -864,6 +869,7 @@
 				0E8530ED18E2C95B0092704D /* AG_ClientSummaryChartInformationView.m in Sources */,
 				B6D73A7018E272D9007D080C /* GA_WorkoutListForCalendar.m in Sources */,
 				FF00F08518B829C500E6C321 /* NSBubbleData.m in Sources */,
+				73F98DEB190E048700EDED22 /* AG_WorkoutHRLineChartViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
