@@ -140,8 +140,9 @@
              [theTrainee setDob:[obj objectForKey:@"dob"]];
              [theTrainee setEmail:[obj objectForKey:@"email"]];
              [theTrainee setGender:[obj objectForKey:@"gender"]];
-             [theTrainee setHeight:[obj objectForKey:@"height"]];
-             [theTrainee setWeight:[obj objectForKey:@"weight"]];
+           [theTrainee setHeight:[obj objectForKey:@"height"]];
+           [theTrainee setWeight:[obj objectForKey:@"weight"]];
+           [theTrainee setNotes:[obj objectForKey:@"notes"]];
              if([[obj objectForKey:@"screen_name"] isEqualToString:@"Joe R"])
              {
                  [theTrainee setImageName:@"Joe.png"];

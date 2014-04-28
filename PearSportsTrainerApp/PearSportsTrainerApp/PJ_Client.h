@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSString * weight;
 @property (strong, nonatomic) NSString * imageName;
 @property (strong, nonatomic) NSString * lastWorkout;
+@property (strong, nonatomic) NSString * notes;
 
 
 /*

@@ -44,7 +44,7 @@
     [super viewDidLoad];
     // Client Setup
     // @TODO update with actual inforamtion
-    [self.notesTextView setText:@"User Notes will Go Here"];
+    [self.notesTextView setText:[[API sharedInstance] getTraineeInfo].notes];
     [self.goalLabel setText:[[API sharedInstance] getTraineeInfo].gender];
     
     int weight = [[[API sharedInstance] getTraineeInfo].weight intValue] / 1000;
@@ -156,6 +156,33 @@
     if([text isEqualToString:@"\n"]) {
         [textView resignFirstResponder];
         // @TODO UPDATE SERVER
+      
+      NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
+      NSString *notes = [self.notesTextView text];
+      
+      [[API sharedInstance] getTraineeInfo].notes = notes;
+
+      NSDictionary *parameters = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:tra_id, notes, nil] forKeys:[NSArray arrayWithObjects:@"trainee_id", @"notes", nil]];
+      
+        NSString *url = @"https://cs477-backend.herokuapp.com/trainee/notes";
+
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        
+        NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:@"POST"
+                                                                          URLString:url
+                                                                         parameters:parameters
+                                                                              error:nil];
+        
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          NSLog(@"Couldn't load HR Data.");
+        }];
+        
+        [manager.operationQueue addOperation:operation];
+        
+
         return NO;
     }
     
