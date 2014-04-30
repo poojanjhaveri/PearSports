@@ -173,6 +173,7 @@
                 NSLog(@"Success: %@", responseObject);
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 NSLog(@"Failure: %@", error);
+                [self showLoadingError];
             }];
             
             NSLog(@"OPERATION IS %@",operation);
@@ -478,6 +479,7 @@ finishedSavingWithError:(NSError *)error
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
             });
+            [self showLoadingError];
         }];
         
         //NSLog(@"OPERATION IS %@",operation);
@@ -489,6 +491,14 @@ finishedSavingWithError:(NSError *)error
 
 }
 
+
+-(void) showLoadingError
+{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"ERROR! Please check your internet connection!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert setTag:12];
+    [alert show];
+}
 
 - (void)viewDidLoad
 {
@@ -675,9 +685,11 @@ finishedSavingWithError:(NSError *)error
         });
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure: %@", error);
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         });
+        [self showLoadingError];
     }];
     
     //NSLog(@"OPERATION IS %@",operation);
@@ -871,6 +883,7 @@ finishedSavingWithError:(NSError *)error
             NSLog(@"Success: %@", responseObject);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Failure: %@", error);
+            [self showLoadingError];
         }];
         
         NSLog(@"OPERATION IS %@",operation);
@@ -918,6 +931,7 @@ finishedSavingWithError:(NSError *)error
             NSLog(@"Success: %@", responseObject);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Failure: %@", error);
+            [self showLoadingError];
         }];
         
         NSLog(@"OPERATION IS %@",operation);
