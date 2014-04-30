@@ -170,7 +170,7 @@
             w.avgHeartRate = [obj objectForKey:@"avg_hr"];
             w.distance = [obj objectForKey:@"distance"];
             w.calories = [obj objectForKey:@"calories"];
-            w.grade = [obj objectForKey:@"grade"];
+            w.grade = [NSString stringWithFormat:@"%@",[obj objectForKey:@"grade"]];
             w.activityType = [[obj objectForKey:@"workout"] objectForKey:@"activity_type"];
             w.shortDes = [[obj objectForKey:@"workout"] objectForKey:@"description_short"];
             w.longDes = [[obj objectForKey:@"workout"] objectForKey:@"description_html"];
