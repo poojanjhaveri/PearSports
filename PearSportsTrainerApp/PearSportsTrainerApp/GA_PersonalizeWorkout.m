@@ -133,6 +133,7 @@
     return YES;
 }
 
+//sends the workout to backend to be added to the trainee
 -(void)sendWorkOutRequest
 {
     
@@ -188,10 +189,8 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-        GA_Calendar *destViewController = segue.destinationViewController;
-        
-        [destViewController showAlert];
-        
+    
+    
 }
 
 

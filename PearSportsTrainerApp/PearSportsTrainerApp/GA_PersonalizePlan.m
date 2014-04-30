@@ -68,7 +68,7 @@
 
 }
 
-
+//sends the plan to backend to be added to the trainee
 -(void)sendWorkOutRequest
 {
     

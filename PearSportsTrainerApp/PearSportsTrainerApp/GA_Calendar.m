@@ -88,6 +88,7 @@
     
 }
 
+//to get the schedule of workouts for the week
 -(void)sendWorkOutRequest
 {
     
@@ -124,7 +125,7 @@
         self.wIncompleteList = [[[jsonDict objectForKey:@"workout_data"] objectForKey:@"workouts"] objectForKey:@"data"];
         self.wCompleteList = [[[jsonDict objectForKey:@"workout_data"] objectForKey:@"results"] objectForKey:@"data"];
         
-        
+        //stores all the details of incomplete workouts in wIncomepleteList
         [self.wIncompleteList enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
             
             GA_Workout *w = [GA_Workout alloc];
@@ -149,7 +150,7 @@
             
         }];
         
-
+        //stores all the details of complete workouts in wCompleteList
         [self.wCompleteList enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
             
             GA_Workout *w = [GA_Workout alloc];
@@ -204,13 +205,13 @@
 
 -(void) showLoadingError
 {
-    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error retrieving the data." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert setTag:12];
     [alert show];
 }
 
 
+//Creates a list of workouts for each date and then stores each list into calendarWorkouts
 - (void) createCalendarList
 {
     self.calendarWorkouts = [[NSMutableArray alloc] init];
@@ -263,6 +264,8 @@
     return [[self.calendarWorkouts objectAtIndex:section] getWorkoutCount];
 }
 
+
+//configures the cell based on the date of the section and the date of the workout
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -290,79 +293,64 @@
         //green: complete
         //blue: future
         
-    
-        NSDate * today = [NSDate date];
-        NSDate *now=[NSDate dateWithTimeInterval:(-24*60*60) sinceDate:today];
+        NSDateComponents *components = [[NSCalendar currentCalendar]
+                                        components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
+                                        fromDate:[NSDate date]];
+        NSDate *now = [[NSCalendar currentCalendar]
+                          dateFromComponents:components];
         
-        NSComparisonResult result = [now compare:wname.date];
+        NSDateComponents *components1 = [[NSCalendar currentCalendar]
+                                        components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
+                                        fromDate:wname.date];
+        NSDate *wdate = [[NSCalendar currentCalendar]
+                        dateFromComponents:components1];
+        
+        NSComparisonResult result = [now compare:wdate];
         
         [cell.activityTypeText sizeToFit];
         [cell.gradeText sizeToFit];
         cell.gradeText.hidden = NO;
         
         
-        switch (result)
-        {
-            case NSOrderedAscending:{
-                if ([wname.status isEqualToString:@"marked_complete"]) {
-                    cell.workoutName.textColor=[UIColor darkGrayColor];
-                    
-                    cell.colourCode.backgroundColor=[UIColor lightGrayColor];
-                    cell.gradeText.hidden = true;
-                }
-                else if ([wname.status isEqualToString:@"completed"]) {
-                    cell.workoutName.textColor=[UIColor greenColor];
-                    cell.colourCode.backgroundColor=[UIColor greenColor];
-//                    cell.gradeText.hidden = false;
-                    cell.gradeText.text = [wname grade];
-                }
-                else{
-                    cell.workoutName.textColor=[UIColor blueColor];
-                    cell.colourCode.backgroundColor=[UIColor blueColor];
-                    cell.gradeText.hidden = true;
-                }
-                break;
+        if(result == NSOrderedDescending){//past workouts
+            if ([wname.status isEqualToString:@"marked_complete"]) {
+                cell.workoutName.textColor=[UIColor darkGrayColor];
+                cell.colourCode.backgroundColor=[UIColor lightGrayColor];
+                cell.gradeText.hidden = true;
             }
-            case NSOrderedDescending:{
-                if ([wname.status isEqualToString:@"marked_complete"]) {
-                     cell.workoutName.textColor=[UIColor darkGrayColor];
-                    cell.colourCode.backgroundColor=[UIColor lightGrayColor];
-                    cell.gradeText.hidden = true;
-                }
-                else if ([wname.status isEqualToString:@"completed"]) {
-                     cell.workoutName.textColor=[UIColor greenColor];
-                    cell.colourCode.backgroundColor=[UIColor greenColor];
-//                    cell.gradeText.hidden = false;
-                    cell.gradeText.text = [wname grade];
-                }
-                else{
-                     cell.workoutName.textColor=[UIColor redColor];
-                    cell.colourCode.backgroundColor=[UIColor redColor];
-                    cell.gradeText.hidden = true;
-                }
-                break;            }
-            case NSOrderedSame:{
-                if ([wname.status isEqualToString:@"marked_complete"]) {
-                     cell.workoutName.textColor=[UIColor darkGrayColor];
-                    cell.colourCode.backgroundColor=[UIColor lightGrayColor];
-//                    cell.gradeText.hidden = true;
-                }
-                else if ([wname.status isEqualToString:@"completed"]) {
-                     cell.workoutName.textColor=[UIColor greenColor];
-                    cell.colourCode.backgroundColor=[UIColor greenColor];
-//                    cell.activityTypeText.text = [wname activityType];
-//                    cell.gradeText.text = [wname grade];
-                }
-                else{
-                     cell.workoutName.textColor=[UIColor blueColor];
-                    cell.colourCode.backgroundColor=[UIColor blueColor];
- //                   cell.gradeText.hidden = true;
-                }
-                break;  }
-            default: NSLog(@"erorr dates"); break;
+            else if ([wname.status isEqualToString:@"completed"]) {
+                cell.workoutName.textColor=[UIColor greenColor];
+                cell.colourCode.backgroundColor=[UIColor greenColor];
+                //                    cell.gradeText.hidden = false;
+                cell.gradeText.text = [wname grade];
+            }
+            else{
+                cell.workoutName.textColor=[UIColor redColor];
+                cell.colourCode.backgroundColor=[UIColor redColor];
+                cell.gradeText.hidden = true;
+            }
         }
+        else{
+            if ([wname.status isEqualToString:@"marked_complete"]) {
+                cell.workoutName.textColor=[UIColor darkGrayColor];
+                
+                cell.colourCode.backgroundColor=[UIColor lightGrayColor];
+                cell.gradeText.hidden = true;
+            }
+            else if ([wname.status isEqualToString:@"completed"]) {
+                cell.workoutName.textColor=[UIColor greenColor];
+                cell.colourCode.backgroundColor=[UIColor greenColor];
+                cell.gradeText.text = [wname grade];
+            }
+            else{
+                cell.workoutName.textColor=[UIColor blueColor];
+                cell.colourCode.backgroundColor=[UIColor blueColor];
+                cell.gradeText.hidden = true;
+            }
 
-//        [cell.workoutName setText:[wname workoutName]];
+        }
+        
+
         cell.workoutName.text = [wname workoutName];
         cell.descriptionText.text = [wname shortDes];
         cell.activityTypeText.text = [NSString stringWithFormat:@"Type: %@",[wname activityType]];
@@ -574,7 +562,7 @@
         
 //
         
-        
+        //send the delete request to backend
         NSString * token = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser" ] valueForKey:@"token"];
         NSString *tra_id = [NSString stringWithFormat:@"%@",[[API sharedInstance] getTraineeInfo].trainee_id];
         
@@ -618,8 +606,7 @@
 
 
 -(void) showDeleteError
-{
-    
+{    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Cannot delete workout due to no internet connectivity" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert setTag:12];
     [alert show];

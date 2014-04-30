@@ -27,6 +27,7 @@
     return self;
 }
 
+//adds a workout to the list of workouts for a specific date
 - (void)addWorkoutToList:(GA_Workout*)w
 {
     if(w == nil){
@@ -38,6 +39,7 @@
     }
 }
 
+//checks if the date entered is the same as the date of this class
 - (BOOL)checkIfDateExists:(NSString*)d
 {
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
@@ -52,6 +54,8 @@
     return false;
 }
 
+
+//returns the specific workout selected from the calendar
 - (GA_Workout*)getWorkout:(NSInteger*)i
 {
     if(workoutList.count > 0)
@@ -59,6 +63,7 @@
     return workout;
 }
 
+//returns the number of workouts on this specific date
 - (NSInteger) getWorkoutCount
 {
     return self.workoutList.count;
